@@ -1,0 +1,131 @@
+<template>
+    <div id="myStar">
+        <p>已获总学习星：{{total}}</p>
+        <table>
+            <thead>
+            <tr>
+                <th>学习课程名称</th>
+                <th>获学习星数量</th>
+                <th>获取时间</th>
+                <th>获取类型</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr v-for="(item,index) in list" :key="index">
+                <td>{{item.courseNm}}</td>
+                <td>{{item.star}}</td>
+                <td>{{item.starTime}}</td>
+                <td>{{item.type}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</template>
+<script>
+
+    export default {
+        data() {
+            return {
+                total:48,
+                list:[{
+                    courseNm:'中国茶文化与艺术-茶文化艺术',
+                    star:150,
+                    starTime:'2018-02-02 12:12:12',
+                    type:'自主学习'
+                },{
+                    courseNm:'中国茶文化与艺术-茶文化艺术',
+                    star:150,
+                    starTime:'2018-02-02 12:12:12',
+                    type:'自主学习'
+                },{
+                    courseNm:'中国茶文化与艺术-茶文化艺术',
+                    star:150,
+                    starTime:'2018-02-02 12:12:12',
+                    type:'自主学习'
+                },{
+                    courseNm:'中国茶文化与艺术-茶文化艺术',
+                    star:150,
+                    starTime:'2018-02-02 12:12:12',
+                    type:'自主学习'
+                },{
+                    courseNm:'中国茶文化与艺术-茶文化艺术',
+                    star:150,
+                    starTime:'2018-02-02 12:12:12',
+                    type:'自主学习'
+                },{
+                    courseNm:'中国茶文化与艺术-茶文化艺术',
+                    star:150,
+                    starTime:'2018-02-02 12:12:12',
+                    type:'自主学习'
+                },{
+                    courseNm:'中国茶文化与艺术-茶文化艺术',
+                    star:150,
+                    starTime:'2018-02-02 12:12:12',
+                    type:'自主学习'
+                },]
+            }
+        },
+        mounted() {
+
+        },
+        methods: {
+
+        },
+        components: {
+        }
+    }
+</script>
+<style lang="less" scoped>
+    #myStar{
+        p{
+            font-size: 26px;
+            padding-left: 25px;
+            padding-top: 30px;
+        }
+        table{
+            width: 940px;
+            margin: 20px auto;
+            background: #ffffff;
+            border: 1px solid #e1e1e1;
+            thead{
+                th{
+                    color: #666666;
+                    font-size: 18px;
+                    height: 86px;
+                    font-weight: normal;
+                    text-align: center;
+                    &:first-child{
+                        width: 40%;
+                        text-align: left;
+                        padding-left: 25px;
+                    }
+                    &:nth-child(2){
+                        width: 15%;
+                    }
+                    &:nth-child(3){
+                        width: 30%;
+                    }
+                    &:nth-child(4){
+                        width: 15%;
+                    }
+                }
+            }
+            tr{
+                border: 1px solid #e1e1e1;
+                &:last-child{
+                    border-bottom: 0;
+                }
+                td{
+                    text-align: center;
+                    font-size: 18px;
+                    height: 86px;
+
+                    &:first-child{
+                        padding-left: 25px;
+                        text-align: left;
+                    }
+                }
+            }
+        }
+    }
+</style>

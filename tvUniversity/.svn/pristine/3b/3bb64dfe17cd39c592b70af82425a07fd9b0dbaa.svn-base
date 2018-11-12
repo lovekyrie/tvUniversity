@@ -1,0 +1,45 @@
+<template>
+    <div id="container">
+        <myHeader></myHeader>
+        <myNav :type="name"></myNav>
+        <div class="content">
+            <div class="pos">
+                 首页 > 校园动态 > 动态详情
+            </div>
+            <div class="noticeDetail">
+                <h1>{{info.title}}</h1>
+                <p>年月日 12：00  来源：{{info.come}}</p>
+                <div v-html="info.content"></div>
+            </div>
+        </div>
+        <myFooter></myFooter>
+    </div>
+</template>
+<script>
+    import myHeader from "@/components/myHeader"
+    import myNav from "@/components/myNav"
+    import myFooter from "@/components/myFooter"
+  export default {
+    data() {
+      return {
+           name:'news',
+           title:'',
+           info:{
+               title:'标题名称',
+               date:'',//日期
+               come:'宁波电大',
+               content:'<i>详情内容</i>'
+           }
+      }
+    },
+    mounted() {
+
+    },
+    methods: {
+
+    },
+    components: {
+        myHeader,myNav,myFooter
+    }
+  }
+</script>
