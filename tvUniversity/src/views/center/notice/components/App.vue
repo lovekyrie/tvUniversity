@@ -87,7 +87,7 @@ export default {
       let param = {
         query: query.toString()
       };
-      this.until.get("/sys/news/page", param).then(
+      this.until.get(this.hostUrl+"sys/news/page", param).then(
         res => {
           if (res.status === "200") {
             console.log("调用成功");

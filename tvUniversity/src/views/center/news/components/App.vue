@@ -6,17 +6,17 @@
             <div class="pos">
                  首页 > 新闻动态
             </div>
-            <div class="list" v-for="(item,index) in list" :key="index" @click="toDetail(item.sysNewsPk)">
+            <div class="list" v-for="(item,index) in newList" :key="index" @click="toDetail(item.sysNewsPk)">
                 <div class="img">
-                    <img :src="item.img"/>
+                    <img :src="item.imgUrl"/>
                 </div>
                 <div class="listContent">
                     <div>
-                        <strong>{{item.title}}</strong>
-                        <p v-if="item.content">{{item.content}}</p>
+                        <strong>{{item.nm}}</strong>
+                        <p v-if="item.cont" v-html="item.cont"></p>
                     </div>
 
-                    <p>{{item.year}}年{{item.month}}月{{item.day}}日 {{item.time}}<span></span>来源：{{item.come}}</p>
+                    <p>{{item.year}}年{{item.month}}月{{item.day}}日 {{item.time}}<span></span>来源：{{item.author}}</p>
                 </div>
             </div>
             <!--分页-->
@@ -68,11 +68,12 @@ export default {
           content: "简介信息",
           sysNewsPk:'4139210250294272',
         }
-      ]
+      ],
+      newList:[]
     };
   },
   mounted() {
-    // this.getNewsList();
+     this.getNewsList();
   },
   methods: {
     //更改当前页数
@@ -89,16 +90,25 @@ export default {
       let query = new this.Query();
       //拼接参数
       query.buildWhereClause("catNm", "校园动态", "EQ");
-      query.buildWhereClause(this.pageNo, this.pageSize);
+      query.buildPageClause(this.pageNo, this.pageSize);
 
       let param = {
         query: query.toString()
       };
-      this.until.get("/sys/news/page", param).then(
+      this.until.get(this.hostUrl+"sys/news/page", param).then(
         res => {
           if (res.status === "200") {
             console.log("调用成功");
-            this.list = res.data.items;
+            this.newList = res.data.items;
+
+            var that=this;
+            this.newList.forEach(element => {
+
+                let time=that.until.formatDate(element.releTm);
+                element['year']=time.year;
+                element['month']=time.month;
+                element['day']=time.day;
+            });
           } else {
             console.log('状态码返回不是200')
           }
