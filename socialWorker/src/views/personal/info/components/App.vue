@@ -2,7 +2,7 @@
     <div id="container">
         <myHeader></myHeader>
         <myNav></myNav>
-        <div style="width:100%;" class="content">
+        <div style="width:100%;background-color:#f9f9f9;" class="content">
           <div class="content-link">
               <div class="pos">
                   <a href="#">个人空间</a> > {{title}}
