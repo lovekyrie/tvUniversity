@@ -53,6 +53,7 @@ import myFooter from "@/components/myFooter"
 
                     this.personInfo=res.data.userInfo;
                     this.until.loSave('isLogin',true)
+                    sessionStorage.setItem('DD_token',JSON.stringify(res.data));
                 }
                 else{
                   console.log('返回码不是200')
@@ -63,10 +64,10 @@ import myFooter from "@/components/myFooter"
               }
             )
 
-            // this.dialogVisible = true
-            // setTimeout(()=>{
-            //     window.location.href = '../center/index.html'
-            // },1500)
+            this.dialogVisible = true
+            setTimeout(()=>{
+                window.location.href = '../center/index.html'
+            },1500)
         }
     },
   }

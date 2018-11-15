@@ -39,7 +39,9 @@ export default {
       let url = "../center/search.html?key=" + this.key;
       window.location.href = url;
     },
-    quit() {}
+    quit() {
+      window.location.href='../entry/login.html';
+    }
   }
 };
 </script>

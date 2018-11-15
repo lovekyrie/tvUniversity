@@ -40,6 +40,7 @@ export default {
   data() {
     return {
       name: "news",
+      token:'',
       pageNo: 1,
       pageSize: 10,
       total: 100,
@@ -50,7 +51,7 @@ export default {
             "http://e.hiphotos.baidu.com/image/pic/item/aec379310a55b3199f70cd0e4ea98226cffc173b.jpg",
           come: "宁波电视大学",
           content: "简介信息",
-          sysNewsPk:'4139210250294272',
+          sysNewsPk: "4139210250294272"
         },
         {
           title: "艾炙疗法 - 健康养生",
@@ -58,7 +59,7 @@ export default {
             "http://e.hiphotos.baidu.com/image/pic/item/aec379310a55b3199f70cd0e4ea98226cffc173b.jpg",
           come: "宁波电视大学",
           content: "简介信息",
-          sysNewsPk:'4139210250294272',
+          sysNewsPk: "4139210250294272"
         },
         {
           title: "艾炙疗法 - 健康养生",
@@ -66,19 +67,18 @@ export default {
             "http://e.hiphotos.baidu.com/image/pic/item/aec379310a55b3199f70cd0e4ea98226cffc173b.jpg",
           come: "宁波电视大学",
           content: "简介信息",
-          sysNewsPk:'4139210250294272',
+          sysNewsPk: "4139210250294272"
         }
       ],
-      newList:[]
+      newList: []
     };
   },
   mounted() {
-     this.getNewsList();
+    this.getNewsList();
   },
   methods: {
     //更改当前页数
     handleCurrentChange(val) {
-
       console.log(`当前页: ${val}`);
       console.log(this.pageNo);
       //this.getNewsList();
@@ -88,29 +88,27 @@ export default {
     },
     getNewsList() {
       let query = new this.Query();
+       this.token = this.until.getToken();
       //拼接参数
       query.buildWhereClause("catNm", "校园动态", "EQ");
       query.buildPageClause(this.pageNo, this.pageSize);
+      let param = query.getParam();
 
-      let param = {
-        query: query.toString()
-      };
-      this.until.get(this.hostUrl+"sys/news/page", param).then(
+      this.until.get(this.hostUrl + "sys/news/page", param).then(
         res => {
           if (res.status === "200") {
             console.log("调用成功");
             this.newList = res.data.items;
 
-            var that=this;
+            var that = this;
             this.newList.forEach(element => {
-
-                let time=that.until.formatDate(element.releTm);
-                element['year']=time.year;
-                element['month']=time.month;
-                element['day']=time.day;
+              let time = that.until.formatDate(element.releTm);
+              element["year"] = time.year;
+              element["month"] = time.month;
+              element["day"] = time.day;
             });
           } else {
-            console.log('状态码返回不是200')
+            console.log("状态码返回不是200");
           }
         },
         err => {
