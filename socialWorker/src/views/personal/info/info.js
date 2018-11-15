@@ -9,7 +9,7 @@ import Info from './components/info.vue'
 import msg from './components/msg.vue'
 import msgDetail from './components/msgDetail.vue'
 import sign from './components/sign.vue'
-import center from './components/center.vue'
+import memberCenter from './components/memberCenter.vue'
 import project from './components/project.vue'
 import certificate from './components/certificate.vue'
 
@@ -21,7 +21,7 @@ const routes = [
   }, //个人中心
   {
     path: '/center',
-    component: center, //会员中心
+    component: memberCenter, //会员中心
   },
   {
     path: '/project',

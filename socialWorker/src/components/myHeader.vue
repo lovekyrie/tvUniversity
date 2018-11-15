@@ -24,7 +24,7 @@
                 <button @click="goSearch">搜索</button>
             </div>
             <p v-if="!ifLogin"><a href="../entry/login.html">登录</a>|<a href="#">注册</a></p>
-            <p v-else><a href="#">欢迎您的登录，小六！</a> <span @click="quit">退出</span></p>
+            <p v-else><span @click="toPersonal()">欢迎您的登录，小六！</span> <span @click="quit">退出</span></p>
         </div>
     </div>
 </template>
@@ -34,7 +34,7 @@
         name: 'App',
         data(){
           return{
-              ifLogin:false,  //是否登录
+              ifLogin:true,  //是否登录
               key:'',
               address:'宁波',
           }
@@ -53,6 +53,9 @@
             },
             quit(){
 
+            },
+            toPersonal(){
+              this.$router.push('/personal/membercenter')
             },
             handleCommand(command){
 
