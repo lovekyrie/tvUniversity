@@ -1,12 +1,12 @@
 <template>
     <div id="header">
         <div class="top">
-            <div class="content">
+            <div class="top-wrap">
                 <img src="../assets/img/logo.png" @click="toHome"/>
                 宁波广播电视大学
             </div>
         </div>
-        <div class="content">
+        <div class="header-wrap">
             <a href="../center/index.html">社会培训系统</a>
             <el-dropdown @command="handleCommand">
               <span class="el-dropdown-link">
@@ -29,110 +29,111 @@
     </div>
 </template>
 <script>
-
-    export default {
-        name: 'App',
-        data(){
-          return{
-              ifLogin:true,  //是否登录
-              key:'',
-              address:'宁波',
-          }
-        },
-        mounted(){
-            // this.abc();
-
-        },
-        methods: {
-            toHome(){
-              window.location.href = '../center/index.html'
-            },
-            goSearch(){
-                let url = '../center/search.html?key='+this.key
-                window.location.href = url
-            },
-            quit(){
-
-            },
-            toPersonal(){
-              this.$router.push('/personal/membercenter')
-            },
-            handleCommand(command){
-
-              this.address=command;
-            }
-        }
+export default {
+  name: "App",
+  data() {
+    return {
+      ifLogin: true, //是否登录
+      key: "",
+      address: "宁波"
+    };
+  },
+  mounted() {
+    // this.abc();
+  },
+  methods: {
+    toHome() {
+      window.location.href = "../center/index.html";
+    },
+    goSearch() {
+      let url = "../center/search.html?key=" + this.key;
+      window.location.href = url;
+    },
+    quit() {},
+    toPersonal() {
+      this.$router.push("/personal/membercenter");
+    },
+    handleCommand(command) {
+      this.address = command;
     }
+  }
+};
 </script>
 
 <style lang="less" scoped>
-    #header{
-        width: 100%;
-        border-bottom: 1px solid #e1e1e1;
-        .top{
-            background: #3a71a8;
-            color: #fff;
-            height: 40px;
-            line-height: 40px;
-            font-size: 16px;
-            img{
-                width: auto;
-                float: left;
-            }
-        }
-        >.content{
-            height: 124px;
-            display: flex;
-            display: -webkit-flex;
-            align-items: center;
-            justify-items: center;
-            >a{
-                font-size: 36px;
-                color: #3a71a8;
-                flex: 1;
-                font-weight: bold;
-            }
-            .el-dropdown{
-              margin-right: 400px;
-              font-size: 18px;
-            }
-            .search{
-                width: 300px;
-                input{
-                    border: 1px solid #e1e1e1;
-                    background: #f9f9f9;
-                    width: 70%;
-                    height: 36px;
-                    line-height: 36px;
-                    text-indent: 8px;
-                    float: left;
-                    font-size: 16px;
-                }
-                button{
-                    float: left;
-                    background: #1b4e81;
-                    color: #fff;
-                    width: 20%;
-                    height: 38px;
-                    line-height: 38px;
-                    text-align: center;
-                    border: 0;
-                }
-            }
-            p{
-                padding-left: 25px;
-                color: #e3e3e3;
-                a{
-                    color: #666666;
-                    display: inline-block;
-                    margin:0 8px;
-                    font-size: 16px;
-                }
-                span{
-                    color: #ff7867;
-                    cursor: pointer;
-                }
-            }
-        }
+#header {
+  width: 100%;
+  border-bottom: 1px solid #e1e1e1;
+  .top {
+    background: #3a71a8;
+    color: #fff;
+    height: 40px;
+    line-height: 40px;
+    font-size: 16px;
+    .top-wrap {
+      width: 1200px;
+      margin: 0 auto;
+      img {
+        width: auto;
+        float: left;
+      }
     }
+  }
+  > .header-wrap {
+    width: 1200px;
+    margin: 0 auto;
+    height: 124px;
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    justify-items: center;
+    > a {
+      font-size: 36px;
+      color: #3a71a8;
+      flex: 1;
+      font-weight: bold;
+    }
+    .el-dropdown {
+      margin-right: 400px;
+      font-size: 18px;
+    }
+    .search {
+      width: 300px;
+      input {
+        border: 1px solid #e1e1e1;
+        background: #f9f9f9;
+        width: 70%;
+        height: 36px;
+        line-height: 36px;
+        text-indent: 8px;
+        float: left;
+        font-size: 16px;
+      }
+      button {
+        float: left;
+        background: #1b4e81;
+        color: #fff;
+        width: 20%;
+        height: 38px;
+        line-height: 38px;
+        text-align: center;
+        border: 0;
+      }
+    }
+    p {
+      padding-left: 25px;
+      color: #e3e3e3;
+      a {
+        color: #666666;
+        display: inline-block;
+        margin: 0 8px;
+        font-size: 16px;
+      }
+      span {
+        color: #ff7867;
+        cursor: pointer;
+      }
+    }
+  }
+}
 </style>

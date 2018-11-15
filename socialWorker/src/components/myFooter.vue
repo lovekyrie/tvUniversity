@@ -1,6 +1,6 @@
 <template>
     <div id="footer">
-        <div class="content">
+        <div class="footer-wrap">
           <div>
             <p>联系方式：0516-88880000</p>
             <p>时间：周一至周五 8:30-11:30</p>
@@ -51,7 +51,9 @@ export default {
   border-top: 1px solid #dddddd;
   color: #666666;
   padding: 30px 10px 30px 20px;
-  .content {
+  .footer-wrap {
+    width: 1200px;
+    margin: 0 auto;
     font-size: 16px;
     >div{
       display: flex;

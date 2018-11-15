@@ -1,12 +1,12 @@
 <template>
     <div id="header">
         <div class="top">
-            <div class="content">
+            <div class="top-wrap">
                 <img src="../assets/img/logo.png" @click="toHome"/>
                 宁波广播电视大学
             </div>
         </div>
-        <div class="content">
+        <div class="header-wrap">
             <a href="../center/index.html">宁波电视大学网</a>
             <div class="search">
                 <input v-model="key" placeholder="宁波电大老年教育网"/>
@@ -54,12 +54,18 @@ export default {
     height: 40px;
     line-height: 40px;
     font-size: 16px;
-    img {
-      width: auto;
-      float: left;
+    .top-wrap {
+      width: 1200px;
+      margin: 0 auto;
+      img {
+        width: auto;
+        float: left;
+      }
     }
   }
-  > .content {
+  > .header-wrap {
+    width: 1200px;
+    margin: 0 auto;
     height: 124px;
     display: flex;
     display: -webkit-flex;

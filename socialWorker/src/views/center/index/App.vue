@@ -16,19 +16,17 @@ export default {
   data() {
     return {
       videoCurrent: 0, //轮播视频当前视频
-      timer: null, //定时
+      timer: null //定时
     };
   },
   mounted() {
     // this.videoChange();
-
   },
   methods: {
     //校园动态
-    getNewsList(){
-
-       let query=new this.Query();
-       //拼接参数
+    getNewsList() {
+      let query = new this.Query();
+      //拼接参数
       query.buildWhereClause("catNm", "校园动态", "EQ");
       query.buildWhereClause(this.newsPageNo, this.newsPageSize);
 
@@ -48,7 +46,7 @@ export default {
           console.log("调用失败");
         }
       );
-    },
+    }
   },
   components: {
     myHeader,
@@ -57,3 +55,11 @@ export default {
   }
 };
 </script>
+
+<style lang='less'>
+#container {
+  .content {
+    width: 100%;
+  }
+}
+</style>
