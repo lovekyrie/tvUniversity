@@ -7,7 +7,7 @@ config(Vue);
 require('./css/main.less');
 
 import router from './router'
-router.push('/personal/membercenter')
+// router.push('/personal/membercenter')
 
 new Vue({
   router,
