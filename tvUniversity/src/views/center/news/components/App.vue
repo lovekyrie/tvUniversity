@@ -40,7 +40,7 @@ export default {
   data() {
     return {
       name: "news",
-      token:'',
+      token: "",
       pageNo: 1,
       pageSize: 10,
       total: 100,
@@ -88,13 +88,14 @@ export default {
     },
     getNewsList() {
       let query = new this.Query();
-       this.token = this.until.getToken();
+      let tokenObj = this.until.seGet("DD_token");
+      this.token = this.until.getToken(JSON.parse(tokenObj));
       //拼接参数
       query.buildWhereClause("catNm", "校园动态", "EQ");
       query.buildPageClause(this.pageNo, this.pageSize);
       let param = query.getParam();
 
-      this.until.get(this.hostUrl + "sys/news/page", param).then(
+      this.until.get("/sys/news/page", param).then(
         res => {
           if (res.status === "200") {
             console.log("调用成功");

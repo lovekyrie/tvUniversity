@@ -2,11 +2,11 @@
 var path = require('path')
 
 module.exports = {
-	
+
   //网站模块名，例如 http://192.168.0.216:8089/module/app/initlayer.html 中的 
   //【views】，默认为views，修改这里的配置的同时，也要同时重命名/src/views的这个文件夹名称  
-  moduleName:'views',
-  
+  moduleName: 'views',
+
   build: {
     env: require('./prod.env'),
     index: path.resolve(__dirname, '../dist/index.html'),
@@ -32,7 +32,15 @@ module.exports = {
     autoOpenBrowser: true,
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+      '/api': {
+        target: 'http://218.71.137.186:44185',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api': ''
+        }
+      }
+    },
     // CSS Sourcemaps off by default because relative paths are "buggy"
     // with this option, according to the CSS-Loader README
     // (https://github.com/webpack/css-loader#sourcemaps)

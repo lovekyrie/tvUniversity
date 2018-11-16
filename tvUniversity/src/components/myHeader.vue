@@ -29,7 +29,7 @@ export default {
   },
   mounted() {
     // this.abc();
-    this.ifLogin = this.until.loGet("isLogin");
+    this.ifLogin = this.until.seGet("isLogin");
   },
   methods: {
     toHome() {

@@ -23,52 +23,49 @@
     </div>
 </template>
 <script>
-import myHeader from "@/components/myHeader"
-import myFooter from "@/components/myFooter"
-  export default {
-    data() {
-      return {
-        userName:'',
-        psd:'',
-        personInfo:{},
-        dialogVisible:false,
-      }
-    },
-      components:{
-          myHeader,myFooter
-      },
-    mounted() {
-    },
-    methods: {
-        submit(){
+import myHeader from "@/components/myHeader";
+import myFooter from "@/components/myFooter";
+export default {
+  data() {
+    return {
+      userName: "",
+      psd: "",
+      personInfo: {},
+      dialogVisible: false
+    };
+  },
+  components: {
+    myHeader,
+    myFooter
+  },
+  mounted() {},
+  methods: {
+    submit() {
+      let param = {
+        userName: this.userName,
+        passWord: this.psd
+      };
+
+      this.until.post("/prod/dent/login", param).then(
+        res => {
+          if (res.status === "200") {
+            this.personInfo = res.data.userInfo;
+            sessionStorage.setItem("isLogin", true);
+            sessionStorage.setItem("DD_token", JSON.stringify(res.data));
             
-            let param={
-              userName:this.userName,
-              passWord:this.psd
-            };
-
-            this.until.post(this.hostUrl+'prod/dent/login',param).then(
-              res=>{
-                if(res.status==='200'){
-
-                    this.personInfo=res.data.userInfo;
-                    this.until.loSave('isLogin',true)
-                    sessionStorage.setItem('DD_token',JSON.stringify(res.data));
-                }
-                else{
-                  console.log('返回码不是200')
-                }
-              },
-              err=>{
-                console.log('方法调用失败！')
-              }
-            )
-
-            this.dialogVisible = true
-            setTimeout(()=>{
-                window.location.href = '../center/index.html'
-            },1500)
+            this.dialogVisible = true;
+            setTimeout(() => {
+              window.location.href = "../center/index.html";
+            }, 1500);
+          } else {
+            console.log("返回码不是200");
+          }
+        },
+        err => {
+          console.log("方法调用失败！");
         }
-    },
+      );
+    }
   }
+};
 </script>

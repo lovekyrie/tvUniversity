@@ -40,7 +40,7 @@ require('vue-video-player/src/custom-theme.css')
 require('videojs-flash/dist/videojs-flash')
 Vue.use(VideoPlayer)
 
-let hostUrl='http://218.71.137.186:44185/'
+let hostUrl='http://218.71.137.186:44185'
 
 export default function (Vue) {
   Vue.use(confirm);
