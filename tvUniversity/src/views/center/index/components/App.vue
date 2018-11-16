@@ -64,12 +64,12 @@
                 </div>
                 <div class="list" v-for="(item,index) in notice" :key="index" @click="goNoticeDetail(item.ipPk)">
                     <div class="img">
-                        <img :src="item.img"/>
+                        <img :src="item.imgUrl"/>
                     </div>
                     <div class="listContent">
-                        <strong>{{item.title}}</strong>
+                        <strong>{{item.nm}}</strong>
                         <p>{{item.year}}年{{item.month}}月{{item.day}}日 {{item.time}}</p>
-                        <p>来源：{{item.come}}</p>
+                        <p>来源：{{item.crtBy}}</p>
                     </div>
                 </div>
             </div>
@@ -79,14 +79,14 @@
                     <h4>校园动态</h4>
                     <a href="notice.html?name=news">查看更多 ></a>
                 </div>
-                <div class="list" v-for="(item,index) in notice" :key="index" @click="goNewsDetail(item.ipPk)">
+                <div class="list" v-for="(item,index) in newList" :key="index" @click="goNewsDetail(item.ipPk)">
                     <div class="img">
-                        <img :src="item.img"/>
+                        <img :src="item.imgUrl"/>
                     </div>
                     <div class="listContent">
-                        <strong>{{item.title}}</strong>
+                        <strong>{{item.nm}}</strong>
                         <p>{{item.year}}年{{item.month}}月{{item.day}}日 {{item.time}}</p>
-                        <p>来源：{{item.come}}</p>
+                        <p>来源：{{item.crtBy}}</p>
                     </div>
                 </div>
             </div>
@@ -97,7 +97,9 @@
                     <a href="policy.html">查看更多 ></a>
                 </div>
                 <ul>
-                    <li v-for="(item,index) in policy" :key="index" @click="goPolicyDetail(item.sysNewsPk)"><p>{{item.title}}</p><span>年月日</span></li>
+                    <li v-for="(item,index) in policy" :key="index" @click="goPolicyDetail(item.sysNewsPk)">
+                      <p>{{item.nm}}</p><span>{{item.year}}年{{item.month}}月{{item.day}}日</span>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -114,12 +116,12 @@ export default {
       name: "home",
       videoCurrent: 0, //轮播视频当前视频
       timer: null, //定时
+      newsPageNo: 1,
+      newsPageSize: 3,
+      starPageSize: 10,
       videoList: [
         {
           playerOptions: {
-            newsPageNo:1,
-            newsPageSize:3,
-            starPageSize:10,
             playbackRates: [0.7, 1.0, 1.5, 2.0], //播放速度
             autoplay: false, //如果true,浏览器准备好时开始回放。
             muted: false, // 默认情况下将会消除任何音频。
@@ -206,68 +208,7 @@ export default {
           videoName: "视频名字3"
         }
       ],
-      rankList: [
-        {
-          prodStuPk: 1,
-          nm: "张三",
-          classStar: "108",
-          prodDotNm: "宁大总部"
-        },
-        {
-          prodStuPk: 1,
-          nm: "张三",
-          classStar: "108",
-          prodDotNm: "宁大总部"
-        },
-        {
-          prodStuPk: 1,
-          nm: "张三",
-          classStar: "108",
-          prodDotNm: "宁大总部"
-        },
-        {
-          prodStuPk: 1,
-          nm: "张三",
-          classStar: "108",
-          prodDotNm: "宁大总部"
-        },
-        {
-          prodStuPk: 1,
-          nm: "张三",
-          classStar: "108",
-          prodDotNm: "宁大总部"
-        },
-        {
-          prodStuPk: 1,
-          nm: "张三",
-          classStar: "108",
-          prodDotNm: "宁大总部"
-        },
-        {
-          prodStuPk: 1,
-          nm: "张三",
-          classStar: "108",
-          prodDotNm: "宁大总部"
-        },
-        {
-          prodStuPk: 1,
-          nm: "张三",
-          classStar: "108",
-          prodDotNm: "宁大总部"
-        },
-        {
-          prodStuPk: 1,
-          nm: "张三",
-          classStar: "108",
-          prodDotNm: "宁大总部"
-        },
-        {
-          prodStuPk: 1,
-          nm: "张三",
-          classStar: "108",
-          prodDotNm: "宁大总部"
-        }
-      ],
+      rankList: [],
       pastCourse: [
         {
           nm: "艾炙疗法 - 健康养生",
@@ -290,53 +231,18 @@ export default {
             "http://e.hiphotos.baidu.com/image/pic/item/aec379310a55b3199f70cd0e4ea98226cffc173b.jpg"
         }
       ],
-      notice: [
-        {
-          title: "班级全员满额，宁波老年大学一票难求怎么破",
-          img:
-            "http://e.hiphotos.baidu.com/image/pic/item/aec379310a55b3199f70cd0e4ea98226cffc173b.jpg",
-          come: "宁波电视大学",
-          sysNewsPk:'4139210250294272',
-        },
-        {
-          title: "艾炙疗法 - 健康养生",
-          img:
-            "http://e.hiphotos.baidu.com/image/pic/item/aec379310a55b3199f70cd0e4ea98226cffc173b.jpg",
-          come: "宁波电视大学",
-          sysNewsPk:'4139210250294272',
-        },
-        {
-          title: "艾炙疗法 - 健康养生",
-          img:
-            "http://e.hiphotos.baidu.com/image/pic/item/aec379310a55b3199f70cd0e4ea98226cffc173b.jpg",
-          come: "宁波电视大学",
-          sysNewsPk:'4139210250294272',
-        }
-      ],
-      newList:[],
-      policy: [
-        {
-          title: "文件名称",
-          sysNewsPk:'4139210250294272',
-        },
-        {
-          title: "文件名称",
-          sysNewsPk:'4139210250294272',
-        },
-        {
-          title: "文件名称",
-          sysNewsPk:'4139210250294272',
-        }
-      ]
+      notice: [],
+      newList: [],
+      policy: []
     };
   },
   mounted() {
     this.videoChange();
 
-    // this.getNoticesList();
-    // this.getNewsList();
-    // this.getPolicysList();
-    // this.getStarRank()
+    this.getNoticesList();
+    this.getNewsList();
+    this.getPolicysList();
+    this.getStarRank();
   },
   methods: {
     //轮播自动切换
@@ -371,22 +277,33 @@ export default {
     goPolicyDetail(ipPk) {
       window.location.href = "policyDetail.html?ipPk=" + ipPk;
     },
+    //给数据对象增加年月日属性
+    addObjectPropertyOfList(list) {
+      var that = this;
+
+      list.forEach(item => {
+        let time = that.until.formatDate(item.releTm);
+        item["year"] = time.year;
+        item["month"] = time.month;
+        item["day"] = time.day;
+        item["time"] =time.hour+':'+time.minite
+      });
+
+      return list;
+    },
     //通知公告
-    getNoticesList(){
-
-      let query=new this.Query();
-       //拼接参数
+    getNoticesList() {
+      let query = new this.Query();
+      //拼接参数
       query.buildWhereClause("catNm", "通知公告", "EQ");
-      query.buildWhereClause(this.newsPageNo, this.newsPageSize);
+      query.buildPageClause(this.newsPageNo, this.newsPageSize);
 
-      let param = {
-        query: query.toString()
-      };
+      let param = query.getParam();
       this.until.get("/sys/news/page", param).then(
         res => {
           if (res.status === "200") {
-            console.log("调用成功");
             this.notice = res.data.items;
+            this.notice = this.addObjectPropertyOfList(this.notice);
           } else {
             console.log("状态码返回不是200");
           }
@@ -397,21 +314,18 @@ export default {
       );
     },
     //校园动态
-    getNewsList(){
-
-       let query=new this.Query();
-       //拼接参数
+    getNewsList() {
+      let query = new this.Query();
+      //拼接参数
       query.buildWhereClause("catNm", "校园动态", "EQ");
-      query.buildWhereClause(this.newsPageNo, this.newsPageSize);
+      query.buildPageClause(this.newsPageNo, this.newsPageSize);
 
-      let param = {
-        query: query.toString()
-      };
+      let param=query.getParam();
       this.until.get("/sys/news/page", param).then(
         res => {
           if (res.status === "200") {
-            console.log("调用成功");
             this.newList = res.data.items;
+            this.newList=this.addObjectPropertyOfList(this.newList)
           } else {
             console.log("状态码返回不是200");
           }
@@ -422,12 +336,11 @@ export default {
       );
     },
     //文件政策
-    getPolicysList(){
-
-       let query=new this.Query();
-       //拼接参数
-      query.buildWhereClause("catNm", "文件政策", "EQ");
-      query.buildWhereClause(this.newsPageNo, this.newsPageSize);
+    getPolicysList() {
+      let query = new this.Query();
+      //拼接参数
+      query.buildWhereClause("catNm", "校园政策", "EQ");
+      query.buildPageClause(this.newsPageNo, this.newsPageSize);
 
       let param = {
         query: query.toString()
@@ -437,6 +350,14 @@ export default {
           if (res.status === "200") {
             console.log("调用成功");
             this.policy = res.data.items;
+
+            var that = this;
+            this.policy.forEach(item => {
+              let time = that.until.formatDate(item.releTm);
+              item["year"] = time.year;
+              item["month"] = time.month;
+              item["day"] = time.day;
+            });
           } else {
             console.log("状态码返回不是200");
           }
@@ -447,12 +368,10 @@ export default {
       );
     },
     //学习之星排行
-    getStarRank(){
-
-      let query=new this.Query();
-       //拼接参数
-      query.buildWhereClause(this.newsPageNo, this.starPageSize);
-
+    getStarRank() {
+      let query = new this.Query();
+      //拼接参数
+      query.buildPageClause(this.newsPageNo, this.starPageSize);
       let param = {
         query: query.toString()
       };

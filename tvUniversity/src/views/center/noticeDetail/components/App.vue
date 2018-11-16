@@ -38,13 +38,13 @@
     mounted() {
 
       this.newPk=this.until.getQueryString('newPk');
-      //this.getNoticeInfo()
+      this.getNoticeInfo()
     },
     methods: {
 
       getNoticeInfo(){
 
-        this.until.get('/sys/news/info',{pK:this.newPk}).then(
+        this.until.get('/sys/news/info/'+this.newPk).then(
           res=>{
             if(res.status==='200'){
               this.info=res.data

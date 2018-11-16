@@ -8,14 +8,14 @@
             </div>
             <div class="list" v-for="(item,index) in list" :key="index" @click="toDetail(item.sysNewsPk)">
                 <div class="img">
-                    <img :src="item.img"/>
+                    <img :src="item.imgUrl"/>
                 </div>
                 <div class="listContent">
                     <div>
-                        <strong>{{item.title}}</strong>
+                        <strong>{{item.nm}}</strong>
                     </div>
 
-                    <p>{{item.year}}年{{item.month}}月{{item.day}}日 {{item.time}}<span></span>来源：{{item.come}}</p>
+                    <p>{{item.year}}年{{item.month}}月{{item.day}}日 {{item.time}}<span></span>来源：{{item.author}}</p>
                 </div>
             </div>
             <!--分页-->
@@ -42,38 +42,16 @@ export default {
       pageNo: 1,
       pageSize: 10,
       total: 100,
-      list: [
-        {
-          title: "班级全员满额，宁波老年大学一票难求怎么破",
-          img:
-            "http://e.hiphotos.baidu.com/image/pic/item/aec379310a55b3199f70cd0e4ea98226cffc173b.jpg",
-          come: "宁波电视大学",
-          sysNewsPk:'4139210250294272',
-        },
-        {
-          title: "艾炙疗法 - 健康养生",
-          img:
-            "http://e.hiphotos.baidu.com/image/pic/item/aec379310a55b3199f70cd0e4ea98226cffc173b.jpg",
-          come: "宁波电视大学",
-          sysNewsPk:'4139210250294272',
-        },
-        {
-          title: "艾炙疗法 - 健康养生",
-          img:
-            "http://e.hiphotos.baidu.com/image/pic/item/aec379310a55b3199f70cd0e4ea98226cffc173b.jpg",
-          come: "宁波电视大学",
-          sysNewsPk:'4139210250294272',
-        }
-      ]
+      list: []
     };
   },
   mounted() {
-    //this.getNoticesList();
+    this.getNoticesList();
   },
   methods: {
     //更改当前页数
     handleCurrentChange(val) {
-      //this.getNoticesList();
+      this.getNoticesList();
     },
     toDetail(newPk) {
       window.location.href = "noticeDetail.html?newPk=" + newPk;
@@ -82,16 +60,24 @@ export default {
       let query = new this.Query();
       //拼接参数
       query.buildWhereClause("catNm", "通知公告", "EQ");
-      query.buildWhereClause(this.pageNo, this.pageSize);
+      query.buildPageClause(this.pageNo, this.pageSize);
 
       let param = {
         query: query.toString()
       };
-      this.until.get(this.hostUrl+"sys/news/page", param).then(
+      this.until.get("/sys/news/page", param).then(
         res => {
           if (res.status === "200") {
             console.log("调用成功");
             this.list = res.data.items;
+
+            var that = this;
+            this.list.forEach(element => {
+              let time = that.until.formatDate(element.releTm);
+              element["year"] = time.year;
+              element["month"] = time.month;
+              element["day"] = time.day;
+            });
           } else {
             console.log("状态码返回不是200");
           }

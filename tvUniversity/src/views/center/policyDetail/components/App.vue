@@ -8,7 +8,7 @@
             </div>
             <div class="noticeDetail">
                 <h1>{{info.nm}}</h1>
-                <p>更新时间：{{info.releTm}}<span></span>作者：{{info.author}}<span></span>来源：本站编辑<span></span>点击量：{{info.readQty}}</p>
+                <p>更新时间：{{info.releTm}}<span></span>作者：{{info.author}}<span></span>来源：{{info.crtBy}}<span></span>点击量：{{info.readQty}}</p>
                 <div v-html="info.cont"></div>
             </div>
         </div>
@@ -25,24 +25,19 @@
            name:'policy',
            newPk:'',
            info:{
-               nm:'标题名称',
-               releTm:'2018年11月06日 10:45:00',//日期
-               author:'宁波电大',
-               cont:'<i>详情内容</i>',
-               readQty:132,
            }
       }
     },
     mounted() {
 
       this.newPk=this.until.getQueryString('newPk');
-      // this.getPolicyInfo();
+       this.getPolicyInfo();
     },
     methods: {
 
       getPolicyInfo(){
         
-         this.until.get('/sys/news/info',{pK:this.newPk}).then(
+         this.until.get('/sys/news/info/'+this.newPk).then(
           res=>{
             if(res.status==='200'){
               this.info=res.data

@@ -21,7 +21,7 @@
                     <td>{{index+1}}</td>
                     <td>{{item.nm}}</td>
                     <td>{{item.learningStar}}</td>
-                    <td>{{item.statNm}}</td>
+                    <td>{{!item.statNm?'未学':item.statNm}}</td>
                     <td v-if="item.statNm==='已学'" @click="toDetail(item.prodClassPk,'再次学习')">再次学习</td>
                     <td v-else-if="item.statNm==='在学'"  @click="toDetail(item.prodClassPk,'继续学习')">继续学习</td>
                     <td v-else  @click="toDetail(item.prodClassPk,'开始学习')">开始学习</td>
@@ -44,85 +44,12 @@ export default {
       pageNo: 1,
       pageSize: 10,
       total: 100,
-      list: [
-        {
-          nm: "中国茶文化与艺术-茶文化艺术",
-          learningStar: 150,
-          statNm: "已学",
-          prodClassPk: 1
-        },
-        {
-          nm: "中国茶文化与艺术-茶文化艺术",
-          learningStar: 150,
-          statNm: "未学",
-          prodClassPk: 1
-        },
-        {
-          nm: "中国茶文化与艺术-茶文化艺术",
-          learningStar: 150,
-          statNm: "在学",
-          prodClassPk: 1
-        },
-        {
-          nm: "中国茶文化与艺术-茶文化艺术",
-          learningStar: 150,
-          statNm: "已学",
-          prodClassPk: 1
-        },
-        {
-          nm: "中国茶文化与艺术-茶文化艺术",
-          learningStar: 150,
-          statNm: "已学",
-          prodClassPk: 1
-        },
-        {
-          nm: "中国茶文化与艺术-茶文化艺术",
-          learningStar: 150,
-          statNm: "已学",
-          prodClassPk: 1
-        },
-        {
-          nm: "中国茶文化与艺术-茶文化艺术",
-          learningStar: 150,
-          statNm: "已学",
-          prodClassPk: 1
-        },
-        {
-          nm: "中国茶文化与艺术-茶文化艺术",
-          learningStar: 150,
-          statNm: "已学",
-          prodClassPk: 1
-        },
-        {
-          nm: "中国茶文化与艺术-茶文化艺术",
-          learningStar: 150,
-          statNm: "已学",
-          prodClassPk: 1
-        },
-        {
-          nm: "中国茶文化与艺术-茶文化艺术",
-          learningStar: 150,
-          statNm: "已学",
-          prodClassPk: 1
-        },
-        {
-          nm: "中国茶文化与艺术-茶文化艺术",
-          learningStar: 150,
-          statNm: "已学",
-          prodClassPk: 1
-        },
-        {
-          nm: "中国茶文化与艺术-茶文化艺术",
-          learningStar: 150,
-          statNm: "已学",
-          prodClassPk: 1
-        }
-      ]
+      list:[],
     };
   },
   mounted() {
 
-    // this.getCourseList();
+     this.getCourseList();
   },
   methods: {
     //更改当前页数
@@ -131,16 +58,13 @@ export default {
       window.location.href =
         "studyDetail.html?classPk=" + classPk + "&stuState=" + stuState;
     },
+
     getCourseList(){
 
       let query=new this.Query();
+      query.buildPageClause(this.pageNo,this.pageSize);
 
-      query.buildWhereClause(this.pageNo,this.pageSize);
-
-      let param={
-        query:query.toString()
-      }
-
+      let param=query.getParam();
       this.until.get('/prod/class/page',param).then(
         res=>{
           if(res.status==='200'){

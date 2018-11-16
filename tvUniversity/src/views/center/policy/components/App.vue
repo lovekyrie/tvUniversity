@@ -8,7 +8,10 @@
             </div>
 
             <ul>
-                <li v-for="(item,index) in list" @click="toDetail(item.sysNewsPk)" :key="index"><p>{{item.title}}</p><span>年月日</span></li>
+                <li v-for="(item,index) in list" @click="toDetail(item.sysNewsPk)" :key="index">
+                  <p>{{item.nm}}</p>
+                  <span>{{item.year}}年{{item.month}}月{{item.day}}日</span>
+                </li>
             </ul>
 
             <!--分页-->
@@ -35,38 +38,16 @@ export default {
       pageNo: 1,
       pageSize: 10,
       total: 100,
-      list: [
-        {
-          title: "班级全员满额，宁波老年大学一票难求怎么破",
-          img:
-            "http://e.hiphotos.baidu.com/image/pic/item/aec379310a55b3199f70cd0e4ea98226cffc173b.jpg",
-          come: "宁波电视大学",
-          sysNewsPk: "4139210250294272"
-        },
-        {
-          title: "艾炙疗法 - 健康养生",
-          img:
-            "http://e.hiphotos.baidu.com/image/pic/item/aec379310a55b3199f70cd0e4ea98226cffc173b.jpg",
-          come: "宁波电视大学",
-          sysNewsPk: "4139210250294272"
-        },
-        {
-          title: "艾炙疗法 - 健康养生",
-          img:
-            "http://e.hiphotos.baidu.com/image/pic/item/aec379310a55b3199f70cd0e4ea98226cffc173b.jpg",
-          come: "宁波电视大学",
-          sysNewsPk: "4139210250294272"
-        }
-      ]
+      list: []
     };
   },
   mounted() {
-    //this.getPolicysList();
+    this.getPolicysList();
   },
   methods: {
     //更改当前页数
     handleCurrentChange(val) {
-      //this.getPolicysList();
+      this.getPolicysList();
     },
     toDetail(newPk) {
       window.location.href = "policyDetail.html?newPk=" + newPk;
@@ -74,8 +55,8 @@ export default {
     getPolicysList() {
       let query = new this.Query();
       //拼接参数
-      query.buildWhereClause("catNm", "文件政策", "EQ");
-      query.buildWhereClause(this.pageNo, this.pageSize);
+      query.buildWhereClause("catNm", "校园政策", "EQ");
+      query.buildPageClause(this.pageNo, this.pageSize);
 
       let param = {
         query: query.toString()
@@ -85,6 +66,14 @@ export default {
           if (res.status === "200") {
             console.log("调用成功");
             this.list = res.data.items;
+
+            var that=this;
+            this.list.forEach(item=>{
+              let time=that.until.formatDate(item.releTm)
+              item['year']=time.year;
+              item['month']=time.month;
+              item['day']=time.day;
+            })
           } else {
             console.log("状态码返回不是200");
           }

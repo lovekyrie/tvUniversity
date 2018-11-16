@@ -28,25 +28,20 @@
            name:'news',
            title:'',
            newPk:'',
-           info:{
-               nm:'标题名称',
-               releTm:'2018年11月06日 10:45',//日期
-               author:'宁波电大',
-               cont:'<i>详情内容</i>'
-           }
+           info:{}
       }
     },
     mounted() {
 
       this.newPk=this.until.getQueryString('newPk');
 
-      // this.getNewInfo();
+       this.getNewInfo();
     },
     methods: {
 
       getNewInfo(){
 
-        this.until.get('/sys/news/info',{pK:this.newPk}).then(
+        this.until.get('/sys/news/info/'+this.newPk).then(
           res=>{
             if(res.status==='200'){
               this.info=res.data
