@@ -17,23 +17,23 @@
             </tr>
             <tr>
                 <td>昵称：</td>
-                <td><input type="text"/></td>
+                <td><input type="text" v-model="info.userName"/></td>
             </tr>
             <tr>
                 <td>学生姓名：</td>
-                <td><input type="text"/></td>
+                <td><input type="text" v-model="info.nm"/></td>
             </tr>
             <tr>
                 <td>身份证号：</td>
-                <td><input type="text"/></td>
+                <td><input type="text" v-model="info.nmId" /></td>
             </tr>
             <tr>
                 <td>手机号码：</td>
-                <td><input type="number"/></td>
+                <td><input type="number" v-model="info.mobile" /></td>
             </tr>
             <tr>
                 <td>联系地址：</td>
-                <td><v-distpicker></v-distpicker><input type="text" class="add"/></td>
+                <td><v-distpicker></v-distpicker><input type="text" class="add" v-model="info.address"/></td>
             </tr>
             <tr>
                 <td> 上传证件照：</td>
@@ -67,11 +67,12 @@ import VDistpicker from 'v-distpicker'
       return {
           imageUrl: '',  //头像
           imageUrl2:'',  //证件照
-    
+          info:{}
       }
     },
     mounted() {
 
+      this.getUserInfo()
     },
     methods: {
         handleAvatarSuccess(res, file) {
@@ -95,7 +96,6 @@ import VDistpicker from 'v-distpicker'
         beforeAvatarUpload2(file) {
             const isJPG = file.type === 'image/jpeg';
             const isLt2M = file.size / 1024 / 1024 < 2;
-
             if (!isJPG) {
                 this.$message.error('上传头像图片只能是 JPG 格式!');
             }
@@ -106,6 +106,20 @@ import VDistpicker from 'v-distpicker'
         },
         cancel(){
 
+        },
+        getUserInfo(){
+
+          this.until.get('/prod/dent/info').then(
+            res=>{
+              if(res.status==='200'){
+                this.info=res.data;
+              }
+              else{
+                this.$message.err('获取用户信息失败')
+              }
+            },
+            err=>{}
+          )
         }
     },
     components: {

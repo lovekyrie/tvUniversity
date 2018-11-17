@@ -7,7 +7,7 @@
       <div>
         <div>{{name}}</div>
         <div>{{linkedPhone}}</div>
-        <div>
+        <div @click="toChangeInfo">
           修改个人信息
           <i class="el-icon-arrow-right"></i>
         </div>
@@ -78,6 +78,9 @@ export default {
   methods:{
     toLink(link){
       this.$router.push(link)
+    },
+    toChangeInfo(){
+      this.$router.push('info')
     }
   }
 }

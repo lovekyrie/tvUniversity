@@ -10,7 +10,7 @@
             </thead>
             <tbody>
             <tr v-for="(item,index) in list" :key="index">
-                <td>{{item.courseNm}}</td>
+                <td>{{item.prodClassNm}}</td>
                 <td>{{item.signTime}}</td>
                 <td>{{item.star}}</td>
             </tr>
@@ -24,6 +24,8 @@
         data() {
             return {
                 total:48,
+                pageCount:1,
+                pageSize:10,
                 list:[{
                     courseNm:'中国茶文化与艺术-茶文化艺术',
                     star:150,
@@ -64,9 +66,13 @@
         },
         mounted() {
 
+          this.getSingLog()
         },
         methods: {
 
+          getSingLog(){
+
+          }
         },
         components: {
         }

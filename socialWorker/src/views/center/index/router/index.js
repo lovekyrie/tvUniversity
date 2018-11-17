@@ -22,7 +22,16 @@ import registerForm from '../components/registerForm.vue'
 import sign from '../components/sign.vue'
 
 export default new VueRouter({
-  routes: [{
+  routes: [
+    {
+      path:'/',
+      redirect:'/center',
+    },
+    {
+      path:'*',
+      redirect:'/center'
+    },
+    {
       path: '/center',
       component: center
     },

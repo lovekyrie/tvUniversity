@@ -8,8 +8,8 @@
             </div>
             <div id="studyDetail">
                 <div class="top">
-                    <h1>{{info.title}}</h1>
-                    <p>课程学习星：{{info.star}}<span></span> 浏览人次：{{info.visitorNum}}<span></span> 完成人次：{{info.compeletedNum}}</p>
+                    <h1>{{info.nm}}</h1>
+                    <p>课程学习星：{{info.learningStar}}<span></span> 浏览人次：{{info.visitorSessions}}<span></span> 完成人次：{{info.completePerson}}</p>
                 </div>
                 <div class="video">
                     <div class="sign" v-show="!ifSign"><img src="../img/sign.png" @click="sign()"/> </div>
@@ -21,7 +21,7 @@
                 </div>
                 <div class="intro">
                     <h3>课程简介</h3>
-                    <p>{{info.content}}</p>
+                    <p v-html="info.summary"></p>
                 </div>
             </div>
             <!--集体签到弹出-->
@@ -50,6 +50,9 @@ export default {
   data() {
     return {
       name: "study",
+      classPk: "",
+      pageSize: 10,
+      pageCount: 1,
       ifSign: false, //是否签到过
       dialogVisible: false, //集体签到弹出
       checkList: [], //集体签到选中的列表
@@ -105,14 +108,7 @@ export default {
           id: 10
         }
       ], //集体签到列表
-      info: {
-        ipPk: "",
-        title: "中国茶文化与艺术-茶文化艺术",
-        star: 150,
-        visitorNum: 11,
-        compeletedNum: 10,
-        content: "课程简介"
-      },
+      info: {},
       playerOptions: {
         playbackRates: [0.7, 1.0, 1.5, 2.0], //播放速度
         autoplay: false, //如果true,浏览器准备好时开始回放。
@@ -123,11 +119,11 @@ export default {
         aspectRatio: "16:9", // 将播放器置于流畅模式，并在计算播放器的动态大小时使用该值。值应该代表一个比例 - 用冒号分隔的两个数字（例如"16:9"或"4:3"）
         fluid: true, // 当true时，Video.js player将拥有流体大小。换句话说，它将按比例缩放以适应其容器。
         sources: [
-          {
-            type: "",
-            src: "http://vjs.zencdn.net/v/oceans.mp4"
-            // src: "rtmp://video.nblll.cn/nb111|mp4:nblllServices/宁波老年电视大学课程/Video/2018秋/中国茶文化与生活—茶文化艺术/中国茶艺的发展简史_源视频_转码视频.mp4" //url地址
-          }
+          // {
+          //   type: "",
+          //   src: "http://vjs.zencdn.net/v/oceans.mp4"
+          //   // src: "rtmp://video.nblll.cn/nb111|mp4:nblllServices/宁波老年电视大学课程/Video/2018秋/中国茶文化与生活—茶文化艺术/中国茶艺的发展简史_源视频_转码视频.mp4" //url地址
+          // },
         ],
         poster: "http://assets.jq22.com/plugin/2015-08-25-23-08-04.jpg", //你的封面地址
         // width: document.documentElement.clientWidth,
@@ -147,8 +143,9 @@ export default {
       this.ifSign = true;
     }
 
-    this.classPk=this.until.getQueryString("classPk")
-    this.getStudyInfo()
+    this.classPk = this.until.getQueryString("classPk");
+    this.getStudyInfo();
+    this.getVideoList();
   },
   methods: {
     //更改当前页数
@@ -159,11 +156,69 @@ export default {
     },
     //集体签到弹窗弹出
     sign() {
+      //签到调用接口
+      let param = {
+        prodClassPk: this.classPk
+      };
+
       this.dialogVisible = false;
-      this.ifSign = true;
+      //已经签到过的时候，无需再调用借口
+
+      this.until.post("/prod/report/sign", param).then(
+        res => {
+          if (res.status === "200") {
+            this.ifSign = true;
+          } else if (res.status === "400") {
+            this.ifSign = true;
+            this.$message(res.message);
+          } else {
+            console.log("返回状态码不正确");
+          }
+        },
+        err => {}
+      );
     },
-    getStudyInfo(){
-      
+    getStudyInfo() {
+      //根据classPk得到具体的课程信息
+      this.until.get("/prod/class/info/" + this.classPk).then(
+        res => {
+          if (res.status === "200") {
+            this.info = res.data;
+          } else {
+            console.log("返回的状态码不是200");
+          }
+        },
+        err => {}
+      );
+    },
+    getVideoList() {
+      //得到视频列表
+      let query = new this.Query();
+      query.buildPageClause(this.pageCount, this.pageSize);
+      query = query.getParam();
+
+      let param = {
+        ClassPk: this.classPk,
+        query
+      };
+      this.until.get("/prod/ware/page", param).then(
+        res => {
+          if (res.status === "200") {
+            let newArr = res.data.items.map(item => {
+              let obj = {};
+              obj["type"] = "";
+              obj["src"] = item["videoUrl"];
+
+              return obj;
+            });
+
+            this.playerOptions.sources.push(...newArr);
+          } else {
+            console.log("返回的状态码不是200");
+          }
+        },
+        err => {}
+      );
     }
   },
   watch: {
