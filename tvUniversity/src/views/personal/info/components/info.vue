@@ -52,7 +52,7 @@
             <tfoot>
                 <td></td>
                 <td>
-                    <button type="submit" >提交</button>
+                    <button type="submit" @click="submitForm">提交</button>
                     <button type="button"  @click="cancel">取消</button>
                 </td>
             </tfoot>
@@ -105,7 +105,6 @@ import VDistpicker from 'v-distpicker'
             return isJPG && isLt2M;
         },
         cancel(){
-
         },
         getUserInfo(){
 
@@ -120,6 +119,23 @@ import VDistpicker from 'v-distpicker'
             },
             err=>{}
           )
+        },
+        //提交表单数据，修改用户信息
+        submitForm(){
+
+          let param={
+            userName:this.info.userName,
+            nm:this.info.nm,
+            nmId:this.info.nmId
+          }
+
+          this.until.post('/prod/dent/edit',param).then(
+            res=>{
+
+            },
+            err=>{}
+          )
+
         }
     },
     components: {

@@ -50,7 +50,7 @@
                 <ul>
                     <li v-for="(item,index) in pastCourse" :key="index">
                         <div class="img">
-                            <img :src="item.img"/>
+                            <img :src="item.imgUrl"/>
                         </div>
                         {{item.nm}}
                     </li>
@@ -118,6 +118,7 @@ export default {
       timer: null, //定时
       newsPageNo: 1,
       newsPageSize: 3,
+      pastPageSize: 4,
       starPageSize: 10,
       videoList: [
         {
@@ -209,28 +210,7 @@ export default {
         }
       ],
       rankList: [],
-      pastCourse: [
-        {
-          nm: "艾炙疗法 - 健康养生",
-          img:
-            "http://e.hiphotos.baidu.com/image/pic/item/aec379310a55b3199f70cd0e4ea98226cffc173b.jpg"
-        },
-        {
-          nm: "艾炙疗法 - 健康养生",
-          img:
-            "http://e.hiphotos.baidu.com/image/pic/item/aec379310a55b3199f70cd0e4ea98226cffc173b.jpg"
-        },
-        {
-          nm: "艾炙疗法 - 健康养生",
-          img:
-            "http://e.hiphotos.baidu.com/image/pic/item/aec379310a55b3199f70cd0e4ea98226cffc173b.jpg"
-        },
-        {
-          nm: "艾炙疗法 - 健康养生",
-          img:
-            "http://e.hiphotos.baidu.com/image/pic/item/aec379310a55b3199f70cd0e4ea98226cffc173b.jpg"
-        }
-      ],
+      pastCourse: [],
       notice: [],
       newList: [],
       policy: []
@@ -239,13 +219,23 @@ export default {
   mounted() {
     this.videoChange();
 
-    this.getNoticesList();
-    this.getNewsList();
-    this.getPolicysList();
-    this.getStarRank();
+    this.getShowInfo();
   },
   methods: {
     //轮播自动切换
+    async getShowInfo() {
+      this.notice = await this.getNoticesList();
+      this.notice = this.addObjectPropertyOfList(this.notice);
+
+      this.newList = await this.getNewsList();
+      this.newList = this.addObjectPropertyOfList(this.newList);
+
+      this.policy = await this.getPolicysList();
+      this.policy = this.addObjectPropertyOfList(this.policy);
+      this.rankList= await this.getStarRank();
+
+      this.pastCourse=await this.getPastCourseList();
+    },
     videoChange() {
       this.timer = setInterval(() => {
         if (this.videoCurrent < this.videoList.length - 1) {
@@ -286,108 +276,127 @@ export default {
         item["year"] = time.year;
         item["month"] = time.month;
         item["day"] = time.day;
-        item["time"] =time.hour+':'+time.minite
+        item["time"] = time.hour + ":" + time.minite;
       });
 
       return list;
     },
     //通知公告
     getNoticesList() {
-      let query = new this.Query();
-      //拼接参数
-      query.buildWhereClause("catNm", "通知公告", "EQ");
-      query.buildPageClause(this.newsPageNo, this.newsPageSize);
+      return new Promise((resolve, reject) => {
+        let query = new this.Query();
+        //拼接参数
+        query.buildWhereClause("catNm", "通知公告", "EQ");
+        query.buildPageClause(this.newsPageNo, this.newsPageSize);
 
-      let param = query.getParam();
-      this.until.get("/sys/news/page", param).then(
-        res => {
-          if (res.status === "200") {
-            this.notice = res.data.items;
-            this.notice = this.addObjectPropertyOfList(this.notice);
-          } else {
-            console.log("状态码返回不是200");
+        let param = query.getParam();
+        this.until.get("/sys/news/page", param).then(
+          res => {
+            if (res.status === "200") {
+              resolve(res.data.items);
+            } else {
+              console.log("状态码返回不是200");
+            }
+          },
+          err => {
+            console.log("调用失败");
           }
-        },
-        err => {
-          console.log("调用失败");
-        }
-      );
+        );
+      });
     },
     //校园动态
     getNewsList() {
-      let query = new this.Query();
-      //拼接参数
-      query.buildWhereClause("catNm", "校园动态", "EQ");
-      query.buildPageClause(this.newsPageNo, this.newsPageSize);
+      return new Promise((resolve, reject) => {
+        let query = new this.Query();
+        //拼接参数
+        query.buildWhereClause("catNm", "校园动态", "EQ");
+        query.buildPageClause(this.newsPageNo, this.newsPageSize);
 
-      let param=query.getParam();
-      this.until.get("/sys/news/page", param).then(
-        res => {
-          if (res.status === "200") {
-            this.newList = res.data.items;
-            this.newList=this.addObjectPropertyOfList(this.newList)
-          } else {
-            console.log("状态码返回不是200");
+        let param = query.getParam();
+        this.until.get("/sys/news/page", param).then(
+          res => {
+            if (res.status === "200") {
+              resolve(res.data.items);
+            } else {
+              console.log("状态码返回不是200");
+            }
+          },
+          err => {
+            console.log("调用失败");
           }
-        },
-        err => {
-          console.log("调用失败");
-        }
-      );
+        );
+      });
     },
     //文件政策
     getPolicysList() {
-      let query = new this.Query();
-      //拼接参数
-      query.buildWhereClause("catNm", "校园政策", "EQ");
-      query.buildPageClause(this.newsPageNo, this.newsPageSize);
+      return new Promise((resolve, reject) => {
+        let query = new this.Query();
+        //拼接参数
+        query.buildWhereClause("catNm", "校园政策", "EQ");
+        query.buildPageClause(this.newsPageNo, this.newsPageSize);
 
-      let param = {
-        query: query.toString()
-      };
-      this.until.get("/sys/news/page", param).then(
-        res => {
-          if (res.status === "200") {
-            console.log("调用成功");
-            this.policy = res.data.items;
-
-            var that = this;
-            this.policy.forEach(item => {
-              let time = that.until.formatDate(item.releTm);
-              item["year"] = time.year;
-              item["month"] = time.month;
-              item["day"] = time.day;
-            });
-          } else {
-            console.log("状态码返回不是200");
+        let param = {
+          query: query.toString()
+        };
+        this.until.get("/sys/news/page", param).then(
+          res => {
+            if (res.status === "200") {
+              console.log("调用成功");
+              resolve(res.data.items);
+            } else {
+              console.log("状态码返回不是200");
+            }
+          },
+          err => {
+            console.log("调用失败");
           }
-        },
-        err => {
-          console.log("调用失败");
-        }
-      );
+        );
+      });
     },
     //学习之星排行
     getStarRank() {
-      let query = new this.Query();
-      //拼接参数
-      query.buildPageClause(this.newsPageNo, this.starPageSize);
-      let param = {
-        query: query.toString()
-      };
-      this.until.get("/prod/stu/starsPage", param).then(
-        res => {
-          if (res.status === "200") {
-            console.log("调用成功");
-            this.rankList = res.data.items;
-          } else {
-            console.log("状态码返回不是200");
+      return new Promise((resolve, reject) => {
+        let query = new this.Query();
+        //拼接参数
+        query.buildPageClause(this.newsPageNo, this.starPageSize);
+        let param = {
+          query: query.toString()
+        };
+        this.until.get("/prod/stu/starsPage", param).then(
+          res => {
+            if (res.status === "200") {
+              console.log("调用成功");
+              resolve(res.data.items);
+            } else {
+              console.log("状态码返回不是200");
+            }
+          },
+          err => {
+            console.log("调用失败");
           }
-        },
-        err => {
-          console.log("调用失败");
-        }
-      );
+        );
+      });
+    },
+    //往期课程
+    getPastCourseList(){
+      return new Promise((resolve,reject)=>{
+
+        let query=new this.Query()
+        query.buildPageClause(this.newsPageNo,this.pastPageSize)
+
+        let param=query.getParam()
+        this.until.get('/prod/class/page',param).then(
+          res=>{
+            if(res.status==='200'){
+              resolve(res.data.items)
+            }
+            else{
+              console.log('调用失败')
+            }
+          },
+          err=>{}
+        )
+      })
     }
   },
   components: {

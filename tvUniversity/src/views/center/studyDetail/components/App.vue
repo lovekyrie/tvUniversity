@@ -11,19 +11,42 @@
                     <h1>{{info.nm}}</h1>
                     <p>课程学习星：{{info.learningStar}}<span></span> 浏览人次：{{info.visitorSessions}}<span></span> 完成人次：{{info.completePerson}}</p>
                 </div>
-                <div class="video">
+                <!-- <div class="video">
                     <div class="sign" v-show="!ifSign"><img src="../img/sign.png" @click="sign()"/> </div>
                     <video-player  class="video-player vjs-custom-skin"
                       ref="videoPlayer"
                       :playsinline="true"
                       :options="playerOptions"
                     ></video-player>
-                </div>
+                </div> -->
+                  <div class="player-container">
+              <video
+                id="video"
+                class="video-js"
+                height="300"
+                width="600"
+                controls>
+                <source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
+                <source src="http://vjs.zencdn.net/v/oceans.webm" type="video/webm">
+              </video>
+
+              <div class="vjs-playlist">
+                <!--
+                  The contents of this element will be filled based on the
+                  currently loaded playlist
+                -->
+              </div>
+            </div>
                 <div class="intro">
+                  <div>
                     <h3>课程简介</h3>
-                    <p v-html="info.summary"></p>
+                    <button v-if="retroactive" @click="goToRetroactive">补签</button>
+                  </div>
+                  <div v-html="info.summary"></div>
                 </div>
             </div>
+          
+
             <!--集体签到弹出-->
             <el-dialog
                     title="学员列表"
@@ -31,7 +54,11 @@
                     width="60%"
                     :before-close="handleClose">
                 <el-checkbox-group v-model="checkList">
-                    <el-checkbox :label="item.id" v-for="(item,index) in signList" :key="index">{{item.nm}}<span class="space"></span>性别：{{item.sex}}</el-checkbox>
+                    <el-checkbox :label="item.prodStuPk" v-for="(item,index) in signList" :key="index">
+                      <span>{{item.prodStuVo.nm}}</span>
+                      <span class="space"></span>
+                      <span>性别：{{item.prodStuVo.sex}}</span>
+                    </el-checkbox>
                 </el-checkbox-group>
                 <span slot="footer" class="dialog-footer">
                     <!--<el-button @click="dialogVisible = false">取 消</el-button>-->
@@ -46,68 +73,21 @@
 import myHeader from "@/components/myHeader";
 import myNav from "@/components/myNav";
 import myFooter from "@/components/myFooter";
+import { resolve } from "url";
+import videojs from "video.js";
 export default {
   data() {
     return {
       name: "study",
+      retroactive: false,
       classPk: "",
+      classNm: "",
       pageSize: 10,
       pageCount: 1,
       ifSign: false, //是否签到过
       dialogVisible: false, //集体签到弹出
       checkList: [], //集体签到选中的列表
-      signList: [
-        {
-          nm: "姓名",
-          sex: "男",
-          id: 1
-        },
-        {
-          nm: "姓名",
-          sex: "男",
-          id: 2
-        },
-        {
-          nm: "姓名",
-          sex: "男",
-          id: 3
-        },
-        {
-          nm: "姓名",
-          sex: "男",
-          id: 4
-        },
-        {
-          nm: "姓名",
-          sex: "男",
-          id: 5
-        },
-        {
-          nm: "姓名",
-          sex: "男",
-          id: 6
-        },
-        {
-          nm: "姓名",
-          sex: "男",
-          id: 7
-        },
-        {
-          nm: "姓名",
-          sex: "男",
-          id: 8
-        },
-        {
-          nm: "姓名",
-          sex: "男",
-          id: 0
-        },
-        {
-          nm: "姓名",
-          sex: "男",
-          id: 10
-        }
-      ], //集体签到列表
+      signList: [], //集体签到列表
       info: {},
       playerOptions: {
         playbackRates: [0.7, 1.0, 1.5, 2.0], //播放速度
@@ -138,16 +118,128 @@ export default {
     };
   },
   mounted() {
+    this.getPlayList();
     let stuState = this.until.getQueryString("stuState");
     if (stuState === "再次学习" || stuState === "继续学习") {
       this.ifSign = true;
     }
 
     this.classPk = this.until.getQueryString("classPk");
-    this.getStudyInfo();
-    this.getVideoList();
+    this.classNm = this.until.getQueryString("nm");
+    this.getInfo();
+    //得到isGroup
+    let tokenObj = this.until.seGet("DD_token");
+    this.retroactive = JSON.parse(tokenObj).isGroup === "是" ? true : false;
   },
   methods: {
+    async getInfo() {
+      this.info = await this.getStudyInfo();
+      let newArr = await this.getVideoList();
+      this.playerOptions.sources.push(...newArr);
+      this.signList = await this.groupSignList();
+    },
+    getPlayList() {
+      var player = videojs("video");
+
+      player.playlist([
+        {
+          name: "Disney's Oceans 1",
+          description:
+            "Explore the depths of our planet's oceans. " +
+            "Experience the stories that connect their world to ours. " +
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, " +
+            "sed do eiusmod tempor incididunt ut labore et dolore magna " +
+            "aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco " +
+            "laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure " +
+            "dolor in reprehenderit in voluptate velit esse cillum dolore eu " +
+            "fugiat nulla pariatur. Excepteur sint occaecat cupidatat non " +
+            "proident, sunt in culpa qui officia deserunt mollit anim id est " +
+            "laborum.",
+          duration: 45,
+          sources: [
+            { src: "http://vjs.zencdn.net/v/oceans.mp4", type: "video/mp4" },
+            { src: "http://vjs.zencdn.net/v/oceans.webm", type: "video/webm" }
+          ],
+
+          // you can use <picture> syntax to display responsive images
+          thumbnail: [
+            {
+              srcset: "test/example/oceans.jpg",
+              type: "image/jpeg",
+              media: "(min-width: 400px;)"
+            },
+            {
+              src: "test/example/oceans-low.jpg"
+            }
+          ]
+        },
+        {
+          name: "Disney's Oceans 2",
+          description:
+            "Explore the depths of our planet's oceans. " +
+            "Experience the stories that connect their world to ours. " +
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, " +
+            "sed do eiusmod tempor incididunt ut labore et dolore magna " +
+            "aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco " +
+            "laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure " +
+            "dolor in reprehenderit in voluptate velit esse cillum dolore eu " +
+            "fugiat nulla pariatur. Excepteur sint occaecat cupidatat non " +
+            "proident, sunt in culpa qui officia deserunt mollit anim id est " +
+            "laborum.",
+          duration: 45,
+          sources: [
+            { src: "http://vjs.zencdn.net/v/oceans.mp4?2", type: "video/mp4" },
+            { src: "http://vjs.zencdn.net/v/oceans.webm?2", type: "video/webm" }
+          ],
+
+          // you can use <picture> syntax to display responsive images
+          thumbnail: [
+            {
+              srcset: "test/example/oceans.jpg",
+              type: "image/jpeg",
+              media: "(min-width: 400px;)"
+            },
+            {
+              src: "test/example/oceans-low.jpg"
+            }
+          ]
+        },
+        {
+          name: "Disney's Oceans 3",
+          description:
+            "Explore the depths of our planet's oceans. " +
+            "Experience the stories that connect their world to ours. " +
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, " +
+            "sed do eiusmod tempor incididunt ut labore et dolore magna " +
+            "aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco " +
+            "laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure " +
+            "dolor in reprehenderit in voluptate velit esse cillum dolore eu " +
+            "fugiat nulla pariatur. Excepteur sint occaecat cupidatat non " +
+            "proident, sunt in culpa qui officia deserunt mollit anim id est " +
+            "laborum.",
+          duration: 45,
+          sources: [
+            { src: "http://vjs.zencdn.net/v/oceans.mp4?3", type: "video/mp4" },
+            { src: "http://vjs.zencdn.net/v/oceans.webm?3", type: "video/webm" }
+          ],
+
+          // you can use <picture> syntax to display responsive images
+          thumbnail: [
+            {
+              srcset: "test/example/oceans.jpg",
+              type: "image/jpeg",
+              media: "(min-width: 400px;)"
+            },
+            {
+              src: "test/example/oceans-low.jpg"
+            }
+          ]
+        }
+      ]);
+
+      // Initialize the playlist-ui plugin with no option (i.e. the defaults).
+      player.playlistUi();
+    },
     //更改当前页数
     handleCurrentChange(val) {},
     //弹窗关闭
@@ -155,16 +247,19 @@ export default {
       done();
     },
     //集体签到弹窗弹出
+    goToRetroactive() {
+      this.dialogVisible = true;
+    },
     sign() {
       //签到调用接口
       let param = {
-        prodClassPk: this.classPk
+        prodClassPk: this.classPk,
+        prodClassNm: this.classNm
       };
-
       this.dialogVisible = false;
       //已经签到过的时候，无需再调用借口
 
-      this.until.post("/prod/report/sign", param).then(
+      this.until.post("/prod/supp/sign", param).then(
         res => {
           if (res.status === "200") {
             this.ifSign = true;
@@ -180,29 +275,32 @@ export default {
     },
     getStudyInfo() {
       //根据classPk得到具体的课程信息
-      this.until.get("/prod/class/info/" + this.classPk).then(
-        res => {
-          if (res.status === "200") {
-            this.info = res.data;
-          } else {
-            console.log("返回的状态码不是200");
-          }
-        },
-        err => {}
-      );
+      return new Promise(resolve => {
+        this.until.get("/prod/class/info/" + this.classPk).then(
+          res => {
+            if (res.status === "200") {
+              resolve(res.data);
+            } else {
+              console.log("返回的状态码不是200");
+            }
+          },
+          err => {}
+        );
+      });
     },
     getVideoList() {
       //得到视频列表
-      let query = new this.Query();
-      query.buildPageClause(this.pageCount, this.pageSize);
-      query = query.getParam();
 
-      let param = {
-        ClassPk: this.classPk,
-        query
-      };
-      this.until.get("/prod/ware/page", param).then(
-        res => {
+      return new Promise(resolve => {
+        let query = new this.Query();
+        query.buildPageClause(this.pageCount, this.pageSize);
+        query = query.getParam();
+
+        let param = {
+          ClassPk: this.classPk,
+          query
+        };
+        this.until.get("/prod/ware/page", param).then(res => {
           if (res.status === "200") {
             let newArr = res.data.items.map(item => {
               let obj = {};
@@ -211,14 +309,22 @@ export default {
 
               return obj;
             });
-
-            this.playerOptions.sources.push(...newArr);
+            resolve(newArr);
           } else {
             console.log("返回的状态码不是200");
           }
-        },
-        err => {}
-      );
+        });
+      });
+    },
+    groupSignList() {
+      return new Promise(resolve => {
+        this.until.get("/prod/supp/ement").then(
+          res => {
+            resolve(res.data);
+          },
+          err => {}
+        );
+      });
     }
   },
   watch: {

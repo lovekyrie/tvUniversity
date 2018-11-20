@@ -38,6 +38,9 @@ import VideoPlayer from 'vue-video-player'
 require('video.js/dist/video-js.css')
 require('vue-video-player/src/custom-theme.css')
 require('videojs-flash/dist/videojs-flash')
+import 'videojs-playlist/dist/videojs-playlist'
+import 'videojs-playlist-ui/dist/videojs-playlist-ui'
+import 'videojs-playlist-ui/dist/videojs-playlist-ui.vertical.css'
 Vue.use(VideoPlayer)
 
 export default function (Vue) {

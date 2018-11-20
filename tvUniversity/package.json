@@ -24,6 +24,8 @@
     "store": "^2.0.4",
     "v-distpicker": "^1.0.20",
     "vconsole": "^3.2.0",
+    "videojs-playlist": "^4.2.6",
+    "videojs-playlist-ui": "^3.5.2",
     "vue": "^2.2.2",
     "vue-awesome-swiper": "^3.1.2",
     "vue-hero-ui": "^1.0.0",

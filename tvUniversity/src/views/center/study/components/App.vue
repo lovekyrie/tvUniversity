@@ -22,9 +22,9 @@
                     <td>{{item.nm}}</td>
                     <td>{{item.learningStar}}</td>
                     <td>{{!item.statNm?'未学':item.statNm}}</td>
-                    <td v-if="item.statNm==='已学'" @click="toDetail(item.prodClassPk,'再次学习')">再次学习</td>
-                    <td v-else-if="item.statNm==='在学'"  @click="toDetail(item.prodClassPk,'继续学习')">继续学习</td>
-                    <td v-else  @click="toDetail(item.prodClassPk,'开始学习')">开始学习</td>
+                    <td v-if="item.statNm==='已学'" @click="toDetail(item.prodClassPk,'再次学习',item.nm)">再次学习</td>
+                    <td v-else-if="item.statNm==='在学'"  @click="toDetail(item.prodClassPk,'继续学习',item.nm)">继续学习</td>
+                    <td v-else  @click="toDetail(item.prodClassPk,'开始学习',item.nm)">开始学习</td>
                 </tr>
                 </tbody>
             </table>
@@ -54,9 +54,9 @@ export default {
   methods: {
     //更改当前页数
     handleCurrentChange(val) {},
-    toDetail(classPk, stuState) {
+    toDetail(classPk, stuState,nm) {
       window.location.href =
-        "studyDetail.html?classPk=" + classPk + "&stuState=" + stuState;
+        "studyDetail.html?classPk=" + classPk + "&stuState=" + stuState+"&nm="+nm;
     },
 
     getCourseList(){
