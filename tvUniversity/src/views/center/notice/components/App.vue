@@ -14,18 +14,17 @@
                     <div>
                         <strong>{{item.nm}}</strong>
                     </div>
-
                     <p>{{item.year}}年{{item.month}}月{{item.day}}日 {{item.time}}<span></span>来源：{{item.author}}</p>
                 </div>
             </div>
             <!--分页-->
             <el-pagination
-                    background
-                    @current-change="handleCurrentChange"
-                    :current-page.sync="pageNo"
-                    :page-size="pageSize"
-                    layout="total, prev, pager, next"
-                    :total="total">
+              background
+              @current-change="handleCurrentChange"
+              :current-page.sync="pageNo"
+              :page-size="pageSize"
+              layout="total, prev, pager, next"
+              :total="total">
             </el-pagination>
         </div>
         <myFooter></myFooter>
@@ -51,6 +50,7 @@ export default {
   methods: {
     //更改当前页数
     handleCurrentChange(val) {
+      this.pageNo=val;
       this.getNoticesList();
     },
     toDetail(newPk) {
@@ -70,6 +70,7 @@ export default {
           if (res.status === "200") {
             console.log("调用成功");
             this.list = res.data.items;
+            this.total=res.page.total;
 
             var that = this;
             this.list.forEach(element => {

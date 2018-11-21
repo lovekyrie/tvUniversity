@@ -12,35 +12,40 @@ import studyDetail from './components/studyDetail.vue'
 import myStar from './components/myStar.vue'
 import sign from './components/sign.vue'
 import myTeam from './components/myTeam.vue'
-// const routes = [
-//     { path: '/', component: App ,
-//         children:[
-//             {path:'info',component:Info},//个人中心
-//             {path:'myStar',component:myStar, //我的学习星
-//                 // children:[
-//                 //     {path:'detail',component:orderDetail},//订单详情
-//                 // ]
-//             },
-//             {
-//                 path:'study',component:study,//学习课程
-//             },
-//             {path:'sign',component:sign},//签到记录
-//             {path:'myTeam',component:myTeam},//我的小组
-//         ]
-//     },
-// ]
-const routes = [
 
-    {path:'/info',component:Info},//个人中心
-    {path:'/myStar',component:myStar, //我的学习星
-    },
-    {
-        path:'/study',component:study,//学习课程
-    },
-    {path:'/studyDetail',component:studyDetail},  //课程详情
-    {path:'/sign',component:sign},//签到记录
-    {path:'/myTeam',component:myTeam},//我的小组
+const routes = [{
+    path: '/',
+    redirect: '/study'
+  },
+  {
+    path: '*',
+    redirect: '/study'
+  },
+  {
+    path: '/info',
+    component: Info
+  }, //个人中心
+  {
+    path: '/myStar',
+    component: myStar
+  }, //我的学习星
 
+  {
+    path: '/study',
+    component: study
+  }, //学习课程
+  {
+    path: '/studyDetail',
+    component: studyDetail
+  }, //课程详情
+  {
+    path: '/sign',
+    component: sign
+  }, //签到记录
+  {
+    path: '/myTeam',
+    component: myTeam
+  }, //我的小组
 ]
 
 
@@ -50,12 +55,11 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 const router = new VueRouter({
-    routes:routes
+  routes: routes
 })
 
 
 new Vue({
-    router,
+  router,
   render: h => h(App)
 }).$mount('#container');
-

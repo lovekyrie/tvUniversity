@@ -1,7 +1,7 @@
 <template>
     <div id="info">
         <table>
-            <tr>
+            <tr style="display:none;">
                 <td> 头像：</td>
                 <td>
                     <el-upload
@@ -15,7 +15,7 @@
                     </el-upload>
                 </td>
             </tr>
-            <tr>
+            <tr style="display:none;">
                 <td>昵称：</td>
                 <td><input type="text" v-model="info.userName"/></td>
             </tr>
@@ -27,15 +27,15 @@
                 <td>身份证号：</td>
                 <td><input type="text" v-model="info.nmId" /></td>
             </tr>
-            <tr>
+            <tr style="display:none;">
                 <td>手机号码：</td>
                 <td><input type="number" v-model="info.mobile" /></td>
             </tr>
-            <tr>
+            <tr style="display:none;">
                 <td>联系地址：</td>
                 <td><v-distpicker></v-distpicker><input type="text" class="add" v-model="info.address"/></td>
             </tr>
-            <tr>
+            <tr style="display:none;">
                 <td> 上传证件照：</td>
                 <td>
                     <el-upload

@@ -47,6 +47,7 @@ export default {
   methods: {
     //更改当前页数
     handleCurrentChange(val) {
+      this.pageNo=val;
       this.getPolicysList();
     },
     toDetail(newPk) {
@@ -64,9 +65,9 @@ export default {
       this.until.get("/sys/news/page", param).then(
         res => {
           if (res.status === "200") {
-            console.log("调用成功");
             this.list = res.data.items;
-
+            this.total=res.page.total;
+            
             var that=this;
             this.list.forEach(item=>{
               let time=that.until.formatDate(item.releTm)
@@ -74,8 +75,6 @@ export default {
               item['month']=time.month;
               item['day']=time.day;
             })
-          } else {
-            console.log("状态码返回不是200");
           }
         },
         err => {

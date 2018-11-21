@@ -19,6 +19,15 @@
             </tr>
             </tbody>
         </table>
+        <!--分页-->
+        <el-pagination
+            background
+            @current-change="handleCurrentChange"
+            :current-page.sync="pageNo"
+            :page-size="pageSize"
+            layout="total, prev, pager, next"
+            :total="total">
+        </el-pagination>
     </div>
 </template>
 <script>
@@ -27,23 +36,39 @@ export default {
     return {
       myTeam: "测试组",
       teamList: [],
-      teamInfo: {}
+      teamInfo: {},
+      pageNo: 1,
+      pageSize: 10,
+      total:100,
     };
   },
   mounted() {
     this.getInfo();
   },
   methods: {
+     //更改当前页数
+    handleCurrentChange(val) {
+      this.pageNo=val;
+      this.getTeamList();
+      this.getInfo()
+    },
     async getInfo() {
-      this.teamList = await this.getTeamList();
+      let result = await this.getTeamList();
+      this.teamList=result.data.items;
+      this.total=result.page.total;
       this.teamInfo = await this.getTeamInfo();
     },
     getTeamList() {
       return new Promise((resolve, reject) => {
-        this.until.get("/prod/dent/listDot").then(
+
+        let query=new this.Query()
+        query.buildPageClause(this.pageNo,this.pageSize)
+
+        let param=query.getParam()
+        this.until.get("/prod/dent/listDot",param).then(
           res => {
             if (res.status === "200") {
-              resolve(res.data.items);
+              resolve(res);
             }
           },
           err => {}
@@ -111,6 +136,12 @@ export default {
         height: 86px;
       }
     }
+  }
+  .el-pagination{
+    padding-bottom: 20px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
   }
 }
 </style>

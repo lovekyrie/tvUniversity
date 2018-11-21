@@ -13,7 +13,7 @@
                 <button @click="goSearch">搜索</button>
             </div>
             <p v-if="!ifLogin"><a href="../entry/login.html">登录</a>|<a href="#">注册</a></p>
-            <p v-else><a href="../personal/info.html">欢迎您的登录，小六！</a> <span @click="quit">退出</span></p>
+            <p v-if="ifLogin"><a href="../personal/info.html">欢迎您的登录，{{info.nickname}}！</a> <span @click="quit">退出</span></p>
             <p><a href="#">后台管理系统</a> </p>
         </div>
     </div>
@@ -24,12 +24,15 @@ export default {
   data() {
     return {
       ifLogin: false, //是否登录
-      key: ""
+      key: "",
+      info:{}
     };
   },
   mounted() {
     // this.abc();
-    this.ifLogin = this.until.seGet("isLogin");
+    this.ifLogin = JSON.parse(this.until.seGet("isLogin"))
+    let token=this.until.seGet('DD_token');
+    this.info=JSON.parse(token).userInfo;
   },
   methods: {
     toHome() {
@@ -40,7 +43,9 @@ export default {
       window.location.href = url;
     },
     quit() {
-      window.location.href='../entry/login.html';
+     window.location.href='../center/index.html';
+     this.until.seSave('isLogin',false)
+     this.ifLogin=false;
     }
   }
 };

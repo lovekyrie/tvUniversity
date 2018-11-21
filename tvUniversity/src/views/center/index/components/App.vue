@@ -48,7 +48,7 @@
                     <a href="#">查看更多 ></a>
                 </div>
                 <ul>
-                    <li v-for="(item,index) in pastCourse" :key="index">
+                    <li v-for="(item,index) in pastCourse" :key="index" @click="toCourseDetail(item.prodClassPk,item.statNm,item.nm)">
                         <div class="img">
                             <img :src="item.imgUrl"/>
                         </div>
@@ -117,6 +117,7 @@ export default {
       videoCurrent: 0, //轮播视频当前视频
       timer: null, //定时
       newsPageNo: 1,
+      videoPageSize:1,
       newsPageSize: 3,
       pastPageSize: 4,
       starPageSize: 10,
@@ -132,11 +133,7 @@ export default {
             aspectRatio: "16:9", // 将播放器置于流畅模式，并在计算播放器的动态大小时使用该值。值应该代表一个比例 - 用冒号分隔的两个数字（例如"16:9"或"4:3"）
             fluid: true, // 当true时，Video.js player将拥有流体大小。换句话说，它将按比例缩放以适应其容器。
             sources: [
-              {
-                type: "",
-                src: "http://vjs.zencdn.net/v/oceans.mp4"
-                // src: "rtmp://video.nblll.cn/nb111|mp4:nblllServices/宁波老年电视大学课程/Video/2018秋/中国茶文化与生活—茶文化艺术/中国茶艺的发展简史_源视频_转码视频.mp4" //url地址
-              }
+             
             ],
             poster: "http://assets.jq22.com/plugin/2015-08-25-23-08-04.jpg", //你的封面地址
             // width: document.documentElement.clientWidth,
@@ -161,11 +158,6 @@ export default {
             aspectRatio: "16:9", // 将播放器置于流畅模式，并在计算播放器的动态大小时使用该值。值应该代表一个比例 - 用冒号分隔的两个数字（例如"16:9"或"4:3"）
             fluid: true, // 当true时，Video.js player将拥有流体大小。换句话说，它将按比例缩放以适应其容器。
             sources: [
-              {
-                type: "",
-                src: "http://vjs.zencdn.net/v/oceans.mp4"
-                // src: "rtmp://video.nblll.cn/nb111|mp4:nblllServices/宁波老年电视大学课程/Video/2018秋/中国茶文化与生活—茶文化艺术/中国茶艺的发展简史_源视频_转码视频.mp4" //url地址
-              }
             ],
             poster: "http://assets.jq22.com/plugin/2015-08-25-23-08-04.jpg", //你的封面地址
             // width: document.documentElement.clientWidth,
@@ -189,13 +181,7 @@ export default {
             language: "zh-CN",
             aspectRatio: "16:9", // 将播放器置于流畅模式，并在计算播放器的动态大小时使用该值。值应该代表一个比例 - 用冒号分隔的两个数字（例如"16:9"或"4:3"）
             fluid: true, // 当true时，Video.js player将拥有流体大小。换句话说，它将按比例缩放以适应其容器。
-            sources: [
-              {
-                type: "",
-                src: "http://vjs.zencdn.net/v/oceans.mp4"
-                // src: "rtmp://video.nblll.cn/nb111|mp4:nblllServices/宁波老年电视大学课程/Video/2018秋/中国茶文化与生活—茶文化艺术/中国茶艺的发展简史_源视频_转码视频.mp4" //url地址
-              }
-            ],
+            sources: [ ],
             poster: "http://assets.jq22.com/plugin/2015-08-25-23-08-04.jpg", //你的封面地址
             // width: document.documentElement.clientWidth,
             notSupportedMessage: "此视频暂无法播放，请稍后再试", //允许覆盖Video.js无法播放媒体源时显示的默认信息。
@@ -232,9 +218,29 @@ export default {
 
       this.policy = await this.getPolicysList();
       this.policy = this.addObjectPropertyOfList(this.policy);
-      this.rankList= await this.getStarRank();
+      this.rankList = await this.getStarRank();
 
-      this.pastCourse=await this.getPastCourseList();
+      this.pastCourse = await this.getPastCourseList();
+      let classArr=await this.getCurrentCourseList();
+      //根据当前的课程ID去查数据
+      this.getVideoList(classArr);
+    },
+    toCourseDetail(classPk, statNm, nm) {
+      let stuState = "";
+      if (statNm === "已学") {
+        stuState = "再次学习";
+      } else if (statNm === "在学") {
+        stuState = "继续学习";
+      } else {
+        stuState = "开始学习";
+      }
+      window.location.href =
+        "studyDetail.html?classPk=" +
+        classPk +
+        "&stuState=" +
+        stuState +
+        "&nm=" +
+        nm;
     },
     videoChange() {
       this.timer = setInterval(() => {
@@ -377,21 +383,73 @@ export default {
         );
       });
     },
-    //往期课程
-    getPastCourseList(){
+    //当前课程
+    getCurrentCourseList(){
       return new Promise((resolve,reject)=>{
-
         let query=new this.Query()
-        query.buildPageClause(this.newsPageNo,this.pastPageSize)
+        query.buildPageClause(this.newsPageNo,this.newsPageSize)
+        query.buildOrderClause('unlockTm','desc')
 
         let param=query.getParam()
         this.until.get('/prod/class/page',param).then(
           res=>{
             if(res.status==='200'){
-              resolve(res.data.items)
+              let newClassArr= res.data.items.map(item=>{
+               let obj={}
+               obj['prodClassPk']=item.prodClassPk
+               return obj
+             })
+             resolve(newClassArr)
             }
-            else{
-              console.log('调用失败')
+          },
+          err=>{}
+        )
+      })
+    },
+    //往期课程
+    getPastCourseList() {
+      return new Promise((resolve, reject) => {
+        let query = new this.Query();
+        query.buildPageClause(this.newsPageNo, this.pastPageSize);
+        query.buildOrderClause('unlockTm','asc');
+
+        let param = query.getParam();
+        this.until.get("/prod/class/page", param).then(
+          res => {
+            if (res.status === "200") {
+              resolve(res.data.items);
+            } else {
+              console.log("调用失败");
+            }
+          },
+          err => {}
+        );
+      });
+    },
+    getVideoList(arr){
+
+      arr.forEach((item,index)=>{
+        
+        let query=new this.Query()
+        query.buildPageClause(this.newsPageNo,this.videoPageSize)
+
+        let param={
+          ClassPk:item.prodClassPk,
+          query:query.getParam()
+        }
+        //调用
+        this.until.get('/prod/ware/page',param).then(
+          res=>{
+            if(res.status==='200'){
+              this.videoList[index].playerOptions.sources.push(
+                {
+                  type: "",
+                  src: "http://vjs.zencdn.net/v/oceans.mp4"
+                }
+              )
+              if(res.data.items.length>0){
+                this.videoList[index].videoName=res.data.items[0].nm
+              }
             }
           },
           err=>{}

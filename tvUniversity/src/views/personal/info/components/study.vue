@@ -22,6 +22,15 @@
                 </tr>
             </tbody>
         </table>
+           <!--分页-->
+        <el-pagination
+            background
+            @current-change="handleCurrentChange"
+            :current-page.sync="pageNo"
+            :page-size="pageSize"
+            layout="total, prev, pager, next"
+            :total="total">
+        </el-pagination>
     </div>
 </template>
 <script>
@@ -30,6 +39,7 @@ export default {
     return {
       pageNo: 1,
       pageSize: 10,
+      total: 100,
       courseList: []
     };
   },
@@ -37,17 +47,25 @@ export default {
     this.getInfo();
   },
   methods: {
+    //更改当前页数
+    handleCurrentChange(val) {
+      this.pageNo = val;
+      this.getCourseList();
+      this.getInfo()
+    },
     async getInfo() {
-      this.courseList = await this.getCourseList();
+      let result= await this.getCourseList();
+      this.courseList=result.data.items;
+      this.total=result.page.total;
     },
     //跳转到详情页面
-    toDetail(classPk,stuState,nm) {
+    toDetail(classPk, stuState, nm) {
       this.$router.push({
         path: "/studyDetail",
         query: {
           classPk: classPk,
-          stuState:stuState,
-          nm:nm
+          stuState: stuState,
+          nm: nm
         }
       });
     },
@@ -59,7 +77,7 @@ export default {
         let param = query.getParam();
         this.until.get("/prod/class/page", param).then(res => {
           if (res.status === "200") {
-            resolve(res.data.items);
+            resolve(res);
           }
         });
       });
@@ -116,6 +134,12 @@ export default {
         }
       }
     }
+  }
+  .el-pagination {
+    padding-bottom: 20px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
   }
 }
 </style>

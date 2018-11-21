@@ -4,14 +4,33 @@
             <h1>{{info.nm}}</h1>
             <p>课程学习星：{{info.learningStar}}<span></span> 浏览人次：{{info.visitorSessions}}<span></span> 完成人次：{{info.completePerson}}</p>
         </div>
-        <div class="video">
+        <!-- <div class="video">
             <div class="sign" v-show="!ifSign"><img src="../img/sign.png" @click="sign()"/> </div>
             <video-player  class="video-player vjs-custom-skin"
               ref="videoPlayer"
               :playsinline="true"
               :options="playerOptions"
             ></video-player>
-        </div>
+        </div> -->
+          <div class="player-container">
+            <div class="sign" v-show="!ifSign"><img src="../img/sign.png" @click="sign()"/> </div>
+              <video
+                id="video"
+                class="video-js"
+                height="300"
+                width="600"
+                controls>
+                <source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
+                <source src="http://vjs.zencdn.net/v/oceans.webm" type="video/webm">
+              </video>
+
+              <div class="vjs-playlist">
+                <!--
+                  The contents of this element will be filled based on the
+                  currently loaded playlist
+                -->
+              </div>
+          </div>
         <div class="intro">
             <h3>课程简介</h3>
             <p v-html="info.summary"></p>
@@ -19,6 +38,7 @@
     </div>
 </template>
 <script>
+import videojs from 'video.js'
 export default {
   data() {
     return {
@@ -26,35 +46,11 @@ export default {
       classPk: "",
       classNm: "",
       info: {},
-      playerOptions: {
-        playbackRates: [0.7, 1.0, 1.5, 2.0], //播放速度
-        autoplay: false, //如果true,浏览器准备好时开始回放。
-        muted: false, // 默认情况下将会消除任何音频。
-        loop: false, // 导致视频一结束就重新开始。
-        preload: "auto", // 建议浏览器在<video>加载元素后是否应该开始下载视频数据。auto浏览器选择最佳行为,立即开始加载视频（如果浏览器支持）
-        language: "zh-CN",
-        aspectRatio: "16:9", // 将播放器置于流畅模式，并在计算播放器的动态大小时使用该值。值应该代表一个比例 - 用冒号分隔的两个数字（例如"16:9"或"4:3"）
-        fluid: true, // 当true时，Video.js player将拥有流体大小。换句话说，它将按比例缩放以适应其容器。
-        sources: [
-          {
-            type: "",
-            src: "http://vjs.zencdn.net/v/oceans.mp4"
-            // src: "rtmp://video.nblll.cn/nb111|mp4:nblllServices/宁波老年电视大学课程/Video/2018秋/中国茶文化与生活—茶文化艺术/中国茶艺的发展简史_源视频_转码视频.mp4" //url地址
-          }
-        ],
-        poster: "http://assets.jq22.com/plugin/2015-08-25-23-08-04.jpg", //你的封面地址
-        // width: document.documentElement.clientWidth,
-        notSupportedMessage: "此视频暂无法播放，请稍后再试", //允许覆盖Video.js无法播放媒体源时显示的默认信息。
-        controlBar: {
-          timeDivider: true,
-          durationDisplay: true,
-          remainingTimeDisplay: false,
-          fullscreenToggle: true //全屏按钮
-        }
-      }
+      
     };
   },
   mounted() {
+    this.getPlayList();
     this.classPk = this.$route.query.classPk;
     this.classNm = this.$route.query.nm;
     let stuState = this.$route.query.stuState;
@@ -69,8 +65,107 @@ export default {
     async getInfo() {
       this.info = await this.getStudyInfo();
       let newArr= await this.getVideoList();
-      this.playerOptions.sources.push(...newArr);
       this.signList = await this.groupSignList();
+    },
+     getPlayList() {
+      var player = videojs("video");
+
+      player.playlist([
+        {
+          name: "Disney's Oceans 1",
+          description:
+            "Explore the depths of our planet's oceans. " +
+            "Experience the stories that connect their world to ours. " +
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, " +
+            "sed do eiusmod tempor incididunt ut labore et dolore magna " +
+            "aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco " +
+            "laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure " +
+            "dolor in reprehenderit in voluptate velit esse cillum dolore eu " +
+            "fugiat nulla pariatur. Excepteur sint occaecat cupidatat non " +
+            "proident, sunt in culpa qui officia deserunt mollit anim id est " +
+            "laborum.",
+          duration: 45,
+          sources: [
+            { src: "http://vjs.zencdn.net/v/oceans.mp4", type: "video/mp4" },
+            { src: "http://vjs.zencdn.net/v/oceans.webm", type: "video/webm" }
+          ],
+
+          // you can use <picture> syntax to display responsive images
+          thumbnail: [
+            {
+              srcset: "test/example/oceans.jpg",
+              type: "image/jpeg",
+              media: "(min-width: 400px;)"
+            },
+            {
+              src: "test/example/oceans-low.jpg"
+            }
+          ]
+        },
+        {
+          name: "Disney's Oceans 2",
+          description:
+            "Explore the depths of our planet's oceans. " +
+            "Experience the stories that connect their world to ours. " +
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, " +
+            "sed do eiusmod tempor incididunt ut labore et dolore magna " +
+            "aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco " +
+            "laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure " +
+            "dolor in reprehenderit in voluptate velit esse cillum dolore eu " +
+            "fugiat nulla pariatur. Excepteur sint occaecat cupidatat non " +
+            "proident, sunt in culpa qui officia deserunt mollit anim id est " +
+            "laborum.",
+          duration: 45,
+          sources: [
+            { src: "http://vjs.zencdn.net/v/oceans.mp4?2", type: "video/mp4" },
+            { src: "http://vjs.zencdn.net/v/oceans.webm?2", type: "video/webm" }
+          ],
+          // you can use <picture> syntax to display responsive images
+          thumbnail: [
+            {
+              srcset: "test/example/oceans.jpg",
+              type: "image/jpeg",
+              media: "(min-width: 400px;)"
+            },
+            {
+              src: "test/example/oceans-low.jpg"
+            }
+          ]
+        },
+        {
+          name: "Disney's Oceans 3",
+          description:
+            "Explore the depths of our planet's oceans. " +
+            "Experience the stories that connect their world to ours. " +
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, " +
+            "sed do eiusmod tempor incididunt ut labore et dolore magna " +
+            "aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco " +
+            "laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure " +
+            "dolor in reprehenderit in voluptate velit esse cillum dolore eu " +
+            "fugiat nulla pariatur. Excepteur sint occaecat cupidatat non " +
+            "proident, sunt in culpa qui officia deserunt mollit anim id est " +
+            "laborum.",
+          duration: 45,
+          sources: [
+            { src: "http://vjs.zencdn.net/v/oceans.mp4?3", type: "video/mp4" },
+            { src: "http://vjs.zencdn.net/v/oceans.webm?3", type: "video/webm" }
+          ],
+          // you can use <picture> syntax to display responsive images
+          thumbnail: [
+            {
+              srcset: "test/example/oceans.jpg",
+              type: "image/jpeg",
+              media: "(min-width: 400px;)"
+            },
+            {
+              src: "test/example/oceans-low.jpg"
+            }
+          ]
+        }
+      ]);
+
+      // Initialize the playlist-ui plugin with no option (i.e. the defaults).
+      player.playlistUi();
     },
     getStudyInfo() {
       //根据classPk得到具体的课程信息
@@ -171,35 +266,41 @@ export default {
       }
     }
   }
-  .video {
-    width: 910px;
-    border-radius: 15px;
-    margin: 0 auto;
-    position: relative;
-    .sign {
-      z-index: 999;
-      position: absolute;
-      background: rgba(0, 0, 0, 0.8);
-      width: 100%;
-      height: 100%;
-      display: flex;
-      border-radius: 15px;
-      img {
-        margin: auto;
-        cursor: pointer;
+  .player-container {
+      background: #1a1a1a;
+      overflow: auto;
+      width: 900px;
+      margin: 0 auto 20px;
+      position: relative;
+      .sign {
+        z-index: 999;
+        position: absolute;
+        background: rgba(0, 0, 0, 0.8);
+        width: 100%;
+        height: 100%;
+        display: flex;
+        border-radius: 15px;
+        img {
+          margin: auto;
+          cursor: pointer;
+        }
+      }
+      .video-js {
+        float: left;
+        height: 300px;
+      }
+      .vjs-playlist,
+      .my-custom-class,
+      #my-custom-element {
+        float: left;
+        width: 300px;
+      }
+      .vjs-playlist.vjs-playlist-horizontal {
+        float: none;
+        height: 120px;
+        width: 600px;
       }
     }
-    .video-player {
-      border-radius: 15px;
-      .vjs-custom-skin > .video-js,
-      .vjs-poster {
-        border-radius: 15px;
-      }
-      .vjs-modal-dialog {
-        border-radius: 15px;
-      }
-    }
-  }
   .intro {
     width: 900px;
     margin: 0 auto;

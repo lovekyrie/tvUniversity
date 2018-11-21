@@ -79,17 +79,16 @@ export default {
   methods: {
     //更改当前页数
     handleCurrentChange(val) {
-      console.log(`当前页: ${val}`);
-      console.log(this.pageNo);
-      //this.getNewsList();
+      this.pageNo=val;
+      this.getNewsList();
     },
     toDetail(newPk) {
       window.location.href = "newsDetail.html?newPk=" + newPk;
     },
     getNewsList() {
-      let query = new this.Query();
-      let tokenObj = this.until.seGet("DD_token");
-      this.token = this.until.getToken(JSON.parse(tokenObj));
+       let query = new this.Query();
+      // let tokenObj = this.until.seGet("DD_token");
+      // this.token = this.until.getToken(JSON.parse(tokenObj));
       //拼接参数
       query.buildWhereClause("catNm", "校园动态", "EQ");
       query.buildPageClause(this.pageNo, this.pageSize);
@@ -100,7 +99,7 @@ export default {
           if (res.status === "200") {
             console.log("调用成功");
             this.newList = res.data.items;
-
+            this.total=res.page.total;
             var that = this;
             this.newList.forEach(element => {
               let time = that.until.formatDate(element.releTm);

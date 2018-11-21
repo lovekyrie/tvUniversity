@@ -20,23 +20,20 @@
                     ></video-player>
                 </div> -->
                   <div class="player-container">
-              <video
-                id="video"
-                class="video-js"
-                height="300"
-                width="600"
-                controls>
-                <source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
-                <source src="http://vjs.zencdn.net/v/oceans.webm" type="video/webm">
-              </video>
+                     <div class="sign" v-show="!ifSign"><img src="../img/sign.png" @click="sign()"/> </div>
+                    <video
+                      id="video"
+                      class="video-js"
+                      height="300"
+                      width="600"
+                      controls>
+                      <source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
+                      <source src="http://vjs.zencdn.net/v/oceans.webm" type="video/webm">
+                    </video>
 
-              <div class="vjs-playlist">
-                <!--
-                  The contents of this element will be filled based on the
-                  currently loaded playlist
-                -->
-              </div>
-            </div>
+                    <div class="vjs-playlist">
+                    </div>
+                </div>
                 <div class="intro">
                   <div>
                     <h3>课程简介</h3>
@@ -45,8 +42,6 @@
                   <div v-html="info.summary"></div>
                 </div>
             </div>
-          
-
             <!--集体签到弹出-->
             <el-dialog
                     title="学员列表"
@@ -88,6 +83,7 @@ export default {
       dialogVisible: false, //集体签到弹出
       checkList: [], //集体签到选中的列表
       signList: [], //集体签到列表
+      ifLogin:false,
       info: {},
       playerOptions: {
         playbackRates: [0.7, 1.0, 1.5, 2.0], //播放速度
@@ -118,6 +114,12 @@ export default {
     };
   },
   mounted() {
+
+    this.ifLogin=JSON.parse(this.until.seGet('isLogin'))
+    if(!this.ifLogin){
+      this.ifSign=true
+    }
+    
     this.getPlayList();
     let stuState = this.until.getQueryString("stuState");
     if (stuState === "再次学习" || stuState === "继续学习") {
@@ -265,7 +267,7 @@ export default {
             this.ifSign = true;
           } else if (res.status === "400") {
             this.ifSign = true;
-            this.$message(res.message);
+            this.$message.error(res.message);
           } else {
             console.log("返回状态码不正确");
           }

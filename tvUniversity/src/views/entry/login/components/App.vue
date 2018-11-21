@@ -12,7 +12,7 @@
                 <input type="password" placeholder="请输入登录密码" v-model="psd">
             </div>
             <p class="b-btn" @click="submit">登陆</p>
-            <p class="b-rs"><a href="./register.html">注册</a><a href="forgotPassWord.html">忘记密码？</a> </p>
+            <p class="b-rs"><a href="forgotPassWord.html">忘记密码？</a> </p>
         </div>
         <!--成功弹出框-->
         <el-dialog title="" :visible.sync="dialogVisible" width="30%">
