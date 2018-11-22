@@ -1,0 +1,91 @@
+@import "../../../../assets/css/init.less";
+
+.crumb{
+    padding: 30px 0;
+    padding-left: 30px;
+    color: #999;
+    a{
+        color: #999;
+        &:nth-last-of-type(1){
+            cursor: text;
+        }
+    }
+}
+.g-search{
+    .content{
+        a{
+            border-top: 1px solid #ddd;
+            padding: 30px;
+            display: block;
+        }
+        a:last-of-type{
+            border-bottom: 1px solid #ddd;
+        }
+        img{
+            width: 190px;
+            height: 190px;
+            float: left;
+            margin-right: 30px;
+        }
+        h2{
+            padding-bottom: 20px;
+            font-size: 26px;
+            font-weight: bold;
+            margin: 30px 0 60px 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+
+        }
+        h3{
+            color: #999;
+            span{
+                margin-left: 100px;
+            }
+        }
+    }
+
+}
+.page{
+    padding-left: 30px;
+    margin: 30px 0 100px 0;
+
+    span{
+        display: inline-block;
+        height: 40px;
+        line-height: 40px;
+        vertical-align: middle;
+    }
+    .el-pagination{
+        display: inline-block;
+    }
+    .el-pager li{
+        font-size: 20px;
+        height: 40px;
+        width: 40px;
+        line-height: 40px;
+    }
+    .el-pager li.btn-quicknext, .el-pager li.btn-quickprev{
+        line-height: 40px;
+    }
+    .el-pagination button, .el-pagination span{
+        height: 40px;
+        line-height: 40px;
+        font-size: 20px;
+    }
+    .el-pagination__editor{
+        height: 40px;
+        width: 40px;
+        line-height: 40px;
+        font-size: 20px;
+    }
+    .el-icon-arrow-left:before{
+        content: '上一页';
+        font-size: 20px;
+    }
+    .el-icon-arrow-right:before{
+        content: '下一页';
+        font-size: 20px;
+    }
+}
+

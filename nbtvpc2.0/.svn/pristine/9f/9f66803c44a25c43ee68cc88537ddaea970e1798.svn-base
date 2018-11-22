@@ -1,0 +1,104 @@
+@import "../../../../assets/css/init.less";
+.login{
+    min-height: 590px;
+    padding-top: 20px;
+    position: relative;
+    border-top: 1px solid #e1e1e1;
+    form{
+        background: #fff;
+        padding: 45px 60px;
+        width: 610px;
+        position: absolute;
+        left: 50%;
+        top: 40%;
+        transform: translate(-50%,-50%);
+    }
+    h3{
+        text-align: center;
+        font-size: 30px;
+        margin-bottom: 40px;
+    }
+    .el-form-item{
+        margin-bottom: 30px;
+        span{
+            width: 120px;
+            text-align: right;
+            padding-right: 10px;
+            font-size: 20px;
+        }
+    }
+    .el-form-item__content{
+        display: flex;
+        align-items: center;
+        position: relative;
+        margin-left: 0!important;
+        input{
+
+            height: 60px;
+            padding-left: 40px;
+            font-size: 18px;
+            border-radius: 0;
+        }
+        a{
+            position: absolute;
+            right: 0;
+            font-size: 20px;
+            color: #3a71a8;
+        }
+    }
+    .el-input, .el-input__inner{
+        width: 367px;
+    }
+    button{
+        height: 60px;
+        width: 367px;
+        border-radius: 0;
+        margin-top: 40px;
+        font-size: 18px;
+        margin-left: 104px;
+    }
+    .el-checkbox__input.is-checked .el-checkbox__inner{
+        background:  #3a71a8;
+    }
+    .el-checkbox__label{
+        margin-left: 8px;
+    }
+    .el-form-item__content{
+        p{
+            float: right;
+            a{
+                margin-left: 20px;
+            }
+        }
+    }
+    .el-form-item__error{
+        padding-left: 130px;
+    }
+}
+
+.size {
+    h2{
+        font-size: 30px !important;
+    }
+    h3 {
+        font-size: 28px !important;
+    }
+    span {
+        font-size: 26px !important;
+    }
+    input {
+        font-size: 26px !important;
+    }
+    button {
+        font-size: 26px !important;
+    }
+    a {
+        font-size: 26px !important;
+    }
+    li{
+        font-size: 26px !important;
+    }
+    p{
+        font-size: 26px !important;
+    }
+}

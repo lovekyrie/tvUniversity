@@ -1,0 +1,41 @@
+@import "../../../../assets/css/init.less";
+map area{ outline: none; }
+.home{
+    text-align: center;
+    padding:70px 0;
+    p{
+        padding-top: 70px;
+        a{
+            margin-right: 160px;
+            background: url("../img/a1.jpg") no-repeat 0 50%;
+            padding-left: 50px;
+        }
+        a:nth-of-type(2){
+            background: url("../img/a2.jpg") no-repeat 0 50%;
+        }
+        a:nth-of-type(3){
+            background: url("../img/a3.jpg") no-repeat 0 50%;
+        }
+        a:last-of-type{
+            margin: 0;
+            background: url("../img/a4.jpg") no-repeat 0 50%;
+        }
+    }
+}
+.size{
+    h3{
+        font-size: 34px!important;
+    }
+     span{
+        font-size: 24px!important;
+    }
+    input{
+        font-size: 24px!important;
+    }
+    button{
+        font-size: 33px!important;
+    }
+    a{
+        font-size: 30px!important;
+    }
+}

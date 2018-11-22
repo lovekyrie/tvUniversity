@@ -1,0 +1,273 @@
+body {
+  background: #fff;
+}
+.test {
+  background: orange;
+  display: flex;
+  z-index: 99;
+}
+.crumb {
+  padding: 30px 0;
+  border-bottom: 1px solid #ddd;
+  color: #999;
+}
+.crumb a {
+  color: #999;
+}
+.g-Carousel .el-carousel__container {
+  height: 400px;
+}
+.g-Carousel img {
+  height: 400px;
+  width: 100%;
+}
+.item {
+  width: 580px;
+}
+.item h2 {
+  height: 70px;
+  line-height: 70px;
+  padding: 0 20px;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 20px;
+  font-size: 22px;
+}
+.item h2 a {
+  float: right;
+  font-size: 18px;
+}
+.item h2 i {
+  display: inline-block;
+  width: 4px;
+  height: 20px;
+  background: #000;
+  vertical-align: -6%;
+  margin-right: 20px;
+}
+.item .info {
+  margin-bottom: 30px;
+}
+.left {
+  float: left;
+}
+.left img {
+  float: left;
+  margin-right: 20px;
+  width: 200px;
+  height: 200px;
+}
+.left .detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 200px;
+}
+.left h3 {
+  min-height: 60px;
+  line-height: 25px;
+}
+.left p {
+  margin-bottom: 10px;
+  color: #999;
+  font-size: 15px;
+}
+.right {
+  float: right;
+}
+.right img {
+  float: left;
+  margin-right: 20px;
+  width: 200px;
+  height: 200px;
+}
+.right .detail {
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+  position: relative;
+}
+.right h3 {
+  line-height: 25px;
+  min-height: 60px;
+}
+.right p {
+  margin-top: 8px;
+  color: #999;
+  font-size: 15px;
+}
+.right button {
+  width: 130px;
+  height: 40px;
+  border: none;
+  background: #3a71a8;
+  color: #fff;
+  border-radius: 4px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  cursor: pointer;
+}
+.right .active {
+  background: #fa6441;
+}
+.m-bottom {
+  display: flex;
+  margin-bottom: 100px;
+  margin-top: 20px;
+}
+.m-bottom .li {
+  position: relative;
+  flex: 1;
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin-right: 30px;
+}
+.m-bottom .li:nth-last-of-type(1) {
+  margin-right: 0;
+}
+.m-bottom .li h2 {
+  font-size: 25px;
+  line-height: 2;
+}
+.m-bottom .li h2 span {
+  display: inline-block;
+  width: 4px;
+  height: 20px;
+  background: #000;
+  vertical-align: -6%;
+  margin-right: 15px;
+}
+.m-bottom .li i {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  display: inline-block;
+  background: #000;
+  vertical-align: middle;
+  margin-right: 20px;
+}
+.m-bottom .li .li-cnt {
+  padding: 0 20px;
+}
+.m-bottom .li .li-cnt h3 {
+  font-size: 20px;
+  line-height: 2;
+  color: #000;
+  margin-left: 30px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.m-bottom .li .li-cnt h4 {
+  font-size: 20px;
+  line-height: 2;
+  margin-left: 30px;
+}
+.m-bottom .li .li-cnt h4 i {
+  visibility: hidden;
+}
+.m-bottom .li .li-cnt h5 {
+  font-size: 18px;
+  line-height: 2;
+  margin-left: 30px;
+  color: #999;
+}
+.m-bottom .li .li-con {
+  font-size: 0;
+}
+.m-bottom .li .li-con a {
+  display: inline-block;
+  overflow: hidden;
+  width: 100%;
+  height: 105px;
+  line-height: 105px;
+}
+.m-bottom .li .li-con a:nth-of-type(2) {
+  margin-top: 40px;
+}
+.m-bottom .li .li-con a img {
+  float: left;
+  width: 125px;
+  height: 105px;
+  vertical-align: middle;
+}
+.m-bottom .li .li-con a p {
+  float: left;
+  width: 185px;
+  height: 105px;
+  line-height: 105px;
+  margin-left: 20px;
+  text-overflow: clip;
+  overflow: hidden;
+}
+.m-bottom .li .li-con a p span {
+  display: inline-block;
+  font-size: 20px;
+  line-height: 26px;
+}
+.m-bottom .li .li-list {
+  font-size: 0;
+  padding: 0 20px;
+  margin-bottom: 40px;
+}
+.m-bottom .li .li-list a {
+  width: 238px;
+  font-size: 20px;
+}
+.m-bottom .li .li-list a h3 {
+  display: inline-block;
+  width: 284px;
+  overflow: hidden;
+  text-overflow: clip;
+  white-space: nowrap;
+  font-size: 20px;
+  line-height: 2;
+}
+.m-bottom .li .li-list a h3 li {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  display: inline-block;
+  background: #000;
+  vertical-align: middle;
+  margin-right: 20px;
+}
+.m-bottom .li .m-bmore {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  width: 100%;
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+}
+.size h2 {
+  font-size: 28px !important;
+}
+.size h3 {
+  font-size: 26px !important;
+}
+.size h4 {
+  font-size: 26px !important;
+}
+.size h5 {
+  font-size: 26px !important;
+}
+.size span {
+  font-size: 26px !important;
+}
+.size input {
+  font-size: 26px !important;
+}
+.size button {
+  font-size: 26px !important;
+}
+.size a {
+  font-size: 26px !important;
+}
+.size li {
+  font-size: 26px !important;
+}
+.size p {
+  font-size: 20px !important;
+}

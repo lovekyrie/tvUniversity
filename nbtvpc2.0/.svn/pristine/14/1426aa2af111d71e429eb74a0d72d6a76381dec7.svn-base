@@ -1,0 +1,278 @@
+@import "../../../../assets/css/init.less";
+
+.crumb{
+    padding: 30px 0;
+    border-bottom: 1px solid #ddd;
+    color:#999;
+    a{
+        color:#999;
+    }
+}
+
+.g-Carousel{
+    .el-carousel__container{
+        height: 400px;
+    }
+
+    img{
+        height: 400px;
+        width: 100%;
+    }
+}
+.item{
+    width: 580px;
+    h2{
+        height: 70px;
+        line-height: 70px;
+        padding: 0 20px;
+        border-bottom: 1px solid #ddd;
+        margin-bottom: 20px;
+        font-size: 22px;
+        a{
+            float: right;
+            font-size: 18px;
+        }
+        i{
+            display: inline-block;
+            width: 4px;
+            height: 20px;
+            background: #000;
+            vertical-align: -6%;
+            margin-right: 20px;
+        }
+    }
+    .info{
+        margin-bottom: 30px;
+    }
+}
+.left{
+    float: left;
+    img{
+        float: left;
+        margin-right: 20px;
+        width: 200px;
+        height: 200px;
+    }
+    .detail{
+        display: flex;
+        flex-direction: column;
+        justify-content:space-between;
+        height: 200px;
+    }
+    h3{
+        min-height: 60px;
+        line-height: 25px;
+    }
+    p{
+        margin-bottom: 10px;
+        color: #999;
+        font-size: 15px;
+    }
+}
+.right{
+    float: right;
+    img{
+        float: left;
+        margin-right: 20px;
+        width: 200px;
+        height: 200px;
+    }
+    .detail{
+        display: flex;
+        flex-direction: column;
+        height: 200px;
+        position: relative;
+
+    }
+    h3{
+        line-height: 25px;
+        min-height: 60px;
+    }
+    p{
+        margin-top: 8px;
+        color: #999;
+        font-size: 15px;
+    }
+    button{
+        width: 130px;
+        height: 40px;
+        border: none;
+        background: #3a71a8;
+        color: #fff;
+        border-radius: 4px;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        cursor: pointer;
+    }
+    .active{
+        background: #fa6441;
+    }
+}
+
+.m-bottom{
+    display: flex;
+    margin-bottom: 100px;
+    margin-top: 20px;
+    .li{
+        position: relative;
+        flex:1;
+        border: 1px solid #ddd;
+        padding: 20px;
+        margin-right: 30px;
+        &:nth-last-of-type(1){
+            margin-right: 0;
+        }
+        h2{
+            font-size: 25px;
+            line-height:2;
+            span{
+                display: inline-block;
+                width: 4px;
+                height: 20px;
+                background: #000;
+                vertical-align: -6%;
+                margin-right: 15px;
+            }
+        }
+        i{
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            display: inline-block;
+            background: #000;
+            vertical-align: middle;
+            margin-right: 20px;
+        }
+        .li-cnt{
+            padding: 0 20px;
+            h3{
+                font-size: 20px;
+                line-height:2;
+                color: #000;
+                margin-left: 30px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+            h4{
+                font-size: 20px;
+                line-height:2;
+                margin-left: 30px;
+                i{
+                    visibility: hidden;
+                }
+            }
+            h5{
+                font-size: 18px;
+                line-height:2;
+                margin-left: 30px;
+                color: #999;
+            }
+        }
+        .li-con{
+            font-size: 0;
+            a{
+                display: inline-block;
+                overflow: hidden;
+                width: 100%;
+                height: 105px;
+                line-height: 105px;
+                &:nth-of-type(2){
+                    margin-top: 40px;
+                }
+                img{
+                    float: left;
+                    width: 125px;
+                    height: 105px;
+                    vertical-align: middle;
+                }
+                p{
+                    float: left;
+                    width: 185px;
+                    height: 105px;
+                    line-height: 105px;
+                    margin-left: 20px;
+                    text-overflow: clip;
+                    overflow: hidden;
+                    span{
+                        display: inline-block;
+                        font-size: 20px;
+                        line-height:26px;
+                    }
+                }
+            }
+        }
+        .li-list{
+            font-size: 0;
+            padding: 0 20px;
+            margin-bottom: 40px;
+            a{
+                width: 238px;
+                font-size: 20px;
+                h3{
+                    display: inline-block;
+                    width: 284px;
+                    overflow: hidden;
+                    text-overflow: clip;
+                    white-space: nowrap;
+                    font-size: 20px;
+                    line-height: 2;
+                    li{
+                        width: 4px;
+                        height: 4px;
+                        border-radius: 50%;
+                        display: inline-block;
+                        background: #000;
+                        vertical-align: middle;
+                        margin-right: 20px;
+                    }
+                }
+            }
+        }
+        .m-bmore{
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            width: 100%;
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+        }
+    }
+
+}
+
+
+.size {
+    h2{
+        font-size: 28px !important;
+    }
+    h3 {
+        font-size: 26px !important;
+    }
+    h4 {
+        font-size: 26px !important;
+    }
+    h5 {
+        font-size: 26px !important;
+    }
+    span {
+        font-size: 26px !important;
+    }
+    input {
+        font-size: 26px !important;
+    }
+    button {
+        font-size: 26px !important;
+    }
+    a {
+        font-size: 26px !important;
+    }
+    li{
+        font-size: 26px !important;
+    }
+    p{
+        font-size: 20px !important;
+    }
+}

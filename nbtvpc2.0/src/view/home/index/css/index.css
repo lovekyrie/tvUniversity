@@ -1,0 +1,48 @@
+body {
+  background: #fff;
+}
+.test {
+  background: orange;
+  display: flex;
+  z-index: 99;
+}
+map area {
+  outline: none;
+}
+.home {
+  text-align: center;
+  padding: 70px 0;
+}
+.home p {
+  padding-top: 70px;
+}
+.home p a {
+  margin-right: 160px;
+  background: url("../img/a1.jpg") no-repeat 0 50%;
+  padding-left: 50px;
+}
+.home p a:nth-of-type(2) {
+  background: url("../img/a2.jpg") no-repeat 0 50%;
+}
+.home p a:nth-of-type(3) {
+  background: url("../img/a3.jpg") no-repeat 0 50%;
+}
+.home p a:last-of-type {
+  margin: 0;
+  background: url("../img/a4.jpg") no-repeat 0 50%;
+}
+.size h3 {
+  font-size: 34px!important;
+}
+.size span {
+  font-size: 24px!important;
+}
+.size input {
+  font-size: 24px!important;
+}
+.size button {
+  font-size: 33px!important;
+}
+.size a {
+  font-size: 30px!important;
+}

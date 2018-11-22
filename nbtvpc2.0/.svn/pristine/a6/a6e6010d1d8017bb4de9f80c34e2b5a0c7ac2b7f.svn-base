@@ -1,0 +1,24 @@
+/*饿了吗 成功弹窗*/
+.el-dialog{
+    width: 630px;
+    height: 370px;
+    border-radius: 10px;
+    text-align: center;
+img{
+    padding-top: 30px;
+}
+h2{
+    font-size: 30px;
+    font-weight: bold;
+    margin: 30px 0;
+    text-indent: 20px;
+}
+}
+//<el-dialog  :visible.sync="dialogTableVisible">
+//
+//<img src="./img/true.jpg" alt="">
+//<h2>注册成功！</h2>
+//
+//</el-dialog>
+
+

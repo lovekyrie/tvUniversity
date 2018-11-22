@@ -1,0 +1,140 @@
+@import "../../../../assets/css/init.less";
+.login{
+
+    padding-bottom: 100px;
+    position: relative;
+
+    form{
+        background: #fff;
+        padding: 45px 60px;
+        width: 610px;
+        margin:  0 auto;
+    }
+    h3{
+        text-align: center;
+        font-size: 30px;
+        margin-bottom: 40px;
+    }
+    .el-form-item{
+        margin-bottom: 30px;
+        span{
+            width: 160px;
+            text-align: right;
+            padding-right: 10px;
+            font-size: 20px;
+        }
+    }
+    .el-form-item__content{
+        display: flex;
+        align-items: center;
+        position: relative;
+        margin-left: 0!important;
+        input{
+
+            height: 60px;
+            padding-left: 40px;
+            font-size: 18px;
+            border-radius: 0;
+        }
+        a{
+            position: absolute;
+            right: 0;
+            font-size: 20px;
+            color: #3a71a8;
+        }
+        .yzm{
+            width: 264px;
+            input{
+                width: 250px;
+            }
+
+        }
+        ins{
+            border: 1px solid #bfcbd9;
+            display: inline-block;
+            height: 60px;
+            line-height: 60px;
+            width: 100px;
+            text-align: center;
+            color: #999;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .el-radio{
+            span{
+                width: 24px;
+                height: 24px;
+            }
+            input{
+                height: auto;
+            }
+            .el-radio__label{
+                vertical-align: middle;
+                margin-right: 100px;
+            }
+        }
+        .el-checkbox{
+            margin-top: 50px;
+            padding-left: 160px;
+            span{
+                width:24px;
+                height: 24px;
+            }
+        }
+        .el-checkbox__inner::after{
+            height: 12px;
+            left: 8px;
+        }
+    }
+    .el-input, .el-input__inner{
+        width: 367px;
+    }
+    button{
+        height: 60px;
+        line-height:60px;
+        width: 367px;
+        border-radius: 5px;
+        font-size: 18px;
+        margin-left: 164px;
+    }
+    .el-checkbox__input.is-checked .el-checkbox__inner{
+        background:  #3a71a8;;
+    }
+    .el-checkbox__label{
+        margin-left: 8px;
+    }
+    .el-form-item__content{
+        p{
+            float: right;
+            a{
+                margin-left: 20px;
+            }
+        }
+    }
+    .el-form-item__error{
+        padding-left: 170px;
+    }
+}
+.el-checkbox__label{
+    vertical-align: bottom !important;
+}
+.el-form-item__error{
+    font-size: 18px;
+}
+.el-button{
+    padding: 0;
+}
+.size{
+    h3{
+        font-size: 34px!important;
+    }
+     span{
+        font-size: 24px!important;
+    }
+    input{
+        font-size: 24px!important;
+    }
+    button{
+        font-size: 24px!important;
+    }
+}

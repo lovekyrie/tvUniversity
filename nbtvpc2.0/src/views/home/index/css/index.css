@@ -1,0 +1,63 @@
+body {
+  background: #fff;
+}
+.test {
+  background: orange;
+  display: flex;
+  z-index: 99;
+}
+html,
+body {
+  height: 100%;
+}
+map area {
+  outline: none;
+}
+.home {
+  text-align: center;
+  padding-bottom: 50px;
+}
+.home p {
+  padding-top: 30px;
+}
+.home p a {
+  display: inline-block;
+  width: 215px;
+  height: 30px;
+  line-height: 30px;
+  font-size: 20px;
+  background: url("../img/a1.jpg") no-repeat;
+  background-size: 30px 29px!important;
+  padding-left: 40px;
+  text-align: left;
+}
+.home p a:nth-of-type(2) {
+  background: url("../img/jf.png") 0 2px no-repeat;
+  background-size: 26px 26px!important;
+}
+.home p a:nth-of-type(3) {
+  background: url("../img/a2.jpg") no-repeat;
+}
+.home p a:nth-of-type(4) {
+  background: url("../img/a3.jpg") no-repeat;
+}
+.home p a:last-of-type {
+  width: auto;
+  margin: 0;
+  background: url("../img/a4.jpg") no-repeat;
+}
+.size h3 {
+  font-size: 34px!important;
+}
+.size span {
+  font-size: 24px!important;
+}
+.size input {
+  font-size: 24px!important;
+}
+.size button {
+  font-size: 33px!important;
+}
+.size a {
+  font-size: 30px!important;
+}

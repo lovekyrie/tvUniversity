@@ -1,0 +1,69 @@
+body {
+  background: #fff;
+}
+.test {
+  background: orange;
+  display: flex;
+  z-index: 99;
+}
+.crumb {
+  padding: 30px 0;
+  padding-left: 30px;
+  color: #999;
+}
+.crumb a {
+  display: inline-block;
+  color: #999;
+}
+.crumb a:nth-last-of-type(1) {
+  cursor: inherit;
+}
+.page {
+  padding-left: 30px;
+  margin: 30px 0 100px 0;
+}
+.page span {
+  display: inline-block;
+  height: 40px;
+  line-height: 40px;
+  vertical-align: middle;
+}
+.page .el-pagination {
+  display: inline-block;
+}
+.page .el-pager li {
+  font-size: 20px;
+  height: 40px;
+  width: 40px;
+  line-height: 40px;
+}
+.page .el-pager li.btn-quicknext,
+.page .el-pager li.btn-quickprev {
+  line-height: 40px;
+}
+.page .el-pagination button,
+.page .el-pagination span {
+  height: 40px;
+  line-height: 40px;
+  font-size: 20px;
+}
+.page .el-pagination__editor {
+  height: 40px;
+  width: 40px;
+  line-height: 40px;
+  font-size: 20px;
+}
+.page .el-icon-arrow-left:before {
+  content: '上一页';
+  font-size: 20px;
+}
+.page .el-icon-arrow-right:before {
+  content: '下一页';
+  font-size: 20px;
+}
+.size h2 {
+  font-size: 30px!important;
+}
+.size h3 {
+  font-size: 26px!important;
+}

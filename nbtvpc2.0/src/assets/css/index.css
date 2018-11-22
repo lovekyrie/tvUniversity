@@ -1,0 +1,51 @@
+body {
+  background: #fff;
+}
+.test {
+  background: orange;
+  display: flex;
+  z-index: 99;
+}
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+.g-content {
+  width: 1200px;
+  margin: 0  auto;
+}
+/************************************************************/
+html,
+body {
+  height: 100%!important;
+}
+/*处理页面过短 footer不置底*/
+#container {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  /*ie6不识别min-height,如上述处理*/
+  position: relative;
+}
+.g-content-footer {
+  width: 1200px;
+  margin: 0  auto;
+  padding-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  clear: both;
+}
+/************************************************************/
+.ell {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}

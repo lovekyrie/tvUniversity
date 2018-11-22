@@ -1,0 +1,20 @@
+body {
+  background: #fff;
+}
+.test {
+  background: orange;
+  display: flex;
+  z-index: 99;
+}
+.size h3 {
+  font-size: 34px!important;
+}
+.size span {
+  font-size: 24px!important;
+}
+.size input {
+  font-size: 24px!important;
+}
+.size button {
+  font-size: 24px!important;
+}
