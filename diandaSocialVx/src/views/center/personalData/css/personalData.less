@@ -1,0 +1,96 @@
+#container {
+
+  a {
+    text-decoration: none;
+  }
+
+  //  头像
+  .headImg {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid rgb(225, 225, 225);
+    border-bottom: 1px solid rgb(225, 225, 225);
+    margin-top: 1rem;
+    background-color: white;
+    padding: 0 2rem;
+    height: 6rem;
+    font-weight: 400;
+
+    > span {
+      font-size: 1.2rem;
+    }
+
+    .aImg {
+      width: 20%;
+      max-width: 5rem;
+
+      > img {
+        width: 100%;
+      }
+    }
+  }
+
+//  昵称，姓名......
+  .nickName,.aName,.idCard,.sex,.phoneNum,.cAddress{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+    padding: 0 3rem 0 2rem;
+    height: 4rem;
+    font-size: 1.2rem;
+    border-bottom: 1px solid rgb(225, 225, 225);
+
+  }
+
+  .certification{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    height: 7.5rem;
+    padding: 1rem 3rem 1rem 2rem;
+    background-color: white;
+    border-bottom: 1px solid rgb(225, 225, 225);
+
+    .upper{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgb(215,215,215);
+
+      >img{
+        width: 60%;
+      }
+    }
+
+  }
+  //红色*标记
+  .sign{
+    color: red;
+    position: absolute;
+    left: 1.4rem;
+  }
+
+  //保存按钮
+  .saveBtn{
+    width: 100%;
+    text-align: center;
+
+    >button{
+      margin-top: 3rem;
+      height: 3rem;
+      width: 85%;
+      color: white;
+      background-color: #3a71a8;
+      font-size: 1.4rem;
+      font-weight: 300;
+      border-radius: 4px;
+
+    }
+  }
+
+}
