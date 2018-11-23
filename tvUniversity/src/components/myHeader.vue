@@ -12,9 +12,9 @@
                 <input v-model="key" placeholder="宁波电大老年教育网"/>
                 <button @click="goSearch">搜索</button>
             </div>
-            <p v-if="!ifLogin"><a href="../entry/login.html">登录</a>|<a href="#">注册</a></p>
+            <p v-if="!ifLogin"><a href="../entry/login.html">登录</a></p>
             <p v-if="ifLogin"><a href="../personal/info.html">欢迎您的登录，{{info.nickname}}！</a> <span @click="quit">退出</span></p>
-            <p><a href="#">后台管理系统</a> </p>
+            <p><a href="http://218.71.137.186:44185">后台管理系统</a> </p>
         </div>
     </div>
 </template>
@@ -32,7 +32,9 @@ export default {
     // this.abc();
     this.ifLogin = JSON.parse(this.until.seGet("isLogin"))
     let token=this.until.seGet('DD_token');
-    this.info=JSON.parse(token).userInfo;
+    if(token){
+      this.info=JSON.parse(token).userInfo;
+    }
   },
   methods: {
     toHome() {
@@ -43,9 +45,19 @@ export default {
       window.location.href = url;
     },
     quit() {
-     window.location.href='../center/index.html';
-     this.until.seSave('isLogin',false)
-     this.ifLogin=false;
+     
+      this.until.get('/prod/dent/logout').then(
+        res=>{
+          if(res.status==='200'){
+            window.location.href='../center/index.html';
+            this.until.seSave('isLogin',false)
+            this.ifLogin=false;
+          }
+        },
+        err=>{
+          this.$message.error('退出失败')
+        }
+      )
     }
   }
 };
@@ -54,6 +66,7 @@ export default {
 <style lang="less" scoped>
 #header {
   width: 100%;
+  height: auto;
   border-bottom: 1px solid #e1e1e1;
   .top {
     background: #3a71a8;

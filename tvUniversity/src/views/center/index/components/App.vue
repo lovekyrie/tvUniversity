@@ -62,7 +62,7 @@
                     <h4>公告通知</h4>
                     <a href="notice.html?name=notice">查看更多 ></a>
                 </div>
-                <div class="list" v-for="(item,index) in notice" :key="index" @click="goNoticeDetail(item.ipPk)">
+                <div class="list" v-for="(item,index) in notice" :key="index" @click="goNoticeDetail(item.sysNewsPk)">
                     <div class="img">
                         <img :src="item.imgUrl"/>
                     </div>
@@ -77,9 +77,9 @@
             <div class="notice" style="float: right">
                 <div class="title">
                     <h4>校园动态</h4>
-                    <a href="notice.html?name=news">查看更多 ></a>
+                    <a href="news.html?name=news">查看更多 ></a>
                 </div>
-                <div class="list" v-for="(item,index) in newList" :key="index" @click="goNewsDetail(item.ipPk)">
+                <div class="list" v-for="(item,index) in newList" :key="index" @click="goNewsDetail(item.sysNewsPk)">
                     <div class="img">
                         <img :src="item.imgUrl"/>
                     </div>
@@ -263,15 +263,15 @@ export default {
     },
     //公告通知
     goNoticeDetail(ipPk) {
-      window.location.href = "noticeDetail.html?ipPk=" + ipPk;
+      window.location.href = "noticeDetail.html?newPk=" + ipPk;
     },
     //校园动态详情
     goNewsDetail(ipPk) {
-      window.location.href = "newsDetail.html?ipPk=" + ipPk;
+      window.location.href = "newsDetail.html?newPk=" + ipPk;
     },
     //文件政策详情
     goPolicyDetail(ipPk) {
-      window.location.href = "policyDetail.html?ipPk=" + ipPk;
+      window.location.href = "policyDetail.html?newPk=" + ipPk;
     },
     //给数据对象增加年月日属性
     addObjectPropertyOfList(list) {
@@ -296,7 +296,7 @@ export default {
         query.buildPageClause(this.newsPageNo, this.newsPageSize);
 
         let param = query.getParam();
-        this.until.get("/sys/news/page", param).then(
+        this.until.get("/sys/news/pag", param).then(
           res => {
             if (res.status === "200") {
               resolve(res.data.items);
@@ -319,7 +319,7 @@ export default {
         query.buildPageClause(this.newsPageNo, this.newsPageSize);
 
         let param = query.getParam();
-        this.until.get("/sys/news/page", param).then(
+        this.until.get("/sys/news/pag", param).then(
           res => {
             if (res.status === "200") {
               resolve(res.data.items);
@@ -344,7 +344,7 @@ export default {
         let param = {
           query: query.toString()
         };
-        this.until.get("/sys/news/page", param).then(
+        this.until.get("/sys/news/pag", param).then(
           res => {
             if (res.status === "200") {
               console.log("调用成功");
@@ -391,7 +391,7 @@ export default {
         query.buildOrderClause('unlockTm','desc')
 
         let param=query.getParam()
-        this.until.get('/prod/class/page',param).then(
+        this.until.get('/prod/cls/pag',param).then(
           res=>{
             if(res.status==='200'){
               let newClassArr= res.data.items.map(item=>{
@@ -414,7 +414,7 @@ export default {
         query.buildOrderClause('unlockTm','asc');
 
         let param = query.getParam();
-        this.until.get("/prod/class/page", param).then(
+        this.until.get("/prod/cls/pag", param).then(
           res => {
             if (res.status === "200") {
               resolve(res.data.items);
@@ -450,6 +450,9 @@ export default {
               if(res.data.items.length>0){
                 this.videoList[index].videoName=res.data.items[0].nm
               }
+              this.until.get('/prod/class/info/'+item.prodClassPk).then(res=>{
+                 this.videoList[index].playerOptions.poster=res.data.imgUrl
+              })
             }
           },
           err=>{}

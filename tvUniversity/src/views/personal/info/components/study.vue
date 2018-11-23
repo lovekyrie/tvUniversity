@@ -15,9 +15,9 @@
                     <td>{{index+1}}</td>
                     <td>{{item.nm}}</td>
                     <td>{{item.learningStar}}</td>
-                    <td>{{!item.statNm?'未学':item.statNm}}</td>
+                    <td>{{item.statNm}}</td>
                     <td v-if="item.statNm==='已学'" @click="toDetail(item.prodClassPk,'再次学习',item.nm)">再次学习</td>
-                    <td v-else-if="item.statNm==='在学'"  @click="toDetail(item.prodClassPk,'继续学习',item.nm)">继续学习</td>
+                    <!-- <td v-else-if="item.statNm==='在学'"  @click="toDetail(item.prodClassPk,'继续学习',item.nm)">继续学习</td> -->
                     <td v-else  @click="toDetail(item.prodClassPk,'开始学习',item.nm)">开始学习</td>
                 </tr>
             </tbody>
@@ -75,7 +75,7 @@ export default {
         query.buildPageClause(this.pageNo, this.pageSize);
 
         let param = query.getParam();
-        this.until.get("/prod/class/page", param).then(res => {
+        this.until.get("/prod/cls/page", param).then(res => {
           if (res.status === "200") {
             resolve(res);
           }

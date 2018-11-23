@@ -50,7 +50,7 @@ export default {
     };
   },
   mounted() {
-    this.getPlayList();
+    // this.getPlayList();
     this.classPk = this.$route.query.classPk;
     this.classNm = this.$route.query.nm;
     let stuState = this.$route.query.stuState;
@@ -63,8 +63,11 @@ export default {
   },
   methods: {
     async getInfo() {
+      var player = videojs("video");
       this.info = await this.getStudyInfo();
-      let newArr= await this.getVideoList();
+      let newArr = await this.getVideoList();
+      player.playlist(newArr);
+      player.playlistUi();
       this.signList = await this.groupSignList();
     },
      getPlayList() {
@@ -195,14 +198,22 @@ export default {
         };
         this.until.get("/prod/ware/page", param).then(res => {
           if (res.status === "200") {
-            let newArr = res.data.items.map(item => {
-              let obj = {};
-              obj["type"] = "";
-              obj["src"] = item["videoUrl"];
+            //拼接视频格式
+            let playList = [];
+            res.data.items.forEach(item => {
+              let obj = {},
+                sourceobj = {},
+                sourceArr = [];
+              obj["name"] = item["nm"];
+              obj["description"] = "teach online video";
+              (obj["duration"] = 45), (sourceobj["type"] = "video/webm");
+              sourceobj["src"] = item["videoUrl"];
+              sourceArr.push(sourceobj);
+              obj["sources"] = sourceArr;
 
-              return obj;
+              playList.push(obj);
             });
-            resolve(newArr)
+            resolve(playList);
           } else {
             console.log("返回的状态码不是200");
           }

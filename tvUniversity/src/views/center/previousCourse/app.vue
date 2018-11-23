@@ -1,5 +1,5 @@
 <template>
-    <div id="container">
+    <div id="app">
         <myHeader></myHeader>
         <myNav :type="name"></myNav>
         <div class="content">
@@ -105,6 +105,7 @@ export default {
       if (this.ifLogin) {
         return new Promise((resolve, reject) => {
           let query = new this.Query();
+          query.buildWhereClause('statNm','已学','EQ');
           query.buildPageClause(this.pageNo, this.pageSize);
 
           let param = query.getParam();
@@ -143,3 +144,74 @@ export default {
   }
 };
 </script>
+<style lang="less">
+  #app{
+  .pos{
+    width: 100%;
+    color: #999999;
+    font-size: 24px;
+    border-bottom: 1px solid #e1e1e1;
+    line-height: 80px;
+  }
+  table{
+    width: 1198px;
+    margin: 20px auto;
+    background: #ffffff;
+    border: 1px solid #e1e1e1;
+    thead{
+      th{
+        color: #666666;
+        font-size: 18px;
+        height: 86px;
+        font-weight: normal;
+        text-align: center;
+        &:first-child{
+          width: 15%;
+        }
+        &:nth-child(2){
+          width: 40%;
+          text-align: left;
+        }
+        &:nth-child(3){
+          width: 15%;
+        }
+        &:nth-child(4){
+          width: 15%;
+        }
+      }
+    }
+    tr{
+      border: 1px solid #e1e1e1;
+      &:last-child{
+        border-bottom: 0;
+      }
+      td{
+        text-align: center;
+        font-size: 18px;
+        height: 86px;
+
+        &:nth-child(2){
+          text-align: left;
+        }
+        &:last-child{
+          color: #3a71a8;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  .el-pagination{
+    padding: 40px 0;
+    .el-pagination__total{
+      font-size: 16px !important;
+      line-height: 40px;
+    }
+    .btn-prev .el-icon,.el-pager li,.btn-next .el-icon,.btn-prev,.btn-next {
+      font-size: 16px !important;
+      width: 40px;
+      height: 40px;
+      line-height: 40px;
+    }
+  }
+}
+</style>

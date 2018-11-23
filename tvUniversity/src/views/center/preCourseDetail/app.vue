@@ -1,26 +1,17 @@
 <template>
-    <div id="container">
+    <div id="app">
         <myHeader></myHeader>
         <myNav :type="name"></myNav>
         <div class="content">
             <div class="pos">
-                 首页 > 当前课程 > 课程内容
+                 首页 > 往期课程 > 课程内容
             </div>
             <div id="studyDetail">
                 <div class="top">
                     <h1>{{info.nm}}</h1>
                     <p>课程学习星：{{info.learningStar}}<span></span> 浏览人次：{{info.visitorSessions}}<span></span> 完成人次：{{info.completePerson}}</p>
                 </div>
-                <!-- <div class="video">
-                    <div class="sign" v-show="!ifSign"><img src="../img/sign.png" @click="sign()"/> </div>
-                    <video-player  class="video-player vjs-custom-skin"
-                      ref="videoPlayer"
-                      :playsinline="true"
-                      :options="playerOptions"
-                    ></video-player>
-                </div> -->
                   <div class="player-container">
-                     <div class="sign" v-show="!ifSign"><img src="../img/sign.png" @click="sign()"/> </div>
                     <video
                       ref="video"
                       id="video"
@@ -169,116 +160,6 @@ export default {
       }
       this.signList = await this.groupSignList();
     },
-    getPlayList() {
-      player.playlist([
-        {
-          name: "Disney's Oceans 1",
-          description:
-            "Explore the depths of our planet's oceans. " +
-            "Experience the stories that connect their world to ours. " +
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, " +
-            "sed do eiusmod tempor incididunt ut labore et dolore magna " +
-            "aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco " +
-            "laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure " +
-            "dolor in reprehenderit in voluptate velit esse cillum dolore eu " +
-            "fugiat nulla pariatur. Excepteur sint occaecat cupidatat non " +
-            "proident, sunt in culpa qui officia deserunt mollit anim id est " +
-            "laborum.",
-          duration: 45,
-          sources: [
-            { src: "http://vjs.zencdn.net/v/oceans.mp4", type: "video/mp4" },
-            { src: "http://vjs.zencdn.net/v/oceans.webm", type: "video/webm" }
-          ],
-
-          // you can use <picture> syntax to display responsive images
-          thumbnail: [
-            {
-              srcset: "test/example/oceans.jpg",
-              type: "image/jpeg",
-              media: "(min-width: 400px;)"
-            },
-            {
-              src: "test/example/oceans-low.jpg"
-            }
-          ]
-        },
-        {
-          name: "Disney's Oceans 2",
-          description:
-            "Explore the depths of our planet's oceans. " +
-            "Experience the stories that connect their world to ours. " +
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, " +
-            "sed do eiusmod tempor incididunt ut labore et dolore magna " +
-            "aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco " +
-            "laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure " +
-            "dolor in reprehenderit in voluptate velit esse cillum dolore eu " +
-            "fugiat nulla pariatur. Excepteur sint occaecat cupidatat non " +
-            "proident, sunt in culpa qui officia deserunt mollit anim id est " +
-            "laborum.",
-          duration: 45,
-          sources: [
-            { src: "http://vjs.zencdn.net/v/oceans.mp4?2", type: "video/mp4" },
-            { src: "http://vjs.zencdn.net/v/oceans.webm?2", type: "video/webm" }
-          ],
-
-          // you can use <picture> syntax to display responsive images
-          thumbnail: [
-            {
-              srcset: "test/example/oceans.jpg",
-              type: "image/jpeg",
-              media: "(min-width: 400px;)"
-            },
-            {
-              src: "test/example/oceans-low.jpg"
-            }
-          ]
-        },
-        {
-          name: "Disney's Oceans 3",
-          description:
-            "Explore the depths of our planet's oceans. " +
-            "Experience the stories that connect their world to ours. " +
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, " +
-            "sed do eiusmod tempor incididunt ut labore et dolore magna " +
-            "aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco " +
-            "laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure " +
-            "dolor in reprehenderit in voluptate velit esse cillum dolore eu " +
-            "fugiat nulla pariatur. Excepteur sint occaecat cupidatat non " +
-            "proident, sunt in culpa qui officia deserunt mollit anim id est " +
-            "laborum.",
-          duration: 45,
-          sources: [
-            { src: "http://vjs.zencdn.net/v/oceans.mp4?3", type: "video/mp4" },
-            { src: "http://vjs.zencdn.net/v/oceans.webm?3", type: "video/webm" }
-          ],
-
-          // you can use <picture> syntax to display responsive images
-          thumbnail: [
-            {
-              srcset: "test/example/oceans.jpg",
-              type: "image/jpeg",
-              media: "(min-width: 400px;)"
-            },
-            {
-              src: "test/example/oceans-low.jpg"
-            }
-          ]
-        }
-      ]);
-
-      // Initialize the playlist-ui plugin with no option (i.e. the defaults).
-      player.playlistUi();
-      player.on("timeupdate", () => {
-        if (parseInt(player.currentTime()) > 1) {
-          // player.pause()
-          player.dispose();
-          this.$alert(`您当前还未登录系统，试看视频时间结束。`, "试看结束", {
-            confirmButtonText: "确定",
-            callback: action => {}
-          });
-        }
-      });
-    },
     //更改当前页数
     handleCurrentChange(val) {},
     //弹窗关闭
@@ -384,3 +265,139 @@ export default {
   }
 };
 </script>
+<style lang="less">
+#app{
+  .pos{
+    width: 100%;
+    color: #999999;
+    font-size: 24px;
+    border-bottom: 1px solid #e1e1e1;
+    line-height: 80px;
+    font-size: 16px;
+  }
+  #studyDetail{
+    padding-bottom: 30px;
+    .top{
+      width: 900px;
+      margin: 20px auto;
+      display: flex;
+      display: -webkit-flex;
+      line-height: 40px;
+      h1{
+        font-size: 24px;
+        flex: 1;
+      }
+      p{
+        color: #999;
+        font-size: 16px;
+        padding-right: 10px;
+        span{
+          padding-left: 15px;
+        }
+      }
+    }
+  
+    .intro{
+      width: 900px;
+      margin: 0 auto;
+      display: flex;
+      flex-flow: row wrap;
+      >div{
+        flex:  1 0 100%;
+        &:nth-of-type(1){
+          display: flex;
+          flex-flow: row nowrap;
+          h3,button{
+            flex: 1 0 50%;
+          }
+          h3{
+            padding-top: 20px;
+            padding-bottom: 5px;
+            font-size: 20px;
+          }
+          button{
+            flex: 1 0 auto;
+          }
+        }
+      }
+     
+    }
+    .player-container {
+      background: #1a1a1a;
+      overflow: auto;
+      width: 900px;
+      margin: 0 auto 20px;
+      position: relative;
+      .video-js {
+        float: left;
+      }
+      .vjs-playlist,
+      .my-custom-class,
+      #my-custom-element {
+        float: left;
+        width: 300px;
+      }
+      .vjs-playlist.vjs-playlist-horizontal {
+        float: none;
+        height: 120px;
+        width: 600px;
+      }
+    }
+    
+  }
+  .el-dialog{
+    .el-dialog__header{
+      border-bottom: 1px solid #e1e1e1;
+      text-align: center;
+      line-height: 50px;
+    }
+    .el-dialog__footer{
+      text-align: center;
+      .el-button--primary{
+        background: #3a71a8;
+        border:1px solid #3a71a8;
+      }
+    }
+    .el-dialog__body{
+      width: 100%;
+      padding: 0;
+      border-bottom: 1px solid #e1e1e1;
+      .el-checkbox-group{
+        display: flex;
+        flex-flow: row wrap;
+        .el-checkbox{
+          flex:  1 1 33%;
+          display: flex;
+          flex-flow: row nowrap;
+          align-items: center;
+          margin: 0;
+          border-bottom: 1px solid #e1e1e1;
+          line-height: 50px;
+          height: 50px;
+          &:nth-child(3n+1),
+          &:nth-child(3n+2){
+            border-right: 1px solid #e1e1e1;
+          }
+          .el-checkbox__input{
+            margin-left: 15px;
+          }
+          .el-checkbox__label{
+            font-size: 16px;
+            display: flex;
+            flex-flow: row nowrap;
+            span{
+              &:nth-of-type(1){
+                width:60px;
+              }
+            }
+          }
+          .space{
+            padding-left: 25px;
+          }
+        }
+      }
+     
+    }
+  }
+}
+</style>

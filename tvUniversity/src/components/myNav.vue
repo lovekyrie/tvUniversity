@@ -3,7 +3,7 @@
         <div class="content">
             <a href="../center/index.html" :class="{active:type=='home'}">网站首页</a>
             <a href="../center/study.html" :class="{active:type=='current'}">当前课程</a>
-            <a href="#" :class="{active:type=='past'}">往期课程</a>
+            <a href="../center/previousCourse.html" :class="{active:type=='past'}">往期课程</a>
             <a href="../center/notice.html" :class="{active:type=='notice'}">通知公告</a>
             <a href="../center/news.html" :class="{active:type=='news'}">校园动态</a>
             <a href="../center/policy.html" :class="{active:type=='policy'}">文件政策</a>

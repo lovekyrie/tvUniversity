@@ -13,7 +13,6 @@
                 <div class="listContent">
                     <div>
                         <strong>{{item.nm}}</strong>
-                        <p v-if="item.cont" v-html="item.cont"></p>
                     </div>
 
                     <p>{{item.year}}年{{item.month}}月{{item.day}}日 {{item.time}}<span></span>来源：{{item.author}}</p>
@@ -94,7 +93,7 @@ export default {
       query.buildPageClause(this.pageNo, this.pageSize);
       let param = query.getParam();
 
-      this.until.get("/sys/news/page", param).then(
+      this.until.get("/sys/news/pag", param).then(
         res => {
           if (res.status === "200") {
             console.log("调用成功");

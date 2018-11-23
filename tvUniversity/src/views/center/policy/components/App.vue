@@ -62,7 +62,7 @@ export default {
       let param = {
         query: query.toString()
       };
-      this.until.get("/sys/news/page", param).then(
+      this.until.get("/sys/news/pag", param).then(
         res => {
           if (res.status === "200") {
             this.list = res.data.items;

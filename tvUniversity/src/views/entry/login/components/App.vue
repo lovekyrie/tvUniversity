@@ -5,13 +5,13 @@
             <h3>登录</h3>
             <div class="b-input">
                 <p>用户名：</p>
-                <input type="text" placeholder="请输入用户名：" v-model="userName">
+                <input type="text" placeholder="请输入用户名" v-model="userName">
             </div>
             <div class="b-input">
-                <p>登陆密码：</p>
+                <p>登录：</p>
                 <input type="password" placeholder="请输入登录密码" v-model="psd">
             </div>
-            <p class="b-btn" @click="submit">登陆</p>
+            <p class="b-btn" @click="submit">登录</p>
             <p class="b-rs"><a href="forgotPassWord.html">忘记密码？</a> </p>
         </div>
         <!--成功弹出框-->
