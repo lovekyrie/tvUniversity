@@ -1,0 +1,120 @@
+#main {
+  min-width: 1060px;
+  background-color: white;
+
+  a {
+    text-decoration: none;
+  }
+
+  //列表
+  .writingList {
+    display: flex;
+    width: 75%;
+    min-width: 1060px;
+    margin: 0 auto;
+    flex-direction: column;
+
+    //列表顶部
+    .writingTop {
+      display: flex;
+      align-items: center;
+      height: 80px;
+      border-bottom: 1px solid rgb(225, 225, 225);
+
+      a {
+        color: rgb(135, 135, 135);
+        font-size: 20px;
+        font-weight: 300;
+        text-decoration: none;
+      }
+
+      .topLine {
+        padding: 0 5px;
+        font-size: 20px;
+        color: rgb(135, 135, 135);
+      }
+
+    }
+    //  书画
+    .news {
+      display: flex;
+      height: 145px;
+      padding: 25px 0px;
+      border-bottom: 1px solid rgb(225, 225, 225);
+
+      //详情
+      .newsDes {
+        width: 100%;
+
+        .newsTitle {
+          font-size: 22px;
+          margin-bottom: 30px;
+
+        }
+
+        > span {
+          color: rgb(135, 135, 135);
+          font-weight: 300;
+          font-size: 16px;
+        }
+
+      }
+
+    }
+
+    //精彩活动
+    .Content {
+      display: flex;
+      flex-direction: row;
+      height: 220px;
+      padding-top: 20px;
+
+
+      //图片
+      .contentImg {
+        margin-right: 20px;
+      }
+
+      .contentMsg2 {
+
+        width: 100%;
+        //活动标题
+        h4 {
+          font-weight: 400;
+          font-size: 22px;
+          margin-bottom: 25px;
+        }
+        //活动信息
+        > span {
+          display: block;
+          font-size: 16px;
+          line-height: 26px;
+          font-weight: 300;
+          color: rgb(135, 135, 135);
+
+        }
+
+        .actBtn {
+          //background-color: rgb(53,113,168);
+          color: white;
+          height: 35px;
+          width: 37%;
+          font-size: 18px;
+          border-radius: 6px;
+          margin-left: 25%;
+          vertical-align: bottom;
+
+        }
+      }
+    }
+
+    //分页按钮
+    .nextButton {
+      padding-top: 60px;
+      margin-bottom: 130px;
+
+    }
+
+  }
+
+}

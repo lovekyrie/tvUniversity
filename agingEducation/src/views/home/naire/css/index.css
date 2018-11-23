@@ -1,0 +1,84 @@
+body {
+  background: #fff;
+}
+.test {
+  background: orange;
+  display: flex;
+  z-index: 99;
+}
+.naire {
+  width: 1200px;
+  margin: 0 auto;
+}
+.naire h2 {
+  font-size: 36px;
+  text-align: center;
+  padding: 50px 0;
+}
+.naire .item {
+  border-bottom: 1px solid #ddd;
+  padding: 0 60px;
+}
+.naire .item p {
+  margin-top: 30px;
+  font-size: 26px;
+}
+.naire .item p em {
+  color: red;
+  margin-right: 6px;
+}
+.naire .item ins {
+  color: #3f76ac;
+}
+.naire .item span {
+  display: inline-block;
+  min-width: 29.5%;
+  background: url("../img/false.jpg") no-repeat 0 50%;
+  padding: 30px 0 30px 40px;
+  font-size: 24px;
+  cursor: pointer;
+}
+.naire .active {
+  background: url("../img/true.png") no-repeat 0 50% !important;
+}
+.naire .item:last-of-type {
+  border: none;
+}
+.naire h4 {
+  padding: 20px 0 100px 0;
+  text-align: center;
+}
+.naire h4 button {
+  width: 238px;
+  height: 90px;
+  border: none;
+  background: #3f76ac;
+  color: #fff;
+  font-size: 33px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.naire textarea {
+  width: 100%;
+  border: 1px solid #ddd;
+  height: 180px;
+  margin: 30px 0 ;
+  resize: none;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.size h2 {
+  font-size: 40px!important;
+}
+.size p {
+  font-size: 35px!important;
+}
+.size span {
+  font-size: 35px!important;
+}
+.size button {
+  font-size: 33px!important;
+}
+.size textarea {
+  font-size: 35px!important;
+}

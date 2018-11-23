@@ -1,0 +1,131 @@
+#main{
+  min-width: 1060px;
+  background-color: white;
+
+  //导航栏
+  .el-menu-demo{
+    padding-left: 12.5%;
+
+  }
+
+  .el-menu-item{
+    font-size: 16px;
+    margin-right: 10%;
+  }
+
+  //学习列表
+  .learnList{
+    display: flex;
+    width: 75%;
+    min-width: 1060px;
+    margin: 0 auto;
+    flex-direction: column;
+
+
+    //列表顶部
+    .learnTop{
+      display: flex;
+      align-items: center;
+      height: 80px;
+      border-bottom: 1px solid rgb(235,235,235);
+
+      a{
+        color: rgb(135,135,135);
+        font-size: 20px;
+        font-weight: 300;
+        text-decoration: none;
+      }
+
+      .topLine{
+        padding: 0 5px;
+        font-size: 20px;
+        color: rgb(135,135,135);
+      }
+
+    }
+
+  //  搜索框
+    .learnSearch{
+      height: 100px;
+      padding: 30px 0;
+
+      .el-select{
+
+      }
+
+      >.el-input{
+        width: 25%;
+        margin: 0px 20px;
+
+      }
+
+      >.el-button{
+        background-color: #3A71A8;
+        width: 10%;
+        font-weight: 300;
+        font-size: 16px;
+      }
+    }
+
+    //课程
+    .classes{
+      display: flex;
+      flex-direction: row;
+      margin-bottom: 30px;
+      border: 1px solid rgb(235,235,235);
+
+      //左侧图片
+      .classImg{
+        flex: 1;
+
+        >img{
+          width: 100%;
+        }
+      }
+
+      //右侧信息
+      .classMsg{
+        flex: 1.3;
+        padding-left: 5%;
+        position: relative;
+
+        >h4{
+          font-size: 24px;
+          line-height: 50px;
+          font-weight: 400;
+        }
+
+        //主讲人
+        >p{
+          font-size: 20px;
+          color: rgb(135,135,135);
+          margin-bottom: 40px;
+        }
+
+        >span{
+          display: block;
+          font-size: 18px;
+          font-weight: 300;
+          color: rgb(135,135,135);
+
+        }
+
+        //按钮
+        >.el-button{
+          background-color: #3A71A8;
+          font-weight: 300;
+          font-size: 16px;
+          position: absolute;
+          bottom: 30px;
+        }
+
+      }
+
+    }
+
+
+
+
+  }
+
+}
