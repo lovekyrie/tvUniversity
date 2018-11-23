@@ -45,7 +45,7 @@
             <div class="pastCourse">
                 <div class="title">
                     <h3>往期课程</h3>
-                    <a href="#">查看更多 ></a>
+                    <a href="previousCourse.html?name=previous">查看更多 ></a>
                 </div>
                 <ul>
                     <li v-for="(item,index) in pastCourse" :key="index" @click="toCourseDetail(item.prodClassPk,item.statNm,item.nm)">

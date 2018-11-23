@@ -1,4 +1,4 @@
- require ('assets/css/index.less');
+require ('assets/css/index.less');
 require('assets/css/common.css');
 
 // require ('assets/css/reset.css');

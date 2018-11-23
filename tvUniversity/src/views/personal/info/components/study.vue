@@ -17,7 +17,7 @@
                     <td>{{item.learningStar}}</td>
                     <td>{{item.statNm}}</td>
                     <td v-if="item.statNm==='已学'" @click="toDetail(item.prodClassPk,'再次学习',item.nm)">再次学习</td>
-                    <!-- <td v-else-if="item.statNm==='在学'"  @click="toDetail(item.prodClassPk,'继续学习',item.nm)">继续学习</td> -->
+                    <td v-else-if="item.statNm==='在学'"  @click="toDetail(item.prodClassPk,'继续学习',item.nm)">继续学习</td>
                     <td v-else  @click="toDetail(item.prodClassPk,'开始学习',item.nm)">开始学习</td>
                 </tr>
             </tbody>

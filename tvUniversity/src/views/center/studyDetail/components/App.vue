@@ -148,12 +148,23 @@ export default {
       player.playlist(newArr);
       player.playlistUi();
 
-      player.on('playlistitem', function() {
+      player.on('ended',()=>{
+        
+        if(player.playlist.nextIndex()==newArr.length-1){
 
-         if(newArr[newArr.length-1]==player.playlist.last()){
-           console.log('1111')
-         }
-      });
+          let param={
+            prodClassPk: this.classPk
+          }
+          this.until.post('/prod/supp/end',param).then(
+            res=>{
+              if(res.status==='200'){
+                console.log('课程学习完成')
+              }
+            },
+            err=>{}
+          )
+        }
+      })
 
       if (!this.ifLogin) {
         player.on("timeupdate", () => {
@@ -336,7 +347,7 @@ export default {
         query.buildOrderClause('crtTm','asc')
         let param = query.getParam();
         param.ClassPk=this.classPk
-        
+
         this.until.get("/prod/ware/page", param).then(res => {
           if (res.status === "200") {
             //拼接视频格式

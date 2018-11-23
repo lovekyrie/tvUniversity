@@ -68,6 +68,24 @@ export default {
       let newArr = await this.getVideoList();
       player.playlist(newArr);
       player.playlistUi();
+
+      player.on('ended',()=>{
+        
+        if(player.playlist.nextIndex()==newArr.length-1){
+
+          let param={
+            prodClassPk: this.classPk
+          }
+          this.until.post('/prod/supp/end',param).then(
+            res=>{
+              if(res.status==='200'){
+                console.log('课程学习完成')
+              }
+            },
+            err=>{}
+          )
+        }
+      })
       this.signList = await this.groupSignList();
     },
      getPlayList() {

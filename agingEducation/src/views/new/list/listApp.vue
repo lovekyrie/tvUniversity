@@ -9,7 +9,7 @@
                         href="../home/index.html">首页</a><span>&nbsp;&nbsp;&gt;&nbsp;&nbsp;</span><a>新闻动态</a></div>
 
                 <div class="content">
-                    <a :href="'./imglist.html?id='+item.sysNewsPk" v-for="item in items" class="clearfix">
+                    <a :href="'./imglist.html?id='+item.sysNewsPk" v-for="(item,index) in items" :key="index" class="clearfix">
                         <img :src="item.imgUrl" alt="">
                         <div class="info">
                             <h2>{{item.nm}}</h2>

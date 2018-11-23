@@ -4,7 +4,7 @@
         <myNav :type="name"></myNav>
         <div class="content">
             <div class="pos">
-                 首页 > 当前课程
+                 首页 > 往期课程
             </div>
             <table>
                 <thead>
@@ -105,11 +105,11 @@ export default {
       if (this.ifLogin) {
         return new Promise((resolve, reject) => {
           let query = new this.Query();
-          query.buildWhereClause('statNm','已学','EQ');
+          // query.buildWhereClause('statNm','已学','EQ');
           query.buildPageClause(this.pageNo, this.pageSize);
 
           let param = query.getParam();
-          this.until.get("/prod/cls/page", param).then(
+          this.until.get("/prod/cls/learPage", param).then(
             res => {
               if (res.status === "200") {
                 resolve(res);
