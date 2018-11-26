@@ -9,7 +9,7 @@
                         href="../home/index.html">首页</a><span>&nbsp;&nbsp;&gt;&nbsp;&nbsp;</span><a>新闻动态</a></div>
 
                 <div class="content">
-                    <a :href="'./imglist.html?id='+item.sysNewsPk" v-for="(item,index) in items" :key="index" class="clearfix">
+                    <a :href="'./imglist.html?id='+item.televNewsPk" v-for="(item,index) in items" :key="index" class="clearfix">
                         <img :src="item.imgUrl" alt="">
                         <div class="info">
                             <h2>{{item.nm}}</h2>
@@ -62,7 +62,7 @@
         query.buildWhereClause('catCd', '30010.160');
         query.buildPageClause(this.currentPage, this.pageSize);
         let param = query.getParam();
-        this.until.get('/sys/news/page', param)
+        this.until.get('/telev/news/page', param)
           .then(res => {
             if(res.status == 200){
               this.items = res.data.items;

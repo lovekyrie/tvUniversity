@@ -35,7 +35,7 @@
     },
     methods: {
       getMsg() {
-        this.until.get('/sys/news/info/' + this.pk, {})
+        this.until.get('/telev/news/info/' + this.pk, {})
           .then(res => {
             if (res.status == 200) {
               this.infoMsg = res.data;

@@ -26,10 +26,10 @@
                     <div class="mainLeft">
                         <div class="leftTitle">
                             <h3>校园动态</h3>
-                            <a href="#">查看更多 ></a>
+                            <a href="../phyEducation/dynamics.html">查看更多 ></a>
                         </div>
                         <!--校园动态-->
-                        <div class="leftContent" v-for="act in acts1">
+                        <div class="leftContent" v-for="(act,index) in acts1" :key="index">
                             <div class="contentImg">
                                 <img :src="act.url">
                             </div>
@@ -43,10 +43,10 @@
                     <div class="mainRight">
                         <div class="rightTitle">
                             <h3>精彩活动</h3>
-                            <a href="#">查看更多 ></a>
+                            <a href="../phyEducation/excitingAct.html">查看更多 ></a>
                         </div>
                         <!--精彩活动-->
-                        <div class="rightContent" v-for="act in acts2">
+                        <div class="rightContent" v-for="(act,index) in acts2" :key="index">
                             <div class="contentImg">
                                 <img :src="act.url">
                             </div>
@@ -70,31 +70,31 @@
                     <!--成果交流-->
                     <div class="production">
                         <h4>成果交流</h4>
-                        <ul v-for="item in production">
+                        <ul v-for="(item,index) in production" :key="index">
                             <li><a href="#"> {{item.name}} {{item.title}}</a></li>
                             <p>作者：{{item.author}}</p>
                             <p style="color: rgb(155,155,155)">{{item.time}}</p>
                         </ul>
-                        <p><a href="#">查看更多 ></a> </p>
+                        <p><a href="../achievementsCom/subAch.html?type=实体办学">查看更多 ></a> </p>
                     </div>
                     <!--荣誉展厅-->
                     <div class="honor">
                         <h4>荣誉展厅</h4>
-                        <div v-for="item in honor" style="margin-bottom: 30px">
+                        <div v-for="(item,index) in honor" :key="index" style="margin-bottom: 30px" >
                             <img :src="item.honorImg" alt="图片">
                             <span>{{item.honorTitle}}</span>
                         </div>
-                        <p><a href="#">查看更多 ></a> </p>
+                        <p><a href="../phyEducation/honorHall_P.html">查看更多 ></a> </p>
                     </div>
                     <!--课表栏目-->
                     <div class="classes">
-                        <h4>课表栏目</h4>
+                        <h4>课程栏目</h4>
                         <ul>
-                            <li v-for="item in classes">
+                            <li v-for="(item,index) in classes" :key="index">
                                 {{item.cName}}&nbsp;&nbsp;&nbsp;&nbsp;{{item.cTitle}}
                             </li>
                         </ul>
-                        <p><a href="#">查看更多 ></a> </p>
+                        <p><a href="../phyEducation/classes.html">查看更多 ></a> </p>
                     </div>
                 </div>
 

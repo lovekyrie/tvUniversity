@@ -16,7 +16,7 @@
                 </div>
 
                 <!--新闻-->
-                <div class="news" v-for="item in news">
+                <div class="news" v-for="(item,index) in news" :key="index">
                     <div class="newsImg">
                         <img :src="item.pic">
                     </div>
@@ -37,7 +37,7 @@
                             background
                             :total="totalNews"
                             next-text="下一页">
-                        <span style="margin-left: 10px">共{{totalNews}}条记录，共{{totalNews/5}}页</span>
+                        <span style="margin-left: 10px">共{{totalNews}}条记录，共{{parseInt(totalNews/5)}}页</span>
 
                     </el-pagination>
 

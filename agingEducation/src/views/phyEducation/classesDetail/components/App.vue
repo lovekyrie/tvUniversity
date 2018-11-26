@@ -8,11 +8,11 @@
             <div class="honorList">
                 <!--列表顶部-->
                 <div class="honorTop">
-                    <span><a href="#">首页</a></span>
+                    <span><a href="../home/index.html">首页</a></span>
                     <span class="topLine"> > </span>
-                    <span><a href="#">实体办学</a></span>
+                    <span><a href="../phyEducation/phyeducationMain.html">实体办学</a></span>
                     <span class="topLine"> > </span>
-                    <span><a href="#">课程栏目</a></span>
+                    <span><a href="../phyEducation/classes.html">课程栏目</a></span>
                     <span class="topLine"> > </span>
                     <span><a href="#">课程栏目详情</a></span>
                 </div>

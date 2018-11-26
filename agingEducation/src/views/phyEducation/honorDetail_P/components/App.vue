@@ -8,11 +8,11 @@
             <div class="honorList">
                 <!--列表顶部-->
                 <div class="honorTop">
-                    <span><a href="#">首页</a></span>
+                    <span><a href="../home/index.html">首页</a></span>
                     <span class="topLine"> > </span>
-                    <span><a href="#">实体办学</a></span>
+                    <span><a href="../phyEducation/phyeducationMain.html">实体办学</a></span>
                     <span class="topLine"> > </span>
-                    <span><a href="#">荣誉展厅</a></span>
+                    <span><a href="../phyEducation/honorHall_P.html">荣誉展厅</a></span>
                     <span class="topLine"> > </span>
                     <span><a href="#">资讯详情</a></span>
                 </div>
@@ -20,23 +20,23 @@
                 <div class="honorMain">
                     <!--标题-->
                     <span class="honorTitle">
-                        {{honorTitle}}
+                        {{info.titleNm}}
                     </span>
                     <!--时间来源副标题-->
                     <div class="honorTime">
-                        <span style="margin-right: 90px">{{honorTime}}</span>
-                        <span>来源：{{honorSource}}</span>
+                        <span style="margin-right: 90px">{{info.crtTm}}</span>
+                        <span>来源：{{info.source}}</span>
                     </div>
                     <!--图片-->
                     <div class="honorImg">
-                        <img :src="honorImg">
+                        <img :src="info.imgUrl">
                     </div>
                     <!--文章标题-->
-                    <span class="artTitle">{{artTitle}}</span>
+                    <span class="artTitle">{{info.imgNm}}</span>
 
                     <!--文章内容-->
                     <div class="honorArticle">
-                        <span>{{honorArticle}}</span>
+                        <span v-html="info.cont"></span>
                     </div>
 
                 </div>
@@ -55,20 +55,32 @@
     export default {
         data() {
             return {
-                honorTitle: '宁波电大获得2015年度全国优秀校外学习中心',
-                honorTime: '2017年9月30日 12:00',
-                honorSource: '宁波电大',
-                artTitle: '跟着外教老师学说英语',
-                honorArticle: '老年人学习老年人学习。老年人学习老年人学习，老年人学习老年人学习' +
-                '老年人学习老年人学习老年人学习。老年人学习老年人学习老年人学习，老年人学习老年人学习。',
-                honorImg:require('../img/荣誉展厅详情.png'),
+                honorId:"",
+                info:{},
             }
         },
         components: {
             ageHead,
             ageFoot,
         },
-        methods: {},
+        mounted(){
+
+          this.honorId=this.until.getQueryString('id')
+          this.getHonorInfo()
+        },
+        methods: {
+          getHonorInfo(){
+
+            this.until.get('/telev/news/info/'+this.honorId).then(
+              res=>{
+                if(res.status==='200'){
+                  this.info=res.data;
+                }
+              },
+              err=>{}
+            )
+          }
+        },
     }
 </script>
 

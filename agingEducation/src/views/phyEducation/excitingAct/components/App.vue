@@ -8,9 +8,9 @@
             <div class="writingList">
                 <!--列表顶部-->
                 <div class="writingTop">
-                    <span><a href="#">首页</a></span>
+                    <span><a href="../home/index.html">首页</a></span>
                     <span class="topLine"> > </span>
-                    <span><a href="#">实体办学</a></span>
+                    <span><a href="../phyEducation/phyeducationMain.html">实体办学</a></span>
                     <span class="topLine"> > </span>
                     <span><a href="#">精彩活动</a></span>
                 </div>
@@ -31,16 +31,9 @@
                                 <button class="actBtn" :style="{backgroundColor: act.btnColor}">{{act.btn}}</button>
                                 </span>
                             </div>
-
                         </div>
-
-
                     </el-col>
-
-
                 </el-row>
-
-
 
                 <!--底部分页按钮-->
                 <div class="nextButton">
@@ -54,9 +47,7 @@
                             :next-text="newsNext"
                     >
                         <span style="margin-left: 10px">共{{totalNews}}条记录，共{{totalNews/5}}页</span>
-
                     </el-pagination>
-
                 </div>
             </div>
         </div>

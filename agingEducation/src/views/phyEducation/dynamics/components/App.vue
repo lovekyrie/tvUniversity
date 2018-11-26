@@ -16,7 +16,7 @@
                 </div>
 
                 <!--新闻-->
-                <div class="news" v-for="item in news">
+                <div class="news" v-for="(item,index) in news" :key="index">
                     <div class="newsImg">
                         <img :src="item.pic">
                     </div>
