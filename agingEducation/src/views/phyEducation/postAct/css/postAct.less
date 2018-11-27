@@ -45,12 +45,18 @@
       //活动图片
       .contentImg {
         margin-right: 50px;
-
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 440px;
+        height: 440px;
         > img {
-          width: 100%;
-          max-width: 440px;
+          width: auto;
+          height: auto;
+          max-width: 100%;
+          max-height: 100%;
+          vertical-align: middle;
         }
-
       }
 
       //活动描述
@@ -110,14 +116,40 @@
 
     //  按钮
       .subBtn{
+        margin-top: 20px;
         text-align: right;
-
         >button{
           width: 28%;
           height: 35px;
           border-radius: 3px;
           border: 1px solid rgb(225,225,225);
         }
+      }
+      .avatar-uploader .el-upload {
+        border: 1px dashed #d9d9d9;
+        border-radius: 6px;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        input{
+          display: none;
+        }
+      }
+      .avatar-uploader .el-upload:hover {
+        border-color: #409EFF;
+      }
+      .avatar-uploader-icon {
+        font-size: 28px;
+        color: #8c939d;
+        width: 178px;
+        height: 178px;
+        line-height: 178px;
+        text-align: center;
+      }
+      .avatar {
+        width: 178px;
+        height: 178px;
+        display: block;
       }
 
     }

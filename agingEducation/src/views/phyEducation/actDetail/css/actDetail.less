@@ -45,10 +45,17 @@
       //活动图片
       .contentImg {
         margin-right: 50px;
-
+        width: 440px;
+        height: 440px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         > img {
-          width: 100%;
-          max-width: 440px;
+          width: auto;
+          height: auto;
+          max-width: 100%;
+          max-height: 100%;
+          vertical-align: middle;
         }
 
       }
@@ -69,16 +76,16 @@
         }
 
         //  发布作品
-        > a {
-          display: block;
+        button {
           text-align: center;
           width: 130px;
           height: 40px;
           line-height: 40px;
           background-color: rgb(58, 113, 168);
           font-size: 18px;
-          color: white;
+          color:#fff;
           border-radius: 4px;
+          border: 0;
         }
       }
     }

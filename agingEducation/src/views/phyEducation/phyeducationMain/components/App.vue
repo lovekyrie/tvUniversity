@@ -8,7 +8,7 @@
             <div class="mainList">
                 <!--列表顶部-->
                 <div class="mainTop">
-                    <span><a href="#">首页</a></span>
+                    <span><a href="../home/index.html">首页</a></span>
                     <span class="topLine"> > </span>
                     <span><a href="#">实体办学</a></span>
                 </div>
@@ -43,7 +43,7 @@
                     <div class="mainRight">
                         <div class="rightTitle">
                             <h3>精彩活动</h3>
-                            <a href="../phyEducation/excitingAct.html">查看更多 ></a>
+                            <a href="../phyEducation/excitingAct.html?type=实体办学">查看更多 ></a>
                         </div>
                         <!--精彩活动-->
                         <div class="rightContent" v-for="(act,index) in acts2" :key="index">
