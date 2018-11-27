@@ -9,17 +9,17 @@
         <!--列表顶部-->
         <div class="mainTop">
           <span>
-            <a href="#">首页</a>
+            <a href="../home/index.html">首页</a>
           </span>
           <span class="topLine">></span>
           <template v-if="showType">
             <span>
-              <a href="#">实体办学</a>
+              <a href="../phyEducation/phyeducationMain.html">实体办学</a>
             </span>
             <span class="topLine">></span>
           </template>
           <span>
-            <a href="#">精彩活动</a>
+            <a href="../phyEducation/excitingAct.html">精彩活动</a>
           </span>
           <span class="topLine">></span>
           <span>
