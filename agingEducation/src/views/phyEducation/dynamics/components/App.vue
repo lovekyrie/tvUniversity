@@ -1,108 +1,148 @@
 <template>
-    <div id="container">
-        <!--顶部-->
-        <ageHead></ageHead>
-        <!--页面主体部分-->
-        <div id="main">
-            <!--新闻列表-->
-            <div class="newsList">
-                <!--列表顶部-->
-                <div class="newsTop">
-                    <span><a href="#">首页</a></span>
-                    <span class="topLine"> > </span>
-                    <span><a href="#">实体办学</a></span>
-                    <span class="topLine"> > </span>
-                    <span><a href="#">校园动态</a></span>
-                </div>
-
-                <!--新闻-->
-                <div class="news" v-for="(item,index) in news" :key="index">
-                    <div class="newsImg">
-                        <img :src="item.pic">
-                    </div>
-                    <div class="newsDes">
-                        <p class="newsTitle"><a href="#">{{item.newsTitle}}</a></p>
-                        <span class="newsTime">{{item.newsTime}}</span>
-                        <span class="newsSource">来源：{{item.newsSource}}</span>
-                    </div>
-                </div>
-
-                <!--底部分页按钮-->
-                <div class="nextButton">
-                    <el-pagination
-                            @current-change="handleCurrentChange"
-                            :current-page.sync="currentPage"
-                            :page-size="5"
-                            layout="pager,next,slot"
-                            background
-                            :total="totalNews"
-                            next-text="下一页">
-                        <span style="margin-left: 10px">共{{totalNews}}条记录，共{{totalNews/5}}页</span>
-
-                    </el-pagination>
-
-                </div>
-            </div>
+  <div id="container">
+    <!--顶部-->
+    <ageHead></ageHead>
+    <!--页面主体部分-->
+    <div id="main">
+      <!--新闻列表-->
+      <div class="newsList">
+        <!--列表顶部-->
+        <div class="newsTop">
+          <span>
+            <a href="#">首页</a>
+          </span>
+          <span class="topLine">></span>
+          <span>
+            <a href="#">实体办学</a>
+          </span>
+          <span class="topLine">></span>
+          <span>
+            <a href="#">校园动态</a>
+          </span>
         </div>
 
-        <!--底部-->
-        <ageFoot></ageFoot>
+        <!--新闻-->
+        <div class="news" v-for="item in newList" :key="item.televNewsPk" @click="toNewDetail(item.televNewsPk)">
+          <div class="newsImg">
+            <img :src="item.imgUrl">
+          </div>
+          <div class="newsDes">
+            <p class="newsTitle">
+              <a href="#">{{item.titleNm}}</a>
+            </p>
+            <span class="newsTime">{{item.crtTm}}</span>
+            <span class="newsSource">来源：{{item.source}}</span>
+          </div>
+        </div>
+
+        <!--底部分页按钮-->
+        <div class="nextButton">
+          <el-pagination
+            @current-change="handleCurrentChange"
+            :current-page.sync="currentPage"
+            :page-size="pageSize"
+            layout="pager,next,slot"
+            background
+            :total="total"
+            next-text="下一页"
+          >
+            <span style="margin-left: 10px">共{{total}}条记录，共{{page}}页</span>
+          </el-pagination>
+        </div>
+      </div>
     </div>
+
+    <!--底部-->
+    <ageFoot></ageFoot>
+  </div>
 </template>
 
 <script>
-    import ageHead from 'components/ageHead';
-    import ageFoot from 'components/ageFoot';
+import ageHead from "components/ageHead";
+import ageFoot from "components/ageFoot";
 
-    export default {
-        data() {
-            return {
-                news:[
-                    {
-                        pic:require('../img/实体办学2.png'),
-                        newsTitle: '班级全员满额，宁波老年大学一票难求怎么破？',
-                        newsTime: '2017年9月30日',
-                        newsSource: '宁波电视大学',
-                    },{
-                        pic:require('../img/实体办学2.png'),
-                        newsTitle: '班级全员满额，宁波老年大学一票难求怎么破？',
-                        newsTime: '2017年9月30日',
-                        newsSource: '宁波电视大学',
-                    },{
-                        pic:require('../img/实体办学2.png'),
-                        newsTitle: '班级全员满额，宁波老年大学一票难求怎么破？',
-                        newsTime: '2017年9月30日',
-                        newsSource: '宁波电视大学',
-                    },{
-                        pic:require('../img/实体办学2.png'),
-                        newsTitle: '班级全员满额，宁波老年大学一票难求怎么破？',
-                        newsTime: '2017年9月30日',
-                        newsSource: '宁波电视大学',
-                    },{
-                        pic:require('../img/实体办学2.png'),
-                        newsTitle: '班级全员满额，宁波老年大学一票难求怎么破？',
-                        newsTime: '2017年9月30日',
-                        newsSource: '宁波电视大学',
-                    },
-
-                ],
-                totalNews:15,
-                currentPage:1,
-            }
+export default {
+  data() {
+    return {
+      news: [
+        {
+          pic: require("../img/实体办学2.png"),
+          newsTitle: "班级全员满额，宁波老年大学一票难求怎么破？",
+          newsTime: "2017年9月30日",
+          newsSource: "宁波电视大学"
         },
-        components: {
-            ageHead,
-            ageFoot,
+        {
+          pic: require("../img/实体办学2.png"),
+          newsTitle: "班级全员满额，宁波老年大学一票难求怎么破？",
+          newsTime: "2017年9月30日",
+          newsSource: "宁波电视大学"
         },
-        methods: {
-            //当前页变动时
-            handleCurrentChange(val) {
-                console.log(`当前页: ${val}`);
-            }
+        {
+          pic: require("../img/实体办学2.png"),
+          newsTitle: "班级全员满额，宁波老年大学一票难求怎么破？",
+          newsTime: "2017年9月30日",
+          newsSource: "宁波电视大学"
         },
+        {
+          pic: require("../img/实体办学2.png"),
+          newsTitle: "班级全员满额，宁波老年大学一票难求怎么破？",
+          newsTime: "2017年9月30日",
+          newsSource: "宁波电视大学"
+        },
+        {
+          pic: require("../img/实体办学2.png"),
+          newsTitle: "班级全员满额，宁波老年大学一票难求怎么破？",
+          newsTime: "2017年9月30日",
+          newsSource: "宁波电视大学"
+        }
+      ],
+      newList: [],
+      total: 15,
+      pageSize: 5,
+      currentPage: 1
+    };
+  },
+  computed: {
+    page() {
+      return Math.floor((this.total - 1) / this.pageSize) + 1;
     }
+  },
+  components: {
+    ageHead,
+    ageFoot
+  },
+  mounted() {
+    this.getNewList();
+  },
+  methods: {
+    //当前页变动时
+    handleCurrentChange(val) {
+      this.currentPage = val;
+      this.getNewList();
+    },
+    getNewList(){
+
+      let query=new this.Query()
+      query.buildWhereClause('catCd','30010.170');
+      query.buildPageClause(this.currentPage,this.pageSize)
+
+      let param=query.getParam()
+      this.until.get('/telev/news/page',param).then(
+        res=>{
+          if(res.status==='200'){
+            this.newList=res.data.items;
+            this.total=res.page.total;
+          }
+        },
+        err=>{}
+      )
+    },
+    toNewDetail(pk){
+      window.location.href='./dynamicsDetail.html?id='+pk
+    }
+  }
+};
 </script>
 
 <style scoped>
-
 </style>

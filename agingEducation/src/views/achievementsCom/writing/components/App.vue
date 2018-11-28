@@ -10,36 +10,37 @@
                 <div class="writingTop">
                     <span><a href="#">首页</a></span>
                     <span class="topLine"> > </span>
-                    <span><a href="#">成果交流</a></span>
+                     <template v-if="showType">
+                      <span><a href="../phyEducation/phyeducationMain.html">实体办学</a></span>
+                      <span class="topLine"> > </span>
+                    </template>
+                    <span><a :href="'./subAch.html?type='+showType">成果交流</a></span>
                     <span class="topLine"> > </span>
                     <span><a href="#">文字集锦</a></span>
                 </div>
 
                 <!--书画-->
-                <div class="news" v-for="writing in writings">
+                <div class="news" v-for="writing in writeList" :key="writing.televGainPk" @click="toWriteDetail(writing.televGainPk)">
                     <div class="newsDes">
-                        <p class="newsTitle"><a href="#">· {{writing.Title}}</a></p>
-                        <span>&nbsp;&nbsp;&nbsp;{{writing.Source}}</span>
+                        <p class="newsTitle"><a href="#">· {{writing.titleNm}}</a></p>
+                        <span>&nbsp;&nbsp;&nbsp;{{writing.stuNm}}</span>
                         <span style="float: right">{{writing.author}}</span>
                     </div>
                 </div>
-
 
                 <!--底部分页按钮-->
                 <div class="nextButton">
                     <el-pagination
                             @current-change="handleCurrentChange"
                             :current-page.sync="currentPage"
-                            :page-size="5"
+                            :page-size="pageSize"
                             layout="pager,next,slot"
                             background=""
-                            :total="totalNews"
+                            :total="total"
                             :next-text="newsNext"
                     >
-                        <span style="margin-left: 10px">共{{totalNews}}条记录，共{{totalNews/5}}页</span>
-
+                        <span style="margin-left: 10px">共{{total}}条记录，共{{page}}页</span>
                     </el-pagination>
-
                 </div>
             </div>
         </div>
@@ -56,35 +57,23 @@
     export default {
         data() {
             return {
-                writings:[
-                    {
-                        Title: '班级全员满额，宁波老年大学一票难求怎么破？',
-                        Source: '舞蹈班',
-                        author:'风雨飘扬'
-                    },{
-                        Title: '班级全员满额，宁波老年大学一票难求怎么破？',
-                        Source: '舞蹈班',
-                        author:'风雨飘扬'
-                    },{
-                        Title: '班级全员满额，宁波老年大学一票难求怎么破？',
-                        Source: '舞蹈班',
-                        author:'风雨飘扬'
-                    },{
-                        Title: '班级全员满额，宁波老年大学一票难求怎么破？',
-                        Source: '舞蹈班',
-                        author:'风雨飘扬'
-                    },{
-                        Title: '班级全员满额，宁波老年大学一票难求怎么破？',
-                        Source: '舞蹈班',
-                        author:'风雨飘扬'
-                    },
-                ],
-
-
-                totalNews:15,
+                total:15,
+                pageSize:5,
                 currentPage:1,
-                newsNext:'下一页'
+                newsNext:'下一页',
+                showType:false,
+                writeList:[]
             }
+        },
+        computed:{
+          page(){
+            return Math.floor((this.total-1)/this.pageSize)+1
+          }
+        },
+        mounted(){
+          
+          this.showType=JSON.parse(this.until.getQueryString('type'))
+          this.getWriteList()
         },
         components: {
             ageHead,
@@ -93,7 +82,28 @@
         methods: {
             //当前页变动时
             handleCurrentChange(val) {
-                console.log(`当前页: ${val}`);
+              this.currentPage=val
+              this.getWriteList()
+            },
+            getWriteList(){
+
+              let query=new this.Query()
+              query.buildWhereClause('catNm','文字集锦','EQ')
+              query.buildPageClause(this.currentPage,this.pageSize)
+
+              let param=query.getParam()
+              this.until.get('/telev/gain/page',param).then(
+                res=>{
+                  if(res.status==='200'){
+                    this.writeList=res.data.items
+                    this.total=res.page.total
+                  }
+                },
+                err=>{}
+              )
+            },
+            toWriteDetail(pk){
+              window.location.href='./writingDetail.html?id='+pk+'&type='+this.showType
             }
         },
     }

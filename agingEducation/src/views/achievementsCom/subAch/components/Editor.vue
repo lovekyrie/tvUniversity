@@ -1,29 +1,33 @@
 <template>
-    <div>
-        <div ref="editor" style="text-align:left"></div>
-    </div>
+  <div>
+    <div ref="editor" style="text-align:left"></div>
+  </div>
 </template>
 
 <script>
-    import E from 'wangeditor'
+import E from "wangeditor";
 
-    export default {
-      name: 'editor',
-      data () {
-        return {
-          editorContent: ''
-        }
-      },
-      methods: {
-      },
-      mounted() {
-        var editor = new E(this.$refs.editor)
-        editor.customConfig.onchange = (html) => {
-          this.editorContent = html
-        }
-        editor.create()
-      }
+export default {
+  name: "editor",
+  data() {
+    return {
+      editorContent: ""
+    };
+  },
+  methods: {},
+  watch: {
+    editorContent() {
+      this.$emit("trigerSubmit", this.editorContent);
     }
+  },
+  mounted() {
+    var editor = new E(this.$refs.editor);
+    editor.customConfig.onchange = html => {
+      this.editorContent = html;
+    };
+    editor.create();
+  }
+};
 </script>
 
 <style scoped>

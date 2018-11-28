@@ -1,48 +1,58 @@
 <template>
-    <div id="container">
-        <!--顶部-->
-        <ageHead></ageHead>
-        <!--页面主体部分-->
-        <div id="main">
-            <!--列表-->
-            <div class="writingList">
-                <!--列表顶部-->
-                <div class="writingTop">
-                    <span><a href="#">首页</a></span>
-                    <span class="topLine"> > </span>
-                    <span><a href="#">成果交流</a></span>
-                    <span class="topLine"> > </span>
-                    <span><a href="#">文字集锦</a></span>
-                    <span class="topLine"> > </span>
-                    <span><a href="#">文字集锦详情</a></span>
-                </div>
-
-                <div class="honorMain">
-                    <!--标题-->
-                    <span class="honorTitle">
-                        {{honorTitle}}
-                    </span>
-                    <!--时间来源副标题-->
-                    <div class="honorTime">
-                        <span>班级：{{classes}}</span>
-                        <span>作者：{{author}}</span>
-                        <span>{{honorTime}}</span>
-                        <span>来源：{{honorSource}}</span>
-
-                    </div>
-
-                    <!--文章内容-->
-                    <div class="honorArticle">
-                        <span>{{honorArticle}}</span>
-                    </div>
-
-                </div>
-            </div>
+  <div id="container">
+    <!--顶部-->
+    <ageHead></ageHead>
+    <!--页面主体部分-->
+    <div id="main">
+      <!--列表-->
+      <div class="writingList">
+        <!--列表顶部-->
+        <div class="writingTop">
+          <span>
+            <a href="../home/index.html">首页</a>
+          </span>
+          <span class="topLine">></span>
+          <template v-if="showType">
+            <span>
+              <a href="../phyEducation/phyeducationMain.html">实体办学</a>
+            </span>
+            <span class="topLine">></span>
+          </template>
+          <span>
+            <a :href="'../achievementsCom/subAch.html?type='+showType">成果交流</a>
+          </span>
+          <span class="topLine">></span>
+          <span>
+            <a :href="'./writing.html?type='+showType">文字集锦</a>
+          </span>
+          <span class="topLine">></span>
+          <span>
+            <a href="#">文字集锦详情</a>
+          </span>
         </div>
 
-        <!--底部-->
-        <ageFoot></ageFoot>
+        <div class="honorMain">
+          <!--标题-->
+          <span class="honorTitle">{{honorTitle}}</span>
+          <!--时间来源副标题-->
+          <div class="honorTime">
+            <span>班级：{{writeInfo.stuNm}}</span>
+            <span>作者：{{writeInfo.author}}</span>
+            <span>{{crtTime}}</span>
+            <span>来源：{{writeInfo.source}}</span>
+          </div>
+
+          <!--文章内容-->
+          <div class="honorArticle">
+            <p v-html="writeInfo.cont"></p>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <!--底部-->
+    <ageFoot></ageFoot>
+  </div>
 </template>
 
 <script>
@@ -52,22 +62,40 @@
     export default {
         data() {
             return {
-                honorTitle: '宁波电大获得2015年度全国优秀校外学习中心',
-                classes:'舞蹈班',
-                author:'风雨飘扬',
-                honorTime: '2017年9月30日',
-                honorSource: '宁波电大',
-                honorArticle: '校园并不是年轻人的专利',
+                showType:false,
+                writeId:'',
+                crtTime:"",
+                writeInfo:{}
             }
         },
         components: {
             ageHead,
             ageFoot,
         },
-        methods: {},
+        mounted(){
+          this.showType=JSON.parse(this.until.getQueryString('type'))   
+          this.writeId=this.until.getQueryString('id')
+
+          this.getWriteInfo()
+        },
+        methods: {
+
+          getWriteInfo(){
+
+            this.until.get('/telev/gain/info/'+this.writeId).then(
+              res=>{
+                if(res.status==='200'){
+                  this.writeInfo=res.data
+                  let time=this.until.formatDate(res.data.crtTm)
+                  this.crtTime=time.year+'年'+time.month+'月'+time.day+'日'
+                }
+              },
+              err=>{}
+            )
+          }
+        },
     }
 </script>
 
 <style scoped>
-
 </style>

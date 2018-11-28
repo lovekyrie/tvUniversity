@@ -23,7 +23,7 @@
                     <div class="newsDes">
                         <p class="newsTitle"><a href="#">{{item.titleNm}}</a></p>
                         <span class="newsTime">{{item.crtTm}}</span>
-                        <span class="newsSource">来源：{{item.rmks}}</span>
+                        <span class="newsSource">来源：{{item.source}}</span>
                     </div>
                 </div>
                 <!--底部分页按钮-->

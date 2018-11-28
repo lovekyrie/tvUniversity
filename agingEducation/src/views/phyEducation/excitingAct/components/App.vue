@@ -97,7 +97,7 @@
         },
         mounted(){
 
-          this.showType=this.until.getQueryString('type')==='实体办学'?true:false
+          this.showType=JSON.parse(this.until.getQueryString('type'))
           this.getActList()
         },
         methods: {

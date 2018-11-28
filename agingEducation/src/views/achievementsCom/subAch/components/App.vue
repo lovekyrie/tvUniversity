@@ -6,9 +6,9 @@
         <div id="main">
             <!--成果分类按钮-->
             <div class="selectBtn">
-                <a href="./writing.html">文字集锦</a>
-                <a href="./painting.html">书画摄影</a>
-                <a href="./actVideo.html">活力视频</a>
+                <button @click="toWrite">文字集锦</button>
+                <button @click="toPaint">书画摄影</button>
+                <button @click="toVideo">活力视频</button>
             </div>
             <!--列表-->
             <div class="achList">
@@ -53,15 +53,13 @@
 
                     <div class="editor">
                         <h3>发表成果交流</h3>
-                        <editor></editor>
+                        <editor @trigerSubmit="getEditorInfo"></editor>
                         <el-row>
                           <el-button @click="addResultCom">发布</el-button>
                           <el-button>取消</el-button>
                         </el-row>
-
                     </div>
                 </div>
-
             </div>
         </div>
 
@@ -83,20 +81,33 @@ export default {
         author: "",
         stuNm: "",
         catNm: "",
-        source: ""
+        source: "",
+        cont:""
       },
       showType:false
     };
   },
   mounted(){
-    this.showType=this.until.getQueryString('type')==='实体办学'?true:false
+    this.showType=JSON.parse(this.until.getQueryString('type'))
   },
   methods: {
+    getEditorInfo(content){
+      this.form.cont=content
+    },
+    toWrite(){
+      window.location.href='./writing.html?type='+this.showType
+    },
+    toPaint(){
+      window.location.href='./painting.html?type='+this.showType
+    },
+    toVideo(){
+      window.location.href='./actVideo.html?type='+this.showType
+    },
     //发布成果交流接口
     addResultCom() {
 
       let paramObj = Object.assign(this.form);
-      this.until.postCard("/telev/gain/edit", JSON.stringify(paramObj)).then(
+      this.until.postCard("/telev/gain/add", JSON.stringify(paramObj)).then(
         res => {
           if (res.status === "200") {
             this.$message({
