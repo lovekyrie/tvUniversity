@@ -31,7 +31,7 @@
         </map>
 
         <!--<p><a href="../apply/rule.html">在线报名</a><a href="../study/course.html">在线学习</a><a href="../center/center.html">个人空间</a><a href="./naire.html">问卷调查</a></p>-->
-        <p><a href="../apply/rule.html">在线报名</a><a href="../apply/pay.html">在线缴费</a><a href='javascript:void(0)' @click="building">在线学习</a><a href='javascript:void(0)' @click="building">个人空间</a><a href='javascript:void(0)' @click="building">问卷调查</a></p>
+        <p><a href="../apply/rule.html">在线报名</a><a href="../apply/pay.html">在线缴费</a></p>
       </div>
     </div>
     <ageFoot></ageFoot>

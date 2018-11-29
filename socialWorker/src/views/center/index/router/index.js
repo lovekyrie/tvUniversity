@@ -40,20 +40,16 @@ export default new VueRouter({
       component: aboutMe
     },
     {
-      path: '/signup',
-      component: signUp
-    },
-    {
-      path: '/signupdetail',
-      component: signUpDetail
-    },
-    {
       path: '/study',
       component: study
     },
     {
       path: '/studyDetail',
       component: studyDetail
+    },
+    {
+      path:'/online',
+      component:onlineRegister
     },
     {
       path:'/personal',

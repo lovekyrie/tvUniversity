@@ -36,6 +36,7 @@
           <div class="contentDes">
             <h3>{{actInfo.titleNm}}</h3>
             <p>主办方：{{actInfo.sponsor}}</p>
+            <p>地点：{{actInfo.address}}</p>
             <p style="margin-bottom: 100px">
               <span style="color:red;">{{actInfo.haveNum}}</span> 人参与
             </p>

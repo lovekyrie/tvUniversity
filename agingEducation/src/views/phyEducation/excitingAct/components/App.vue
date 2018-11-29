@@ -36,9 +36,9 @@
                 </a>
                 <span>时间：{{act.startTm}}&nbsp;~&nbsp;{{act.endTm}}</span>
                 <span>地点：{{act.address}}</span>
-                <span>主办方：{{act.source}}</span>
+                <span>主办方：{{act.sponsor}}</span>
                 <span style="margin-top: 14px;line-height: 16px">
-                  {{act.sponsor}}人参与
+                  {{act.haveNum}}人参与
                   <button
                     class="actBtn"
                     @click="toDetail(act.televDoingPk)"

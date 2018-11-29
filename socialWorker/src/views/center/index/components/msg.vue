@@ -61,20 +61,12 @@ export default {
   mounted() {},
   methods: {
     //跳转到详情页面
-    toDetail(classPk) {
-      this.$router.push({
-        path: "/studyDetail",
-        query: {
-          classPk: classPk
-        }
-      });
-    },
     handleCommand(command) {
       this.address = command;
     },
     toMsgDetail(ipPk){
       this.$router.push({
-        path:'/msgdetail',
+        path:'msgdetail',
         query:{
           ipPk:ipPk
         }

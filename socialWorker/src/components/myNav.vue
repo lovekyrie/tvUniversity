@@ -19,7 +19,7 @@ export default {
         {
           ID: 2,
           content: "在线报名",
-          link: "/signup"
+          link: "/online"
         },
         {
           ID: 3,

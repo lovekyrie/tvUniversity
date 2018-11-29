@@ -12,8 +12,8 @@
                     <a :href="'./imglist.html?id='+item.televNewsPk" v-for="(item,index) in items" :key="index" class="clearfix">
                         <img :src="item.imgUrl" alt="">
                         <div class="info">
-                            <h2>{{item.nm}}</h2>
-                            <h3>{{item.crtTm}} <span>来源：{{item.rmks}}</span></h3>
+                            <h2>{{item.titleNm}}</h2>
+                            <h3>{{item.crtTm}} <span>来源：{{item.source}}</span></h3>
                         </div>
                     </a>
                 </div>

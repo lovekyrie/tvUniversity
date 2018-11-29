@@ -58,7 +58,7 @@ export default {
           src:signlog,
           title:'签到记录',
           content:'查看更多签到',
-          link:'singlog'
+          link:'sing'
         },
         {
           src:certificate,

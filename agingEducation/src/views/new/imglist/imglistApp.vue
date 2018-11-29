@@ -6,9 +6,9 @@
                     href="./list.html">新闻动态</a><span>&nbsp;&nbsp;&gt;&nbsp;&nbsp;</span><a>资讯详情</a>
             </div>
             <div class="detail">
-                <h3>{{infoMsg.nm}}</h3>
+                <h3>{{infoMsg.titleNm}}</h3>
                 <p class="msg-bar">
-                    <span>作者：{{infoMsg.author}}</span><span>{{infoMsg.crtTm}}</span><span>来源：{{infoMsg.rmks}}</span></p>
+                    <span>作者：{{infoMsg.author}}</span><span>{{infoMsg.crtTm}}</span><span>来源：{{infoMsg.source}}</span></p>
                 <div class="c-img"><img :src='infoMsg.imgUrl'></div>
                 <div class="c-content" v-html="infoMsg.cont"></div>
             </div>
@@ -39,7 +39,6 @@
           .then(res => {
             if (res.status == 200) {
               this.infoMsg = res.data;
-//              $('.c-content').text(res.data.cont);
             }
           })
       }
