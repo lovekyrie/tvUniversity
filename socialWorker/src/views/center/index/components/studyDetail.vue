@@ -1,6 +1,6 @@
 <template>
     <div id="studyDetail">
-       <div class="pos">
+       <div class="nav">
            首页 > 当前学习 >课程内容
         </div>
         <div class="top">
@@ -72,11 +72,13 @@ export default {
 <style lang="less" scoped>
 #studyDetail {
   padding-bottom: 30px;
-  .pos {
-    width: 100%;
+  .nav {
+    width: 1200px;
+    margin: 0 auto;
     color: #999;
     font-size: 24px;
     line-height: 80px;
+    border-bottom: 1px solid #e1e1e1;
   }
   .top {
     width: 900px;

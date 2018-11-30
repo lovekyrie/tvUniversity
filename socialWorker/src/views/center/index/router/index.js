@@ -20,20 +20,24 @@ import project from '../components/project.vue'
 import registerDetail from '../components/registerDetail.vue'
 import registerForm from '../components/registerForm.vue'
 import sign from '../components/sign.vue'
+import newDetail from '../components/newDetail.vue'
 
 export default new VueRouter({
-  routes: [
-    {
-      path:'/',
-      redirect:'/center',
+  routes: [{
+      path: '/',
+      redirect: '/center',
     },
     {
-      path:'*',
-      redirect:'/center'
+      path: '*',
+      redirect: '/center'
     },
     {
       path: '/center',
       component: center
+    },
+    {
+      path: '/newdetail',
+      component: newDetail
     },
     {
       path: '/aboutme',
@@ -48,14 +52,13 @@ export default new VueRouter({
       component: studyDetail
     },
     {
-      path:'/online',
-      component:onlineRegister
+      path: '/online',
+      component: onlineRegister
     },
     {
-      path:'/personal',
-      component:personal,
-      children:[
-        {
+      path: '/personal',
+      component: personal,
+      children: [{
           path: 'info',
           component: info
         }, //个人中心
@@ -80,9 +83,9 @@ export default new VueRouter({
           component: msg
         }, //消息中心
         {
-          path:'msgdetail',
-          component:msgDetail
-        }//消息详情
+          path: 'msgdetail',
+          component: msgDetail
+        } //消息详情
       ]
     }
   ]

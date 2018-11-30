@@ -58,7 +58,7 @@ export default {
               window.location.href = "../center/index.html";
             }, 1500);
           } else {
-            console.log("返回码不是200");
+             this.$message.error(res.message)
           }
         },
         err => {

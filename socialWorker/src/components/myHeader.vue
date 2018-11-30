@@ -33,13 +33,14 @@ export default {
   name: "App",
   data() {
     return {
-      ifLogin: true, //是否登录
+      ifLogin: false, //是否登录
       key: "",
       address: "宁波"
     };
   },
   mounted() {
     // this.abc();
+    this.ifLogin=JSON.parse(this.until.seGet('isLogin'))
   },
   methods: {
     toHome() {

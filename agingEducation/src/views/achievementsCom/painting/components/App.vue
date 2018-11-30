@@ -81,7 +81,7 @@ export default {
   },
   computed: {
     page() {
-      return Math.floor((this.total - 1) / this.pageSize) + 1;
+      return Math.ceil(this.total/this.pageSize)
     }
   },
   mounted() {

@@ -3,12 +3,12 @@
     <ageHead></ageHead>
     <div class="g-content g-content-footer" ref="size">
       <div class="crumb"><a href="../home/index.html">首页</a><span>&nbsp;&nbsp;&gt;&nbsp;&nbsp;</span><a
-              href="./search.html">荣耀展厅</a><span>&nbsp;&nbsp;&gt;&nbsp;&nbsp;</span><a>资讯详情</a>
+              href="./search.html">荣誉展厅</a><span>&nbsp;&nbsp;&gt;&nbsp;&nbsp;</span><a>资讯详情</a>
       </div>
       <div class="detail">
-        <h3>{{infoMsg.nm}}</h3>
+        <h3>{{infoMsg.titleNm}}</h3>
         <p class="msg-bar">
-          <span>作者：{{infoMsg.author}}</span><span>{{infoMsg.crtTm}}</span><span>来源：{{infoMsg.rmks}}</span></p>
+          <span>作者：{{infoMsg.crtBy}}</span><span>{{infoMsg.crtTm}}</span><span>来源：{{infoMsg.source}}</span></p>
         <div class="c-img"><img :src='infoMsg.imgUrl'></div>
         <div class="c-content" v-html="infoMsg.cont"></div>
       </div>

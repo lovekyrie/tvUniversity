@@ -1,6 +1,6 @@
 <template>
     <div class="study">
-       <div class="pos">
+       <div class="nav">
           首页 > 当前学习
         </div>
         <table>
@@ -14,13 +14,14 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="(item,index) in list" :key="index">
+                <tr v-for="(item,index) in courseList" :key="index">
                     <td>{{index+1}}</td>
                     <td>{{item.nm}}</td>
                     <td>{{item.learningStar}}</td>
                     <td>{{item.statNm}}</td>
-                    <td v-if="item.state=='已学'" @click="toDetail(item.prodClassPk)">再次学习</td>
-                    <td v-else @click="toDetail(item.ipPk)">开始学习</td>
+                    <td v-if="item.statNm==='已学'" @click="toDetail(item.prodClassPk,'再次学习',item.nm)">再次学习</td>
+                    <td v-else-if="item.statNm==='在学'"  @click="toDetail(item.prodClassPk,'继续学习',item.nm)">继续学习</td>
+                    <td v-else  @click="toDetail(item.prodClassPk,'开始学习',item.nm)">开始学习</td>
                 </tr>
             </tbody>
         </table>
@@ -30,73 +31,49 @@
 export default {
   data() {
     return {
-      list: [
-        {
-          nm: "中国茶文化与艺术-茶文化艺术",
-          learningStar: 150,
-          statNm: "已学",
-          prodClassPk: 1
-        },
-        {
-          nm: "中国茶文化与艺术-茶文化艺术",
-          learningStar: 150,
-          statNm: "未学",
-          prodClassPk: 1
-        },
-        {
-          nm: "中国茶文化与艺术-茶文化艺术",
-          learningStar: 150,
-          statNm: "在学",
-          prodClassPk: 1
-        },
-        {
-          nm: "中国茶文化与艺术-茶文化艺术",
-          learningStar: 150,
-          statNm: "已学",
-          prodClassPk: 1
-        },
-        {
-          nm: "中国茶文化与艺术-茶文化艺术",
-          learningStar: 150,
-          statNm: "已学",
-          prodClassPk: 1
-        },
-        {
-          nm: "中国茶文化与艺术-茶文化艺术",
-          learningStar: 150,
-          statNm: "已学",
-          prodClassPk: 1
-        },
-        {
-          nm: "中国茶文化与艺术-茶文化艺术",
-          learningStar: 150,
-          statNm: "已学",
-          prodClassPk: 1
-        },
-        {
-          nm: "中国茶文化与艺术-茶文化艺术",
-          learningStar: 150,
-          statNm: "已学",
-          prodClassPk: 1
-        },
-        {
-          nm: "中国茶文化与艺术-茶文化艺术",
-          learningStar: 150,
-          statNm: "已学",
-          prodClassPk: 1
-        }
-      ]
+      pageNo: 1,
+      pageSize: 10,
+      total: 100,
+      courseList: []
     };
   },
-  mounted() {},
+  mounted() {
+     this.getInfo();
+  },
   methods: {
+    //更改当前页数
+    handleCurrentChange(val) {
+      this.pageNo = val;
+      this.getCourseList();
+      this.getInfo()
+    },
+    async getInfo() {
+      let result= await this.getCourseList();
+      this.courseList=result.data.items;
+      this.total=result.page.total;
+    },
     //跳转到详情页面
-    toDetail(classPk) {
+    toDetail(classPk, stuState, nm) {
       this.$router.push({
         path: "/studyDetail",
         query: {
-          classPk: classPk
+          classPk: classPk,
+          stuState: stuState,
+          nm: nm
         }
+      });
+    },
+    getCourseList() {
+      return new Promise((resolve, reject) => {
+        let query = new this.Query();
+        query.buildPageClause(this.pageNo, this.pageSize);
+
+        let param = query.getParam();
+        this.until.get("/prod/cls/page", param).then(res => {
+          if (res.status === "200") {
+            resolve(res);
+          }
+        });
       });
     }
   },
@@ -105,11 +82,13 @@ export default {
 </script>
 <style lang="less" scoped>
 .study {
-  .pos{
-    width: 100%;
+  .nav{
+    width: 1200px;
+    margin: 0 auto;
     color: #999;
     font-size: 24px;
     line-height: 80px;
+    border-bottom: 1px solid #e1e1e1;
   }
   table {
     width: 940px;

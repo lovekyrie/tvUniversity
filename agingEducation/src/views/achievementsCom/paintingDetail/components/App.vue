@@ -93,7 +93,7 @@ export default {
         res=>{
           if(res.status==='200'){
             this.paintInfo=res.data
-            let time=this.until.formtDate(res.data.crtTm)
+            let time=this.until.formatDate(res.data.crtTm)
             this.crtTime=time.year+'年'+time.month+'月'+time.day+'日'
           }
         },

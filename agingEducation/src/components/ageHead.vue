@@ -19,7 +19,7 @@
         <a href="#" style="margin-right: 10px">登录</a>
         <a href="#">注册</a>
       </div>
-      <div class="AFont">
+      <div class="AFont" style="display:none;">
         <span style="margin-right: 10px">字体大小</span>
         <a href="#" style="margin-right: 10px">A</a>
         <a href="#" style="font-size: 16px;font-weight: 500">A</a>

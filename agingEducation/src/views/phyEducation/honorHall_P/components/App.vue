@@ -65,7 +65,7 @@ export default {
   },
   computed:{
     page(){
-      return Math.floor((this.total-1)/5)+1
+      return Math.ceil(this.total/this.pageSize)
     }
   },
   mounted() {

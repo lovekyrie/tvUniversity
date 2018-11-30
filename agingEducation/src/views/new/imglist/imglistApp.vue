@@ -8,7 +8,7 @@
             <div class="detail">
                 <h3>{{infoMsg.titleNm}}</h3>
                 <p class="msg-bar">
-                    <span>作者：{{infoMsg.author}}</span><span>{{infoMsg.crtTm}}</span><span>来源：{{infoMsg.source}}</span></p>
+                    <span>作者：{{infoMsg.crtBy}}</span><span>{{infoMsg.crtTm}}</span><span>来源：{{infoMsg.source}}</span></p>
                 <div class="c-img"><img :src='infoMsg.imgUrl'></div>
                 <div class="c-content" v-html="infoMsg.cont"></div>
             </div>

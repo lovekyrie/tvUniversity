@@ -4,14 +4,14 @@
         <div class="g-content g-content-footer" ref="size">
             <div class="g-search">
                 <div class="crumb"><a
-                        href="../home/index.html">首页</a><span>&nbsp;&nbsp;&gt;&nbsp;&nbsp;</span><a>荣耀展厅</a></div>
+                        href="../home/index.html">首页</a><span>&nbsp;&nbsp;&gt;&nbsp;&nbsp;</span><a>荣誉展厅</a></div>
 
                 <div class="content">
                     <a :href="'./searchDetail.html?id='+item.televNewsPk" v-for="(item,index) in items" :key="index" class="clearfix">
                         <img :src="item.imgUrl" alt="">
                         <div class="info">
-                            <h2>{{item.nm}}</h2>
-                            <h3>{{item.crtTm}} <span>来源：{{item.rmks}}</span></h3>
+                            <h2>{{item.titleNm}}</h2>
+                            <h3>{{item.crtTm}} <span>来源：{{item.source}}</span></h3>
                         </div>
                     </a>
                 </div>

@@ -33,16 +33,16 @@
               <a href="../phyEducation/dynamics.html">查看更多 ></a>
             </div>
             <!--校园动态-->
-            <div class="leftContent" v-for="(act,index) in acts1" :key="index">
+            <div class="leftContent" v-for="school in schoolNewList" :key="school.televNewsPk" @click="toSchoolDetail(school.televNewsPk)">
               <div class="contentImg">
-                <img :src="act.url">
+                <img :src="school.imgUrl">
               </div>
               <div class="contentMsg1">
                 <a href="#">
-                  <h4>{{act.title}}</h4>
+                  <h4>{{school.titleNm}}</h4>
                 </a>
-                <span style="margin-bottom: 20px">{{act.time}}</span>
-                <span>来源：{{act.author}}</span>
+                <span style="margin-bottom: 20px">{{school.crtTm}}</span>
+                <span>来源：{{school.source}}</span>
               </div>
             </div>
           </div>
@@ -52,7 +52,7 @@
               <a href="../phyEducation/excitingAct.html?type=true">查看更多 ></a>
             </div>
             <!--精彩活动-->
-            <div class="rightContent" v-for="(act,index) in acts2" :key="index">
+            <div class="rightContent" v-for="(act,index) in excitingActList" :key="index">
               <div class="contentImg">
                 <img :src="act.url">
               </div>
@@ -139,28 +139,8 @@ export default {
         { url: require("../img/实体办学.png") },
         { url: require("../img/实体办学.png") }
       ],
-
-      acts1: [
-        {
-          url: require("../img/实体办学2.png"),
-          title: "班级全员满额，宁波老年大学一票难求怎么破",
-          time: "2017年9月30日 12:00",
-          author: "宁波电视大大学"
-        },
-        {
-          url: require("../img/实体办学2.png"),
-          title: "班级全员满额，宁波老年大学一票难求怎么破",
-          time: "2017年9月30日 12:00",
-          author: "宁波电视大大学"
-        },
-        {
-          url: require("../img/实体办学2.png"),
-          title: "班级全员满额，宁波老年大学一票难求怎么破",
-          time: "2017年9月30日 12:00",
-          author: "宁波电视大大学"
-        }
-      ],
-
+      schoolNewList:[],
+      excitingActList:[],
       acts2: [
         {
           url: require("../img/实体办学2.png"),
@@ -229,6 +209,8 @@ export default {
     async getInfo() {
       this.productionList=  await this.getResultList();
       this.honorList=await this.getHonorList();
+      this.schoolNewList=await this.getSchoolNewList();
+      this.excitingActList=await this.getExcitingActList()
     },
     toResultDetail(chooseType,pk){
       if(chooseType==='活力视频'){
@@ -267,6 +249,40 @@ export default {
 
         let param=query.getParam()
         this.until.get("/telev/news/page", param).then(
+          res => {
+            if(res.status==='200'){
+              resolve(res.data.items)
+            }
+          }, 
+          err => {});
+      })
+    },
+    toSchoolDetail(pk){
+      window.location.href='./dynamicsDetail.html?id='+pk
+    },
+    getSchoolNewList(){
+      return new Promise((resolve,rejcet)=>{
+        let query=new this.Query()
+        query.buildWhereClause('catCd', '30010.170');
+        query.buildPageClause(this.pageCount, this.pageSize);
+
+        let param=query.getParam()
+        this.until.get("/telev/news/page", param).then(
+          res => {
+            if(res.status==='200'){
+              resolve(res.data.items)
+            }
+          }, 
+          err => {});
+      })
+    },
+    getExcitingActList(){
+      return new Promise((resolve,rejcet)=>{
+        let query=new this.Query()
+        query.buildPageClause(this.pageCount, this.pageSize);
+
+        let param=query.getParam()
+        this.until.get("/telev/doing/page", param).then(
           res => {
             if(res.status==='200'){
               resolve(res.data.items)
