@@ -52,23 +52,20 @@
               <a href="../phyEducation/excitingAct.html?type=true">查看更多 ></a>
             </div>
             <!--精彩活动-->
-            <div class="rightContent" v-for="(act,index) in excitingActList" :key="index">
+            <div class="rightContent" v-for="act in excitingActList" :key="act.televDoingPk">
               <div class="contentImg">
-                <img :src="act.url">
+                <img :src="act.imgUrl">
               </div>
               <div class="contentMsg2">
                 <a href="#">
-                  <h4>{{act.title}}</h4>
+                  <h4>{{act.titleNm}}</h4>
                 </a>
-                <span>时间：{{act.beginTime}}-{{act.endTime}}</span>
-                <span>地点：{{act.place}}</span>
+                <span>时间：{{act.startTm}}-{{act.endTm}}</span>
+                <span>地点：{{act.address}}</span>
                 <span>主办方：{{act.sponsor}}</span>
                 <span style="margin-top: 14px;line-height: 16px">
-                  {{act.nums}}人参与
-                  <button
-                    class="actBtn"
-                    :style="{backgroundColor: act.btnColor}"
-                  >{{act.btn}}</button>
+                  {{act.haveNum}}人参与
+                  <button>查看详情</button>
                 </span>
               </div>
             </div>
@@ -141,41 +138,6 @@ export default {
       ],
       schoolNewList:[],
       excitingActList:[],
-      acts2: [
-        {
-          url: require("../img/实体办学2.png"),
-          title: "“逗宝杯” 公益创新逻辑思维竞赛萨达大厦",
-          beginTime: "2017.12.02",
-          endTime: "2018.05.02",
-          place: "马园社区",
-          sponsor: "宁波电视大学",
-          nums: 12228,
-          btn: "查看详情",
-          btnColor: "rgb(53,113,168)"
-        },
-        {
-          url: require("../img/实体办学2.png"),
-          title: "“逗宝杯” 公益创新逻辑思维竞赛萨达大厦",
-          beginTime: "2017.12.02",
-          endTime: "2018.05.02",
-          place: "马园社区",
-          sponsor: "宁波电视大学",
-          nums: 12228,
-          btn: "我要参与",
-          btnColor: "rgb(250,100,65)"
-        },
-        {
-          url: require("../img/实体办学2.png"),
-          title: "“逗宝杯” 公益创新逻辑思维竞赛萨达大厦",
-          beginTime: "2017.12.02",
-          endTime: "2018.05.02",
-          place: "马园社区",
-          sponsor: "宁波电视大学",
-          nums: 12228,
-          btn: "我要参与",
-          btnColor: "rgb(250,100,65)"
-        }
-      ],
       productionList:[],
       honorList:[],
       classes: [
@@ -211,6 +173,10 @@ export default {
       this.honorList=await this.getHonorList();
       this.schoolNewList=await this.getSchoolNewList();
       this.excitingActList=await this.getExcitingActList()
+      this.excitingActList.forEach(item=>{
+        item.startTm=item.startTm.substr(0,10)
+        item.endTm=item.endTm.substr(0,10)
+      })
     },
     toResultDetail(chooseType,pk){
       if(chooseType==='活力视频'){

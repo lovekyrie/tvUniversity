@@ -1,115 +1,71 @@
 <template>
     <div id="container">
-        <myHeader></myHeader>
-        <myNav :type="name"></myNav>
+        <myHeader :type="name"></myHeader>
+        <!-- 轮播 -->
+        <swiper></swiper>
         <div class="content">
-            <!--当前课程-->
-            <div class="currentCourse">
-                <div class="title">
-                    <h3>当前课程</h3>
-                </div>
-                <div class="video" v-for="(item,index) in videoList" :key="index" v-show="index==videoCurrent" @mouseenter="videoStop()" @mouseleave="videoChange">
-                    <video-player  class="video-player vjs-custom-skin"
-                                   ref="videoPlayer"
-                                   :playsinline="true"
-                                   :options="item.playerOptions"
-                    ></video-player>
-                </div>
-                <menu>
-                    <span :class="{active:index==videoCurrent}" v-for="(item,index) in videoList" :key="index" @click="videChoose(index)" @mousedown="videoStop()">
-                        {{item.videoName}}
-                    </span>
-                </menu>
-            </div>
-            <!--学习之星-->
-            <div class="rand">
-                <div class="title">
-                    <h3>学习之星</h3>
-                </div>
-                <div class="list">
-                    <p>
-                        <span>排名</span>
-                        <span>姓名</span>
-                        <span>学习之星</span>
-                        <span>教学点</span>
-                    </p>
-                    <p v-for="(item,index) in rankList" :key="item.prodStuPk">
-                        <span>{{index+1}}</span>
-                        <span>{{item.nm}}</span>
-                        <span>{{item.classStar}}</span>
-                        <span>{{item.prodDotNm}}</span>
-                    </p>
-                </div>
-            </div>
-            <!--往期课程-->
-            <div class="pastCourse">
-                <div class="title">
-                    <h3>往期课程</h3>
-                    <a href="previousCourse.html?name=previous">查看更多 ></a>
-                </div>
-                <ul>
-                    <li v-for="(item,index) in pastCourse" :key="index" @click="toCourseDetail(item.prodClassPk,item.statNm,item.nm)">
-                        <div class="img">
-                            <img :src="item.imgUrl"/>
-                        </div>
-                        {{item.nm}}
-                    </li>
-                </ul>
-            </div>
-            <!--公告通知-->
-            <div class="notice">
-                <div class="title">
-                    <h4>公告通知</h4>
-                    <a href="notice.html?name=notice">查看更多 ></a>
-                </div>
-                <div class="list" v-for="(item,index) in notice" :key="index" @click="goNoticeDetail(item.sysNewsPk)">
-                    <div class="img">
-                        <img :src="item.imgUrl"/>
-                    </div>
-                    <div class="listContent">
-                        <strong>{{item.nm}}</strong>
-                        <p>{{item.year}}年{{item.month}}月{{item.day}}日 {{item.time}}</p>
-                        <p>来源：{{item.crtBy}}</p>
-                    </div>
-                </div>
-            </div>
-            <!--校园动态-->
-            <div class="notice" style="float: right">
-                <div class="title">
-                    <h4>校园动态</h4>
-                    <a href="news.html?name=news">查看更多 ></a>
-                </div>
-                <div class="list" v-for="(item,index) in newList" :key="index" @click="goNewsDetail(item.sysNewsPk)">
-                    <div class="img">
-                        <img :src="item.imgUrl"/>
-                    </div>
-                    <div class="listContent">
-                        <strong>{{item.nm}}</strong>
-                        <p>{{item.year}}年{{item.month}}月{{item.day}}日 {{item.time}}</p>
-                        <p>来源：{{item.crtBy}}</p>
-                    </div>
-                </div>
-            </div>
-            <!--文件政策-->
-            <div class="policy">
-                <div class="title">
-                    <h4>文件政策</h4>
-                    <a href="policy.html">查看更多 ></a>
-                </div>
-                <ul>
-                    <li v-for="(item,index) in policy" :key="index" @click="goPolicyDetail(item.sysNewsPk)">
-                      <p>{{item.nm}}</p><span>{{item.year}}年{{item.month}}月{{item.day}}日</span>
-                    </li>
-                </ul>
-            </div>
+          <!--当前课程-->
+          <div class="currentCourse">
+              <div class="title">
+                  <h3>当前课程</h3>
+              </div>
+              <div class="video" v-for="(item,index) in videoList" :key="index" v-show="index==videoCurrent" @mouseenter="videoStop()" @mouseleave="videoChange">
+                  <video-player  class="video-player vjs-custom-skin"
+                                  ref="videoPlayer"
+                                  :playsinline="true"
+                                  :options="item.playerOptions"
+                  ></video-player>
+              </div>
+              <menu>
+                  <span :class="{active:index==videoCurrent}" v-for="(item,index) in videoList" :key="index" @click="videChoose(index)" @mousedown="videoStop()">
+                      {{item.videoName}}
+                  </span>
+              </menu>
+          </div>
+       
+          <!--公告通知-->
+          <div class="notice">
+              <div class="title">
+                  <h3>通知公告</h3>
+                  <a href="notice.html?name=notice">查看更多 ></a>
+              </div>
+              <div class="list" v-for="(item,index) in notice" :key="index" @click="goNoticeDetail(item.sysNewsPk)">
+                  <div class="listContent">
+                      <strong>{{item.nm}}</strong>
+                      <p>{{item.year}}年{{item.month}}月{{item.day}}日 {{item.time}}</p>
+                  </div>
+              </div>
+          </div>
+             <!--学习之星-->
+          <div class="rand">
+              <div class="title">
+                  <h3>学习之星</h3>
+                  <!-- <a href="notice.html?name=notice">查看更多 ></a> -->
+              </div>
+              <div class="list">
+                  <p>
+                      <span>排名</span>
+                      <span>姓名</span>
+                      <span>学习之星</span>
+                      <span>教学点</span>
+                  </p>
+                  <p v-for="(item,index) in rankList" :key="item.prodStuPk">
+                      <span>{{index+1}}</span>
+                      <span>{{item.nm}}</span>
+                      <span>{{item.classStar}}</span>
+                      <span>{{item.prodDotNm}}</span>
+                  </p>
+              </div>
+          </div>
         </div>
         <myFooter></myFooter>
     </div>
 </template>
 <script>
 import myHeader from "@/components/myHeader";
-import myNav from "@/components/myNav";
 import myFooter from "@/components/myFooter";
+import swiper from './swiper'
+
 export default {
   data() {
     return {
@@ -198,7 +154,6 @@ export default {
       rankList: [],
       pastCourse: [],
       notice: [],
-      newList: [],
       policy: []
     };
   },
@@ -213,14 +168,8 @@ export default {
       this.notice = await this.getNoticesList();
       this.notice = this.addObjectPropertyOfList(this.notice);
 
-      this.newList = await this.getNewsList();
-      this.newList = this.addObjectPropertyOfList(this.newList);
-
-      this.policy = await this.getPolicysList();
-      this.policy = this.addObjectPropertyOfList(this.policy);
       this.rankList = await this.getStarRank();
 
-      this.pastCourse = await this.getPastCourseList();
       let classArr=await this.getCurrentCourseList();
       //根据当前的课程ID去查数据
       this.getVideoList(classArr);
@@ -265,14 +214,6 @@ export default {
     goNoticeDetail(ipPk) {
       window.location.href = "noticeDetail.html?newPk=" + ipPk;
     },
-    //校园动态详情
-    goNewsDetail(ipPk) {
-      window.location.href = "newsDetail.html?newPk=" + ipPk;
-    },
-    //文件政策详情
-    goPolicyDetail(ipPk) {
-      window.location.href = "policyDetail.html?newPk=" + ipPk;
-    },
     //给数据对象增加年月日属性
     addObjectPropertyOfList(list) {
       var that = this;
@@ -310,61 +251,12 @@ export default {
         );
       });
     },
-    //校园动态
-    getNewsList() {
-      return new Promise((resolve, reject) => {
-        let query = new this.Query();
-        //拼接参数
-        query.buildWhereClause("catNm", "校园动态", "EQ");
-        query.buildPageClause(this.newsPageNo, this.newsPageSize);
-
-        let param = query.getParam();
-        this.until.get("/sys/news/pag", param).then(
-          res => {
-            if (res.status === "200") {
-              resolve(res.data.items);
-            } else {
-              console.log("状态码返回不是200");
-            }
-          },
-          err => {
-            console.log("调用失败");
-          }
-        );
-      });
-    },
-    //文件政策
-    getPolicysList() {
-      return new Promise((resolve, reject) => {
-        let query = new this.Query();
-        //拼接参数
-        query.buildWhereClause("catNm", "校园政策", "EQ");
-        query.buildPageClause(this.newsPageNo, this.newsPageSize);
-
-        let param = {
-          query: query.toString()
-        };
-        this.until.get("/sys/news/pag", param).then(
-          res => {
-            if (res.status === "200") {
-              console.log("调用成功");
-              resolve(res.data.items);
-            } else {
-              console.log("状态码返回不是200");
-            }
-          },
-          err => {
-            console.log("调用失败");
-          }
-        );
-      });
-    },
     //学习之星排行
     getStarRank() {
       return new Promise((resolve, reject) => {
         let query = new this.Query();
         //拼接参数
-        query.buildPageClause(this.newsPageNo, this.starPageSize);
+        query.buildPageClause(this.newsPageNo, this.pastPageSize);
         let param = {
           query: query.toString()
         };
@@ -406,26 +298,6 @@ export default {
         )
       })
     },
-    //往期课程
-    getPastCourseList() {
-      return new Promise((resolve, reject) => {
-        let query = new this.Query();
-        query.buildPageClause(this.newsPageNo, this.pastPageSize);
-        query.buildOrderClause('unlockTm','asc');
-
-        let param = query.getParam();
-        this.until.get("/prod/cls/pag", param).then(
-          res => {
-            if (res.status === "200") {
-              resolve(res.data.items);
-            } else {
-              console.log("调用失败");
-            }
-          },
-          err => {}
-        );
-      });
-    },
     getVideoList(arr){
 
       arr.forEach((item,index)=>{
@@ -462,8 +334,8 @@ export default {
   },
   components: {
     myHeader,
-    myNav,
-    myFooter
+    myFooter,
+    swiper
   }
 };
 </script>

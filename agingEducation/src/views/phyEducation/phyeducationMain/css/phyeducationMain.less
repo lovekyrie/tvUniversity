@@ -1,96 +1,76 @@
-#main{
+#main {
   min-width: 1060px;
   background-color: white;
-
-  a{
+  a {
     text-decoration: none;
-  }
-
-  //列表
-  .mainList{
+  } //列表
+  .mainList {
     display: flex;
     width: 75%;
     min-width: 1060px;
     margin: 0 auto;
-    flex-direction: column;
-
-    //列表顶部
-    .mainTop{
+    flex-direction: column; //列表顶部
+    .mainTop {
       display: flex;
       align-items: center;
       height: 80px;
       padding-left: 30px;
-      border-bottom: 1px solid rgb(225,225,225);
-
-      a{
-        color: rgb(135,135,135);
+      border-bottom: 1px solid rgb(225, 225, 225);
+      a {
+        color: rgb(135, 135, 135);
         font-size: 20px;
         font-weight: 300;
       }
-
-      .topLine{
+      .topLine {
         padding: 0 5px;
         font-size: 20px;
-        color: rgb(135,135,135);
+        color: rgb(135, 135, 135);
       }
-
-    }
-
-  //  轮播图
-    .mainImg{
+    } //  轮播图
+    .mainImg {
       padding-top: 30px;
       width: 100%;
-
-      img{
+      img {
         width: 100%;
       }
-    }
-
-  //  校园动态，精彩活动
-    .mainNews{
+    } //  校园动态，精彩活动
+    .mainNews {
       display: flex;
       flex-direction: row;
       margin-bottom: 60px;
-
-      .leftTitle,.rightTitle{
+      .leftTitle,
+      .rightTitle {
         height: 75px;
         line-height: 75px;
         padding-left: 20px;
         padding-right: 30px;
-        border-bottom: 1px solid rgb(225,225,225);
-
-        >h3{
+        border-bottom: 1px solid rgb(225, 225, 225);
+        >h3 {
           display: inline;
           padding-left: 20px;
           font-weight: 400;
           border-left: 5px solid black;
         }
-        >a{
+        >a {
           float: right;
           font-size: 18px;
-          color: rgb(135,135,135);
+          color: rgb(135, 135, 135);
         }
-      }
-
-      //校园动态
-      .mainLeft{
+      } //校园动态
+      .mainLeft {
         flex: 1;
-        padding-right: 15px;
-
-        //左侧内容
-        .leftContent{
+        padding-right: 15px; //左侧内容
+        .leftContent {
           display: flex;
           flex-direction: row;
           height: 220px;
           padding-top: 20px;
-          padding-left: 20px;
-
-          //图片
-          .contentImg{
+          padding-left: 20px; //图片
+          .contentImg {
             margin-right: 20px;
             width: 200px;
             height: 200px;
-            img{
+            img {
               max-width: 100%;
               max-height: 100%;
               width: auto;
@@ -98,47 +78,37 @@
               vertical-align: middle;
             }
           }
-
-          .contentMsg1{
+          .contentMsg1 {
             //动态标题
             width: 100%;
-            h4{
+            h4 {
               font-weight: 400;
               font-size: 22px;
               margin-bottom: 60px;
-            }
-            //动态信息
-            >span{
+            } //动态信息
+            >span {
               display: block;
               font-size: 18px;
               font-weight: 300;
-              color: rgb(135,135,135);
+              color: rgb(135, 135, 135);
             }
           }
-
-
         }
-
-      }
-      //精彩活动
-      .mainRight{
+      } //精彩活动
+      .mainRight {
         flex: 1;
-        padding-left: 15px;
-
-        //右侧内容
-        .rightContent{
+        padding-left: 15px; //右侧内容
+        .rightContent {
           display: flex;
           flex-direction: row;
           height: 220px;
           padding-top: 20px;
-          padding-left: 20px;
-
-          //图片
-          .contentImg{
+          padding-left: 20px; //图片
+          .contentImg {
             margin-right: 20px;
             width: 200px;
             height: 200px;
-            img{
+            img {
               max-width: 100%;
               max-height: 100%;
               width: auto;
@@ -146,28 +116,22 @@
               vertical-align: middle;
             }
           }
-
-          .contentMsg2{
-
-            width: 100%;
-            //活动标题
-            h4{
+          .contentMsg2 {
+            width: 100%; //活动标题
+            h4 {
               font-weight: 400;
               font-size: 22px;
               margin-bottom: 25px;
-            }
-            //活动信息
-            >span{
+            } //活动信息
+            >span {
               display: block;
               font-size: 16px;
               line-height: 26px;
               font-weight: 300;
-              color: rgb(135,135,135);
-
+              color: rgb(135, 135, 135);
             }
-
-            .actBtn{
-              //background-color: rgb(53,113,168);
+            button {
+              background-color: rgb(53,113,168);
               color: white;
               height: 35px;
               width: 37%;
@@ -176,118 +140,93 @@
               margin-left: 25%;
               vertical-align: bottom;
             }
-            button{
+            button {
               border: 0;
             }
           }
         }
-
       }
-    }
-
-  //  内容底部
-    .mainFoot{
+    } //  内容底部
+    .mainFoot {
       display: flex;
       flex-direction: row;
       margin-bottom: 130px;
-
-      .production,.honor,.classes{
+      .production,
+      .honor,
+      .classes {
         padding: 30px 30px 40px 30px;
         flex: 1;
-        border: 1px solid rgb(224,224,224);
-
-        h4{
+        border: 1px solid rgb(224, 224, 224);
+        h4 {
           font-size: 20px;
           padding-left: 20px;
           border-left: 5px solid black;
           margin-bottom: 25px;
         }
-      }
-    //  成果交流
-      .production{
+      } //  成果交流
+      .production {
         font-size: 18px;
         position: relative;
-
-        >ul{
+        >ul {
           padding-left: 40px;
           margin-bottom: 20px;
-          li{
+          li {
             list-style: initial;
             line-height: 2em;
             font-weight: 400;
           }
-
-          >p{
+          >p {
             line-height: 2em;
             font-weight: 400;
           }
-        }
-
-        //底部查看更多链接
-        >p{
+        } //底部查看更多链接
+        >p {
           position: absolute;
           bottom: 20px;
           left: 42%;
-
-          a{
-            color: rgb(145,135,135);
+          a {
+            color: rgb(145, 135, 135);
           }
         }
-      }
-
-    //  荣誉展厅
-      .honor{
+      } //  荣誉展厅
+      .honor {
         font-size: 18px;
         margin: 0px 30px;
         position: relative;
-
-
-        img{
+        img {
           max-width: 125px;
           margin-right: 20px;
-        }
-
-        //底部查看更多链接
-        >p{
+        } //底部查看更多链接
+        >p {
           text-align: center;
           position: absolute;
           bottom: 20px;
           left: 42%;
-
-          a{
-            color: rgb(145,135,135);
+          a {
+            color: rgb(145, 135, 135);
           }
         }
-
-      }
-
-    //  课表栏目
-      .classes{
+      } //  课表栏目
+      .classes {
         font-size: 18px;
         position: relative;
-
-        >ul{
+        >ul {
           padding-left: 40px;
-
-          li{
+          li {
             list-style: initial;
             line-height: 3em;
             font-weight: 400;
           }
         }
-
-        >p{
+        >p {
           position: absolute;
           bottom: 20px;
           left: 42%;
-          a{
-            color: rgb(145,135,135);
+          a {
+            color: rgb(145, 135, 135);
           }
         }
       }
-
     }
-
   }
-
 }

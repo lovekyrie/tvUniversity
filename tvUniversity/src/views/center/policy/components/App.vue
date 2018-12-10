@@ -1,7 +1,6 @@
 <template>
     <div id="container">
-        <myHeader></myHeader>
-        <myNav :type="name"></myNav>
+        <myHeader :type="name"></myHeader>
         <div class="content">
             <div class="pos">
                  首页 > 文件政策
@@ -29,7 +28,6 @@
 </template>
 <script>
 import myHeader from "@/components/myHeader";
-import myNav from "@/components/myNav";
 import myFooter from "@/components/myFooter";
 export default {
   data() {
@@ -85,7 +83,6 @@ export default {
   },
   components: {
     myHeader,
-    myNav,
     myFooter
   }
 };
