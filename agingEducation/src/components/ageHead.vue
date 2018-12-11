@@ -2,45 +2,62 @@
   <div id="ageHead">
     <div class="aHead">
       <div class="headImg" @click="toHome">
-        <img src="./img/logo.png">
+        <img :src="logo">
       </div>
       <div class="headTitle">
         <span>宁波社区大学老年教育中心</span>
         <span>宁波广播电视大学老年教育学院</span>
       </div>
-      <div class="headSearch">
-        <input v-model="ageSearch" placeholder="宁波电大老年教育网">
+      <div class="drop-list">
+        <el-dropdown @command="handleCommand">
+          <span class="el-dropdown-link">
+            {{address}}
+            <i class="el-icon-arrow-down el-icon--right"></i>
+          </span>
+          <el-dropdown-menu slot="dropdown">
+            <el-dropdown-item command="宁波">宁波</el-dropdown-item>
+            <el-dropdown-item command="海曙">海曙</el-dropdown-item>
+            <el-dropdown-item command="江北">江北</el-dropdown-item>
+            <el-dropdown-item command="鄞州">鄞州</el-dropdown-item>
+          </el-dropdown-menu>
+        </el-dropdown>
       </div>
-      <div class="searchButton">
-        <button class="searchButton">搜索</button>
-      </div>
-
       <div class="loginReg">
-        <a href="#" style="margin-right: 10px">登录</a>
-        <a href="#">注册</a>
+        <span>
+        <a href="#">登录</a>&nbsp;|&nbsp;<a href="#">注册</a>
+        </span>
+        <img v-if="!showBig" :src="samllCode" alt @click="showBig=true">
       </div>
-      <div class="AFont" style="display:none;">
-        <span style="margin-right: 10px">字体大小</span>
-        <a href="#" style="margin-right: 10px">A</a>
-        <a href="#" style="font-size: 16px;font-weight: 500">A</a>
-      </div>
+      <img class="big-code" v-if="showBig" :src="bigCode" alt="" @click="showBig=false">
     </div>
   </div>
 </template>
 
 <script>
+import logo from "./img/电大logo.png";
+import samllCode from "./img/小二维码.png";
+import bigCode from "./img/大二维码.png";
+
 export default {
   data() {
     return {
-      ageSearch: ""
+      ageSearch: "",
+      logo,
+      samllCode,
+      bigCode,
+      address: "宁波",
+      showBig:false,
     };
   },
   methods: {
-    toHome(){
-      let url=window.location.href;
-      if(url.indexOf('home/index.html')<0){
-        window.location.href='../home/index.html'
+    toHome() {
+      let url = window.location.href;
+      if (url.indexOf("home/index.html") < 0) {
+        window.location.href = "../home/index.html";
       }
+    },
+    handleCommand(command) {
+      this.address = command;
     }
   }
 };
@@ -48,29 +65,23 @@ export default {
 
 <style lang="less" type="text/less">
 #ageHead {
-  min-width: 1060px;
+  min-width: 1200px;
   height: 140px;
   background-color: rgb(58, 113, 168);
-
   .aHead {
+    position: relative;
     display: flex;
-    width: 75%;
-    min-width: 1060px;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 1200px;
     height: 140px;
-    color: white;
+    color: #fff;
     margin: 0 auto;
-
-    /*整体左浮动*/
-    div {
-      float: left;
-      height: 140px;
-      margin-right: 30px;
-    }
     /*图片位置*/
     .headImg {
-      flex: 1;
+      width: 10%;
       line-height: 140px;
-
       img {
         width: 100%;
         vertical-align: middle;
@@ -78,79 +89,45 @@ export default {
     }
     /*标题*/
     .headTitle {
-      flex: 3.3;
+      width: 32%;
       display: flex;
       flex-direction: column;
       justify-content: center;
       font-size: 24px;
     }
-    /*当页面宽度*/
-    @media screen and (max-width: 1440px) {
-      .headTitle {
-        font-size: 18px;
-      }
-    }
-    /*搜索框*/
-    .headSearch {
-      display: flex;
-      flex: 3;
-      margin-right: 0;
-      align-items: center;
-
-      input {
-        width: 100%;
-        height: 45px;
-        padding-left: 15px;
-        font-size: 16px;
-        color: rgb(145, 145, 145);
-        border: 1px solid;
-        border-right: none;
-      }
-    }
-
-    /*搜索按钮*/
-    .searchButton {
-      flex: 1;
-      display: flex;
-      align-items: center;
-
-      button {
-        width: 100%;
-        height: 45px;
-        display: block;
-        border: none;
-        font-size: 16px;
-        color: white;
-        text-align: center;
-        background-color: rgb(27, 78, 129);
-        font-weight: 300;
-      }
-    }
-
     /*登录注册*/
     .loginReg {
-      flex: 0.7;
+      width: 20%;
       line-height: 140px;
-      min-width: 70px;
-
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: center;
+      span,img{
+        flex: 1 0 50%;        
+      }
+      img{
+        flex:0 0 auto;
+        height: 75px;
+      }
       a {
         color: white;
         text-decoration: none;
         font-weight: 300;
       }
     }
-
-    /*Afont*/
-    .AFont {
-      flex: 1;
-      min-width: 105px;
-      line-height: 140px;
-      font-weight: 300;
-
-      a {
-        color: white;
-        text-decoration: none;
+    .drop-list {
+      width: 25%;
+      .el-dropdown{
+        font-size: 18px;
+        color: #fff;
       }
+    }
+     .big-code{
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 13%;
+      height: 100%;
     }
   }
 }

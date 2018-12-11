@@ -29,9 +29,9 @@
 </template>
 <script>
 import myNav from "./myNav";
-import logo from "./images/电大logo.png";
-import codeSmall from "./images/小二维码.png";
-import codeBig from "./images/大二维码.png";
+import logo from "./images/logo.png";
+import codeSmall from "./images/smallcode.png";
+import codeBig from "./images/bigcode.png";
 
 export default {
   name: "App",
@@ -56,9 +56,6 @@ export default {
     }
   },
   methods: {
-    toHome() {
-      window.location.href = "../center/index.html";
-    },
     goSearch() {
       let url = "../center/search.html?key=" + this.key;
       window.location.href = url;

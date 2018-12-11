@@ -141,7 +141,8 @@ export default {
   },
   methods: {
     async getInfo() {
-      var player = videojs("video");
+      require('videojs-flash');
+      var player = videojs("video", {techOrder: ['flash']});
       this.info = await this.getStudyInfo();
       let newArr = await this.getVideoList();
       player.playlist(newArr);
@@ -357,7 +358,7 @@ export default {
                 sourceArr = [];
               obj["name"] = item["nm"];
               obj["description"] = "teach online video";
-              (obj["duration"] = 45), (sourceobj["type"] = "video/webm");
+              (obj["duration"] = 45), (sourceobj["type"] = "video/mp4");
               sourceobj["src"] = item["videoUrl"];
               sourceArr.push(sourceobj);
               obj["sources"] = sourceArr;

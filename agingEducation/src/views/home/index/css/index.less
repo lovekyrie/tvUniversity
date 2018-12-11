@@ -1,55 +1,104 @@
 @import "../../../../assets/css/init.less";
-html,body{
-    height: 100%;
+html,
+body {
+  height: 100%;
 }
-map area{ outline: none; }
-.home{
-    text-align: center;
-    padding-bottom: 50px;
-    p{
-        padding-top: 30px;
-        a{
-            display: inline-block;
-            width: 215px;
-            height: 30px;
-            line-height:30px;
-            font-size: 20px;
-            background: url("../img/a1.jpg") no-repeat;
-            background-size: 30px 29px!important;
-            padding-left: 40px;
-            text-align: left;
-        }
-        a:nth-of-type(2){
-            background: url("../img/jf.png") 0 2px no-repeat;
-            background-size: 26px 26px!important;
-        }
-        a:nth-of-type(3){
-            background: url("../img/a2.jpg") no-repeat;
-        }
-        a:nth-of-type(4){
-            background: url("../img/a3.jpg") no-repeat;
-        }
-        a:last-of-type{
-            width: auto;
-            margin: 0;
-            background: url("../img/a4.jpg") no-repeat;
-        }
-    }
+
+map area {
+  outline: none;
 }
-.size{
-    h3{
-        font-size: 34px!important;
+
+.home {
+  position: relative;
+  padding-bottom: 50px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  .new-list,
+  img {
+    flex: 0 0 50%;
+  }
+  .new-list {
+    border: 1px solid #ebebeb;
+    >div {
+      &:nth-last-of-type(1) {
+        border-bottom: 0;
+      }
     }
-     span{
-        font-size: 24px!important;
+    .title{
+      padding: 20px 0 0 20px;
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: center;
+      img{
+        height: 18px;
+      }
+      h3{
+        margin-left: 10px;
+        flex: 1;
+      }
     }
-    input{
-        font-size: 24px!important;
+    .new-item {
+      margin: 0 20px;
+      padding: 20px 0;
+      border-bottom: 1px solid #e1e1e1;
+      p {
+        font-size: 20px;
+      }
+      span {
+        color: #999;
+        font-size: 16px;
+      }
     }
-    button{
-        font-size: 33px!important;
-    }
-    a{
-        font-size: 30px!important;
-    }
+  }
+  img {
+    flex: 0 0 auto;
+  }
+}
+
+.bottom {
+  a {
+    display: inline-block;
+    width: 215px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 20px;
+    background: url("../img/a1.jpg") no-repeat;
+    background-size: 30px 29px !important;
+    padding-left: 40px;
+    text-align: left;
+  }
+  a:nth-of-type(2) {
+    background: url("../img/jf.png") 0 2px no-repeat;
+    background-size: 26px 26px !important;
+  }
+  a:nth-of-type(3) {
+    background: url("../img/a2.jpg") no-repeat;
+  }
+  a:nth-of-type(4) {
+    background: url("../img/a3.jpg") no-repeat;
+  }
+  a:last-of-type {
+    width: auto;
+    margin: 0;
+    background: url("../img/a4.jpg") no-repeat;
+  }
+}
+
+.size {
+  h3 {
+    font-size: 34px !important;
+  }
+  span {
+    font-size: 24px !important;
+  }
+  input {
+    font-size: 24px !important;
+  }
+  button {
+    font-size: 33px !important;
+  }
+  a {
+    font-size: 30px !important;
+  }
 }
