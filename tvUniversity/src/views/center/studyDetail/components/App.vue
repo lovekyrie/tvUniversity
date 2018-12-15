@@ -141,8 +141,8 @@ export default {
   },
   methods: {
     async getInfo() {
-      require('videojs-flash');
-      var player = videojs("video", {techOrder: ['flash']});
+      
+      var player = videojs("video");
       this.info = await this.getStudyInfo();
       let newArr = await this.getVideoList();
       player.playlist(newArr);
