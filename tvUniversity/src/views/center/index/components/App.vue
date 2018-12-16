@@ -40,7 +40,7 @@
           <div class="rand">
               <div class="title">
                   <h3>学习之星</h3>
-                  <!-- <a href="notice.html?name=notice">查看更多 ></a> -->
+                  <a href="starRank.html">查看更多 ></a>
               </div>
               <div class="list">
                   <p>

@@ -13,7 +13,7 @@
         <a href="../center/policy.html" :class="{active:type=='policy'}">政策文件</a>
       </div>
       <div class="right">
-        <p v-if="!ifLogin">
+        <p class="login-btn" v-if="!ifLogin">
           <a href="../entry/login.html">登录</a>
         </p>
         <p v-if="ifLogin">
@@ -155,6 +155,11 @@ export default {
           font-size: 14px;
           color: #ff7867;
           cursor: pointer;
+        }
+      }
+      .login-btn{
+        a{
+          margin-left:100px;
         }
       }
       img{
