@@ -66,7 +66,7 @@ export default {
 <style lang="less" type="text/less">
 #ageHead {
   min-width: 1200px;
-  height: 140px;
+  height: 120px;
   background-color: rgb(58, 113, 168);
   .aHead {
     position: relative;
@@ -75,13 +75,13 @@ export default {
     justify-content: space-between;
     align-items: center;
     width: 1200px;
-    height: 140px;
+    height: 120px;
     color: #fff;
     margin: 0 auto;
     /*图片位置*/
     .headImg {
       width: 10%;
-      line-height: 140px;
+      line-height: 120px;
       img {
         width: 100%;
         vertical-align: middle;
@@ -126,7 +126,7 @@ export default {
       position: absolute;
       top: 0;
       right: 0;
-      width: 13%;
+      width: 10%;
       height: 100%;
     }
   }

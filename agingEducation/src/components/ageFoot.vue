@@ -30,8 +30,8 @@
         display: flex;
         flex-direction: column;
         min-width: 1060px;
-        height: 220px;
-        padding-top: 50px;
+        height: 150px;
+        padding-top: 30px;
         background-color: rgb(245, 245, 245);
         align-items: center;
         border-top: 1px solid rgb(225, 225, 225);
@@ -45,8 +45,7 @@
 
         /*第一行*/
         .footRow1 {
-            margin-bottom: 40px;
-
+            margin-bottom: 30px;
             >span{
                 display: inline-block;
                 padding-right: 40px;
