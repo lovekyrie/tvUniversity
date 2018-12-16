@@ -8,7 +8,7 @@
             <img :src="video" alt>
             <h3>最新动态</h3>
           </div>
-          <div class="new-item" v-for="(item, index) in items" :key="index">
+          <div @click="toDetail(item.televNewsPk)" class="new-item" v-for="(item, index) in items" :key="index">
             <p>{{item.titleNm}}</p>
             <span>{{item.createTm}}</span>
           </div>
@@ -108,6 +108,9 @@ export default {
           });
         }
       });
+    },
+    toDetail(pk){
+      window.location.href='../new/imglist.html?id='+pk
     }
   },
   components: {
