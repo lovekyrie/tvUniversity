@@ -29,7 +29,7 @@
 </template>
 <script>
 import myNav from "./myNav";
-import logo from "./images/logo.png";
+import logo from "./images/电视大学logo.png";
 import codeSmall from "./images/smallcode.png";
 import codeBig from "./images/bigcode.png";
 
@@ -170,7 +170,7 @@ export default {
       position: absolute;
       top: 0;
       right: 0;
-      width: 13%;
+      width: 12%;
       height: 100%;
     }
   }
