@@ -24,7 +24,7 @@
       </div>
       <div class="loginReg">
         <span>
-        <a href="#">登录</a>&nbsp;|&nbsp;<a href="#">注册</a>
+        <a href="../system/login.html">登录</a>&nbsp;|&nbsp;<a href="../system/register.html">注册</a>
         </span>
         <img v-if="!showBig" :src="samllCode" alt @click="showBig=true">
       </div>
@@ -34,9 +34,9 @@
 </template>
 
 <script>
-import logo from "./img/电大logo.png";
-import samllCode from "./img/小二维码.png";
-import bigCode from "./img/大二维码.png";
+import logo from "./img/logo.png";
+import samllCode from "./img/smallcode.png";
+import bigCode from "./img/bigcode.png";
 
 export default {
   data() {

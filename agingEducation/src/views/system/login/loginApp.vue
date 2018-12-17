@@ -112,12 +112,12 @@
           return;
         }
 
-        let query = new this.Query();
-        query.buildWhereClause('username',this.phone);
-        query.buildWhereClause('password',this.pass);
-        query.buildWhereClause('rememberMe',false);
-        let param = query.getParam();
-        this.until.post('/general/access/appLogin', param)
+        let param={
+          phone:this.phone,
+          passWord:this.pass
+        };
+
+        this.until.postCard('/telev/usr/login', JSON.stringify(param))
           .then(res => {
             if (res.status == 200) {
               sessionStorage.setItem('DD_token', JSON.stringify(res.data));

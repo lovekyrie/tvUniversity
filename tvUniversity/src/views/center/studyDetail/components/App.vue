@@ -49,7 +49,7 @@
                     width="60%"
                     :before-close="handleClose">
                 <el-checkbox-group v-model="checkList">
-                    <el-checkbox :label="item.prodStuPk" v-for="(item,index) in signList" :key="index">
+                    <el-checkbox :label="item.prodStuVo.prodStuPk" v-for="item in signList" :key="item.prodStuPk"  :checked="false">
                       <span>{{item.prodStuVo.nm}}</span>
                       <span class="space"></span>
                       <span>性别：{{item.prodStuVo.sex}}</span>

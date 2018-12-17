@@ -11,6 +11,9 @@ Vue.use(LoadingPlugin ); //全局注册alert事件，注册之后，不需要每
 //--- VUX UI 注册 END --
 
 
+import 'element-ui/lib/theme-chalk/index.css';
+import ElementUI from 'element-ui';
+Vue.use(ElementUI)
 
 import C from './conf';
 import M from './common';
