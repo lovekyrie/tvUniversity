@@ -107,7 +107,10 @@ export default {
       width: 10%;
       line-height: 120px;
       img {
-        width: 100%;
+        max-width: 100%;
+        max-height: 100%;
+        width: auto;
+        height: auto;
         vertical-align: middle;
       }
     }
