@@ -23,9 +23,15 @@
         </el-dropdown>
       </div>
       <div class="loginReg">
-        <span>
-        <a href="../system/login.html">登录</a>&nbsp;|&nbsp;<a href="../system/register.html">注册</a>
-        </span>
+        <p v-if="!isLogin">
+          <a href="../system/login.html">登录</a>&nbsp;|&nbsp;<a href="../system/register.html">注册</a>
+        </p>
+        <p class="login-out" v-if="isLogin">
+           <span>
+            欢迎您的登录，123
+           </span>
+          <a href="#" @click="quit">退出</a>
+        </p>
         <img v-if="!showBig" :src="samllCode" alt @click="showBig=true">
       </div>
       <img class="big-code" v-if="showBig" :src="bigCode" alt="" @click="showBig=false">
@@ -47,7 +53,12 @@ export default {
       bigCode,
       address: "宁波",
       showBig:false,
+      isLogin:false,
     };
+  },
+  mounted(){
+
+     this.isLogin = this.until.seGet("DD_token")?true:false;
   },
   methods: {
     toHome() {
@@ -58,6 +69,19 @@ export default {
     },
     handleCommand(command) {
       this.address = command;
+    },
+    quit(){
+       this.until.get("/telev/usr/logout").then(
+        res => {
+          if (res.status === "200") {
+            window.location.href = "../home/index.html";
+            this.until.seSave('DD_token','')
+          }
+        },
+        err => {
+          this.$message.error("退出失败");
+        }
+      );
     }
   }
 };
@@ -102,7 +126,7 @@ export default {
       display: flex;
       flex-flow: row nowrap;
       align-items: center;
-      span,img{
+      p,img{
         flex: 1 0 50%;        
       }
       img{
@@ -113,6 +137,11 @@ export default {
         color: white;
         text-decoration: none;
         font-weight: 300;
+      }
+      .login-out{
+        a{
+          color: #f00;
+        }
       }
     }
     .drop-list {

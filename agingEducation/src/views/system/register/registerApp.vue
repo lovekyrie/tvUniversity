@@ -249,12 +249,7 @@ export default {
         return;
       }
       this.countdown(this.$refs.yzm, 50);
-      this.axios
-        .get("/telev/usr/sendCode", {
-          params: {
-            phone: this.phone
-          }
-        })
+      this.until.post("/telev/usr/sendCode", {phone: this.phone})
         .then(res => {
           if (res.status != 200) {
             this.$alert("验证码获取失败！", "提示", {
@@ -318,14 +313,14 @@ export default {
         return;
       }
       let param = {
-        name: this.name,
-        idCard: this.card,
+        nm: this.name,
+        nmNub: this.card,
         sex: this.select,
         phone: this.phone,
         code: this.yzm,
-        password: this.pass
+        passWord: this.pass
       };
-      this.until.post("/general/access/register", param).then(res => {
+      this.until.postCard("/telev/usr/add", JSON.stringify(param)).then(res => {
         if (res.status == 200) {
           this.dialogVisible = true;
           setTimeout(() => {
