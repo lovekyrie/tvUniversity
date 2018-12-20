@@ -168,7 +168,7 @@ export default {
 
       if (!this.ifLogin) {
         player.on("timeupdate", () => {
-          if (parseInt(player.currentTime()) > 1) {
+          if (parseInt(player.currentTime()) > 10) {
             // player.pause()
             player.dispose();
             this.$alert(`您当前还未登录系统，试看视频时间结束。`, "试看结束", {

@@ -316,6 +316,7 @@ export default {
       }
       .video-js {
         float: left;
+        width: 600px;
         height: 300px;
       }
       .vjs-playlist,

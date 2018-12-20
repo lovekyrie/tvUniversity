@@ -4,6 +4,13 @@
     <ageHead></ageHead>
     <!--页面主体部分-->
     <div id="main">
+       <!--成果分类按钮-->
+      <div class="selectBtn">
+          <button @click="toWrite">文字集锦</button>
+          <button @click="toPaint">书画摄影</button>
+          <button @click="toVideo">活力视频</button>
+          <button @click="toRelease">成果发布</button>
+      </div>
       <!--书画列表-->
       <div class="paintingList">
         <!--列表顶部-->
@@ -90,6 +97,18 @@ export default {
     this.getPaintList();
   },
   methods: {
+    toWrite(){
+      window.location.href='./writing.html?type='+this.showType
+    },
+    toPaint(){
+      window.location.href='./painting.html?type='+this.showType
+    },
+    toVideo(){
+      window.location.href='./actVideo.html?type='+this.showType
+    },
+    toRelease(){
+      window.location.href='./achAdd.html?type='+this.showType
+    },
     //当前页变动时
     handleCurrentChange(val) {
       this.currentPage = val;

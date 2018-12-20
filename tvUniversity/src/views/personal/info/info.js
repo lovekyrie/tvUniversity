@@ -12,6 +12,7 @@ import studyDetail from './components/studyDetail.vue'
 import myStar from './components/myStar.vue'
 import sign from './components/sign.vue'
 import myTeam from './components/myTeam.vue'
+import preventStudy from './components/preventStudy.vue'
 
 const routes = [{
     path: '/',
@@ -38,6 +39,10 @@ const routes = [{
     path: '/studyDetail',
     component: studyDetail
   }, //课程详情
+  {
+    path:'/prevent',
+    component:preventStudy
+  },//往期课程详情
   {
     path: '/sign',
     component: sign

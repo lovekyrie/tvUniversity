@@ -4,6 +4,13 @@
     <ageHead></ageHead>
     <!--页面主体部分-->
     <div id="main">
+      <!--成果分类按钮-->
+      <div class="selectBtn">
+        <button @click="toWrite">文字集锦</button>
+        <button @click="toPaint">书画摄影</button>
+        <button @click="toVideo">活力视频</button>
+        <button @click="toRelease">成果发布</button>
+      </div>
       <!--视频列表-->
       <div class="videoList">
         <!--列表顶部-->
@@ -28,7 +35,12 @@
         </div>
 
         <!--视频-->
-        <div class="news" v-for="video in videoList" :key="video.televGainPk" @click="toVideoDetail(video.televGainPk)">
+        <div
+          class="news"
+          v-for="video in videoList"
+          :key="video.televGainPk"
+          @click="toVideoDetail(video.televGainPk)"
+        >
           <div class="newsDes">
             <p class="newsTitle">
               <a href="#">· {{video.titleNm}}</a>
@@ -66,7 +78,7 @@ import ageFoot from "components/ageFoot";
 export default {
   data() {
     return {
-      videoList:[],
+      videoList: [],
       showType: false,
       total: 15,
       pageSize: 5,
@@ -78,9 +90,9 @@ export default {
     ageHead,
     ageFoot
   },
-  computed:{
-    page(){
-      return Math.ceil(this.total/this.pageSize)
+  computed: {
+    page() {
+      return Math.ceil(this.total / this.pageSize);
     }
   },
   mounted() {
@@ -88,6 +100,18 @@ export default {
     this.getVideoList();
   },
   methods: {
+    toWrite() {
+      window.location.href = "./writing.html?type=" + this.showType;
+    },
+    toPaint() {
+      window.location.href = "./painting.html?type=" + this.showType;
+    },
+    toVideo() {
+      window.location.href = "./actVideo.html?type=" + this.showType;
+    },
+    toRelease() {
+      window.location.href = "./achAdd.html?type=" + this.showType;
+    },
     //当前页变动时
     handleCurrentChange(val) {
       this.currentPage = val;
@@ -109,8 +133,9 @@ export default {
         err => {}
       );
     },
-    toVideoDetail(pk){
-      window.location.href='./actvideoDetail.html?type='+this.showType+'&id='+pk
+    toVideoDetail(pk) {
+      window.location.href =
+        "./actvideoDetail.html?type=" + this.showType + "&id=" + pk;
     }
   }
 };

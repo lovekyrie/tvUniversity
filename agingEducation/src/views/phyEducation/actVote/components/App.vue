@@ -46,7 +46,7 @@
             <p
               style="color: rgb(135,135,135);font-weight: 300;line-height: 1.5em;margin-bottom: 35px"
             >来源：{{actInfo.source}}</p>
-            <button @click="toPostAct">发布作品</button> 
+            <button v-show="showRelease" @click="toPostAct">发布作品</button> 
           </div>
         </div>
 
@@ -130,6 +130,7 @@
                 actInfo:{},
                 entriesList:[],
                 flower,
+                showRelease:true
             }
         },
         computed:{
@@ -164,6 +165,17 @@
                     this.actInfo=res.data
                     this.actInfo.startTm=res.data.startTm.substr(0,10)
                     this.actInfo.endTm=res.data.endTm.substr(0,10)
+                    
+                    let time=this.until.formatDate()
+                    let today=new Date(time.year+'-'+time.month+'-'+time.day)
+                    let startDt=new Date(this.actInfo.startTm)
+                    let endDt=new Date(this.actInfo.endTm)
+                    if(endDt<today || today<startDt){
+                      this.showRelease=false;
+                    }
+                    else{
+                      this.showRelease=true
+                    }
                   }
                 },
                 err=>{}

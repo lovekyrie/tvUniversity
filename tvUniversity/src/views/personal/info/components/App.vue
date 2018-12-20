@@ -28,7 +28,10 @@
             iScur:4,
             menuList:[{
                 aHref:'/study',
-                title:'课程学习'
+                title:'当期课程学习'
+            },{
+                aHref:'/prevent',
+                title:'往期课程学习'
             },{
                 aHref:'/myStar',
                 title:'我的学习星'

@@ -6,7 +6,7 @@
         <div class="new-list">
           <div class="title">
             <img :src="video" alt>
-            <h3>最新动态</h3>
+            <h3>新闻动态</h3>
           </div>
           <div @click="toDetail(item.televNewsPk)" class="new-item" v-for="(item, index) in items" :key="index">
             <p>{{item.titleNm}}</p>
