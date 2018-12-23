@@ -371,9 +371,9 @@
       }
     },
     mounted() {
-      if (this.until.browser.versions.mobile) {
-        alert('该页面不支持移动端，请登录微信端');
-      }
+      // if (this.until.browser.versions.mobile) {
+      //   alert('该页面不支持移动端，请登录微信端');
+      // }
       this.year = new Date().getFullYear();
       /*校区类别*/
       let area = new this.Query();

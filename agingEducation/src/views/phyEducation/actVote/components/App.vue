@@ -38,7 +38,7 @@
             <p>主办方：{{actInfo.sponsor}}</p>
             <p>地点：{{actInfo.address}}</p>
             <p style="margin-bottom: 100px">
-              <span style="color:red;">{{actInfo.haveNum}}</span> 人参与
+              <span style="color:red;">{{actInfo.haveNum || 0}}</span> 人参与
             </p>
             <p
               style="color: rgb(135,135,135);font-weight: 300;line-height: 1.5em"
@@ -46,7 +46,7 @@
             <p
               style="color: rgb(135,135,135);font-weight: 300;line-height: 1.5em;margin-bottom: 35px"
             >来源：{{actInfo.source}}</p>
-            <button v-show="showRelease" @click="toPostAct">发布作品</button> 
+            <button v-show="showRelease" @click="toPostAct">发布作品</button>
           </div>
         </div>
 
@@ -59,7 +59,7 @@
               <template slot="title">
                 <span class="actTitle">{{actInfo.titleNm}}</span>
               </template>
-                <p class="actTitle" v-html="actInfo.cont"></p>
+              <p class="actTitle" v-html="actInfo.cont"></p>
             </el-collapse-item>
           </el-collapse>
         </div>
@@ -77,12 +77,12 @@
               >
                 <div class="inContent">
                   <div class="inner">
-                    <img :src="item.imgUrl" alt="">
+                    <img :src="item.imgUrl" alt>
                   </div>
                   <p>上传作者:{{item.authorNm}}</p>
                   <p>已投票数:{{item.voteNum}}</p>
                   <span>
-                    <button @click.once="voteItem(index)">投他一票</button>
+                    <button @click.once="voteItem(item)">投他一票</button>
                     <img :src="flower" alt="图片">
                   </span>
                 </div>
@@ -114,97 +114,120 @@
 </template>
 
 <script>
-    import ageHead from 'components/ageHead';
-    import ageFoot from 'components/ageFoot';
-    import flower from '../img/活动详情-投票献花.png'
-    export default {
-        data() {
-            return {
-                activeNames:'1',
-                actDetail:'这里是活动详情描述',
-                total:15,
-                currentPage:1,
-                pageSize:5,
-                showType:false,
-                actId:"",
-                actInfo:{},
-                entriesList:[],
-                flower,
-                showRelease:true
+import ageHead from "components/ageHead";
+import ageFoot from "components/ageFoot";
+import flower from "../img/活动详情-投票献花.png";
+export default {
+  data() {
+    return {
+      activeNames: "1",
+      actDetail: "这里是活动详情描述",
+      total: 15,
+      currentPage: 1,
+      pageSize: 5,
+      showType: false,
+      actId: "",
+      actInfo: {},
+      entriesList: [],
+      flower,
+      showRelease: true
+    };
+  },
+  computed: {
+    page() {
+      return Math.ceil(this.total / this.pageSize);
+    }
+  },
+  components: {
+    ageHead,
+    ageFoot
+  },
+  mounted() {
+    this.showType = JSON.parse(this.until.getQueryString("type"));
+    this.actId = this.until.getQueryString("id");
+
+    this.getActInfo();
+    this.getEntriesList();
+  },
+  methods: {
+    handleCurrentChange() {
+      console.log(`${val}`);
+    },
+    voteItem(item) {
+      //得到投票用户
+      let user = JSON.parse(this.until.seGet("DD_token"));
+      if (!user) {
+        this.$message.error('请先登录系统，才能进行投票！')
+      } 
+      else {
+        let param = {
+          televUserNm: user.userInfo.username,
+          televRunPk: item.televRunPk,
+          televRunNm: this.actInfo.titleNm //活动名称
+        };
+        this.until
+          .postCard("/telev/rns/addNum", JSON.stringify(param))
+          .then(res => {
+            if (res.status === "200") {
+              //
+              let work = this.entriesList.filter(element => element === item);
+              work.voteNum += 1;
+              this.$message({
+                message: "恭喜您，您已经成功投票一次",
+                type: "success"
+              });
             }
-        },
-        computed:{
-          page(){
-            return Math.ceil(this.total/this.pageSize)
+          });
+      }
+    },
+    getActInfo() {
+      this.until.get("/telev/doing/info/" + this.actId).then(
+        res => {
+          if (res.status === "200") {
+            this.actInfo = res.data;
+            this.actInfo.startTm = res.data.startTm.substr(0, 10);
+            this.actInfo.endTm = res.data.endTm.substr(0, 10);
+
+            let time = this.until.formatDate();
+            let today = new Date(time.year + "-" + time.month + "-" + time.day);
+            let startDt = new Date(this.actInfo.startTm);
+            let endDt = new Date(this.actInfo.endTm);
+            if (endDt < today || today < startDt) {
+              this.showRelease = false;
+            } else {
+              this.showRelease = true;
+            }
           }
         },
-        components: {
-            ageHead,
-            ageFoot,
+        err => {}
+      );
+    },
+    toPostAct() {
+      window.location.href =
+        "./postAct.html?type=" +
+        this.showType +
+        "&id=" +
+        this.actInfo.televDoingPk;
+    },
+    getEntriesList() {
+      let query = new this.Query();
+      query.buildPageClause(this.currentPage, this.pageSize);
+
+      let param = query.getParam();
+      param.pk = this.actId;
+      this.until.get("/telev/run/page", param).then(
+        res => {
+          if (res.status === "200") {
+            this.entriesList = res.data.items;
+            this.total = res.page.total;
+          }
         },
-        mounted(){
-
-          this.showType=JSON.parse(this.until.getQueryString('type'))
-          this.actId=this.until.getQueryString('id')
-
-          this.getActInfo()
-          this.getEntriesList()
-        },
-        methods: {
-            handleCurrentChange(){
-                console.log(`${val}`)
-            },
-            voteItem(val){
-                console.log(`${val+1}号`)
-            },
-            getActInfo(){
-
-              this.until.get('/telev/doing/info/'+this.actId).then(
-                res=>{
-                  if(res.status==='200'){
-                    this.actInfo=res.data
-                    this.actInfo.startTm=res.data.startTm.substr(0,10)
-                    this.actInfo.endTm=res.data.endTm.substr(0,10)
-                    
-                    let time=this.until.formatDate()
-                    let today=new Date(time.year+'-'+time.month+'-'+time.day)
-                    let startDt=new Date(this.actInfo.startTm)
-                    let endDt=new Date(this.actInfo.endTm)
-                    if(endDt<today || today<startDt){
-                      this.showRelease=false;
-                    }
-                    else{
-                      this.showRelease=true
-                    }
-                  }
-                },
-                err=>{}
-              )
-            },
-            toPostAct(){
-              window.location.href='./postAct.html?type='+this.showType+'&id='+this.actInfo.televDoingPk
-            },
-            getEntriesList(){
-
-              let query=new this.Query()
-              query.buildPageClause(this.currentPage,this.pageSize)
-
-              let param=query.getParam()
-              param.pk=this.actId
-              this.until.get('/telev/run/page',param).then(
-                res=>{
-                  if(res.status==='200'){
-                    this.entriesList=res.data.items;
-                    this.total=res.page.total;
-                  }
-                },
-                err=>{}
-              )
-            }
-        },
+        err => {}
+      );
     }
+  }
+};
 </script>
 
 <style scoped>
-
 </style>
