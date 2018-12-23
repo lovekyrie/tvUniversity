@@ -6,9 +6,9 @@
     <div id="main">
       <!--成果分类按钮-->
       <div class="selectBtn">
-        <button @click="toWrite">文字集锦</button>
+        <!-- <button @click="toWrite">文字集锦</button>
         <button @click="toPaint">书画摄影</button>
-        <button @click="toVideo">活力视频</button>
+        <button @click="toVideo">活力视频</button> -->
         <button @click="toRelease">成果发布</button>
       </div>
       <!--列表-->
@@ -30,24 +30,69 @@
           </span>
         </div>
 
-        <!--书画-->
-        <div
-          class="news"
-          v-for="writing in writeList"
-          :key="writing.televGainPk"
-          @click="toWriteDetail(writing.televGainPk)"
-        >
-          <div class="newsDes">
-            <p class="newsTitle">
-              <a href="#">· {{writing.titleNm}}</a>
+        <!--内容底部-->
+        <div class="mainFoot">
+          <!--文字集锦-->
+          <div class="production">
+            <h4>文字集锦</h4>
+            <ul
+              v-for="item in writeList"
+              :key="item.televGainPk"
+              @click="toWriteDetail(item.televGainPk)"
+            >
+              <li>
+                <a href="#">{{item.titleNm}}</a>
+              </li>
+              <p>作者：{{item.stuNm}}</p>
+              <p style="color: rgb(155,155,155)">{{item.author}}</p>
+            </ul>
+            <p>
+              <a :href="'./writing.html?type='+showType">查看更多 ></a>
             </p>
-            <span>&nbsp;&nbsp;&nbsp;{{writing.stuNm}}</span>
-            <span style="float: right">{{writing.author}}</span>
+          </div>
+          <!--书画摄影-->
+          <div class="honor">
+            <h4>书画摄影</h4>
+            <ul
+              v-for="item in paintList"
+              :key="item.televGainPk"
+              @click="toPaintDetail(item.catNm,item.televGainPk)"
+            >
+              <li>
+                <a href="#">{{item.titleNm}}</a>
+              </li>
+              <p>作者：{{item.stuNm}}</p>
+              <p style="color: rgb(155,155,155)">{{item.author}}</p>
+            </ul>
+            <p>
+              <a :href="'./painting.html?type='+showType">查看更多 ></a>
+            </p>
+          </div>
+          <!--活力视频-->
+          <div class="classes">
+            <h4>活力视频</h4>
+            <ul
+              v-for="item in videoList"
+              :key="item.televGainPk"
+              @click="toVideoDetail(item.televGainPk)"
+            >
+              <li>
+                <a href="#">{{item.titleNm}}</a>
+              </li>
+              <p>作者：{{item.stuNm}}</p>
+              <p style="color: rgb(155,155,155)">{{item.author}}</p>
+            </ul>
+            <p>
+              <a :href="'./actVideo.html?type='+showType">查看更多 ></a>
+            </p>
           </div>
         </div>
 
+        <div class="operate-btn">
+        <button @click="toRelease">成果发布</button>
+        </div>
         <!--底部分页按钮-->
-        <div class="nextButton">
+        <!-- <div class="nextButton">
           <el-pagination
             @current-change="handleCurrentChange"
             :current-page.sync="currentPage"
@@ -59,7 +104,7 @@
           >
             <span style="margin-left: 10px">共{{total}}条记录，共{{page}}页</span>
           </el-pagination>
-        </div>
+        </div>-->
       </div>
     </div>
 
@@ -77,11 +122,13 @@ export default {
   data() {
     return {
       total: 15,
-      pageSize: 5,
+      pageSize: 3,
       currentPage: 1,
       newsNext: "下一页",
       showType: false,
       writeList: [],
+      paintList: [],
+      videoList: [],
       showType: false
     };
   },
@@ -92,7 +139,9 @@ export default {
   },
   mounted() {
     this.showType = JSON.parse(this.until.getQueryString("type"));
-     this.getWriteList()
+    this.getWriteList();
+    this.getPaintList();
+    this.getVideoList();
   },
   methods: {
     toWrite() {
@@ -128,9 +177,48 @@ export default {
         err => {}
       );
     },
+    getPaintList() {
+      let query = new this.Query();
+      query.buildWhereClause("catNm", "书画摄影", "EQ");
+      query.buildPageClause(this.currentPage, this.pageSize);
+
+      let param = query.getParam();
+      this.until.get("/telev/gain/page", param).then(
+        res => {
+          if (res.status === "200") {
+            this.paintList = res.data.items;
+            this.total = res.page.total;
+          }
+        },
+        err => {}
+      );
+    },
+    getVideoList() {
+      let query = new this.Query();
+      query.buildWhereClause("catNm", "活力视频", "EQ");
+      query.buildPageClause(this.currentPage, this.pageSize);
+
+      let param = query.getParam();
+      this.until.get("/telev/gain/page", param).then(
+        res => {
+          if (res.status === "200") {
+            this.videoList = res.data.items;
+            this.total = res.page.total;
+          }
+        },
+        err => {}
+      );
+    },
     toWriteDetail(pk) {
       window.location.href =
         "./writingDetail.html?id=" + pk + "&type=" + this.showType;
+    },
+     toPaintDetail(pk){
+      window.location.href='./paintingDetail.html?type='+this.showType+'&id='+pk
+    },
+     toVideoDetail(pk) {
+      window.location.href =
+        "./actvideoDetail.html?type=" + this.showType + "&id=" + pk;
     }
   },
   components: {

@@ -6,9 +6,9 @@
         <div id="main">
             <!--成果分类按钮-->
             <div class="selectBtn">
-                <button @click="toWrite">文字集锦</button>
+                <!-- <button @click="toWrite">文字集锦</button>
                 <button @click="toPaint">书画摄影</button>
-                <button @click="toVideo">活力视频</button>
+                <button @click="toVideo">活力视频</button> -->
                 <button @click="toRelease">成果发布</button>
             </div>
             <!--列表-->
