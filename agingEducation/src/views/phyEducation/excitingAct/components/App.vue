@@ -38,7 +38,7 @@
                 <span>地点：{{act.address}}</span>
                 <span>主办方：{{act.sponsor}}</span>
                 <span style="margin-top: 14px;line-height: 16px">
-                  {{act.haveNum}}人参与
+                  作品人数：{{act.haveNum}}
                   <button
                     class="actBtn"
                     @click="toDetail(act.televDoingPk)"
