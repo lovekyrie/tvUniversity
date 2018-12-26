@@ -10,6 +10,7 @@
                 <tr>
                     <th>序号</th>
                     <th>课程名称</th>
+                    <th>所属计划</th>
                     <th>学习星</th>
                     <th>{{state}}</th>
                     <th></th>
@@ -19,6 +20,7 @@
                 <tr v-for="(item,index) in list" :key="index">
                     <td>{{index+1}}</td>
                     <td>{{item.nm}}</td>
+                    <td>{{item.prodPlanNm}}</td>
                     <td>{{item.learningStar}}</td>
                     <td>{{item.statNm}}</td>
                     <td v-if="!ifLogin" @click="toTryDetail(item.prodClassPk,'再次学习',item.nm)">开始试看</td>
@@ -125,7 +127,7 @@ export default {
           query.buildPageClause(this.pageNo,this.pageSize);
 
           let param=query.getParam()
-          this.until.get("/prod/cls/pag",param).then(
+          this.until.get("/prod/cls/csPage",param).then(
             res=>{
               if(res.status==='200'){
                 resolve(res)
@@ -168,11 +170,11 @@ export default {
           width: 15%;
         }
         &:nth-child(2){
-          width: 40%;
+          width: 30%;
           text-align: left;
         }
         &:nth-child(3){
-          width: 15%;
+          width: 25%;
         }
         &:nth-child(4){
           width: 15%;

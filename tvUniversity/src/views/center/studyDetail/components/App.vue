@@ -18,7 +18,7 @@
                       :options="playerOptions"
                     ></video-player>
                 </div> -->
-                  <div class="player-container">
+                  <div class="player-container" :style="[showList?{width:'900px'}:{width:'600px'}]">
                      <div class="sign" v-show="!ifSign"><img src="../img/sign.png" @click="sign()"/> </div>
                     <video
                       ref="video"
@@ -31,7 +31,7 @@
                       <source src="http://vjs.zencdn.net/v/oceans.webm" type="video/webm">
                     </video>
 
-                    <div class="vjs-playlist">
+                    <div class="vjs-playlist" v-if="showList">
                     </div>
                 </div>
                 <div class="intro">
@@ -85,6 +85,7 @@ export default {
       signList: [], //集体签到列表
       ifLogin: false,
       info: {},
+      showList:true,
       playerOptions: {
         playbackRates: [0.7, 1.0, 1.5, 2.0], //播放速度
         autoplay: false, //如果true,浏览器准备好时开始回放。
@@ -145,6 +146,12 @@ export default {
       var player = videojs("video");
       this.info = await this.getStudyInfo();
       let newArr = await this.getVideoList();
+      if(newArr.length>1){
+        this.showList=true;
+      }
+      else{
+        this.showList=false;
+      }
       player.playlist(newArr);
       player.playlistUi();
 

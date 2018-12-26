@@ -101,10 +101,10 @@ export default {
       align-items: center;
       width: 35%;
       img{
-        width: 20%;
+        
       }
       > a {
-        // margin-left: 5%;
+         margin-left: 5%;
         width: 80%;
         font-size: 28px;
         color: #3a71a8;

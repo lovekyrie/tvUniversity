@@ -38,7 +38,7 @@
             <p>主办方：{{actInfo.sponsor}}</p>
             <p>地点：{{actInfo.address}}</p>
             <p style="margin-bottom: 100px">
-              作品人数：<span style="color:red;">{{actInfo.haveNum || 0}}</span>
+              作品数：<span style="color:red;">{{actInfo.haveNum || 0}}</span>
             </p>
             <p
               style="color: rgb(135,135,135);font-weight: 300;line-height: 1.5em"

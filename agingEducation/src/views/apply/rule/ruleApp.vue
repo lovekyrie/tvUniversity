@@ -184,8 +184,11 @@
     mounted() {
       let query = new this.Query();
       query.buildWhereClause('catCd', '30020.160', 'EQ');
+      query.buildWhereClause("statCd","10000.150","EQ");
+
       query.buildPageClause('1', '1');
-      this.until.get('/sys/show/list', {})
+      let param=query.getParam();
+      this.until.get('/sys/show/list', param)
         .then(res => {
           if (res.status == 200) {
             this.info = res.data.items[0];

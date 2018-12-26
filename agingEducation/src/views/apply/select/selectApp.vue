@@ -430,6 +430,8 @@ export default {
           statCd +
           "&hasExam=" +
           opt.hasExam +
+          "&pSTime=" +
+          opt.recrPlanVo.payFrTm +
           "&pETime=" +
           opt.recrPlanVo.payToTm +
           "&type=" +

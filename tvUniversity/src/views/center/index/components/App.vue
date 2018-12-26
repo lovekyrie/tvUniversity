@@ -137,7 +137,8 @@ export default {
             language: "zh-CN",
             aspectRatio: "16:9", // 将播放器置于流畅模式，并在计算播放器的动态大小时使用该值。值应该代表一个比例 - 用冒号分隔的两个数字（例如"16:9"或"4:3"）
             fluid: true, // 当true时，Video.js player将拥有流体大小。换句话说，它将按比例缩放以适应其容器。
-            sources: [ ],
+            sources: [
+            ],
             poster: "http://assets.jq22.com/plugin/2015-08-25-23-08-04.jpg", //你的封面地址
             // width: document.documentElement.clientWidth,
             notSupportedMessage: "此视频暂无法播放，请稍后再试", //允许覆盖Video.js无法播放媒体源时显示的默认信息。
@@ -171,6 +172,12 @@ export default {
       this.rankList = await this.getStarRank();
 
       let classArr=await this.getCurrentCourseList();
+      if(classArr.length===2){
+        this.videoList=this.videoList.slice(0,-1)
+      }
+      else if(classArr.length===1){
+        this.videoList=this.videoList.slice(0,-2)
+      }
       //根据当前的课程ID去查数据
       this.getVideoList(classArr);
     },
@@ -315,8 +322,8 @@ export default {
             if(res.status==='200'){
               this.videoList[index].playerOptions.sources.push(
                 {
-                  type: "",
-                  src: "http://vjs.zencdn.net/v/oceans.mp4"
+                  type: "video/mp4",
+                  src: res.data.items[0].videoUrl
                 }
               )
               if(res.data.items.length>0){

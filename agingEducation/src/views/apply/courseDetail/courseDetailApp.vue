@@ -310,12 +310,12 @@
                     <div><p class="c-place">男：{{infoData.maleAgeNm}}岁&nbsp;&nbsp;&nbsp;&nbsp;女：{{infoData.famaleAgeNm}}岁</p></div>
                 </div>
                 <div class="s-sytle clearfix">
-                    <h4><i class="bt"></i>报名时间：</h4>
+                    <h4><i class="bt"></i>报名起止时间：</h4>
                     <div><p class="c-place">{{stime}}&nbsp;&nbsp;~&nbsp;&nbsp;{{etime}}</p></div>
                 </div>
                 <div class="s-sytle clearfix">
-                    <h4 style="width: 155px;"><i class="bt"></i>缴费截止时间：</h4>
-                    <div><p class="c-place">{{pETime}}</p></div>
+                    <h4 style="width: 155px;"><i class="bt"></i>缴费起止时间：</h4>
+                    <div><p class="c-place">{{pSTime}}&nbsp;&nbsp;~&nbsp;&nbsp;{{pETime}}</p></div>
                 </div>
                 <div class="s-sytle clearfix" v-if="!teachData.intro==''">
                     <h4><i class="bt"></i>教师介绍</h4>
@@ -371,6 +371,7 @@
         headTeacPk: '',
         price: '',
         nm: '',
+        pSTime:'',
         pETime:'',
         area:'',
         hasExam:''
@@ -392,6 +393,7 @@
       this.statCd = this.until.getQueryString('statCd');
       this.hasExam = this.until.getQueryString('hasExam');
       this.area = this.until.getQueryString('area');
+      this.pSTime=this.until.getQueryString('pSTime');
       this.pETime = this.until.getQueryString('pETime');
       this.stime = this.until.getQueryString('stime');
       this.etime = this.until.getQueryString('etime');
