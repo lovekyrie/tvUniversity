@@ -4,7 +4,7 @@
     <ageHead></ageHead>
     <!--页面主体部分-->
     <div id="main">
-      <!--新闻列表-->
+      <!--校园列表-->
       <div class="newsList">
         <!--列表顶部-->
         <div class="newsTop">
@@ -21,7 +21,7 @@
           </span>
         </div>
 
-        <!--新闻-->
+        <!--校园-->
         <div class="news" v-for="item in newList" :key="item.televNewsPk" @click="toNewDetail(item.televNewsPk)">
           <div class="newsImg">
             <img :src="item.imgUrl">

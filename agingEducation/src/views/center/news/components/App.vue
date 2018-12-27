@@ -4,16 +4,16 @@
         <ageHead></ageHead>
         <!--页面主体部分-->
         <div id="main">
-            <!--新闻列表-->
+            <!--校园列表-->
             <div class="newsList">
                 <!--列表顶部-->
                 <div class="newsTop">
                     <span><a href="#">首页</a></span>
                     <span class="topLine"> > </span>
-                    <span><a href="#">新闻动态</a></span>
+                    <span><a href="#">校园动态</a></span>
                 </div>
 
-                <!--新闻-->
+                <!--校园-->
                 <div class="news" v-for="item in news">
                     <div class="newsImg">
                         <img :src="item.pic">

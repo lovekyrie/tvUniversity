@@ -22,17 +22,16 @@
           </el-dropdown-menu>
         </el-dropdown>
       </div>
-      <div class="loginReg">
-        <p v-if="!isLogin">
-          <a href="../system/login.html">登录</a>&nbsp;|&nbsp;<a href="../system/register.html">注册</a>
+      <div class="right">
+        <p class="login-btn" v-if="!isLogin">
+          <a href="../system/login.html">登录 &nbsp;|&nbsp;</a>
+          <a href="../system/register.html">注册</a>
         </p>
-        <p class="login-out" v-if="isLogin">
-           <span>
-            欢迎您的登录，123
-           </span>
-          <a href="#" @click="quit">退出</a>
+        <p v-if="isLogin">
+          <a href="../personalZone/personal.html">欢迎您的登录，{{nickName}}！</a>
+          <span @click="quit">退出</span>
         </p>
-        <img v-if="!showBig" :src="samllCode" alt @click="showBig=true">
+        <img v-if="!showBig" :src="samllCode" alt="" @click="showBig=true">
       </div>
       <img class="big-code" v-if="showBig" :src="bigCode" alt="" @click="showBig=false">
     </div>
@@ -54,11 +53,16 @@ export default {
       address: "宁波",
       showBig:false,
       isLogin:false,
+      nickName:'',
     };
   },
   mounted(){
-
-     this.isLogin = this.until.seGet("DD_token")?true:false;
+    let loginCredit=this.until.seGet("DD_token");
+     this.isLogin = loginCredit?true:false;
+     if(loginCredit){
+       let userObj=JSON.parse(loginCredit)
+       this.nickName=userObj.userInfo.nickname
+     }
   },
   methods: {
     toHome() {
@@ -123,32 +127,45 @@ export default {
       font-size: 24px;
     }
     /*登录注册*/
-    .loginReg {
-      width: 20%;
-      line-height: 140px;
+    .right{
+      width: 30%;
+      display: -webkit-flex;
       display: flex;
       flex-flow: row nowrap;
       align-items: center;
-      p,img{
-        flex: 1 0 50%;        
+      p {
+        width: 70%;
+        color: #e3e3e3;
+        display: flex;
+        flex-flow: row wrap;
+        a {
+          flex: 1 0 100%;
+          color: #fff;
+          display: inline-block;
+          font-size: 14px;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+        }
+        span {
+          flex: 1 0 100%;
+          font-size: 14px;
+          color: #ff7867;
+          cursor: pointer;
+        }
+      }
+      .login-btn{
+         flex-wrap: nowrap;
+        a{
+          flex: 0 0 auto;
+        }
       }
       img{
-        flex:0 0 auto;
-        height: 75px;
-      }
-      a {
-        color: white;
-        text-decoration: none;
-        font-weight: 300;
-      }
-      .login-out{
-        a{
-          color: #f00;
-        }
+        flex: 0 0 auto;
       }
     }
     .drop-list {
-      width: 25%;
+      width: 15%;
       .el-dropdown{
         font-size: 18px;
         color: #fff;

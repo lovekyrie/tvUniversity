@@ -6,7 +6,7 @@
         <div class="new-list">
           <div class="title">
             <img :src="video" alt>
-            <h3>新闻动态</h3>
+            <h3>校园动态</h3>
           </div>
           <div @click="toDetail(item.televNewsPk)" class="new-item" v-for="(item, index) in items" :key="index">
             <p>{{item.titleNm}}</p>
@@ -22,7 +22,7 @@
             coords="248, 266, 120, 207, 92, 207, 59, 218, 23, 243, 9, 272, 2, 299, 3, 329, 21, 369, 57, 401, 98, 411, 123, 408, 249, 350, 239, 312, 239, 297"
             href="../phyEducation/excitingAct.html"
           >
-          <!--新闻动态-->
+          <!--校园动态-->
           <area
             shape="poly"
             coords="255,255,134,167,114,123,120,75,141,38,188,9,228,5,270,18,301.5,48,318,92,326,218,291,224,273,237"

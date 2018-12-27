@@ -155,11 +155,12 @@ export default {
     },
     voteItem(item) {
       //得到投票用户
-      let user = JSON.parse(this.until.seGet("DD_token"));
-      if (!user) {
+      let userJSON = this.until.seGet("DD_token");
+      if (!userJSON) {
         this.$message.error('请先登录系统，才能进行投票！')
       } 
       else {
+        let user=JSON.parse(userJSON);
         let param = {
           televUserNm: user.userInfo.username,
           televRunPk: item.televRunPk,
@@ -172,10 +173,13 @@ export default {
               //
               let work = this.entriesList.filter(element => element === item);
               work.voteNum += 1;
-              this.$message({
-                message: "恭喜您，您已经成功投票一次",
-                type: "success"
+               this.$message({
+                message: '您已经成功投票一次',
+                type: 'success'
               });
+            }
+            else{
+              this.$message.error(res.message)
             }
           });
       }

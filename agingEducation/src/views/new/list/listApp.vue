@@ -6,7 +6,7 @@
 
             <div class="g-search">
                 <div class="crumb"><a
-                        href="../home/index.html">首页</a><span>&nbsp;&nbsp;&gt;&nbsp;&nbsp;</span><a>新闻动态</a></div>
+                        href="../home/index.html">首页</a><span>&nbsp;&nbsp;&gt;&nbsp;&nbsp;</span><a>校园动态</a></div>
 
                 <div class="content">
                     <a :href="'./imglist.html?id='+item.televNewsPk" v-for="(item,index) in items" :key="index" class="clearfix">
