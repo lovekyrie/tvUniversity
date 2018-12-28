@@ -122,7 +122,7 @@ export default {
     this.getInfo();
     //得到isGroup
     let tokenObj = this.until.seGet("DD_token");
-    this.retroactive = JSON.parse(tokenObj).isGroup === "是" ? true : false;
+    this.retroactive = tokenObj && JSON.parse(tokenObj).isGroup === "是" ? true : false;
 
   // var player = videojs("video");
     // player.on('playlistitem', function() {

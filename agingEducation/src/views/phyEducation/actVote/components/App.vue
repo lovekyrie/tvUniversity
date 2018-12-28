@@ -169,10 +169,13 @@ export default {
         this.until
           .postCard("/telev/rns/addNum", JSON.stringify(param))
           .then(res => {
-            if (res.status === "200") {
-              //
-              let work = this.entriesList.filter(element => element === item);
-              work.voteNum += 1;
+            if (res.status == 200) {
+              //增加投票次数
+              this.entriesList.forEach(element=>{
+                if(element===item){
+                  element.voteNum+=1;
+                }
+              })
                this.$message({
                 message: '您已经成功投票一次',
                 type: 'success'

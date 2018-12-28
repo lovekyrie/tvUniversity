@@ -9,7 +9,7 @@
             </div>
             <div class="b-input">
                 <p>登录：</p>
-                <input type="password" placeholder="请输入登录密码" v-model="psd">
+                <input type="password" placeholder="请输入登录密码" v-model="psd" @keyup.enter="submit">
             </div>
             <p class="b-btn" @click="submit">登录</p>
             <p class="b-rs"><a href="forgotPassWord.html">忘记密码？</a> </p>

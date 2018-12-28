@@ -163,14 +163,13 @@ export default {
         }
       }
       img{
-        width:38%;
       }
     }
     .big-code{
       position: absolute;
       top: 0;
       right: 0;
-      width: 12%;
+      width: 11%;
       height: 100%;
     }
   }
