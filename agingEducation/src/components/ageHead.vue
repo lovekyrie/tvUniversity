@@ -28,7 +28,7 @@
           <a href="../system/register.html">注册</a>
         </p>
         <p v-if="isLogin">
-          <a href="../personalZone/personal.html">欢迎您的登录，{{nickName}}！</a>
+          <a href="../personalZone/personal.html">{{nickName}}</a>
           <span @click="quit">退出</span>
         </p>
         <img v-if="!showBig" :src="samllCode" alt="" @click="showBig=true">
@@ -95,7 +95,11 @@ export default {
 #ageHead {
   min-width: 1200px;
   height: 120px;
-  background-color: rgb(58, 113, 168);
+  background-image: url("./img/navigator.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  box-shadow: 0 2px 4px rgba(73,150,86,.16);
   .aHead {
     position: relative;
     display: flex;
@@ -120,11 +124,12 @@ export default {
     }
     /*标题*/
     .headTitle {
-      width: 32%;
+      width: 66%;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      font-size: 24px;
+      font-size: 28px;
+      color: #303030;
     }
     /*登录注册*/
     .right{
@@ -133,6 +138,7 @@ export default {
       display: flex;
       flex-flow: row nowrap;
       align-items: center;
+      color: #303030;
       p {
         width: 70%;
         color: #e3e3e3;
@@ -140,9 +146,9 @@ export default {
         flex-flow: row wrap;
         a {
           flex: 1 0 100%;
-          color: #fff;
+          color: #303030;
           display: inline-block;
-          font-size: 14px;
+          font-size: 18px;
           white-space: nowrap;
           text-overflow: ellipsis;
           overflow: hidden;
@@ -167,8 +173,8 @@ export default {
     .drop-list {
       width: 15%;
       .el-dropdown{
-        font-size: 18px;
-        color: #fff;
+        font-size: 20px;
+        color: #303030;
       }
     }
      .big-code{

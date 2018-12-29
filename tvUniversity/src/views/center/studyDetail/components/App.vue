@@ -2,7 +2,11 @@
   <div id="container">
     <myHeader :type="name"></myHeader>
     <div class="content">
-      <div class="pos">首页 > 当前课程 > 课程内容</div>
+      <div class="pos">
+        <span><a href="../center/index.html">首页</a></span>> 
+        <span><a href="./study.html">当前课程</a></span>>
+        课程内容
+      </div>
       <div id="studyDetail">
         <div class="top">
           <h1>{{info.nm}}</h1>

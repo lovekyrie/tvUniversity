@@ -2,33 +2,50 @@
 #container{
   .pos{
     width: 100%;
-    color: #999999;
-    font-size: 24px;
-    border-bottom: 1px solid #e1e1e1;
+    color: #999;
+    font-size: 20px;
+    border-bottom: 1px solid #f1f1f1;
     line-height: 80px;
+    a {
+      color: #999;
+    }
+    >span{
+      &:nth-last-of-type(1){
+        color: #72b713;
+      }
+    }
   }
   .content > ul{
-    border-bottom: 1px solid #e1e1e1;
+    border-bottom: 1px solid #f1f1f1;
     cursor: pointer;
     li{
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: center;
       font-size: 18px;
-      list-style-type:disc;
-      list-style-position: inside;
-      border-bottom: 1px solid #e1e1e1;
-      height: 80px;
-      line-height: 80px;
+      border-bottom: 1px solid #f1f1f1;
+      height: 60px;
+      line-height: 60px;
+      color: #303030;
       cursor: pointer;
       &:last-child{
         border-bottom: 0;
       }
+     
       p{
+        width: 82%;
+        margin-left: 1%;
         display: inline-block;
         font-size: 18px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
       }
       span{
-        font-size: 18px;
+        flex: 0 0 auto;
+        font-size: 16px;
         float: right;
-        color: #999999;
+        color: #d1d1d1;
         width: 180px;
         text-align: right;
       }
@@ -39,6 +56,9 @@
     .el-pagination__total{
       font-size: 16px !important;
       line-height: 40px;
+    }
+    .active{
+      background-color: #72b713;
     }
     .btn-prev .el-icon,.el-pager li,.btn-next .el-icon,.btn-prev,.btn-next {
       font-size: 16px !important;

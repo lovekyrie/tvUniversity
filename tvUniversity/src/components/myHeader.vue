@@ -29,7 +29,7 @@
 </template>
 <script>
 import myNav from "./myNav";
-import logo from "./images/电视大学logo.png";
+import logo from "./images/logo.png";
 import codeSmall from "./images/smallcode.png";
 import codeBig from "./images/bigcode.png";
 
@@ -86,6 +86,10 @@ export default {
   width: 100%;
   height: auto;
   border-bottom: 1px solid #e1e1e1;
+  background-image: url("./images/navigator.png") ; 
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
   > .header-wrap {
     position: relative;
     width: 1200px;
@@ -104,10 +108,10 @@ export default {
         
       }
       > a {
-         margin-left: 5%;
+        margin-left: 5%;
         width: 80%;
         font-size: 28px;
-        color: #3a71a8;
+        color: #303030;
         flex: 1;
         font-weight: bold;
       }
@@ -117,10 +121,11 @@ export default {
       display: -webkit-flex;
       width: 45%;
       a {
-        height: 90px;
-        line-height: 90px;
+        margin: 0 10px;
+        height: 45px;
+        line-height: 45px;
         text-align: center;
-        color: #666666;
+        color: #303030;
         flex: 1;
         font-size: 18px;
         /*font-weight: bold;*/
@@ -130,8 +135,8 @@ export default {
       }
       a.active {
         font-weight: bold;
-        color: #3a71a8;
-        border-bottom: 1px solid #3a71a8;
+        color: #72b713;
+        border-bottom: 1px solid #72b713;
       }
     }
     .right{

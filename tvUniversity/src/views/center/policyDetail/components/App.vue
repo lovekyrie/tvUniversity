@@ -3,7 +3,9 @@
         <myHeader :type="name"></myHeader>
         <div class="content">
             <div class="pos">
-                 首页 > 文件政策 > {{info.nm}}
+              <span><a href="../center/index.html">首页</a></span>>
+              <span><a href="./policy.html">文件政策</a></span>> 
+              {{info.nm}}
             </div>
             <div class="noticeDetail">
                 <h1>{{info.nm}}</h1>

@@ -3,17 +3,18 @@
         <myHeader :type="name"></myHeader>
         <div class="content">
             <div class="pos">
-                 首页 > 通知公告
+              <span><a href="./index.html">首页</a></span>&nbsp;>
+              <span>通知公告</span>
             </div>
             <div class="list" v-for="(item,index) in list" :key="index" @click="toDetail(item.sysNewsPk)">
-                <div class="img">
-                    <img :src="item.imgUrl"/>
-                </div>
                 <div class="listContent">
                     <div>
                         <strong>{{item.nm}}</strong>
                     </div>
-                    <p>{{item.year}}年{{item.month}}月{{item.day}}日 {{item.time}}<span></span>来源：{{item.author}}</p>
+                    <p>
+                     <span>{{item.year}}年{{item.month}}月{{item.day}}日 {{item.time}}</span>
+                     <span>来源：{{item.author}}</span>
+                    </p>
                 </div>
             </div>
             <!--分页-->

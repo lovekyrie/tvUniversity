@@ -9,6 +9,7 @@
             <h3>校园动态</h3>
           </div>
           <div @click="toDetail(item.televNewsPk)" class="new-item" v-for="(item, index) in items" :key="index">
+            <img :src="icon" alt="">
             <p>{{item.titleNm}}</p>
             <span>{{item.createTm}}</span>
           </div>
@@ -74,6 +75,8 @@
 import ageHead from "components/ageHead";
 import ageFoot from "components/ageFoot";
 import video from "./img/voice.png";
+import iconG from './img/iconG.png';
+import icon from './img/icon.png';
 
 export default {
   data() {
@@ -81,7 +84,9 @@ export default {
       currentPage: 1,
       pageSize: 4,
       items: [],
-      video
+      video,
+      iconG,
+      icon
     };
   },
   mounted() {

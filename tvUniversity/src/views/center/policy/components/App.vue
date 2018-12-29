@@ -3,11 +3,13 @@
         <myHeader :type="name"></myHeader>
         <div class="content">
             <div class="pos">
-                 首页 > 文件政策
+              <span><a href="./index.html">首页</a></span>&nbsp;> 
+              <span>文件政策</span>
             </div>
 
             <ul>
                 <li v-for="(item,index) in list" @click="toDetail(item.sysNewsPk)" :key="index">
+                  <img :src="iconG" alt="">
                   <p>{{item.nm}}</p>
                   <span>{{item.year}}年{{item.month}}月{{item.day}}日</span>
                 </li>
@@ -29,9 +31,14 @@
 <script>
 import myHeader from "@/components/myHeader";
 import myFooter from "@/components/myFooter";
+import icon from '../img/icon.png'
+import iconG from '../img/iconG.png'
+
 export default {
   data() {
     return {
+      icon,
+      iconG,
       name: "policy",
       pageNo: 1,
       pageSize: 10,

@@ -4,10 +4,17 @@ body {
   height: 100%;
 }
 
+
 map area {
   outline: none;
 }
 
+#container{
+  background-image: url("../img/indexBg.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
 .home {
   position: relative;
   padding-bottom: 20px;
@@ -21,14 +28,15 @@ map area {
     flex: 0 0 55%;
   }
   .new-list {
-    border: 1px solid #ebebeb;
+    margin-left: -10px;
+    margin-top: 30px;
     >div {
       &:nth-last-of-type(1) {
         border-bottom: 0;
       }
     }
     .title{
-      padding: 20px 0 0 20px;
+      padding: 40px 0 20px 20px;
       display: flex;
       flex-flow: row nowrap;
       align-items: center;
@@ -41,8 +49,9 @@ map area {
       }
     }
     .new-item {
+      position: relative;
       margin: 0 20px;
-      padding: 20px 0;
+      padding: 20px 0 20px 23px;
       border-bottom: 1px solid #e1e1e1;
       cursor: pointer;
       p {
@@ -51,6 +60,11 @@ map area {
       span {
         color: #999;
         font-size: 16px;
+      }
+      img{
+        position: absolute;
+        top: 30px;
+        left: 0px;
       }
     }
   }
@@ -62,30 +76,22 @@ map area {
 .bottom {
   a {
     display: inline-block;
-    width: 215px;
-    height: 30px;
-    line-height: 30px;
+    margin-left: 50px;
+    width: 150px;
+    height: 40px;
+    line-height: 40px;
     font-size: 20px;
-    background: url("../img/a1.jpg") no-repeat;
-    background-size: 30px 29px !important;
-    padding-left: 40px;
-    text-align: left;
+    background: url("../img/add.png") no-repeat;
+    background-position: 14px 7px;
+    padding-left: 48px;
+    background-color: #389744;
+    border-radius: 8px;
+    color: #fff;
+    &:nth-of-type(2){
+      background-image: url("../img/pay.png");
+    }
   }
-  a:nth-of-type(2) {
-    background: url("../img/jf.png") 0 2px no-repeat;
-    background-size: 26px 26px !important;
-  }
-  a:nth-of-type(3) {
-    background: url("../img/a2.jpg") no-repeat;
-  }
-  a:nth-of-type(4) {
-    background: url("../img/a3.jpg") no-repeat;
-  }
-  a:last-of-type {
-    width: auto;
-    margin: 0;
-    background: url("../img/a4.jpg") no-repeat;
-  }
+ 
 }
 
 .size {

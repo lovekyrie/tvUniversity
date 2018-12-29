@@ -3,7 +3,8 @@
         <myHeader :type="name"></myHeader>
         <div class="content">
             <div class="pos">
-                 首页 > 学习星排名
+              <span><a href="./index.html">首页</a></span> > 
+                 学习星排名
             </div>
             <table>
                 <thead>
@@ -104,10 +105,13 @@ export default {
   #app{
   .pos{
     width: 100%;
-    color: #999999;
+    color: #999;
     font-size: 24px;
     border-bottom: 1px solid #e1e1e1;
     line-height: 80px;
+    a{
+      color: #999;
+    }
   }
   table{
     width: 1198px;

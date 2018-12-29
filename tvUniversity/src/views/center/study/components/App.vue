@@ -1,9 +1,12 @@
 <template>
     <div id="container">
         <myHeader :type="name"></myHeader>
-        <div class="content">
+        <div class="content-wrap">
             <div class="pos">
-                 首页 > 当前课程
+              <span><a href="./index.html">首页</a></span>&nbsp;> 
+              <span>
+               当前课程
+              </span>
             </div>
             <table>
                 <thead>

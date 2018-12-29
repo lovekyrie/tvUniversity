@@ -37,7 +37,7 @@ export default {
   background: #f5f5f5;
   border-top: 1px solid #dddddd;
   color: #666666;
-  padding: 15px 0;
+  padding: 15px 0 5px 0;
   .footer-wrap {
     width: 1200px;
     margin: 0 auto;

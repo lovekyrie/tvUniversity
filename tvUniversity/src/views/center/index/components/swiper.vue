@@ -11,16 +11,17 @@
 </template>
 
 <script>
-import swipper from "../img/1.jpg";
+import swipper from "../img/bgsOne.jpg";
+import swipper2 from "../img/bgsTwo.jpg";
 
 export default {
   data(){
     return {
        swipperList: [
         { ID: 1, swipper },
-        { ID: 2, swipper },
+        { ID: 2,  swipper: swipper2 },
         { ID: 3, swipper },
-        { ID: 4, swipper }
+        { ID: 4, swipper:swipper2 }
       ],
     }
   }
