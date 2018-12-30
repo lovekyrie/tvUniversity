@@ -91,8 +91,9 @@ export default {
   components: {}
 };
 </script>
-<style lang="less" scoped>
+<style lang="less">
 #myTeam {
+  color: #303030;
   h3 {
     font-size: 24px;
     padding-left: 25px;
@@ -108,15 +109,16 @@ export default {
   table {
     width: 940px;
     margin: 20px auto;
-    background: #ffffff;
-    border: 1px solid #e1e1e1;
+    background: #fff;
+    border: 1px solid #f1f1f1;
     thead {
       th {
-        color: #666666;
+        height: 50px;
         font-size: 18px;
-        height: 86px;
         font-weight: normal;
         text-align: center;
+        color: #303030;
+        background-color: #fbfbfb;
         &:first-child {
           width: 33%;
         }
@@ -127,13 +129,14 @@ export default {
     }
     tr {
       border: 1px solid #e1e1e1;
+      color: #303030;
       &:last-child {
         border-bottom: 0;
       }
       td {
-        text-align: center;
+        height: 50px;
         font-size: 18px;
-        height: 86px;
+        text-align: center;
       }
     }
   }
@@ -142,6 +145,9 @@ export default {
     display: flex;
     flex-flow: row nowrap;
     justify-content: center;
+    .active {
+      background-color: #72b713;
+    }
   }
 }
 </style>

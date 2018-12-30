@@ -1,10 +1,12 @@
 <template>
   <div id="app">
     <myHeader :type="name"></myHeader>
-    <div class="content">
+    <div class="content-wrap">
       <div class="pos">
-        <span><a href="./index.html">首页</a></span>>
-        往期课程
+        <span>
+          <a href="./index.html">首页</a>
+        </span>>
+        <span>往期课程</span>
       </div>
       <table>
         <thead>
@@ -146,78 +148,92 @@ export default {
 </script>
 <style lang="less">
 #app {
-  .pos {
-    width: 100%;
-    color: #999;
-    font-size: 24px;
-    border-bottom: 1px solid #e1e1e1;
-    line-height: 80px;
-    a {
+  .content-wrap {
+    height: 785px;
+    .pos {
+      margin: 0 auto;
+      width: 1200px;
       color: #999;
-    }
-  }
-  table {
-    width: 1198px;
-    margin: 20px auto;
-    background: #ffffff;
-    border: 1px solid #e1e1e1;
-    thead {
-      th {
-        color: #666666;
-        font-size: 18px;
-        height: 86px;
-        font-weight: normal;
-        text-align: center;
-        &:first-child {
-          width: 15%;
-        }
-        &:nth-child(2) {
-          width: 30%;
-          text-align: left;
-        }
-        &:nth-child(3) {
-          width: 25%;
-        }
-        &:nth-child(4) {
-          width: 15%;
+      font-size: 20px;
+      border-bottom: 1px solid #e1e1e1;
+      line-height: 80px;
+      a {
+        color: #999;
+      }
+      > span {
+        &:nth-last-of-type(1) {
+          color: #72b713;
         }
       }
     }
-    tr {
-      border: 1px solid #e1e1e1;
-      &:last-child {
-        border-bottom: 0;
-      }
-      td {
-        text-align: center;
-        font-size: 18px;
-        height: 86px;
-
-        &:nth-child(2) {
-          text-align: left;
+    table {
+      width: 1198px;
+      margin: 20px auto;
+      background-color: #fff;
+      border: 1px solid #f1f1f1;
+      color: #303030;
+      thead {
+        th {
+          height: 50px;
+          background-color: #fbfbfb;
+          font-size: 18px;
+          font-weight: normal;
+          text-align: center;
+          &:first-child {
+            width: 15%;
+          }
+          &:nth-child(2) {
+            width: 30%;
+            text-align: left;
+          }
+          &:nth-child(3) {
+            width: 25%;
+          }
+          &:nth-child(4) {
+            width: 15%;
+          }
         }
+      }
+      tr {
+        border: 1px solid #f1f1f1;
         &:last-child {
-          color: #3a71a8;
-          cursor: pointer;
+          border-bottom: 0;
+        }
+        td {
+          height: 50px;
+          font-size: 18px;
+          text-align: center;
+          &:nth-child(2) {
+            text-align: left;
+          }
+          &:last-child {
+            color: #72b713;
+            cursor: pointer;
+          }
         }
       }
     }
-  }
-  .el-pagination {
-    padding: 40px 0;
-    .el-pagination__total {
-      font-size: 16px !important;
-      line-height: 40px;
-    }
-    .btn-prev .el-icon,
-    .el-pager li,
-    .btn-next .el-icon,
-    .btn-prev,
-    .btn-next {
-      font-size: 16px !important;
-      width: 40px;
-      height: 40px;
-      line-height: 40px;
+    .el-pagination {
+      margin: 0 auto;
+      padding: 20px 0 40px 0;
+      width: 1200px;
+      .el-pagination__total {
+        font-size: 16px !important;
+        line-height: 40px;
+      }
+      .active{
+         background-color: #72b713;
+      }
+      .btn-prev .el-icon,
+      .el-pager li,
+      .btn-next .el-icon,
+      .btn-prev,
+      .btn-next {
+        font-size: 16px !important;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+      }
     }
   }
 }

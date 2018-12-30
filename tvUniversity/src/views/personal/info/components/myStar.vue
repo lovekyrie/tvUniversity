@@ -74,22 +74,24 @@ export default {
 <style lang="less" scoped>
 #myStar {
   p {
-    font-size: 26px;
     padding-left: 25px;
     padding-top: 30px;
+    font-size: 24px;
+    color: #303030;
   }
   table {
     width: 940px;
     margin: 20px auto;
-    background: #ffffff;
-    border: 1px solid #e1e1e1;
+    background: #fff;
+    border: 1px solid #f1f1f1;
     thead {
       th {
-        color: #666666;
+        height: 50px;
         font-size: 18px;
-        height: 86px;
         font-weight: normal;
         text-align: center;
+        color: #303030;
+        background-color: #fbfbfb;
         &:first-child {
           width: 40%;
           text-align: left;
@@ -108,14 +110,14 @@ export default {
     }
     tr {
       border: 1px solid #e1e1e1;
+      color: #303030;
       &:last-child {
         border-bottom: 0;
       }
       td {
+        height: 50px;
         text-align: center;
         font-size: 18px;
-        height: 86px;
-
         &:first-child {
           padding-left: 25px;
           text-align: left;

@@ -1,10 +1,10 @@
 <template>
     <div id="container">
         <myHeader></myHeader>
-        <myNav></myNav>
         <div class="content-link">
             <div class="pos">
-                <a href="#">个人空间</a> > {{title}}
+                <a href="#">个人空间</a> > 
+                <span>{{title}}</span>
             </div>
             <ul class="menu">
                 <li v-for="(item,index) in menuList" :key="index">

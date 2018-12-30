@@ -5,7 +5,7 @@
       <div class="pos">
         <span><a href="../center/index.html">首页</a></span>> 
         <span><a href="./study.html">当前课程</a></span>>
-        课程内容
+        <span>课程内容</span>
       </div>
       <div id="studyDetail">
         <div class="top">
@@ -18,14 +18,6 @@
             完成人次：{{info.completePerson}}
           </p>
         </div>
-        <!-- <div class="video">
-                    <div class="sign" v-show="!ifSign"><img src="../img/sign.png" @click="sign()"/> </div>
-                    <video-player  class="video-player vjs-custom-skin"
-                      ref="videoPlayer"
-                      :playsinline="true"
-                      :options="playerOptions"
-                    ></video-player>
-        </div>-->
         <div class="player-container" :style="[showList?{width:'900px'}:{width:'600px'}]">
           <div class="sign" v-show="!ifSign">
             <img src="../img/sign.png" @click="sign()">

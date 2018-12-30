@@ -2,13 +2,17 @@
 #container{
   .pos{
     width: 100%;
-    color: #999;
-    font-size: 24px;
-    border-bottom: 1px solid #e1e1e1;
+    border-bottom: 1px solid #f1f1f1;
+    font-size: 20px;
     line-height: 80px;
-    font-size: 24px;
+    color: #999;
     a {
       color: #999;
+    }
+    >span{
+      &:nth-last-of-type(1){
+        color: #72b713;
+      }
     }
   }
   #studyDetail{
@@ -20,8 +24,9 @@
       display: -webkit-flex;
       line-height: 40px;
       h1{
-        font-size: 24px;
         flex: 1;
+        font-size: 20px;
+        color: #303030;
       }
       p{
         color: #999;
@@ -32,12 +37,11 @@
         }
       }
     }
-  
     .intro{
-      width: 900px;
       margin: 0 auto;
       display: flex;
       flex-flow: row wrap;
+      width: 900px;
       >div{
         flex:  1 0 100%;
         &:nth-of-type(1){
@@ -50,20 +54,23 @@
             padding-top: 20px;
             padding-bottom: 5px;
             font-size: 20px;
+            color: #303030;
           }
           button{
             flex: 1 0 auto;
+            color: #fff; 
+            background-color: #72b713;
           }
         }
       }
-     
     }
     .player-container {
-      background: #1a1a1a;
-      overflow: auto;
-      width: 900px;
-      margin: 0 auto 20px;
       position: relative;
+      overflow: auto;
+      margin: 0 auto 20px;
+      width: 900px;
+      height: 400px;
+      background: #1a1a1a;
       .sign {
         z-index: 999;
         position: absolute;
@@ -79,6 +86,7 @@
       }
       .video-js {
         float: left;
+        height: 400px;
       }
       .vjs-playlist,
       .my-custom-class,
@@ -87,7 +95,7 @@
         width: 300px;
       }
       .vjs-playlist{
-        height: 300px;
+        height: 400px;
       }
       .vjs-playlist.vjs-playlist-horizontal {
         float: none;

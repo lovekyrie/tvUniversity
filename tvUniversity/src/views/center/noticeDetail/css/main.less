@@ -1,25 +1,30 @@
 @base:18rem;
 #container{
   .pos{
+    border-bottom: 1px solid #f1f1f1;
     width: 100%;
-    color: #999;
-    font-size: 24px;
-    border-bottom: 1px solid #e1e1e1;
+    font-size: 20px;
     line-height: 80px;
+    color: #999;
     a{
       color: #999;
+    }
+    >span{
+      &:nth-last-of-type(1){
+        color: #72b713;
+      }
     }
   }
   .noticeDetail{
     padding: 40px 0;
-
     h1{
-      text-align: center;
-      font-size: 26px;
       padding-bottom: 15px;
+      font-size: 24px;
+      text-align: center;
+      color: #303030;
     }
     >p{
-      color: #999999;
+      color: #d1d1d1;
       text-align: center;
       span{
         &:nth-of-type(1){
@@ -28,7 +33,7 @@
       }
     }
     >div{
-      padding: 40px 0;
+      padding: 20px  0;
     }
   }
 }

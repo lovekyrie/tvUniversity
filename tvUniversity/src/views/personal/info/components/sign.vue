@@ -65,11 +65,12 @@ export default {
     border: 1px solid #e1e1e1;
     thead {
       th {
-        color: #666666;
+        height: 50px;
         font-size: 18px;
-        height: 86px;
         font-weight: normal;
         text-align: center;
+        color: #303030;
+        background-color: #fbfbfb;
         &:first-child {
           width: 50%;
           text-align: left;
@@ -85,14 +86,14 @@ export default {
     }
     tr {
       border: 1px solid #e1e1e1;
+      color: #303030;
       &:last-child {
         border-bottom: 0;
       }
       td {
-        text-align: center;
+        height: 50px;
         font-size: 18px;
-        height: 86px;
-
+        text-align: center;
         &:first-child {
           padding-left: 25px;
           text-align: left;

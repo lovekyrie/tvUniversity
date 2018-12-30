@@ -5,7 +5,7 @@
             <div class="pos">
               <span><a href="../center/index.html">首页</a></span>>
               <span><a href="./policy.html">文件政策</a></span>> 
-              {{info.nm}}
+              <span>文件详情</span>
             </div>
             <div class="noticeDetail">
                 <h1>{{info.nm}}</h1>
