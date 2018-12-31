@@ -1,12 +1,14 @@
 <style lang="less">
-@bdColor: #e1e1e1;
+@bdColor: #fff;
 .login {
   margin-top: 100px;
   height: 600px;
   h3 {
-    text-align: center;
-    font-size: 30px;
     margin-bottom: 40px;
+    font-size: 26px;
+    font-weight: 400;
+    text-align: center;
+    color: #303030;
   }
 }
 
@@ -16,26 +18,21 @@
   > p {
     display: inline-block;
     position: relative;
-    font-size: 24px;
+    font-size: 22px;
+    color: #303030;
     span {
       position: absolute;
       left: -105px;
-      line-height: 55px;
       width: 100px;
+      line-height: 55px;
       text-align: right;
     }
-    a {
-      font-size: 20px;
-      color: #537faf;
-      position: absolute;
-      right: -125px;
-      line-height: 55px;
-    }
     input {
-      height: 53px;
-      width: 315px;
       border: 1px solid @bdColor;
+      width: 315px;
+      height: 53px;
       text-indent: 20px;
+      outline: none;
     }
   }
 }
@@ -46,7 +43,7 @@
   height: 50px;
   border: 0;
   color: #fff;
-  background-color: #3a71a8;
+  background-color: #389744;
   font-size: 22px;
   cursor: pointer;
   border-radius: 5px;
@@ -73,8 +70,8 @@
         <div class="onelist">
           <p>
             <span>密码：</span>
-            <input type="password" placeholder="单行输入" v-model="pass"  @keyup.enter="submitForm">
-            <a href="./find.html">忘记密码?</a>
+            <input type="password" placeholder="单行输入" v-model="pass" @keyup.enter="submitForm">
+            <a style="display:none;" href="./find.html">忘记密码?</a>
           </p>
         </div>
         <div class="c-button">

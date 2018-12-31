@@ -3,7 +3,7 @@
     <ageHead></ageHead>
     <div class="g-content g-content-footer" ref="size">
       <div class="crumb"><a href="../home/index.html">首页</a><span>&nbsp;&nbsp;&gt;&nbsp;&nbsp;</span><a
-              href="./search.html">荣誉展厅</a><span>&nbsp;&nbsp;&gt;&nbsp;&nbsp;</span><a>资讯详情</a>
+              href="./search.html">荣誉展厅</a><span>&nbsp;&nbsp;&gt;&nbsp;&nbsp;</span><span>资讯详情</span>
       </div>
       <div class="detail">
         <h3>{{infoMsg.titleNm}}</h3>

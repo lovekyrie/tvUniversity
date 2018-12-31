@@ -14,36 +14,39 @@
     .honorTop{
       display: flex;
       align-items: center;
-      height: 80px;
-      padding-left: 30px;
       border-bottom: 1px solid rgb(225,225,225);
-
+      padding-left: 30px;
+      height: 80px;
+      font-size: 20px;
       a{
-        color: rgb(135,135,135);
         font-size: 20px;
-        font-weight: 300;
         text-decoration: none;
+        color: #999;
       }
-
       .topLine{
         padding: 0 5px;
         font-size: 20px;
-        color: rgb(135,135,135);
+        color: #303030;
       }
-
+      >span{
+        &:nth-last-of-type(1){
+          color: #72b713;
+        }
+      }
     }
 
     //主要内容
     .honorMain{
-      padding: 40px 90px 200px 90px;
+      padding: 40px 90px;
 
       //标题
       .honorTitle{
         display: inline-block;
         width: 100%;
-        font-size: 22px;
+        font-size: 24px;
         text-align: center;
         margin-bottom: 20px;
+        color: #303030;
       }
 
     //  时间来源副标题
@@ -51,9 +54,8 @@
         display: flex;
         justify-content: center;
         margin-bottom: 20px;
-        font-size: 16px;
-        color: rgb(135,135,135);
-
+        font-size: 20px;
+        color: #d1d1d1;
         >span{
           margin: 0 5%;
         }

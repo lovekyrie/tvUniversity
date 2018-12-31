@@ -22,9 +22,7 @@
             <a href="../phyEducation/excitingAct.html">精彩活动</a>
           </span>
           <span class="topLine">></span>
-          <span>
-            <a href="#">活动详情</a>
-          </span>
+          <span>活动详情</span>
         </div>
 
         <!--活动介绍-->
@@ -32,7 +30,6 @@
           <div class="contentImg">
             <img :src="actInfo.imgUrl" alt="图片">
           </div>
-
           <div class="contentDes">
             <h3>{{actInfo.titleNm}}</h3>
             <p>主办方：{{actInfo.sponsor}}</p>
@@ -40,12 +37,8 @@
             <p style="margin-bottom: 100px">
               作品数：<span style="color:red;">{{actInfo.haveNum || 0}}</span>
             </p>
-            <p
-              style="color: rgb(135,135,135);font-weight: 300;line-height: 1.5em"
-            >时间：{{actInfo.startTm}}-{{actInfo.endTm}}</p>
-            <p
-              style="color: rgb(135,135,135);font-weight: 300;line-height: 1.5em;margin-bottom: 35px"
-            >来源：{{actInfo.source}}</p>
+            <p>时间：{{actInfo.startTm}}-{{actInfo.endTm}}</p>
+            <p>来源：{{actInfo.source}}</p>
             <button v-show="showRelease" @click="toPostAct">发布作品</button>
           </div>
         </div>
@@ -53,7 +46,6 @@
         <!--活动详情-->
         <div class="actDetail">
           <h3>活动详情</h3>
-
           <el-collapse accordion v-model="activeNames">
             <el-collapse-item name="1">
               <template slot="title">
@@ -91,20 +83,17 @@
           </div>
         </div>
 
-        <!--底部分页按钮-->
-        <div class="nextButton">
-          <el-pagination
-            @current-change="handleCurrentChange"
-            :current-page.sync="currentPage"
-            :page-size="pageSize"
-            layout="pager,next,slot"
-            background
-            :total="total"
-            next-text="下一页"
-          >
-            <span style="margin-left: 10px">共{{total}}条记录，共{{page}}页</span>
-          </el-pagination>
-        </div>
+        <!--分页-->
+        <el-pagination
+          background
+          @current-change="handleCurrentChange"
+          :current-page.sync="currentPage"
+          :page-size="pageSize"
+          layout="total, prev, pager, next"
+          :total="total"
+        ></el-pagination>
+        <!-- <span>共{{Math.ceil(total/pageSize)}}页</span> -->
+      
       </div>
     </div>
 

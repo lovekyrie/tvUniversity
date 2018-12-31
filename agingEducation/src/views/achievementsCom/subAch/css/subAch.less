@@ -27,25 +27,31 @@
   } //列表
   .achList {
     display: flex;
+    flex-direction: column; //列表顶部
+    margin: 0 auto;
     width: 75%;
     min-width: 1060px;
-    margin: 0 auto;
-    flex-direction: column; //列表顶部
+    height: 785px;
     .achTop {
       display: flex;
       align-items: center;
-      height: 80px;
       border-bottom: 1px solid rgb(225, 225, 225);
+      height: 80px;
+      font-size: 20px;
       a {
-        color: rgb(135, 135, 135);
+        color: #999;
         font-size: 20px;
         font-weight: 300;
         text-decoration: none;
       }
       .topLine {
         padding: 0 5px;
-        font-size: 20px;
-        color: rgb(135, 135, 135);
+        color: #999;
+      }
+      >span{
+        &:nth-last-of-type(1){
+          color: #72b713;
+        }
       }
     } //  书画
     .mainFoot {
@@ -61,10 +67,11 @@
         width:30%;
         border: 1px solid rgb(224, 224, 224);
         h4 {
-          font-size: 20px;
-          padding-left: 20px;
-          border-left: 5px solid black;
+          border-left: 5px solid #72b713;
           margin-bottom: 25px;
+          padding-left: 20px;
+          font-size: 20px;
+          color: #72b713;
         }
       } //  成果交流
       .production,
@@ -75,10 +82,14 @@
         >ul {
           padding-left: 40px;
           margin-bottom: 20px;
+          color: #303030;
           li {
             list-style: initial;
             line-height: 2em;
             font-weight: 400;
+            a{
+              color: #303030;
+            }
           }
           >p {
             line-height: 2em;
@@ -90,7 +101,7 @@
           bottom: 20px;
           left: 42%;
           a {
-            color: rgb(145, 135, 135);
+            color: #999;
           }
         }
       } 
@@ -103,8 +114,8 @@
       button{
         width: 10%;
         display: inline-block;
-        color: white;
-        background-color: rgb(58, 113, 168);
+        color: #fff;
+        background-color: #389744;
         height: 40px;
         margin-right: 60px;
         border-radius: 5px;

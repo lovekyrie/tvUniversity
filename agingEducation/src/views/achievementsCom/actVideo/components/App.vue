@@ -4,13 +4,6 @@
     <ageHead></ageHead>
     <!--页面主体部分-->
     <div id="main">
-      <!--成果分类按钮-->
-      <!-- <div class="selectBtn">
-        <button @click="toWrite">文字集锦</button>
-        <button @click="toPaint">书画摄影</button>
-        <button @click="toVideo">活力视频</button>
-        <button @click="toRelease">成果发布</button>
-      </div> -->
       <!--视频列表-->
       <div class="videoList">
         <!--列表顶部-->
@@ -29,9 +22,7 @@
             <a :href="'./subAch.html?type='+showType">成果交流</a>
           </span>
           <span class="topLine">></span>
-          <span>
-            <a href="#">活力视频</a>
-          </span>
+          <span>活力视频</span>
         </div>
 
         <!--视频-->
@@ -43,26 +34,22 @@
         >
           <div class="newsDes">
             <p class="newsTitle">
-              <a href="#">· {{video.titleNm}}</a>
+              <a href="#">{{video.titleNm}}</a>
             </p>
-            <span>&nbsp;&nbsp;&nbsp;{{video.stuNm}}</span>
+            <span>{{video.stuNm}}</span>
             <span style="float: right">{{video.author}}</span>
           </div>
         </div>
-        <!--底部分页按钮-->
-        <div class="nextButton">
-          <el-pagination
-            @current-change="handleCurrentChange"
-            :current-page.sync="currentPage"
-            :page-size="pageSize"
-            layout="pager,next,slot"
-            background
-            :total="total"
-            :next-text="newsNext"
-          >
-            <span style="margin-left: 10px">共{{total}}条记录，共{{page}}页</span>
-          </el-pagination>
-        </div>
+      <!--分页-->
+        <el-pagination
+          background
+          @current-change="handleCurrentChange"
+          :current-page.sync="currentPage"
+          :page-size="pageSize"
+          layout="total, prev, pager, next"
+          :total="total"
+        ></el-pagination>
+        <!-- <span>共{{Math.ceil(total/pageSize)}}页</span> -->
       </div>
     </div>
 

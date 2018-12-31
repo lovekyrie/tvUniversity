@@ -1,42 +1,41 @@
 <template>
-    <div id="container">
-        <ageHead></ageHead>
-        <div class="g-content g-content-footer" ref="size">
-            <div class="g-search">
-                <div class="crumb"><a
-                        href="../home/index.html">首页</a><span>&nbsp;&nbsp;&gt;&nbsp;&nbsp;</span><a>荣誉展厅</a></div>
-
-                <div class="content">
-                    <a :href="'./searchDetail.html?id='+item.televNewsPk" v-for="(item,index) in items" :key="index" class="clearfix">
-                        <img :src="item.imgUrl" alt="">
-                        <div class="info">
-                            <h2>{{item.titleNm}}</h2>
-                            <h3>{{item.crtTm}} <span>来源：{{item.source}}</span></h3>
-                        </div>
-                    </a>
-                </div>
+  <div id="container">
+    <ageHead></ageHead>
+    <div class="g-content g-content-footer" ref="size">
+      <div class="g-search">
+        <div class="crumb"><a href="../home/index.html">首页</a><span>&nbsp;&nbsp;&gt;&nbsp;&nbsp;</span><span>荣誉展厅</span></div>
+  
+        <div class="content">
+          <div @click="toHonorDetail(item.televNewsPk)" v-for="(item,index) in items" :key="index" class="clearfix">
+            <!-- <img :src="item.imgUrl" alt=""> -->
+            <div class="info">
+              <h2>{{item.titleNm}}</h2>
+              <h3>{{item.crtTm}} <span>来源：{{item.source}}</span></h3>
             </div>
-            <div class="page">
-                <el-pagination
-                        @current-change="handleCurrentChange"
-                        :current-page="currentPage"
-                        :page-size="pageSize"
-                        layout=" prev, pager, next, total"
-                        :total="total">
-                </el-pagination>
-                <span>共{{Math.ceil(total / pageSize)}}页</span>
-            </div>
+          </div>
         </div>
-        <ageFoot></ageFoot>
+      </div>
+       <el-pagination
+          background
+          @current-change="handleCurrentChange"
+          :current-page.sync="currentPage"
+          :page-size="pageSize"
+          layout="total, prev, pager, next"
+          :total="total"
+        ></el-pagination>
+        <!-- <span>共{{Math.ceil(total/pageSize)}}页</span> -->
     </div>
+    <ageFoot></ageFoot>
+  </div>
 </template>
+
 <script>
   import Lib from 'assets/js/Lib';
   import ageHead from 'components/ageHead';
   import ageFoot from 'components/ageFoot';
-
+  
   export default {
-
+  
     data() {
       return {
         total: 0,
@@ -49,6 +48,9 @@
       this.getMsg();
     },
     methods: {
+      toHonorDetail(id) {
+        window.location.href = './searchDetail.html?id=' + id;
+      },
       handleCurrentChange(val) {
         this.currentPage = val;
         this.getMsg();
@@ -68,13 +70,13 @@
       }
     },
     components: {
-      ageHead, ageFoot
+      ageHead,
+      ageFoot
     },
   }
 </script>
 
 
 <style scoped lang="less">
-
-
+  
 </style>

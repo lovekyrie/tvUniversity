@@ -18,17 +18,15 @@
             </span>
           </template>
           <span class="topLine">></span>
-          <span>
-            <a href="#">精彩活动</a>
-          </span>
+          <span>精彩活动</span>
         </div>
 
         <!--精彩活动-->
         <el-row :gutter="80">
           <el-col :span="12" v-for="(act,index) in actList" :key="index">
-            <div class="Content">
-              <div class="contentImg">
-                <img :src="act.imgUrl">
+            <div class="content-wrap">
+              <div class="content-img">
+                <img :src="act.imgUrl || defaultImg">
               </div>
               <div class="contentMsg2">
                 <a href="#">
@@ -49,20 +47,17 @@
           </el-col>
         </el-row>
 
-        <!--底部分页按钮-->
-        <div class="nextButton">
-          <el-pagination
-            @current-change="handleCurrentChange"
-            :current-page.sync="currentPage"
-            :page-size="pageSize"
-            layout="pager,next,slot"
-            background
-            :total="total"
-            :next-text="newsNext"
-          >
-            <span style="margin-left: 10px">共{{total}}条记录，共{{page}}页</span>
-          </el-pagination>
-        </div>
+       <!--分页-->
+        <el-pagination
+          background
+          @current-change="handleCurrentChange"
+          :current-page.sync="currentPage"
+          :page-size="pageSize"
+          layout="total, prev, pager, next"
+          :total="total"
+        ></el-pagination>
+        <!-- <span>共{{Math.ceil(total/pageSize)}}页</span> -->
+      
       </div>
     </div>
 
@@ -72,68 +67,68 @@
 </template>
 
 <script>
-    import ageHead from 'components/ageHead';
-    import ageFoot from 'components/ageFoot';
+import ageHead from "components/ageHead";
+import ageFoot from "components/ageFoot";
+import defaultImg from "../img/default.png";
 
-    export default {
-        data() {
-            return {
-              showType:false,
-                actList:[],
-                total: 15,
-                pageSize:5,
-                currentPage: 1,
-                newsNext: '下一页'
-            }
-        },
-        components: {
-            ageHead,
-            ageFoot,
-        },
-        computed:{
-          page(){
-            return Math.ceil(this.total/this.pageSize)
+export default {
+  data() {
+    return {
+      defaultImg,
+      showType: false,
+      actList: [],
+      total: 15,
+      pageSize: 6,
+      currentPage: 1,
+      newsNext: "下一页"
+    };
+  },
+  components: {
+    ageHead,
+    ageFoot
+  },
+  computed: {
+    page() {
+      return Math.ceil(this.total / this.pageSize);
+    }
+  },
+  mounted() {
+    this.showType = JSON.parse(this.until.getQueryString("type"));
+    this.getActList();
+  },
+  methods: {
+    //当前页变动时
+    handleCurrentChange(val) {
+      this.currentPage = val;
+      this.getActList();
+    },
+    getActList() {
+      let query = new this.Query();
+      query.buildPageClause(this.currentPage, this.pageSize);
+
+      let param = query.getParam();
+      this.until.get("/telev/doing/page", param).then(
+        res => {
+          if (res.status === "200") {
+            this.actList = res.data.items;
+            this.total = res.page.total;
+
+            this.actList.forEach((item, index) => {
+              item.startTm = item.startTm.substr(0, 10);
+              item.endTm = item.endTm.substr(0, 10);
+            });
           }
         },
-        mounted(){
-
-          this.showType=JSON.parse(this.until.getQueryString('type'))
-          this.getActList()
-        },
-        methods: {
-            //当前页变动时
-            handleCurrentChange(val) {
-              this.currentPage=val;
-              this.getActList()
-            },
-            getActList(){
-
-              let query=new this.Query()
-              query.buildPageClause(this.currentPage,this.pageSize)
-
-              let param=query.getParam()
-              this.until.get('/telev/doing/page',param).then(
-                res=>{
-                  if(res.status==='200'){
-                    this.actList=res.data.items;
-                    this.total=res.page.total;
-
-                    this.actList.forEach((item,index)=>{
-                      item.startTm=item.startTm.substr(0,10)
-                      item.endTm=item.endTm.substr(0,10)
-                    })
-                  }
-                },
-                err=>{}
-              )
-            },
-            toDetail(btnId){
-              window.location.href='./actVote.html?id='+btnId+'&type='+this.showType
-            }
-        },
+        err => {}
+      );
+    },
+    toDetail(btnId) {
+      window.location.href =
+        "./actVote.html?id=" + btnId + "&type=" + this.showType;
     }
+  }
+};
 </script>
 
 <style scoped>
-
 </style>

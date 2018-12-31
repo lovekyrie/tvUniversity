@@ -90,6 +90,7 @@ export default {
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
+  box-shadow: 0 2px 4px rgba(73,150,86,.16);
   > .header-wrap {
     position: relative;
     width: 1200px;

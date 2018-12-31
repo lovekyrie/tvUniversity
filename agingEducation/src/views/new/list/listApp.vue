@@ -11,8 +11,7 @@
         </div>
 
         <div class="content">
-          <a
-            :href="'./imglist.html?id='+item.televNewsPk"
+          <div @click="toNewDetail(item.televNewsPk)"
             v-for="(item,index) in items"
             :key="index"
             class="clearfix"
@@ -21,12 +20,12 @@
               <div>
                 <h2>{{item.titleNm}}</h2>
                 <h3>
-                  {{item.crtTm}}
+                  <span>{{item.crtTm}}</span>
                   <span>来源：{{item.source}}</span>
                 </h3>
               </div>
             </div>
-          </a>
+          </div>
         </div>
       </div>
       <!--分页-->
@@ -65,6 +64,9 @@ export default {
   },
   //相关操作事件
   methods: {
+    toNewDetail(id){
+      window.location.href='./imglist.html?id='+id
+    },
     handleCurrentChange(val) {
       this.currentPage = val;
       this.getMsg();
@@ -90,20 +92,3 @@ export default {
 };
 </script>
 
-
-<style lang="less">
-.size {
-  h2 {
-    font-size: 30px !important;
-  }
-  h3 {
-    font-size: 26px !important;
-  }
-  a {
-    font-size: 26px !important;
-  }
-  span {
-    font-size: 26px !important;
-  }
-}
-</style>

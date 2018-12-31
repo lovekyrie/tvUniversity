@@ -22,9 +22,7 @@
             <a href="./excitingAct.html">精彩活动</a>
           </span>
           <span class="topLine">></span>
-          <span>
-            <a href="#">活动详情</a>
-          </span>
+          <span>活动详情</span>
         </div>
 
         <!--活动介绍-->
@@ -32,19 +30,14 @@
           <div class="contentImg">
             <img :src="actInfo.imgUrl" alt="图片">
           </div>
-
           <div class="contentDes">
             <h3>{{actInfo.titleNm}}</h3>
             <p>主办方：{{actInfo.sponsor}}</p>
             <p style="margin-bottom: 100px">
               <span style="color:red;">{{actInfo.haveNum}}</span> 人参与
             </p>
-            <p
-              style="color: rgb(135,135,135);font-weight: 300;line-height: 1.5em"
-            >时间：{{actInfo.startTm}}&nbsp;~&nbsp;{{actInfo.endTm}}</p>
-            <p
-              style="color: rgb(135,135,135);font-weight: 300;line-height: 1.5em;margin-bottom: 35px"
-            >来源：{{actInfo.source}}</p>
+            <p>时间：{{actInfo.startTm}}&nbsp;~&nbsp;{{actInfo.endTm}}</p>
+            <p>来源：{{actInfo.source}}</p>
             <a href="#" @click.stop="toBack">返回活动 ></a>
           </div>
         </div>
@@ -66,7 +59,7 @@
             <i v-else class="el-icon-plus avatar-uploader-icon"></i>
           </el-upload>
           <div class="subBtn">
-            <button @click="sub" style="margin-right: 20px" class="btn-success">发布</button>
+            <button @click="sub" style="margin-right: 20px">发布</button>
             <button @click="clear">取消</button>
           </div>
         </div>

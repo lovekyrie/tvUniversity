@@ -27,13 +27,13 @@
           </span>
           <span class="topLine">></span>
           <span>
-            <a href="#">文字集锦详情</a>
+            文字集锦详情
           </span>
         </div>
 
         <div class="honorMain">
           <!--标题-->
-          <span class="honorTitle">{{honorTitle}}</span>
+          <span class="honorTitle">{{writeInfo.titleNm}}</span>
           <!--时间来源副标题-->
           <div class="honorTime">
             <span>班级：{{writeInfo.stuNm}}</span>

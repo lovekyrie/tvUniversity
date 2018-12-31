@@ -26,9 +26,7 @@
             <a :href="'./painting.html?type='+showType">书画摄影</a>
           </span>
           <span class="topLine">></span>
-          <span>
-            <a href="#">书画摄影详情</a>
-          </span>
+          <span>书画摄影详情</span>
         </div>
 
         <div class="honorMain">
@@ -41,13 +39,6 @@
             <span>{{crtTime}}</span>
             <span>来源：{{paintInfo.source}}</span>
           </div>
-          <!--图片-->
-          <div class="honorImg">
-            <img :src="honorImg">
-          </div>
-          <!--文章标题-->
-          <span class="artTitle">{{paintInfo.titleNm}}</span>
-
           <!--文章内容-->
           <div class="honorArticle">
            <p v-html="paintInfo.cont"></p>
@@ -69,7 +60,6 @@ export default {
   data() {
     return {
       crtTime:'',
-      honorImg: require("../img/荣誉展厅详情.png"),
       showType:false,
       paintId:'',
       paintInfo:{},

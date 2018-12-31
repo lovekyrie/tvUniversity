@@ -26,9 +26,7 @@
             <a :href="'./actVideo.html?type='+showType">活力视频</a>
           </span>
           <span class="topLine">></span>
-          <span>
-            <a href="#">活力视频详情</a>
-          </span>
+          <span>活力视频详情</span>
         </div>
 
         <div class="honorMain">

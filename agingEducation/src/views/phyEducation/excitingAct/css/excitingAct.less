@@ -9,31 +9,33 @@
   //列表
   .writingList {
     display: flex;
-    width: 75%;
-    min-width: 1060px;
-    margin: 0 auto;
     flex-direction: column;
-
+    margin: 0 auto;
+    width: 75%;
+    height: 785px;
+    min-width: 1060px;
     //列表顶部
     .writingTop {
       display: flex;
       align-items: center;
+      border-bottom: 1px solid #f1f1f1;
       height: 80px;
-      border-bottom: 1px solid rgb(225, 225, 225);
-
+      font-size: 20px;
       a {
-        color: rgb(135, 135, 135);
+        color: #999;
         font-size: 20px;
-        font-weight: 300;
         text-decoration: none;
       }
-
       .topLine {
         padding: 0 5px;
         font-size: 20px;
-        color: rgb(135, 135, 135);
+        color: #999;
       }
-
+      >span{
+        &:nth-last-of-type(1){
+          color: #72b713;
+        }
+      }
     }
     //  书画
     .news {
@@ -63,21 +65,19 @@
     }
 
     //精彩活动
-    .Content {
+    .content-wrap {
       display: flex;
       flex-direction: row;
       height: 220px;
       padding-top: 20px;
-
-
       //图片
-      .contentImg {
-        margin-right: 20px;
-        width: 200px;
-        height: 200px;
+      .content-img {
         display: flex;
         justify-content: center;
         align-items: center;
+        border: 1px solid #72b713;
+        width: 200px;
+        height: 200px;
         img{
           width: auto;
           height: auto;
@@ -86,45 +86,58 @@
           vertical-align: middle;
         }
       }
-
       .contentMsg2 {
+        border: 1px solid #72b713;
+        border-left-width: 0;
+        padding-left: 20px;
         width: 100%;
         //活动标题
         h4 {
+          margin: 12px 0 13px 0;
           font-weight: 400;
-          font-size: 22px;
-          margin-bottom: 25px;
+          font-size: 20px;
         }
         //活动信息
         > span {
           display: block;
           font-size: 16px;
           line-height: 26px;
-          font-weight: 300;
-          color: rgb(135, 135, 135);
+          color: #d1d1d1;
         }
         .actBtn {
-          background-color: rgb(53,113,168);
-          color: white;
-          height: 35px;
+          margin-left: 35%;
           width: 37%;
+          height: 35px;
           font-size: 18px;
           border-radius: 6px;
-          margin-left: 25%;
           vertical-align: bottom;
+          color: white;
+          background-color: #72b713;
         }
         button{
           border: 0;
         }
       }
     }
-
-    //分页按钮
-    .nextButton {
-      padding-top: 60px;
-      margin-bottom: 130px;
+    /*分页按钮*/
+    .el-pagination{
+      padding: 40px 0;
+      .el-pagination__total{
+        font-size: 16px !important;
+        line-height: 40px;
+      }
+      .el-pager{
+        li:not(.disabled).active{
+          background-color: #72b713 !important;
+        }
+      }
+      .btn-prev .el-icon,.el-pager li,.btn-next .el-icon,.btn-prev,.btn-next {
+        font-size: 16px !important;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+      }
     }
-
   }
 
 }

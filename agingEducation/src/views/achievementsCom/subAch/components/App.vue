@@ -5,12 +5,6 @@
     <!--页面主体部分-->
     <div id="main">
       <!--成果分类按钮-->
-      <!-- <div class="selectBtn">
-        <button @click="toWrite">文字集锦</button>
-        <button @click="toPaint">书画摄影</button>
-        <button @click="toVideo">活力视频</button>
-        <button @click="toRelease">成果发布</button>
-      </div> -->
       <!--列表-->
       <div class="achList">
         <!--列表顶部-->
@@ -26,7 +20,7 @@
           </template>
           <span class="topLine">></span>
           <span>
-            <a href="#">成果交流</a>
+            成果交流
           </span>
         </div>
 
@@ -44,7 +38,7 @@
                 <a href="#">{{item.titleNm}}</a>
               </li>
               <p>作者：{{item.stuNm}}</p>
-              <p style="color: rgb(155,155,155)">{{item.author}}</p>
+              <p>{{item.author}}</p>
             </ul>
             <p>
               <a :href="'./writing.html?type='+showType">查看更多 ></a>
@@ -62,7 +56,7 @@
                 <a href="#">{{item.titleNm}}</a>
               </li>
               <p>作者：{{item.stuNm}}</p>
-              <p style="color: rgb(155,155,155)">{{item.author}}</p>
+              <p>{{item.author}}</p>
             </ul>
             <p>
               <a :href="'./painting.html?type='+showType">查看更多 ></a>
@@ -80,7 +74,7 @@
                 <a href="#">{{item.titleNm}}</a>
               </li>
               <p>作者：{{item.stuNm}}</p>
-              <p style="color: rgb(155,155,155)">{{item.author}}</p>
+              <p>{{item.author}}</p>
             </ul>
             <p>
               <a :href="'./actVideo.html?type='+showType">查看更多 ></a>

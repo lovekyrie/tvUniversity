@@ -19,12 +19,11 @@
 
 .g-search {
   .content {
-    a {
+    >div {
       border-top: 1px solid #f1f1f1;
-      display: block;
-    }
-    a:last-of-type {
-      border-bottom: 1px solid #f1f1f1;
+      &:nth-last-of-type(1){
+        border-bottom: 1px solid #f1f1f1;
+      }
     }
     .info {
       display: flex;
@@ -36,18 +35,23 @@
         flex: 1;
         h2 {
           padding: 20px 0;
-          font-size: 20px;
+          font-size: 18px;
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
           color: #303030;
         }
         h3 {
+          display: flex;
+          flex-flow: row nowrap;
           padding-bottom: 20px;
           font-size: 16px;
           color: #d1d1d1;
           span {
-            margin-left: 100px;
+            flex: 1;
+            &:nth-last-of-type(1){
+              flex: 0 0 10%;
+            }
           }
         }
       }
@@ -61,8 +65,10 @@
     font-size: 16px !important;
     line-height: 40px;
   }
-  .active{
-    background-color: #72b713;
+  .el-pager{
+    li:not(.disabled).active{
+      background-color: #72b713 !important;
+    }
   }
   .btn-prev .el-icon,.el-pager li,.btn-next .el-icon,.btn-prev,.btn-next {
     font-size: 16px !important;
