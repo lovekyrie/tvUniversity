@@ -214,7 +214,7 @@
 
         <div class="msg-tit"><p></p><span>报名信息</span></div>
         <div class="person-msg">
-          <p v-for="opt in list" class="suc-img">
+          <p v-for="(opt,i) in list" :key="i" class="suc-img">
             <span>{{opt.nm}}:</span>
             <span v-if="opt.nm !='imgUrl'">{{msg[opt.arg1]}}</span>
             <img v-if="opt.nm =='imgUrl'" :src="msg[opt.arg1]">
