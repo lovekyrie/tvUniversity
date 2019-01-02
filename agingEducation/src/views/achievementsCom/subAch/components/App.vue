@@ -53,7 +53,7 @@
             <ul
               v-for="item in paintList"
               :key="item.televGainPk"
-              @click="toPaintDetail(item.catNm,item.televGainPk)"
+              @click="toPaintDetail(item.televGainPk)"
             >
               <li>
                 <a href="#">{{item.titleNm}}</a>

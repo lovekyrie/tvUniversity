@@ -35,7 +35,7 @@
                 <span>时间：{{act.startTm}}&nbsp;~&nbsp;{{act.endTm}}</span>
                 <span>地点：{{act.address}}</span>
                 <span>主办方：{{act.sponsor}}</span>
-                <span style="margin-top: 14px;line-height: 16px">
+                <span style="margin-top: 34px;line-height: 16px">
                   作品人数： <i>{{act.haveNum}}</i>
                   <button
                     class="actBtn"

@@ -75,7 +75,6 @@
                   <p>已投票数:{{item.voteNum}}</p>
                   <span>
                     <button @click.once="voteItem(item)">投他一票</button>
-                    <img :src="flower" alt="图片">
                   </span>
                 </div>
               </el-col>

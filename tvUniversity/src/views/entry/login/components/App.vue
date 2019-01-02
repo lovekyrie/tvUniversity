@@ -11,8 +11,10 @@
                 <p>登录：</p>
                 <input type="password" placeholder="请输入登录密码" v-model="psd" @keyup.enter="submit">
             </div>
-            <p class="b-btn" @click="submit">登录</p>
-            <p class="b-rs"><a href="forgotPassWord.html">忘记密码？</a> </p>
+            <div class="b-input">
+                <p></p>
+                <input class="login" type="button"  value="登录">
+            </div>
         </div>
         <!--成功弹出框-->
         <el-dialog title="" :visible.sync="dialogVisible" width="30%">
