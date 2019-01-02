@@ -24,8 +24,8 @@
       </div>
       <div class="right">
         <p class="login-btn" v-if="!isLogin">
-          <a href="../system/login.html">登录 &nbsp;|&nbsp;</a>
-          <a href="../system/register.html">注册</a>
+          <a href="../system/login.html">登录</a>&nbsp;|&nbsp;
+           <a href="../system/register.html">注册</a>
         </p>
         <p v-if="isLogin">
           <a href="../personalZone/personal.html">{{nickName}}</a>
@@ -97,7 +97,7 @@ export default {
   height: 120px;
   background-image: url("./img/navigator.png");
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
   background-position: center;
   box-shadow: 0 2px 4px rgba(73,150,86,.16);
   .aHead {
@@ -163,6 +163,7 @@ export default {
       }
       .login-btn{
          flex-wrap: nowrap;
+         color: #303030;
         a{
           flex: 0 0 auto;
         }

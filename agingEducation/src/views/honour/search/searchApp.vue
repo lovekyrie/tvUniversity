@@ -10,7 +10,7 @@
             <!-- <img :src="item.imgUrl" alt=""> -->
             <div class="info">
               <h2>{{item.titleNm}}</h2>
-              <h3>{{item.crtTm}} <span>来源：{{item.source}}</span></h3>
+              <h3> <span>{{item.crtTm}}</span> <span>来源：{{item.source}}</span></h3>
             </div>
           </div>
         </div>

@@ -9,12 +9,12 @@
             <h3>校园动态</h3>
           </div>
           <div @click="toDetail(item.televNewsPk)" class="new-item" v-for="(item, index) in items" :key="index">
-            <img :src="icon" alt="">
+            <!-- <img :src="icon" alt=""> -->
             <p>{{item.titleNm}}</p>
             <span>{{item.createTm}}</span>
           </div>
         </div>
-        <img src="./img/home.png" width="660" height="609" usemap="#Map" border="0">
+        <img src="./img/home.png"  usemap="#Map" border="0">
         <map name="Map" id="Map">
           <!--精彩活动-->
           <!--<area shape="poly" coords="291,316,242,283,199,266,176,252,150,246,124,242,98,244,79,249,73,250,57,258,51,266,35,276,26,287,13,296,8,313,6,325,3,342,2,353,2,366,4,379,4,391,7,408,9,419,17,429,24,441,31,448,44,457,57,462,64,468,82,475,88,480,101,481,111,483,131,481,140,482,161,481,176,474,186,463,203,460,237,446,271,425,282,416,289,412" href="../activity/index.html" />-->
@@ -82,7 +82,7 @@ export default {
   data() {
     return {
       currentPage: 1,
-      pageSize: 4,
+      pageSize: 3,
       items: [],
       video,
       iconG,

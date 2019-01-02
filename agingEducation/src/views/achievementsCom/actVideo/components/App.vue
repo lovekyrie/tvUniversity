@@ -36,8 +36,10 @@
             <p class="newsTitle">
               <a href="#">{{video.titleNm}}</a>
             </p>
-            <span>{{video.stuNm}}</span>
-            <span style="float: right">{{video.author}}</span>
+            <div>
+              <span>{{video.stuNm}}</span>
+              <span>作者：{{video.author}}</span>
+            </div>
           </div>
         </div>
       <!--分页-->

@@ -1,7 +1,7 @@
 <template>
     <div id="footer">
         <div class="footer-wrap">
-            <p><a href="#">宁波广播电视大学</a><span>|</span><a href="#">宁波电大老年教育网</a><span>|</span><a href="#">宁波老年实体办学网</a><span>|</span><a href="#">宁波电视大学网</a> </p>
+            <p><a href="#">宁波广播电视大学</a><span>|</span><a href="http://lnt.nbsqjy.com">宁波电大老年教育网</a><span>|</span><a href="#">宁波老年实体办学网</a><span>|</span><a href="#">宁波电视大学网</a> </p>
             <p>联系方式：0516-34534352<span></span> 电子邮箱：11234525@qq.com</p>
             <p>2016©版权所有  沪ICP备05052049</p>
         </div>

@@ -68,7 +68,7 @@
     .content-wrap {
       display: flex;
       flex-direction: row;
-      height: 220px;
+      height: 280px;
       padding-top: 20px;
       //图片
       .content-img {
@@ -76,8 +76,8 @@
         justify-content: center;
         align-items: center;
         border: 1px solid #72b713;
-        width: 200px;
-        height: 200px;
+        width: 240px;
+        height: 260px;
         img{
           width: auto;
           height: auto;
@@ -89,13 +89,19 @@
       .contentMsg2 {
         border: 1px solid #72b713;
         border-left-width: 0;
-        padding-left: 20px;
+        padding: 0 20px 0 30px ;
         width: 100%;
         //活动标题
         h4 {
-          margin: 12px 0 13px 0;
+          margin: 30px 0 13px 0;
+          height: 60px;
           font-weight: 400;
           font-size: 20px;
+          line-height: 1.5;
+          color: #303030;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
         }
         //活动信息
         > span {
@@ -103,9 +109,16 @@
           font-size: 16px;
           line-height: 26px;
           color: #d1d1d1;
+          &:nth-last-of-type(1){
+            color: #909090;
+            i{
+              font-style: normal;
+              color: #f00;
+            }
+          }
         }
         .actBtn {
-          margin-left: 35%;
+          margin-left: 40%;
           width: 37%;
           height: 35px;
           font-size: 18px;

@@ -40,30 +40,39 @@
     .achTop{
       display: flex;
       align-items: center;
-      height: 80px;
       border-bottom: 1px solid rgb(225,225,225);
+      height: 80px;
+      font-size: 20px;
       a{
-        color: rgb(135,135,135);
+        color: #999;
         font-size: 20px;
-        font-weight: 300;
         text-decoration: none;
       }
-
       .topLine{
         padding: 0 5px;
-        font-size: 20px;
-        color: rgb(135,135,135);
+        color: #999;
       }
-
+      >span{
+        &:nth-last-of-type(1){
+          color: #72b713;
+        }
+      }
     }
 
     //输入表单
     .achForm{
-      padding: 30px 0px 260px 0px;
-
+      padding: 60px 0px 60px 0px;
       //输入表单
       .el-form{
-        margin-bottom: 50px;
+        margin-bottom: 10px;
+        .el-form-item{
+          display: flex;
+          align-items: center;
+          .el-form-item__content{
+            flex: 1;
+            margin-left: 0 !important;
+          }
+        }
         .el-input{
           font-size: 18px;
           height: 65px;
@@ -87,14 +96,14 @@
         line-height: 60px;
         color: white;
         font-weight: 300;
-        background-color: rgb(58,113,168);
+        background-color: #389744;
       }
       .el-row{
         margin-top: 30px;
         float: right;
         button{
           &:nth-of-type(1){
-            background-color: #3a71a8;
+            background-color: #389744;
             color: #fff;
           }
         }

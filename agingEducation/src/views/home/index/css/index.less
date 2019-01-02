@@ -9,34 +9,30 @@ map area {
   outline: none;
 }
 
-#container{
-  background-image: url("../img/indexBg.png");
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-}
 .home {
   position: relative;
   padding-bottom: 20px;
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
-  .new-list{
-    flex: 0 0 42%;
-  }
+  min-width: 1200px;
   img {
     flex: 0 0 55%;
   }
   .new-list {
-    margin-left: -10px;
-    margin-top: 30px;
+    flex: 0 0 42%;
+    background-image: url("../img/bgBorder.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
     >div {
       &:nth-last-of-type(1) {
         border-bottom: 0;
       }
     }
     .title{
-      padding: 40px 0 20px 20px;
+      margin-top: 30px;
+      padding: 40px 0px 0px 50px;
       display: flex;
       flex-flow: row nowrap;
       align-items: center;
@@ -50,8 +46,8 @@ map area {
     }
     .new-item {
       position: relative;
-      margin: 0 20px;
-      padding: 20px 0 20px 23px;
+      margin: 0 60px;
+      padding: 20px 0;
       border-bottom: 1px solid #e1e1e1;
       cursor: pointer;
       p {

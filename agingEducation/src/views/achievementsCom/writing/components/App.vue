@@ -45,7 +45,7 @@
             </p>
             <div>
               <span>{{writing.stuNm}}</span>
-              <span>来源：{{writing.author}}</span>
+              <span>作者：{{writing.author}}</span>
             </div>
           </div>
         </div>

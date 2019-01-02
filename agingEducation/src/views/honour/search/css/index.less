@@ -23,6 +23,17 @@
     >div {
       border-top: 1px solid #f1f1f1;
       padding-bottom: 30px;
+      cursor: pointer;
+      h3{
+        display:flex;
+        flex-flow: row nowrap;
+        span{
+          flex: 1;
+          &:nth-last-of-type(1){
+            flex:  0 0 auto;
+          }
+        }
+      }
       &:nth-last-of-type(1) {
         border-bottom: 1px solid #f1f1f1;
       }
@@ -36,7 +47,7 @@
     h2 {
       margin: 0;
       padding-bottom: 20px;
-      font-size: 18px;
+      font-size: 20px;
       margin: 30px 0 0;
       overflow: hidden;
       white-space: nowrap;
@@ -47,9 +58,6 @@
       margin: 0;
       font-size: 16px;
       color: #d1d1d1;
-      span {
-        margin-left: 100px;
-      }
     }
   }
 }

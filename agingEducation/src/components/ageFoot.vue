@@ -11,7 +11,7 @@
         <a href="#">宁波老年实体办学网</a>
       </span>
       <span style="border: none;">
-        <a href="#">宁波电视大学网</a>
+        <a href="http://218.71.137.186:44185/dist/views/center/index.html">宁波电视大学网</a>
       </span>
     </div>
 

@@ -4,13 +4,6 @@
         <ageHead></ageHead>
         <!--页面主体部分-->
         <div id="main">
-            <!--成果分类按钮-->
-            <!-- <div class="selectBtn">
-                <button @click="toWrite">文字集锦</button>
-                <button @click="toPaint">书画摄影</button>
-                <button @click="toVideo">活力视频</button>
-                <button @click="toRelease">成果发布</button>
-            </div> -->
             <!--列表-->
             <div class="achList">
                 <!--列表顶部-->
@@ -23,7 +16,7 @@
                     <span class="topLine"> > </span>
                     <span><a :href="'./subAch.html?type='+showType">成果交流</a></span>
                     <span class="topLine"> > </span>
-                    <span><a href="#">成果发布</a></span>
+                    <span>成果发布</span>
                 </div>
                 <!--输入表单-->
                 <div class="achForm">
@@ -120,6 +113,9 @@ export default {
               message: "恭喜你，您已经成功发布了一条成果交流",
               type: "success"
             });
+            setTimeout(() => {
+              window.location.href='./subAch.html'
+            }, 1000);
           }
         },
         err => {}

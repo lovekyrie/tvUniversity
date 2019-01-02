@@ -28,7 +28,10 @@
         <div class="mainFoot">
           <!--文字集锦-->
           <div class="production">
-            <h4>文字集锦</h4>
+            <div>
+              <h4>文字集锦</h4>
+              <span><a :href="'./writing.html?type='+showType">查看更多></a></span>
+            </div>
             <ul
               v-for="item in writeList"
               :key="item.televGainPk"
@@ -37,16 +40,16 @@
               <li>
                 <a href="#">{{item.titleNm}}</a>
               </li>
-              <p>作者：{{item.stuNm}}</p>
-              <p>{{item.author}}</p>
+              <p>班级：{{item.stuNm}}</p>
+              <p>作者：{{item.author}}</p>
             </ul>
-            <p>
-              <a :href="'./writing.html?type='+showType">查看更多 ></a>
-            </p>
           </div>
           <!--书画摄影-->
           <div class="honor">
-            <h4>书画摄影</h4>
+            <div>
+              <h4>书画摄影</h4>
+              <span><a :href="'./painting.html?type='+showType">查看更多></a></span>
+            </div>
             <ul
               v-for="item in paintList"
               :key="item.televGainPk"
@@ -55,16 +58,16 @@
               <li>
                 <a href="#">{{item.titleNm}}</a>
               </li>
-              <p>作者：{{item.stuNm}}</p>
-              <p>{{item.author}}</p>
+              <p>班级：{{item.stuNm}}</p>
+              <p>作者：{{item.author}}</p>
             </ul>
-            <p>
-              <a :href="'./painting.html?type='+showType">查看更多 ></a>
-            </p>
           </div>
           <!--活力视频-->
           <div class="classes">
-            <h4>活力视频</h4>
+            <div>
+              <h4>活力视频</h4>
+              <span><a :href="'./actVideo.html?type='+showType">查看更多></a></span>
+            </div>
             <ul
               v-for="item in videoList"
               :key="item.televGainPk"
@@ -73,32 +76,16 @@
               <li>
                 <a href="#">{{item.titleNm}}</a>
               </li>
-              <p>作者：{{item.stuNm}}</p>
-              <p>{{item.author}}</p>
+              <p>班级：{{item.stuNm}}</p>
+              <p>作者：{{item.author}}</p>
             </ul>
-            <p>
-              <a :href="'./actVideo.html?type='+showType">查看更多 ></a>
-            </p>
           </div>
         </div>
 
         <div class="operate-btn">
         <button @click="toRelease">成果发布</button>
         </div>
-        <!--底部分页按钮-->
-        <!-- <div class="nextButton">
-          <el-pagination
-            @current-change="handleCurrentChange"
-            :current-page.sync="currentPage"
-            :page-size="pageSize"
-            layout="pager,next,slot"
-            background
-            :total="total"
-            :next-text="newsNext"
-          >
-            <span style="margin-left: 10px">共{{total}}条记录，共{{page}}页</span>
-          </el-pagination>
-        </div>-->
+     
       </div>
     </div>
 

@@ -55,45 +55,64 @@
       }
     } //  书画
     .mainFoot {
-      margin-top: 40px;
       display: flex;
       flex-flow: row nowrap;
       justify-content: space-between;
+      margin-top: 40px;
       margin-bottom: 40px;
+      height: 470px;
       .production,
       .honor,
       .classes {
-        padding: 30px 30px 40px 30px;
-        width:30%;
-        border: 1px solid rgb(224, 224, 224);
-        h4 {
-          border-left: 5px solid #72b713;
-          margin-bottom: 25px;
-          padding-left: 20px;
-          font-size: 20px;
-          color: #72b713;
-        }
-      } //  成果交流
-      .production,
-      .honor,
-      .classes {
-        font-size: 18px;
         position: relative;
+        border: 1px solid #72b713;
+        width:30%;
+        font-size: 18px;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        >div{
+          display: flex;
+          flex-flow: row nowrap;
+          align-items: baseline;
+          background-color: #72b713;
+          border-top-left-radius: 8px;
+          border-top-right-radius: 8px;
+          h4 {
+            flex: 1;
+            padding: 15px 20px;
+            font-size: 22px;
+            color: #fff;
+          }
+          span{
+            flex: 0 0 auto;
+            margin-right: 20px;
+            font-size: 14px;
+            a{
+              color: #f9f9f9;
+            }
+          }
+        }
         >ul {
-          padding-left: 40px;
-          margin-bottom: 20px;
+          margin: 0 10px 0 15px;
+          padding: 25px 0 12px;
+          border-bottom: 1px solid #f1f1f1;
+          cursor: pointer;
           color: #303030;
+          &:nth-last-of-type(1){
+            border-bottom-width: 0;
+          }
           li {
-            list-style: initial;
+            list-style: none;
+            font-size: 18px;
             line-height: 2em;
-            font-weight: 400;
             a{
               color: #303030;
             }
           }
           >p {
+            font-size: 16px;
             line-height: 2em;
-            font-weight: 400;
+            color: #d1d1d1;
           }
         } //底部查看更多链接
         >p {
@@ -112,12 +131,11 @@
       flex-flow: row nowrap;
       justify-content: flex-end;
       button{
-        width: 10%;
+        width: 11%;
         display: inline-block;
         color: #fff;
         background-color: #389744;
         height: 40px;
-        margin-right: 60px;
         border-radius: 5px;
         text-align: center;
         line-height: 40px;

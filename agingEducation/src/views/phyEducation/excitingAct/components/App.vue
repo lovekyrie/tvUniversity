@@ -36,7 +36,7 @@
                 <span>地点：{{act.address}}</span>
                 <span>主办方：{{act.sponsor}}</span>
                 <span style="margin-top: 14px;line-height: 16px">
-                  作品人数：{{act.haveNum}}
+                  作品人数： <i>{{act.haveNum}}</i>
                   <button
                     class="actBtn"
                     @click="toDetail(act.televDoingPk)"
@@ -78,7 +78,7 @@ export default {
       showType: false,
       actList: [],
       total: 15,
-      pageSize: 6,
+      pageSize: 4,
       currentPage: 1,
       newsNext: "下一页"
     };
