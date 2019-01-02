@@ -4,7 +4,7 @@
       <div class="headImg" @click="toHome">
         <img :src="logo">
       </div>
-      <div class="headTitle">
+      <div class="headTitle" @click="toHome">
         <span>宁波社区大学老年教育中心</span>
         <span>宁波广播电视大学老年教育学院</span>
       </div>
@@ -130,6 +130,7 @@ export default {
       justify-content: center;
       font-size: 28px;
       color: #303030;
+      cursor: pointer;
     }
     /*登录注册*/
     .right{

@@ -1,7 +1,7 @@
 <template>
     <div id="container">
         <myHeader :type="name"></myHeader>
-        <div class="content">
+        <div class="content-wrap">
             <div class="pos">
               <span><a href="./index.html">首页</a></span>&nbsp;> 
               <span>文件政策</span>

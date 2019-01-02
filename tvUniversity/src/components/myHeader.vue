@@ -29,9 +29,9 @@
 </template>
 <script>
 import myNav from "./myNav";
-import logo from "./images/logo.png";
-import codeSmall from "./images/smallcode.png";
-import codeBig from "./images/bigcode.png";
+import logo from "./img/logo.png";
+import codeSmall from "./img/smallcode.png";
+import codeBig from "./img/bigcode.png";
 
 export default {
   name: "App",
@@ -81,15 +81,13 @@ export default {
 };
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 #header {
+  border-bottom: 1px solid #e1e1e1;
   width: 100%;
   height: auto;
-  border-bottom: 1px solid #e1e1e1;
-  background-image: url("./images/navigator.png") ; 
-  background-repeat: no-repeat;
+  background: url("./img/navigator.png") no-repeat center; 
   background-size: contain;
-  background-position: center;
   box-shadow: 0 2px 4px rgba(73,150,86,.16);
   > .header-wrap {
     position: relative;
@@ -105,9 +103,6 @@ export default {
       display: -webkit-flex;
       align-items: center;
       width: 35%;
-      img{
-        
-      }
       > a {
         margin-left: 5%;
         width: 80%;

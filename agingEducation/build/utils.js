@@ -37,10 +37,12 @@ exports.cssLoaders = function (options) {
 
     // Extract CSS when that option is specified
     // (which is the case during production build)
+    //因为所有图片都打包进入img文件夹，但是如果在当前页面的CSS中，向前递归两层../../，还是找不到img下面的文件
     if (options.extract) {
       return ExtractTextPlugin.extract({
         use: loaders,
-        fallback: 'vue-style-loader'
+        fallback: 'vue-style-loader',
+        publicPath:'/dist/'
       })
     } else {
       return ['vue-style-loader'].concat(loaders)

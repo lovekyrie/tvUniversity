@@ -355,7 +355,7 @@ export default {
               this.until
                 .get("/prod/class/info/" + item.prodClassPk)
                 .then(res => {
-                  this.videoList[index].playerOptions.poster = res.data.imgUrl;
+                  this.videoList[index].playerOptions.poster = res.data && res.data.imgUrl || '';
                 });
             }
           },

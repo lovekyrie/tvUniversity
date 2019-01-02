@@ -118,7 +118,7 @@
   line-height: 50px;
   border: 0;
   color: #fff;
-  background-color: #3a71a8;
+  background-color: #389744;
   font-size: 22px;
   cursor: pointer;
   border-radius: 5px;
