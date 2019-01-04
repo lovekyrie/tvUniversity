@@ -44,6 +44,9 @@
             },{
                 aHref:'/info',
                 title:'个人资料'
+            },{
+                aHref:'/back',
+                title:'后台管理'
             }]
       }
     },

@@ -247,8 +247,8 @@
 .s-sytle {
   margin: 10px 0;
   display: flex;
-  flex-flow:row nowrap;
-  align-items:center;
+  flex-flow: row nowrap;
+  align-items: center;
   h4 {
     float: left;
     width: 115px;
@@ -291,9 +291,7 @@
     <div class="g-content g-content-footer">
       <!--链接栏-->
       <div class="r-link cm-container">
-        <!--<a href="../home/index.html">首页</a>-->
-        <a href="http://ln.nbsqjy.com/">首页</a>
-        
+        <a href="../home/index.html">首页</a>
         <span>&nbsp;&nbsp;&gt;&nbsp;&nbsp;</span>
         <a href="./select.html">我的课程</a>
         <span>&nbsp;&nbsp;&gt;&nbsp;&nbsp;</span>

@@ -13,6 +13,7 @@ import myStar from './components/myStar.vue'
 import sign from './components/sign.vue'
 import myTeam from './components/myTeam.vue'
 import preventStudy from './components/preventStudy.vue'
+import backSystem from './components/backSystem.vue'
 
 const routes = [{
     path: '/',
@@ -30,7 +31,6 @@ const routes = [{
     path: '/myStar',
     component: myStar
   }, //我的学习星
-
   {
     path: '/study',
     component: study
@@ -40,9 +40,9 @@ const routes = [{
     component: studyDetail
   }, //课程详情
   {
-    path:'/prevent',
-    component:preventStudy
-  },//往期课程详情
+    path: '/prevent',
+    component: preventStudy
+  }, //往期课程详情
   {
     path: '/sign',
     component: sign
@@ -51,6 +51,10 @@ const routes = [{
     path: '/myTeam',
     component: myTeam
   }, //我的小组
+  {
+    path: '/back',
+    component: backSystem
+  }
 ]
 
 

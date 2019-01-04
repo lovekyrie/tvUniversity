@@ -1,16 +1,14 @@
 <template>
   <div id="container">
     <!--顶部-->
-    <ageHead></ageHead>
+    <age-head></age-head>
     <!--页面主体部分-->
     <div id="main">
       <!--列表-->
       <div class="writingList">
         <!--列表顶部-->
         <div class="writingTop">
-          <span>
-            <a href="../home/index.html">首页</a>
-          </span>
+          <span @click="toIndex">首页</span>
           <template v-if="showType">
             <span class="topLine">></span>
             <span>
@@ -36,18 +34,16 @@
                 <span>地点：{{act.address}}</span>
                 <span>主办方：{{act.sponsor}}</span>
                 <span style="margin-top: 34px;line-height: 16px">
-                  作品人数： <i>{{act.haveNum}}</i>
-                  <button
-                    class="actBtn"
-                    @click="toDetail(act.televDoingPk)"
-                  >查看详情</button>
+                  作品人数：
+                  <i>{{act.haveNum}}</i>
+                  <button class="actBtn" @click="toDetail(act.televDoingPk)">查看详情</button>
                 </span>
               </div>
             </div>
           </el-col>
         </el-row>
 
-       <!--分页-->
+        <!--分页-->
         <el-pagination
           background
           @current-change="handleCurrentChange"
@@ -57,12 +53,11 @@
           :total="total"
         ></el-pagination>
         <!-- <span>共{{Math.ceil(total/pageSize)}}页</span> -->
-      
       </div>
     </div>
 
     <!--底部-->
-    <ageFoot></ageFoot>
+    <age-foot></age-foot>
   </div>
 </template>
 
@@ -94,9 +89,15 @@ export default {
   },
   mounted() {
     this.showType = JSON.parse(this.until.getQueryString("type"));
+    this.$nextTick(() => {
+      this.$refs.indexUrl.removeAttribute("target");
+    });
     this.getActList();
   },
   methods: {
+    toIndex() {
+      window.location.href = "../home/index.html";
+    },
     //当前页变动时
     handleCurrentChange(val) {
       this.currentPage = val;
@@ -129,6 +130,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-</style>

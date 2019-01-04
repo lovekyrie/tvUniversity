@@ -14,16 +14,16 @@
       </div>
       <div class="right">
         <p class="login-btn" v-if="!ifLogin">
-          <a href="../entry/login.html">登录</a>
+          <a href="../entry/login.html" target="_self">登录</a>
         </p>
         <p v-if="ifLogin">
-          <a href="../personal/info.html">欢迎您的登录，{{info.nickname}}！</a>
+          <a href="../personal/info.html" target="_self">欢迎您的登录，{{info.nickname}}！</a>
           <span @click="quit">退出</span>
         </p>
-        <img v-if="!showBig" :src="codeSmall" alt="" @click="showBig=true">
+        <img v-if="!showBig" :src="codeSmall" alt @click="showBig=true">
       </div>
       <!-- 二维码大 -->
-      <img class="big-code" v-if="showBig" :src="codeBig" alt="" @click="showBig=false">
+      <img class="big-code" v-if="showBig" :src="codeBig" alt @click="showBig=false">
     </div>
   </div>
 </template>
@@ -44,7 +44,7 @@ export default {
       logo,
       codeSmall,
       codeBig,
-      showBig:false
+      showBig: false
     };
   },
   mounted() {
@@ -86,9 +86,9 @@ export default {
   border-bottom: 1px solid #e1e1e1;
   width: 100%;
   height: auto;
-  background: url("./img/navigator.png") no-repeat center; 
+  background: url("./img/navigator.png") no-repeat center;
   background-size: contain;
-  box-shadow: 0 2px 4px rgba(73,150,86,.16);
+  box-shadow: 0 2px 4px rgba(73, 150, 86, 0.16);
   > .header-wrap {
     position: relative;
     width: 1200px;
@@ -135,7 +135,7 @@ export default {
         border-bottom: 1px solid #72b713;
       }
     }
-    .right{
+    .right {
       width: 20%;
       display: -webkit-flex;
       display: flex;
@@ -158,15 +158,15 @@ export default {
           cursor: pointer;
         }
       }
-      .login-btn{
-        a{
-          margin-left:100px;
+      .login-btn {
+        a {
+          margin-left: 100px;
         }
       }
-      img{
+      img {
       }
     }
-    .big-code{
+    .big-code {
       position: absolute;
       top: 0;
       right: 0;

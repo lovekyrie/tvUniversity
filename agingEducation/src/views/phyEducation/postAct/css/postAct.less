@@ -21,15 +21,16 @@
       height: 80px;
       border-bottom: 1px solid #f1f1f1;
       font-size: 20px;
-      a {
         color: #999;
         font-size: 20px;
-      }
       .topLine {
         padding: 0 5px;
         color: #999;
       }
       >span{
+        &:not(:nth-last-of-type(1)){
+          cursor: pointer;
+        }
         &:nth-last-of-type(1){
           color: #72b713;
         }

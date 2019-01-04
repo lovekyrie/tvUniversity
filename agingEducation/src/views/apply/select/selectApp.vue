@@ -265,7 +265,7 @@
     <div class="g-content g-content-footer">
       <!--链接栏-->
       <div class="r-link cm-container">
-        <a href="http://ln.nbsqjy.com/">首页</a>
+        <a href="../home/index.html">首页</a>
         <span>&nbsp;&nbsp;&gt;&nbsp;&nbsp;</span>
         <a>在线报名</a>
       </div>
@@ -298,11 +298,13 @@
             <img :src="option.imgUrl">
             <div>
               <h3>{{option.nm}}</h3>
-              <p>校区：
+              <p>
+                校区：
                 <span class="r-area">{{option.recrPlanVo.campNm}}</span>
               </p>
               <p
-                v-for="(opt,index) in option.pxClazzLessonVoList" :key="index"
+                v-for="(opt,index) in option.pxClazzLessonVoList"
+                :key="index"
               >上课时间：{{opt.pxClazzLessonVo.weekNm}} {{opt.pxClazzLessonVo.periNm}}&nbsp;&nbsp;&nbsp;&nbsp;上课地点：{{opt.pxClazzLessonVo.roomNm}}</p>
               <p>报名时间：{{option.recrPlanVo.vldFrTm}}&nbsp;&nbsp;~&nbsp;&nbsp;{{option.recrPlanVo.vldToTm}}</p>
               <p>报名条件：男士年龄 {{option.maleAgeNm}}&nbsp;&nbsp;&nbsp;&nbsp;女士年龄 {{option.famaleAgeNm}}</p>
@@ -310,7 +312,9 @@
                 <!--<span class="apply-sum">已经有<b>5</b>个人报名</span>-->
                 <span class="c-money">
                   ￥{{option.price}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <i v-if="option.hasExam == 1">需要考核</i>
+                  <i
+                    v-if="option.hasExam == 1"
+                  >需要考核</i>
                 </span>
                 <!--可以报名的条件：在规定时间内，是基础课程，人数未满(对外报名人数<对外人数)-->
                 <button
@@ -344,16 +348,16 @@
           </div>
         </div>
 
-        <div class="page">
-          <el-pagination
-            @current-change="handleCurrentChange"
-            :current-page="currentPage"
-            :page-size="currentPagesize"
-            layout=" prev, pager, next, total"
-            :total="total"
-          ></el-pagination>
-          <span>共{{Math.ceil(total / currentPagesize)}}页</span>
-        </div>
+        <!--分页-->
+        <el-pagination
+          background
+          @current-change="handleCurrentChange"
+          :current-page.sync="currentPage"
+          :page-size="pageSize"
+          layout="total, prev, pager, next"
+          :total="total"
+        ></el-pagination>
+        <!-- <span>共{{Math.ceil(total/pageSize)}}页</span> -->
       </div>
     </div>
     <ageFoot></ageFoot>

@@ -8,19 +8,9 @@
       <div class="mainList">
         <!--列表顶部-->
         <div class="mainTop">
-          <span>
-            <a href="../home/index.html">首页</a>
-          </span>
+          <span @click="toIndex">首页</span>
           <span class="topLine">></span>
-          <template v-if="showType">
-            <span>
-              <a href="../phyEducation/phyeducationMain.html">实体办学</a>
-            </span>
-            <span class="topLine">></span>
-          </template>
-          <span>
-            <a href="../phyEducation/excitingAct.html">精彩活动</a>
-          </span>
+          <span @click="toAct">精彩活动</span>
           <span class="topLine">></span>
           <span>活动详情</span>
         </div>
@@ -35,7 +25,8 @@
             <p>主办方：{{actInfo.sponsor}}</p>
             <p>地点：{{actInfo.address}}</p>
             <p style="margin-bottom: 100px">
-              作品数：<span style="color:red;">{{actInfo.haveNum || 0}}</span>
+              作品数：
+              <span style="color:red;">{{actInfo.haveNum || 0}}</span>
             </p>
             <p>时间：{{actInfo.startTm}}-{{actInfo.endTm}}</p>
             <p>来源：{{actInfo.source}}</p>
@@ -92,7 +83,6 @@
           :total="total"
         ></el-pagination>
         <!-- <span>共{{Math.ceil(total/pageSize)}}页</span> -->
-      
       </div>
     </div>
 
@@ -138,6 +128,12 @@ export default {
     this.getEntriesList();
   },
   methods: {
+    toIndex() {
+      window.location.href = "../home/index.html";
+    },
+    toAct() {
+      window.location.href = "../phyEducation/excitingAct.html";
+    },
     handleCurrentChange() {
       console.log(`${val}`);
     },
@@ -145,10 +141,9 @@ export default {
       //得到投票用户
       let userJSON = this.until.seGet("DD_token");
       if (!userJSON) {
-        this.$message.error('请先登录系统，才能进行投票！')
-      } 
-      else {
-        let user=JSON.parse(userJSON);
+        this.$message.error("请先登录系统，才能进行投票！");
+      } else {
+        let user = JSON.parse(userJSON);
         let param = {
           televUserNm: user.userInfo.username,
           televRunPk: item.televRunPk,
@@ -159,18 +154,17 @@ export default {
           .then(res => {
             if (res.status == 200) {
               //增加投票次数
-              this.entriesList.forEach(element=>{
-                if(element===item){
-                  element.voteNum+=1;
+              this.entriesList.forEach(element => {
+                if (element === item) {
+                  element.voteNum += 1;
                 }
-              })
-               this.$message({
-                message: '您已经成功投票一次',
-                type: 'success'
               });
-            }
-            else{
-              this.$message.error(res.message)
+              this.$message({
+                message: "您已经成功投票一次",
+                type: "success"
+              });
+            } else {
+              this.$message.error(res.message);
             }
           });
       }
@@ -223,6 +217,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-</style>

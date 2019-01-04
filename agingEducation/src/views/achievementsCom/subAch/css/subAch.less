@@ -38,18 +38,16 @@
       border-bottom: 1px solid rgb(225, 225, 225);
       height: 80px;
       font-size: 20px;
-      a {
-        color: #999;
-        font-size: 20px;
-        font-weight: 300;
-        text-decoration: none;
-      }
+      color: #999;
       .topLine {
         padding: 0 5px;
         color: #999;
       }
-      >span{
-        &:nth-last-of-type(1){
+      >span {
+        &:nth-of-type(1) {
+          cursor: pointer;
+        }
+        &:nth-last-of-type(1) {
           color: #72b713;
         }
       }
@@ -66,11 +64,11 @@
       .classes {
         position: relative;
         border: 1px solid #72b713;
-        width:30%;
+        width: 30%;
         font-size: 18px;
         border-top-left-radius: 8px;
         border-top-right-radius: 8px;
-        >div{
+        >div {
           display: flex;
           flex-flow: row nowrap;
           align-items: baseline;
@@ -84,13 +82,11 @@
             font-size: 22px;
             color: #fff;
           }
-          span{
+          span {
             flex: 0 0 auto;
             margin-right: 20px;
             font-size: 14px;
-            a{
-              color: #f9f9f9;
-            }
+            color: #f9f9f9;
           }
         }
         >ul {
@@ -99,14 +95,14 @@
           border-bottom: 1px solid #f1f1f1;
           cursor: pointer;
           color: #303030;
-          &:nth-last-of-type(1){
+          &:nth-last-of-type(1) {
             border-bottom-width: 0;
           }
           li {
             list-style: none;
             font-size: 18px;
             line-height: 2em;
-            a{
+            a {
               color: #303030;
             }
           }
@@ -125,14 +121,14 @@
             color: #999;
           }
         }
-      } 
+      }
     }
-    .operate-btn{
+    .operate-btn {
       height: 100px;
       display: flex;
       flex-flow: row nowrap;
       justify-content: flex-end;
-      button{
+      button {
         width: 11%;
         display: inline-block;
         color: #fff;

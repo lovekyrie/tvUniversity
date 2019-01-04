@@ -8,19 +8,9 @@
       <div class="mainList">
         <!--列表顶部-->
         <div class="mainTop">
-          <span>
-            <a href="../home/index.html">首页</a>
-          </span>
-          <template v-if="showType">
-            <span class="topLine">></span>
-            <span>
-              <a href="../phyEducation/phyeducationMain.html">实体办学</a>
-            </span>
-          </template>
+          <span @click="toIndex">首页</span>
           <span class="topLine">></span>
-          <span>
-            <a href="./excitingAct.html">精彩活动</a>
-          </span>
+          <span @click="toAct">精彩活动</span>
           <span class="topLine">></span>
           <span>活动详情</span>
         </div>
@@ -97,6 +87,12 @@ export default {
     this.getActInfo();
   },
   methods: {
+    toIndex() {
+      window.location.href = "../home/index.html";
+    },
+    toAct() {
+      window.location.href = "./excitingAct.html";
+    },
     sub() {
       //提交参赛作品
       let param = {
@@ -148,13 +144,9 @@ export default {
       }
       return isJPG && isLt2M;
     },
-    clear(){
-      this.inputAuthor="",
-      this.imageUrl=''
+    clear() {
+      (this.inputAuthor = ""), (this.imageUrl = "");
     }
   }
 };
 </script>
-
-<style scoped>
-</style>

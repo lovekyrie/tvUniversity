@@ -24,8 +24,8 @@
       </div>
       <div class="right">
         <p class="login-btn" v-if="!isLogin">
-          <a href="../system/login.html">登录</a>&nbsp;|&nbsp;
-           <a href="../system/register.html">注册</a>
+          <a href="../system/login.html" target="_self">登录</a>&nbsp;|&nbsp;
+           <a href="../system/register.html" target="_self">注册</a>
         </p>
         <p v-if="isLogin">
           <a href="../personalZone/personal.html">{{nickName}}</a>

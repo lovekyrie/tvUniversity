@@ -9,19 +9,9 @@
       <div class="achList">
         <!--列表顶部-->
         <div class="achTop">
-          <span>
-            <a href="../home/index.html">首页</a>
-          </span>
-          <template v-if="showType">
-            <span class="topLine">></span>
-            <span>
-              <a href="../phyEducation/phyeducationMain.html">实体办学</a>
-            </span>
-          </template>
+          <span @click="toIndex">首页</span>
           <span class="topLine">></span>
-          <span>
-            成果交流
-          </span>
+          <span>成果交流</span>
         </div>
 
         <!--内容底部-->
@@ -30,7 +20,7 @@
           <div class="production">
             <div>
               <h4>文字集锦</h4>
-              <span><a :href="'./writing.html?type='+showType">查看更多></a></span>
+              <span @click="toMoreWrite">查看更多></span>
             </div>
             <ul
               v-for="item in writeList"
@@ -48,7 +38,7 @@
           <div class="honor">
             <div>
               <h4>书画摄影</h4>
-              <span><a :href="'./painting.html?type='+showType">查看更多></a></span>
+              <span @click="toMorePaint">查看更多></span>
             </div>
             <ul
               v-for="item in paintList"
@@ -66,7 +56,7 @@
           <div class="classes">
             <div>
               <h4>活力视频</h4>
-              <span><a :href="'./actVideo.html?type='+showType">查看更多></a></span>
+              <span @click="toMoreVideo">查看更多></span>
             </div>
             <ul
               v-for="item in videoList"
@@ -83,9 +73,8 @@
         </div>
 
         <div class="operate-btn">
-        <button @click="toRelease">成果发布</button>
+          <button @click="toRelease">成果发布</button>
         </div>
-     
       </div>
     </div>
 
@@ -125,6 +114,18 @@ export default {
     this.getVideoList();
   },
   methods: {
+    toIndex() {
+      window.location.href = "../home/index.html";
+    },
+    toMoreWrite() {
+      window.location.href = "./writing.html?type=" + showType;
+    },
+    toMorePaint() {
+      window.location.href = "./painting.html?type=" + showType;
+    },
+    toMoreVideo() {
+      window.location.href = "./actVideo.html?type=" + showType;
+    },
     toWrite() {
       window.location.href = "./writing.html?type=" + this.showType;
     },
@@ -194,10 +195,11 @@ export default {
       window.location.href =
         "./writingDetail.html?id=" + pk + "&type=" + this.showType;
     },
-     toPaintDetail(pk){
-      window.location.href='./paintingDetail.html?type='+this.showType+'&id='+pk
+    toPaintDetail(pk) {
+      window.location.href =
+        "./paintingDetail.html?type=" + this.showType + "&id=" + pk;
     },
-     toVideoDetail(pk) {
+    toVideoDetail(pk) {
       window.location.href =
         "./actvideoDetail.html?type=" + this.showType + "&id=" + pk;
     }
