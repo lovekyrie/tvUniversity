@@ -118,13 +118,13 @@ export default {
       window.location.href = "../home/index.html";
     },
     toMoreWrite() {
-      window.location.href = "./writing.html?type=" + showType;
+      window.location.href = "./writing.html?type=" + this.showType;
     },
     toMorePaint() {
-      window.location.href = "./painting.html?type=" + showType;
+      window.location.href = "./painting.html?type=" + this.showType;
     },
     toMoreVideo() {
-      window.location.href = "./actVideo.html?type=" + showType;
+      window.location.href = "./actVideo.html?type=" + this.showType;
     },
     toWrite() {
       window.location.href = "./writing.html?type=" + this.showType;

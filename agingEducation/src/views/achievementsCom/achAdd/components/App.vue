@@ -8,13 +8,9 @@
             <div class="achList">
                 <!--列表顶部-->
                 <div class="achTop">
-                    <span><a href="../home/index.html">首页</a></span>
-                    <template v-if="showType">
-                      <span class="topLine"> > </span>
-                      <span><a href="../phyEducation/phyeducationMain.html">实体办学</a></span>
-                    </template>
+                    <span @click="toIndex">首页</span>
                     <span class="topLine"> > </span>
-                    <span><a :href="'./subAch.html?type='+showType">成果交流</a></span>
+                    <span @click="toSubAch">成果交流</span>
                     <span class="topLine"> > </span>
                     <span>成果发布</span>
                 </div>
@@ -89,6 +85,12 @@ export default {
   methods: {
     getEditorInfo(content){
       this.form.cont=content
+    },
+    toIndex(){
+      window.location.href='../home/index.html'
+    },
+    toSubAch(){
+      window.location.href='./subAch.html?type='+showType
     },
     toWrite(){
       window.location.href='./writing.html?type='+this.showType
