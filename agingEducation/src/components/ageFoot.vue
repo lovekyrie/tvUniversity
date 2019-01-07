@@ -2,7 +2,7 @@
   <div id="ageFoot">
     <div class="footRow1">
       <span>
-        <a  href="http://www.nbtvu.net.cn/">宁波广播电视大学</a>
+        <a href="http://www.nbtvu.net.cn/">宁波广播电视大学</a>
       </span>
       <span>
         <a href="#">宁波电大老年教育网</a>
@@ -11,19 +11,19 @@
         <a href="#">宁波老年实体办学网</a>
       </span>
       <span style="border: none;">
-        <a href="http://218.71.137.186:44185/dist/views/center/index.html">宁波电视大学网</a>
+        <a href="http://lndd.nbsqjy.com:44185/dist/views/center/index.html">宁波电视大学网</a>
       </span>
     </div>
 
     <div class="footRow2">
-      <span>联系方式：0516-34534352</span>
-      <span>电子邮箱：11234525@qq.com</span>
+      <span>联系方式：0574-87201535</span>
+      <span>地址：宁波市江北区文教路1号</span>
       <span>
         <a href="http://lnt.nbsqjy.com/view/index.html">后台管理系统</a>
       </span>
     </div>
     <div class="footRow3">
-      <span>2016©️ 版权所有 沪ICP备05052049</span>
+      <span>2018©版权所有 浙ICP备10047159号</span>
     </div>
   </div>
 </template>
@@ -62,10 +62,10 @@ export default {
       border-right: 1px solid rgb(145, 145, 145);
     }
   }
-  .footRow2{
-     margin-bottom: 10px;
-    >span{
-      &:not(:nth-last-of-type(1)){
+  .footRow2 {
+    margin-bottom: 10px;
+    > span {
+      &:not(:nth-last-of-type(1)) {
         margin-right: 30px;
       }
     }

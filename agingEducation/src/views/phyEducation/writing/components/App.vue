@@ -14,7 +14,7 @@
 
         <div class="content">
           <div
-            @click="toCommentDetail(item.televInfromPk)"
+            @click="toWritingDetail(item.televInfromPk)"
             v-for="(item,index) in items"
             :key="index"
             class="clearfix"
@@ -67,7 +67,7 @@ export default {
     toEntitySchool() {
       window.location.href = "./phyeducationMain.html";
     },
-    toCommentDetail(id) {
+    toWritingDetail(id) {
       window.location.href = "./classesDetail.html?id=" + id;
     },
     handleCurrentChange(val) {
@@ -76,7 +76,7 @@ export default {
     },
     getMsg() {
       let query = new this.Query();
-      query.buildWhereClause("catCd", "40020.130", "LK");
+      query.buildWhereClause("catCd", "40020.120", "LK");
       query.buildPageClause(this.currentPage, this.pageSize);
       let param = query.getParam();
       this.until.get("/telev/infrom/page", param).then(res => {

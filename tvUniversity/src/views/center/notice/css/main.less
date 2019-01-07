@@ -1,6 +1,6 @@
-@base:18rem;
-#container{
-  .pos{
+@base: 18rem;
+#container {
+  .pos {
     width: 100%;
     color: #999;
     font-size: 20px;
@@ -9,61 +9,64 @@
     a {
       color: #999;
     }
-    >span{
-      &:nth-last-of-type(1){
+    >span {
+      &:nth-last-of-type(1) {
         color: #72b713;
       }
     }
   }
-  .list{
+  .list {
     border-bottom: 1px solid #e1e1e1;
     cursor: pointer;
-    .listContent{
+    .listContent {
       height: 90px;
       display: flex;
       display: -webkit-flex;
       flex-direction: column;
-      >div{
+      >div {
         padding-top: 25px;
         flex: 1;
-        strong{
+        strong {
           font-size: 18px;
           font-weight: 400;
           color: #303030;
         }
-        p{
+        p {
           padding-top: 5px;
           color: #d1d1d1;
           font-size: 20px;
         }
       }
-
-      p{
+      p {
         padding-bottom: 20px;
         display: flex;
         flex-flow: row nowrap;
         color: #d1d1d1;
         line-height: 35px;
         font-size: 16px;
-        span{
+        span {
           flex: 1 0 50%;
-          &:nth-last-of-type(1){
-            flex: 0 0 10%;
+          &:nth-last-of-type(1) {
+            flex: 0 0 15%;
           }
         }
       }
     }
   }
-  .el-pagination{
+  .el-pagination {
     padding: 40px 0;
-    .el-pagination__total{
+    .el-pagination__total {
       font-size: 16px !important;
       line-height: 40px;
     }
-    .active{
+    .active {
       background-color: #72b713;
     }
-    .btn-prev .el-icon,.el-pager li,.btn-next .el-icon,.btn-prev,.btn-next {
+    .btn-prev .el-icon,
+    .el-pager li,
+    .btn-next .el-icon,
+    .btn-prev,
+    .btn-next {
       font-size: 16px !important;
       width: 40px;
       height: 40px;

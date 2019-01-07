@@ -3,181 +3,116 @@
   background-color: white;
   a {
     text-decoration: none;
-  } //列表
-  .mainList {
+  } //成果分类按钮
+  .selectBtn {
     display: flex;
+    align-items: center;
+    height: 80px;
+    border-bottom: 1px solid rgb(225, 225, 225);
+    padding-left: 12.5%;
+    >button {
+      display: inline-block;
+      color: white;
+      background-color: rgb(58, 113, 168);
+      width: 11%;
+      height: 40px;
+      margin-right: 60px;
+      border-radius: 5px;
+      text-align: center;
+      line-height: 40px;
+      font-size: 18px;
+      font-weight: 300;
+      border: 0;
+    }
+  } //列表
+  .achList {
+    display: flex;
+    flex-direction: column; //列表顶部
+    margin: 0 auto;
     width: 75%;
     min-width: 1060px;
-    margin: 0 auto;
-    flex-direction: column; //列表顶部
-    .mainTop {
+    height: 785px;
+    .achTop {
       display: flex;
       align-items: center;
-      height: 80px;
-      padding-left: 30px;
       border-bottom: 1px solid rgb(225, 225, 225);
-      a {
-        color: rgb(135, 135, 135);
-        font-size: 20px;
-        font-weight: 300;
-      }
+      height: 80px;
+      font-size: 20px;
+      color: #999;
       .topLine {
         padding: 0 5px;
-        font-size: 20px;
-        color: rgb(135, 135, 135);
+        color: #999;
       }
-    } //  轮播图
-    .mainImg {
-      padding-top: 30px;
-      width: 100%;
-      img {
-        width: 100%;
-      }
-    } //  校园动态，精彩活动
-    .mainNews {
-      display: flex;
-      flex-direction: row;
-      margin-bottom: 60px;
-      .leftTitle,
-      .rightTitle {
-        height: 75px;
-        line-height: 75px;
-        padding-left: 20px;
-        padding-right: 30px;
-        border-bottom: 1px solid rgb(225, 225, 225);
-        >h3 {
-          display: inline;
-          padding-left: 20px;
-          font-weight: 400;
-          border-left: 5px solid black;
+      >span {
+        &:nth-of-type(1) {
+          cursor: pointer;
         }
-        >a {
-          float: right;
-          font-size: 18px;
-          color: rgb(135, 135, 135);
-        }
-      } //校园动态
-      .mainLeft {
-        flex: 1;
-        padding-right: 15px; //左侧内容
-        .leftContent {
-          display: flex;
-          flex-direction: row;
-          height: 220px;
-          padding-top: 20px;
-          padding-left: 20px; //图片
-          .contentImg {
-            margin-right: 20px;
-            width: 200px;
-            height: 200px;
-            img {
-              max-width: 100%;
-              max-height: 100%;
-              width: auto;
-              height: auto;
-              vertical-align: middle;
-            }
-          }
-          .contentMsg1 {
-            //动态标题
-            width: 100%;
-            h4 {
-              font-weight: 400;
-              font-size: 22px;
-              margin-bottom: 60px;
-            } //动态信息
-            >span {
-              display: block;
-              font-size: 18px;
-              font-weight: 300;
-              color: rgb(135, 135, 135);
-            }
-          }
-        }
-      } //精彩活动
-      .mainRight {
-        flex: 1;
-        padding-left: 15px; //右侧内容
-        .rightContent {
-          display: flex;
-          flex-direction: row;
-          height: 220px;
-          padding-top: 20px;
-          padding-left: 20px; //图片
-          .contentImg {
-            margin-right: 20px;
-            width: 200px;
-            height: 200px;
-            img {
-              max-width: 100%;
-              max-height: 100%;
-              width: auto;
-              height: auto;
-              vertical-align: middle;
-            }
-          }
-          .contentMsg2 {
-            width: 100%; //活动标题
-            h4 {
-              font-weight: 400;
-              font-size: 22px;
-              margin-bottom: 25px;
-            } //活动信息
-            >span {
-              display: block;
-              font-size: 16px;
-              line-height: 26px;
-              font-weight: 300;
-              color: rgb(135, 135, 135);
-            }
-            button {
-              background-color: rgb(53,113,168);
-              color: white;
-              height: 35px;
-              width: 37%;
-              font-size: 18px;
-              border-radius: 6px;
-              margin-left: 25%;
-              vertical-align: bottom;
-            }
-            button {
-              border: 0;
-            }
-          }
+        &:nth-last-of-type(1) {
+          color: #72b713;
         }
       }
-    } //  内容底部
+    } //  书画
     .mainFoot {
       display: flex;
-      flex-direction: row;
-      margin-bottom: 130px;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+      margin-top: 40px;
+      margin-bottom: 40px;
+      height: 470px;
       .production,
       .honor,
-      .classes {
-        padding: 30px 30px 40px 30px;
-        flex: 1;
-        border: 1px solid rgb(224, 224, 224);
-        h4 {
-          font-size: 20px;
-          padding-left: 20px;
-          border-left: 5px solid black;
-          margin-bottom: 25px;
-        }
-      } //  成果交流
-      .production {
-        font-size: 18px;
+      .classes,
+      .teacher{
         position: relative;
+        border: 1px solid #72b713;
+        width: 24%;
+        font-size: 18px;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        >div {
+          display: flex;
+          flex-flow: row nowrap;
+          align-items: baseline;
+          background-color: #72b713;
+          border-top-left-radius: 8px;
+          border-top-right-radius: 8px;
+          h4 {
+            flex: 1;
+            margin: 0;
+            padding: 15px 20px;
+            font-size: 22px;
+            color: #fff;
+          }
+          span {
+            flex: 0 0 auto;
+            margin-right: 20px;
+            font-size: 14px;
+            color: #f9f9f9;
+            cursor: pointer;
+          }
+        }
         >ul {
-          padding-left: 40px;
-          margin-bottom: 20px;
+          margin: 0 10px 0 15px;
+          padding: 25px 0 12px;
+          border-bottom: 1px solid #f1f1f1;
+          cursor: pointer;
+          color: #303030;
+          &:nth-last-of-type(1) {
+            border-bottom-width: 0;
+          }
           li {
-            list-style: initial;
+            list-style: none;
+            font-size: 18px;
             line-height: 2em;
-            font-weight: 400;
+            a {
+              color: #303030;
+            }
           }
           >p {
+            margin: 0;
+            font-size: 16px;
             line-height: 2em;
-            font-weight: 400;
+            color: #d1d1d1;
           }
         } //底部查看更多链接
         >p {
@@ -185,48 +120,34 @@
           bottom: 20px;
           left: 42%;
           a {
-            color: rgb(145, 135, 135);
-          }
-        }
-      } //  荣誉展厅
-      .honor {
-        font-size: 18px;
-        margin: 0px 30px;
-        position: relative;
-        img {
-          max-width: 125px;
-          margin-right: 20px;
-        } //底部查看更多链接
-        >p {
-          text-align: center;
-          position: absolute;
-          bottom: 20px;
-          left: 42%;
-          a {
-            color: rgb(145, 135, 135);
-          }
-        }
-      } //  课表栏目
-      .classes {
-        font-size: 18px;
-        position: relative;
-        >ul {
-          padding-left: 40px;
-          li {
-            list-style: initial;
-            line-height: 3em;
-            font-weight: 400;
-          }
-        }
-        >p {
-          position: absolute;
-          bottom: 20px;
-          left: 42%;
-          a {
-            color: rgb(145, 135, 135);
+            color: #999;
           }
         }
       }
+    }
+    .operate-btn {
+      height: 100px;
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: flex-end;
+      button {
+        width: 11%;
+        display: inline-block;
+        color: #fff;
+        background-color: #389744;
+        height: 40px;
+        border-radius: 5px;
+        text-align: center;
+        line-height: 40px;
+        font-size: 18px;
+        font-weight: 300;
+        border: 0;
+      }
+    }
+    .nextButton {
+      height: 170px;
+      padding-top: 40px;
+      padding-left: 30px;
     }
   }
 }

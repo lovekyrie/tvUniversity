@@ -4,7 +4,7 @@
         <div class="content">
             <div class="pos">
               <span><a href="../center/index.html">首页</a></span>>
-              <span><a href="./policy.html">文件政策</a></span>> 
+              <span><a href="./policy.html">政策文件</a></span>> 
               <span>文件详情</span>
             </div>
             <div class="noticeDetail">

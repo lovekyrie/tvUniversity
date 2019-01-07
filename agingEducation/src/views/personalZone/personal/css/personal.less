@@ -1,121 +1,156 @@
-#main{
+#main {
   min-width: 1060px;
-  background-color: white;
-
-
-  //学习列表
-  .learnList{
+  background-color: white; //学习列表
+  .learnList {
     display: flex;
     width: 75%;
     min-width: 1060px;
     margin: 0 auto;
-    flex-direction: column;
-
-
-    //列表顶部
-    .learnTop{
+    flex-direction: column; //列表顶部
+    .learnTop {
       display: flex;
       align-items: center;
       height: 80px;
-      border-bottom: 1px solid rgb(235,235,235);
-
-      a{
-        color: rgb(135,135,135);
+      border-bottom: 1px solid rgb(235, 235, 235);
+      a {
+        color: rgb(135, 135, 135);
         font-size: 20px;
         font-weight: 300;
         text-decoration: none;
       }
-
-      .topLine{
+      .topLine {
         padding: 0 5px;
         font-size: 20px;
-        color: rgb(135,135,135);
+        color: rgb(135, 135, 135);
       }
-
+      span {
+        &:nth-last-of-type(1) {
+          a {
+            color: #72b713;
+          }
+        }
+      }
     }
-
-  //  搜索框
-    .learnSearch{
+    .content {
+      display: flex;
+      flex-direction: row;
+      margin-bottom: 200px; //导航栏
+      .myMenu {
+        flex: 1 0 14%;
+        margin-right: 20px;
+        text-align: center;
+        max-height: 650px;
+        .el-menu {
+          border: 1px solid #e6e6e6;
+          border-top-width: 0;
+        }
+        .el-menu-demo {
+          width: 100%;
+          padding: 20px 0px 30px 0;
+        }
+        .el-menu-item {
+          font-size: 16px;
+          height: 40px;
+          line-height: 40px;
+          margin: 10px 0px;
+          &:focus,
+          &:hover {
+            background-color: #72b713;
+          }
+        }
+        .el-menu-item.is-active {
+          background-color: #72b713 !important;
+          margin: 10px 25px;
+        }
+      } //内容
+      .inContent {
+        display: flex;
+        flex-direction: column;
+        flex: 1 0 83%;
+        background-color: #F6F6F6;
+        padding: 30px 40px 50px 40px;
+        justify-content: center;
+        font-weight: 300;
+        >h3 {
+          text-align: center;
+          margin-bottom: 20px;
+          font-size: 24px;
+          font-weight: 400;
+        }
+        >p {
+          font-size: 22px;
+          color: rgb(145, 145, 145);
+          margin-bottom: 20px;
+          line-height: 1.5em;
+        } //图片
+        .inImg {
+          padding: 0 20px;
+          >img {
+            width: 100%;
+            margin-bottom: 20px;
+          }
+          .inTime {
+            float: right;
+            color: rgb(145, 145, 145);
+            font-size: 16px;
+          }
+        }
+      }
+    } //  搜索框
+    .learnSearch {
       height: 100px;
       padding: 30px 0;
-
-      .el-select{
-
-      }
-
-      >.el-input{
+      .el-select {}
+      >.el-input {
         width: 25%;
         margin: 0px 20px;
-
       }
-
-      >.el-button{
+      >.el-button {
         background-color: #3A71A8;
         width: 10%;
         font-weight: 300;
         font-size: 16px;
       }
-    }
-
-    //课程
-    .classes{
+    } //课程
+    .classes {
       display: flex;
       flex-direction: row;
       margin-bottom: 30px;
-      border: 1px solid rgb(235,235,235);
-
-      //左侧图片
-      .classImg{
+      border: 1px solid rgb(235, 235, 235); //左侧图片
+      .classImg {
         flex: 1;
-
-        >img{
+        >img {
           width: 100%;
         }
-      }
-
-      //右侧信息
-      .classMsg{
+      } //右侧信息
+      .classMsg {
         flex: 1.3;
         padding-left: 5%;
         position: relative;
-
-        >h4{
+        >h4 {
           font-size: 24px;
           line-height: 50px;
           font-weight: 400;
-        }
-
-        //主讲人
-        >p{
+        } //主讲人
+        >p {
           font-size: 20px;
-          color: rgb(135,135,135);
+          color: rgb(135, 135, 135);
           margin-bottom: 40px;
         }
-
-        >span{
+        >span {
           display: block;
           font-size: 18px;
           font-weight: 300;
-          color: rgb(135,135,135);
-
-        }
-
-        //按钮
-        >.el-button{
+          color: rgb(135, 135, 135);
+        } //按钮
+        >.el-button {
           background-color: #3A71A8;
           font-weight: 300;
           font-size: 16px;
           position: absolute;
           bottom: 30px;
         }
-
       }
-
     }
-
-
-
-
   }
-
 }

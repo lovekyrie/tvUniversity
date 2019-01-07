@@ -1,6 +1,6 @@
 <template>
   <div id="back">
-    <a ref="backUrl" href="http://218.71.137.186:44185" target="_blank" style="display:none;">后台链接</a>
+    <a ref="backUrl" href="http://lndd.nbsqjy.com:44185" target="_blank" style="display:none;">后台链接</a>
   </div>
 </template>
 
@@ -10,7 +10,9 @@ export default {
     return {};
   },
   mounted() {
-    this.$refs.backUrl.click();
+    this.$nextTick(() => {
+      this.$refs.backUrl.click();
+    });
   }
 };
 </script>

@@ -17,7 +17,7 @@
           <a href="../entry/login.html" target="_self">登录</a>
         </p>
         <p v-if="ifLogin">
-          <a href="../personal/info.html" target="_self">欢迎您的登录，{{info.nickname}}！</a>
+          <a href="../personal/info.html" target="_self">{{info.nickname}}</a>
           <span @click="quit">退出</span>
         </p>
         <img v-if="!showBig" :src="codeSmall" alt @click="showBig=true">
@@ -87,7 +87,7 @@ export default {
   width: 100%;
   height: auto;
   background: url("./img/navigator.png") no-repeat center;
-  background-size: contain;
+  background-size: cover;
   box-shadow: 0 2px 4px rgba(73, 150, 86, 0.16);
   > .header-wrap {
     position: relative;
@@ -142,10 +142,14 @@ export default {
       flex-flow: row nowrap;
       align-items: center;
       p {
+        display: flex;
+        flex-flow: row wrap;
         width: 62%;
         color: #e3e3e3;
+        text-align: right;
         a {
-          color: #666666;
+          width: 90%;
+          color: #666;
           display: inline-block;
           font-size: 14px;
           white-space: nowrap;
@@ -153,6 +157,7 @@ export default {
           overflow: hidden;
         }
         span {
+          width: 90%;
           font-size: 14px;
           color: #ff7867;
           cursor: pointer;

@@ -9,12 +9,12 @@
           <span>&nbsp;&nbsp;&gt;&nbsp;&nbsp;</span>
           <span @click="toEntitySchool">实体办学</span>
           <span>&nbsp;&nbsp;&gt;&nbsp;&nbsp;</span>
-          <span>学员笔谈</span>
+          <span>图文共赏</span>
         </div>
 
         <div class="content">
           <div
-            @click="toCommentDetail(item.televInfromPk)"
+            @click="toPhotoDetail(item.televInfromPk)"
             v-for="(item,index) in items"
             :key="index"
             class="clearfix"
@@ -67,7 +67,7 @@ export default {
     toEntitySchool() {
       window.location.href = "./phyeducationMain.html";
     },
-    toCommentDetail(id) {
+    toPhotoDetail(id) {
       window.location.href = "./classesDetail.html?id=" + id;
     },
     handleCurrentChange(val) {
@@ -76,7 +76,7 @@ export default {
     },
     getMsg() {
       let query = new this.Query();
-      query.buildWhereClause("catCd", "40020.130", "LK");
+      query.buildWhereClause("catCd", "40020.110", "LK");
       query.buildPageClause(this.currentPage, this.pageSize);
       let param = query.getParam();
       this.until.get("/telev/infrom/page", param).then(res => {

@@ -4,113 +4,85 @@
     <ageHead></ageHead>
     <!--页面主体部分-->
     <div id="main">
+      <!--成果分类按钮-->
       <!--列表-->
-      <div class="mainList">
+      <div class="achList">
         <!--列表顶部-->
-        <div class="mainTop">
-          <span>
-            <a href="../home/index.html">首页</a>
-          </span>
+        <div class="achTop">
+          <span @click="toIndex">首页</span>
           <span class="topLine">></span>
-          <span>
-            <a href="#">实体办学</a>
-          </span>
-        </div>
-
-        <!--轮播图-->
-        <div class="mainImg">
-          <el-carousel arrow="never">
-            <el-carousel-item v-for="(pic,index) in pics" :key="index">
-              <img :src="pic.url">
-            </el-carousel-item>
-          </el-carousel>
-        </div>
-
-        <div class="mainNews">
-          <div class="mainLeft">
-            <div class="leftTitle">
-              <h3>校园动态</h3>
-              <a href="../phyEducation/dynamics.html">查看更多 ></a>
-            </div>
-            <!--校园动态-->
-            <div class="leftContent" v-for="school in schoolNewList" :key="school.televNewsPk" @click="toSchoolDetail(school.televNewsPk)">
-              <div class="contentImg">
-                <img :src="school.imgUrl">
-              </div>
-              <div class="contentMsg1">
-                <a href="#">
-                  <h4>{{school.titleNm}}</h4>
-                </a>
-                <span style="margin-bottom: 20px">{{school.crtTm}}</span>
-                <span>来源：{{school.source}}</span>
-              </div>
-            </div>
-          </div>
-          <div class="mainRight">
-            <div class="rightTitle">
-              <h3>精彩活动</h3>
-              <a href="../phyEducation/excitingAct.html?type=true">查看更多 ></a>
-            </div>
-            <!--精彩活动-->
-            <div class="rightContent" v-for="act in excitingActList" :key="act.televDoingPk">
-              <div class="contentImg">
-                <img :src="act.imgUrl">
-              </div>
-              <div class="contentMsg2">
-                <a href="#">
-                  <h4>{{act.titleNm}}</h4>
-                </a>
-                <span>时间：{{act.startTm}}-{{act.endTm}}</span>
-                <span>地点：{{act.address}}</span>
-                <span>主办方：{{act.sponsor}}</span>
-                <span style="margin-top: 14px;line-height: 16px">
-                  {{act.haveNum}}人参与
-                  <button>查看详情</button>
-                </span>
-              </div>
-            </div>
-          </div>
+          <span>实体办学</span>
         </div>
 
         <!--内容底部-->
         <div class="mainFoot">
-          <!--成果交流-->
+          <!--图文共赏-->
           <div class="production">
-            <h4>成果交流</h4>
-            <ul v-for="item in productionList" :key="item.televGainPk" @click="toResultDetail(item.catNm,item.televGainPk)">
-              <li>
-                <a href="#">{{item.catNm}} {{item.titleNm}}</a>
-              </li>
-              <p>作者：{{item.author}}</p>
-              <p style="color: rgb(155,155,155)">{{item.crtTm}}</p>
-            </ul>
-            <p>
-              <a href="../achievementsCom/subAch.html?type=true">查看更多 ></a>
-            </p>
-          </div>
-          <!--荣誉展厅-->
-          <div class="honor">
-            <h4>荣誉展厅</h4>
-            <div v-for="item in honorList" :key="item.televNewsPk" style="margin-bottom: 30px" @click="toHonorDetail(item.televNewsPk)">
-              <img :src="item.imgUrl" alt="图片">
-              <span>{{item.titleNm}}</span>
+            <div>
+              <h4>图文共赏</h4>
+              <span @click="toMorePhoto">查看更多></span>
             </div>
-            <p>
-              <a href="../phyEducation/honorHall_P.html">查看更多 ></a>
-            </p>
-          </div>
-          <!--课表栏目-->
-          <div class="classes">
-            <h4>课程栏目</h4>
-            <ul>
-              <li
-                v-for="(item,index) in classes"
-                :key="index"
-              >{{item.cName}}&nbsp;&nbsp;&nbsp;&nbsp;{{item.cTitle}}</li>
+            <ul
+              v-for="item in photoList"
+              :key="item.televInfromPk"
+              @click="toPhotoDetail(item.televInfromPk)"
+            >
+              <li>
+                <a href="#">{{item.titleNm}}</a>
+              </li>
+              <p>来源：{{item.source}}</p>
             </ul>
-            <p>
-              <a href="../phyEducation/classes.html">查看更多 ></a>
-            </p>
+          </div>
+          <!--文字集锦-->
+          <div class="honor">
+            <div>
+              <h4>文字集锦</h4>
+              <span @click="toMoreWrite">查看更多></span>
+            </div>
+            <ul
+              v-for="item in writingList"
+              :key="item.televInfromPk"
+              @click="toPhotoDetail(item.televInfromPk)"
+            >
+              <li>
+                <a href="#">{{item.titleNm}}</a>
+              </li>
+              <p>来源：{{item.source}}</p>
+            </ul>
+          </div>
+          <!--学员笔谈-->
+          <div class="classes">
+            <div>
+              <h4>学员笔谈</h4>
+              <span @click="toMoreComment">查看更多></span>
+            </div>
+            <ul
+              v-for="item in commentList"
+              :key="item.televInfromPk"
+              @click="toPhotoDetail(item.televInfromPk)"
+            >
+              <li>
+                <a href="#">{{item.titleNm}}</a>
+              </li>
+              <p>来源：{{item.source}}</p>
+            </ul>
+          </div>
+          <!--教师之窗-->
+          <div class="teacher">
+            <div>
+              <h4>教师之窗</h4>
+              <span @click="toMoreWindow">查看更多></span>
+            </div>
+            <ul
+              v-for="item in windowList"
+              :key="item.televInfromPk"
+              @click="toPhotoDetail(item.televInfromPk)"
+            >
+              <li>
+                <a href="#">{{item.titleNm}}</a>
+              </li>
+              <p>来源：{{item.source}}</p>
+            </ul>
           </div>
         </div>
       </div>
@@ -128,135 +100,118 @@ import ageFoot from "components/ageFoot";
 export default {
   data() {
     return {
-      pageCount: 1,
-      pageSmallS: 2,
+      total: 15,
       pageSize: 3,
-      pics: [
-        { url: require("../img/实体办学.png") },
-        { url: require("../img/实体办学.png") },
-        { url: require("../img/实体办学.png") }
-      ],
-      schoolNewList:[],
-      excitingActList:[],
-      productionList:[],
-      honorList:[],
-      classes: [
-        {
-          cName: "作品名称",
-          cTitle: "作品名称标题"
-        },
-        {
-          cName: "作品名称",
-          cTitle: "作品名称标题"
-        },
-        {
-          cName: "作品名称",
-          cTitle: "作品名称标题"
-        },
-        {
-          cName: "作品名称",
-          cTitle: "作品名称标题"
-        }
-      ]
+      currentPage: 1,
+      newsNext: "下一页",
+      showType: false,
+      photoList: [],
+      writingList: [],
+      commentList: [],
+      windowList: [],
+      showType: false
     };
+  },
+  computed: {
+    page() {
+      return Math.ceil(this.total / this.pageSize);
+    }
+  },
+  mounted() {
+    this.showType = JSON.parse(this.until.getQueryString("type"));
+    this.getPhotoList();
+    this.getWriteList();
+    this.getCommentList();
+    this.getWindowList();
+  },
+  methods: {
+    toIndex() {
+      window.location.href = "../home/index.html";
+    },
+    toMorePhoto() {
+      window.location.href = "./photo.html";
+    },
+    toMoreWrite() {
+      window.location.href = "./writing.html";
+    },
+    toMoreComment() {
+      window.location.href = "./classes.html";
+    },
+    toMoreWindow() {
+      window.location.href = "./window.html";
+    },
+    getPhotoList() {
+      let query = new this.Query();
+      query.buildWhereClause("catCd", "40020.110", "LK");
+      query.buildPageClause(this.currentPage, this.pageSize);
+
+      let param = query.getParam();
+      this.until.get("/telev/infrom/page", param).then(
+        res => {
+          if (res.status === "200") {
+            this.photoList = res.data.items;
+            this.total = res.page.total;
+          }
+        },
+        err => {}
+      );
+    },
+    getWriteList() {
+      let query = new this.Query();
+      query.buildWhereClause("catCd", "40020.120", "LK");
+      query.buildPageClause(this.currentPage, this.pageSize);
+
+      let param = query.getParam();
+      this.until.get("/telev/infrom/page", param).then(
+        res => {
+          if (res.status === "200") {
+            this.writingList = res.data.items;
+            this.total = res.page.total;
+          }
+        },
+        err => {}
+      );
+    },
+    getCommentList() {
+      let query = new this.Query();
+      query.buildWhereClause("catCd", "40020.130", "LK");
+      query.buildPageClause(this.currentPage, this.pageSize);
+
+      let param = query.getParam();
+      this.until.get("/telev/infrom/page", param).then(
+        res => {
+          if (res.status === "200") {
+            this.commentList = res.data.items;
+            this.total = res.page.total;
+          }
+        },
+        err => {}
+      );
+    },
+    getWindowList() {
+      let query = new this.Query();
+      query.buildWhereClause("catCd", "40020.140", "LK");
+      query.buildPageClause(this.currentPage, this.pageSize);
+
+      let param = query.getParam();
+      this.until.get("/telev/infrom/page", param).then(
+        res => {
+          if (res.status === "200") {
+            this.windowList = res.data.items;
+            this.total = res.page.total;
+          }
+        },
+        err => {}
+      );
+    },
+    toPhotoDetail(pk) {
+      window.location.href =
+        "./classesDetail.html?id=" + pk ;
+    }
   },
   components: {
     ageHead,
     ageFoot
-  },
-  mounted() {
-    this.getInfo();
-  },
-  methods: {
-    async getInfo() {
-      this.productionList=  await this.getResultList();
-      this.honorList=await this.getHonorList();
-      this.schoolNewList=await this.getSchoolNewList();
-      this.excitingActList=await this.getExcitingActList()
-      this.excitingActList.forEach(item=>{
-        item.startTm=item.startTm.substr(0,10)
-        item.endTm=item.endTm.substr(0,10)
-      })
-    },
-    toResultDetail(chooseType,pk){
-      if(chooseType==='活力视频'){
-        window.location.href='../achievementsCom/actvideoDetail.html?type=true&id='+pk
-      }
-      else if(chooseType==='书画摄影'){
-        window.location.href='../achievementsCom/paintingDetail.html?type=true&id='+pk
-      }
-      else{
-        window.location.href='../achievementsCom/writingDetail.html?type=true&id='+pk
-      }
-    },
-    getResultList() {
-      return new Promise((resolve, rejcet) => {
-        let query = new this.Query();
-        query.buildPageClause(this.pageCount, this.pageSmallS);
-
-        let param = query.getParam();
-        this.until.get("/telev/gain/page", param).then(
-          res => {
-            if(res.status==='200'){
-              resolve(res.data.items)
-            }
-          }, 
-          err => {});
-      });
-    },
-    toHonorDetail(pk){
-      window.location.href='./honorDetail_P.html?id='+pk
-    },
-    getHonorList(){
-      return new Promise((resolve,rejcet)=>{
-        let query=new this.Query()
-        query.buildWhereClause('catCd', '30010.150');
-        query.buildPageClause(this.pageCount, this.pageSmallS);
-
-        let param=query.getParam()
-        this.until.get("/telev/news/page", param).then(
-          res => {
-            if(res.status==='200'){
-              resolve(res.data.items)
-            }
-          }, 
-          err => {});
-      })
-    },
-    toSchoolDetail(pk){
-      window.location.href='./dynamicsDetail.html?id='+pk
-    },
-    getSchoolNewList(){
-      return new Promise((resolve,rejcet)=>{
-        let query=new this.Query()
-        query.buildWhereClause('catCd', '30010.170');
-        query.buildPageClause(this.pageCount, this.pageSize);
-
-        let param=query.getParam()
-        this.until.get("/telev/news/page", param).then(
-          res => {
-            if(res.status==='200'){
-              resolve(res.data.items)
-            }
-          }, 
-          err => {});
-      })
-    },
-    getExcitingActList(){
-      return new Promise((resolve,rejcet)=>{
-        let query=new this.Query()
-        query.buildPageClause(this.pageCount, this.pageSize);
-
-        let param=query.getParam()
-        this.until.get("/telev/doing/page", param).then(
-          res => {
-            if(res.status==='200'){
-              resolve(res.data.items)
-            }
-          }, 
-          err => {});
-      })
-    }
   }
 };
 </script>

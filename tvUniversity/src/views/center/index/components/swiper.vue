@@ -13,13 +13,15 @@
 <script>
 import swipper from "../img/bgsOne.jpg";
 import swipper2 from "../img/bgsTwo.jpg";
+import swipper3 from "../img/bgThree.png";
+import swipper4 from "../img/bgFour.png";
 
 export default {
   data(){
     return {
        swipperList: [
-        { ID: 1, swipper },
-        { ID: 2,  swipper: swipper2 },
+        { ID: 1, swipper:swipper3 },
+        { ID: 2,  swipper: swipper4 },
         { ID: 3, swipper },
         { ID: 4, swipper:swipper2 }
       ],
