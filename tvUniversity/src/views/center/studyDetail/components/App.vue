@@ -3,7 +3,7 @@
     <myHeader :type="name"></myHeader>
     <div class="content">
       <div class="pos">
-        <span><a href="../center/index.html">首页</a></span>> 
+        <span><a href="../center/index.html">返回首页</a></span>> 
         <span><a href="./study.html">当前课程</a></span>>
         <span>课程内容</span>
       </div>
@@ -117,10 +117,21 @@ export default {
       player.playlist(newArr);
       player.playlistUi();
 
+      /**
+       * method 用户每点击一个视频播放结束后都调用，后端判断重复提交学习星
+       * params prodClassPk(课程主键),prodClassNm,prodWarePk(视频主键),prodWareNm
+       */
       player.on("ended", () => {
-        if (player.playlist.nextIndex() == newArr.length - 1) {
+        // if (player.playlist.nextIndex() == newArr.length - 1) {
+          let arr=newArr.filter((item)=>{
+            return item.videoUrl===player.currentSources()
+          });
+          console.log(arr)
           let param = {
-            prodClassPk: this.classPk
+            prodClassPk: this.classPk,
+            prodClassNm:this.classNm,
+            prodWarePk:arr[0].prodWarePk,
+            prodWareNm:arr[0].nm
           };
           this.until.post("/prod/supp/end", param).then(
             res => {
@@ -130,7 +141,7 @@ export default {
             },
             err => {}
           );
-        }
+        // }
       });
 
       if (!this.ifLogin) {

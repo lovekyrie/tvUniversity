@@ -3,7 +3,7 @@
         <myHeader :type="name"></myHeader>
         <div class="content">
             <div class="pos">
-                <span><a href="../center/index.html">首页</a></span>  > 
+                <span><a href="../center/index.html">返回首页</a></span>  > 
                 <span><a href="./notice.html">通知公告</a></span>  > 
                 <span>公告详情</span>
             </div>

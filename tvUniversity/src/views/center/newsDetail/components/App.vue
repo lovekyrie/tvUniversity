@@ -4,7 +4,7 @@
         <myNav :type="name"></myNav>
         <div class="content">
             <div class="pos">
-                 首页 > 校园动态 > 动态详情
+                 返回首页 > 校园动态 > 动态详情
             </div>
             <div class="noticeDetail">
                 <h1>{{info.nm}}</h1>

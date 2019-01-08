@@ -1,10 +1,10 @@
 <template>
-  <div id="app">
+  <div id="container">
     <myHeader :type="name"></myHeader>
-    <div class="content-wrap">
+    <div class="content">
       <div class="pos">
         <span>
-          <a href="./index.html">首页</a>
+          <a href="./index.html">返回首页</a>
         </span>>
         <span>往期课程</span>
       </div>
@@ -147,25 +147,9 @@ export default {
 };
 </script>
 <style lang="less">
-#app {
-  .content-wrap {
-    height: 785px;
-    .pos {
-      margin: 0 auto;
-      width: 1200px;
-      color: #999;
-      font-size: 20px;
-      border-bottom: 1px solid #e1e1e1;
-      line-height: 80px;
-      a {
-        color: #999;
-      }
-      > span {
-        &:nth-last-of-type(1) {
-          color: #72b713;
-        }
-      }
-    }
+@import '../../../assets/css/init.less';
+#container {
+  .content {
     table {
       width: 1198px;
       margin: 20px auto;
@@ -176,7 +160,7 @@ export default {
         th {
           height: 50px;
           background-color: #fbfbfb;
-          font-size: 18px;
+          font-size: 20px;
           font-weight: normal;
           text-align: center;
           &:first-child {
@@ -201,7 +185,7 @@ export default {
         }
         td {
           height: 50px;
-          font-size: 18px;
+          font-size: 20px;
           text-align: center;
           &:nth-child(2) {
             text-align: left;

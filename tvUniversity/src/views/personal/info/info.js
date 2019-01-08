@@ -13,7 +13,7 @@ import myStar from './components/myStar.vue'
 import sign from './components/sign.vue'
 import myTeam from './components/myTeam.vue'
 import preventStudy from './components/preventStudy.vue'
-import backSystem from './components/backSystem.vue'
+// import backSystem from './components/backSystem.vue'
 
 const routes = [{
     path: '/',
@@ -50,11 +50,7 @@ const routes = [{
   {
     path: '/myTeam',
     component: myTeam
-  }, //我的小组
-  {
-    path: '/back',
-    component: backSystem
-  }
+  } //我的小组
 ]
 
 

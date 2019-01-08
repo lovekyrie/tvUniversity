@@ -4,7 +4,7 @@
         <myNav :type="name"></myNav>
         <div class="content">
             <div class="pos">
-                 首页 > 往期课程 > 课程内容
+                 返回首页 > 往期课程 > 课程内容
             </div>
             <div id="studyDetail">
                 <div class="top">

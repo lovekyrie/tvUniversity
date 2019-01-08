@@ -19,7 +19,7 @@
       <span>联系方式：0574-87201535</span>
       <span>地址：宁波市江北区文教路1号</span>
       <span>
-        <a href="http://lnt.nbsqjy.com/view/index.html">后台管理系统</a>
+        <a href="http://lnt.nbsqjy.com/view/index.html" target="_blank">后台管理系统</a>
       </span>
     </div>
     <div class="footRow3">

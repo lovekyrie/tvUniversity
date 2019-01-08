@@ -1,7 +1,7 @@
 <template>
     <div id="nav">
         <div class="content">
-            <a href="../center/index.html" :class="{active:type=='home'}">网站首页</a>
+            <a href="../center/index.html" :class="{active:type=='home'}">网站返回首页</a>
             <a href="../center/study.html" :class="{active:type=='current'}">当前课程</a>
             <a href="../center/previousCourse.html" :class="{active:type=='past'}">往期课程</a>
             <a href="../center/notice.html" :class="{active:type=='notice'}">通知公告</a>

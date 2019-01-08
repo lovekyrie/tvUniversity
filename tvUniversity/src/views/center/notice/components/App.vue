@@ -3,7 +3,7 @@
         <myHeader :type="name"></myHeader>
         <div class="content">
             <div class="pos">
-              <span><a href="./index.html">首页</a></span>&nbsp;>
+              <span><a href="./index.html">返回首页</a></span>&nbsp;>
               <span>通知公告</span>
             </div>
             <div class="list" v-for="(item,index) in list" :key="index" @click="toDetail(item.sysNewsPk)">

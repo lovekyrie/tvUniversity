@@ -87,7 +87,7 @@ export default {
     thead {
       th {
         height: 50px;
-        font-size: 18px;
+        font-size: 20px;
         font-weight: normal;
         text-align: center;
         color: #303030;
@@ -117,7 +117,7 @@ export default {
       td {
         height: 50px;
         text-align: center;
-        font-size: 18px;
+        font-size: 20px;
         &:first-child {
           padding-left: 25px;
           text-align: left;

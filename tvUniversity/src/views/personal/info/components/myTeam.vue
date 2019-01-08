@@ -102,6 +102,7 @@ export default {
   p {
     padding-left: 25px;
     padding-top: 15px;
+    font-size: 18px;
     span {
       padding-left: 50px;
     }
@@ -114,7 +115,7 @@ export default {
     thead {
       th {
         height: 50px;
-        font-size: 18px;
+        font-size: 20px;
         font-weight: normal;
         text-align: center;
         color: #303030;
@@ -135,7 +136,7 @@ export default {
       }
       td {
         height: 50px;
-        font-size: 18px;
+        font-size: 20px;
         text-align: center;
       }
     }

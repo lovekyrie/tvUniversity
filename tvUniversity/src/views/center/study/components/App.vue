@@ -1,9 +1,9 @@
 <template>
     <div id="container">
         <myHeader :type="name"></myHeader>
-        <div class="content-wrap">
+        <div class="content">
             <div class="pos">
-              <span><a href="./index.html">首页</a></span>&nbsp;> 
+              <span><a href="./index.html">返回首页</a></span>&nbsp;> 
               <span>
                当前课程
               </span>

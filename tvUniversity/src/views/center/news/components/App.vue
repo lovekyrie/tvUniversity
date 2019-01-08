@@ -4,7 +4,7 @@
         <myNav :type="name"></myNav>
         <div class="content">
             <div class="pos">
-                 首页 > 新闻动态
+                 返回首页 > 新闻动态
             </div>
             <div class="list" v-for="(item,index) in newList" :key="index" @click="toDetail(item.sysNewsPk)">
                 <div class="img">

@@ -24,21 +24,21 @@
     >div {
       width: 32%;
       margin-bottom: 40px;
-    border: 1px solid #72b713;
-    border-top-left-radius: 6px;
-    border-top-right-radius: 6px;
-    .title {
-      margin-bottom: 0;
-      background-color: #72b713;
-      color: #fff;
-      h3 {
-        padding-left: 15px;
+      border: 1px solid #72b713;
+      border-top-left-radius: 6px;
+      border-top-right-radius: 6px;
+      .title {
+        margin-bottom: 0;
+        background-color: #72b713;
+        color: #fff;
+        h3 {
+          padding-left: 15px;
+        }
+        a {
+          margin-right: 5px;
+          color: #f9f9f9;
+        }
       }
-      a {
-        margin-right: 5px;
-        color: #f9f9f9;
-      }
-    }
     }
   }
   .currentCourse {
@@ -46,8 +46,8 @@
       width: 100%;
       height: 220px;
       background-color: #72b713;
-      .vjs-icon-placeholder{
-        &::before{
+      .vjs-icon-placeholder {
+        &::before {
           background-color: #72b713;
         }
       }
@@ -62,7 +62,7 @@
         height: 48px;
         line-height: 48px;
         background: #f4f4f5;
-        font-size: 16px;
+        font-size: 20px;
         text-align: center;
         overflow: hidden;
         white-space: nowrap;
@@ -88,15 +88,12 @@
         height: 52px;
         width: 100%;
         &:first-child {
-          font-size: 14px;
-          >span{
-            color: #606060;
-            &:nth-of-type(2){
-             font-size: 16px;
-            }
-            &:nth-of-type(3){
-              color: #303030;
-              font-size: 16px;
+          font-size: 18px;
+          >span {
+            color: #303030;
+            &:nth-of-type(3) {
+              color: #101010;
+              font-size: 20px;
             }
           }
         }
@@ -105,23 +102,23 @@
         }
         &:not(:nth-of-type(1)) {
           span {
-            color: #303030;
+            color: #101010;
           }
         }
         span {
           flex: 1;
           text-align: center;
-          font-size: 16px;
+          font-size: 20px;
           &:first-child {
             flex: 0.7;
           }
           &:nth-child(2) {
             flex: 1.4;
-            font-size: 18px;
+            font-size: 20px;
           }
           &:nth-child(3) {
             flex: 1;
-            font-size: 18px;
+            font-size: 20px;
             color: #f00;
           }
           &:nth-child(4) {
@@ -147,16 +144,17 @@
         flex-direction: column;
         strong {
           flex: 1;
-          font-size: 18px;
+          font-size: 20px;
           font-weight: 400;
           line-height: 25px;
-          color: #303030;
+          color: #101010;
           overflow: hidden;
           white-space: nowrap;
           text-overflow: ellipsis;
         }
         p {
-          color: #d1d1d1;
+          font-size: 18px;
+          color: #303030;
           line-height: 25px;
         }
       }

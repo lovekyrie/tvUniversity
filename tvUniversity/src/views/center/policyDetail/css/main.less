@@ -1,23 +1,9 @@
-@base:18rem;
-#container{
-  .pos{
-    width: 100%;
-    color: #999;
-    font-size: 20px;
-    border-bottom: 1px solid #f1f1f1;
-    line-height: 80px;
-    a {
-      color: #999;
-    }
-    >span{
-      &:nth-last-of-type(1){
-        color: #72b713;
-      }
-    }
-  }
-  .noticeDetail{
+@import '../../../../assets/css/init.less';
+@base: 18rem;
+#container {
+  .noticeDetail {
     padding-bottom: 40px;
-    h1{
+    h1 {
       margin-bottom: 15px;
       border-bottom: 1px solid #f1f1f1;
       padding: 20px 0;
@@ -25,14 +11,21 @@
       text-align: center;
       color: #303030;
     }
-    >p{
+    >p {
+      font-size: 18px;
       text-align: center;
       color: #d1d1d1;
-      span{
-        padding-left: 180px;
+      display: flex;
+      flex-flow: row nowrap;
+      span {
+        flex: 1 0 25%;
+        &:nth-last-of-type(1) {
+          flex: 0 0 auto;
+        }
       }
     }
-    >div{
+    >div {
+      font-size: 18px;
       padding: 20px 0;
     }
   }

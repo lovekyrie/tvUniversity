@@ -4,7 +4,7 @@
         <myNav :type="name"></myNav>
         <div class="content">
             <div class="pos">
-                 首页 > 搜索
+                 返回首页 > 搜索
             </div>
             <div class="list" v-for="(item,index) in list" :key="index" @click="toDetail(item.ipPk)">
                 <div class="img">

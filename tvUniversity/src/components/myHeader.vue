@@ -5,7 +5,7 @@
         <img :src="logo" alt>
         <a href="../center/index.html">宁波市乐龄老年电视大学</a>
       </div>
-      <div class="content">
+      <div class="content-nav">
         <a href="../center/index.html" :class="{active:type=='home'}">网站首页</a>
         <a href="../center/study.html" :class="{active:type=='current'}">当前课程</a>
         <a href="../center/previousCourse.html" :class="{active:type=='past'}">往期课程</a>
@@ -112,7 +112,7 @@ export default {
         font-weight: bold;
       }
     }
-    .content {
+    .content-nav {
       display: flex;
       display: -webkit-flex;
       width: 45%;
@@ -151,24 +151,23 @@ export default {
           width: 90%;
           color: #666;
           display: inline-block;
-          font-size: 14px;
+          font-size: 18px;
           white-space: nowrap;
           text-overflow: ellipsis;
           overflow: hidden;
         }
         span {
           width: 90%;
-          font-size: 14px;
+          font-size: 18px;
           color: #ff7867;
           cursor: pointer;
         }
       }
       .login-btn {
         a {
+          font-size: 16px;
           margin-left: 100px;
         }
-      }
-      img {
       }
     }
     .big-code {

@@ -192,6 +192,9 @@ export default {
       }
       td {
         line-height: 40px;
+        &:nth-of-type(1) {
+          font-size: 18px;
+        }
         input {
           width: 415px;
           height: 58px;
@@ -226,6 +229,7 @@ export default {
       border-radius: 5px;
       margin-top: 20px;
       cursor: pointer;
+      font-size: 20px;
       &:first-child {
         border: 1px solid #72b713;
         color: #fff;

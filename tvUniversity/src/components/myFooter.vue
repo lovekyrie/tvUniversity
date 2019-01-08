@@ -12,6 +12,9 @@
       </p>
       <p>联系方式：0574-87201535
         <span></span>地址：宁波市江北区文教路1号
+        <span>
+          <a href="http://lndd.nbsqjy.com:44185" target="_blank">后台管理系统</a>
+        </span>
       </p>
       <p>2018©版权所有 浙ICP备05015663号-2</p>
     </div>
@@ -55,20 +58,23 @@ export default {
       text-align: center;
       line-height: 30px;
       padding: 10px 0;
-      font-size: 16px;
+      font-size: 18px;
 
       &:nth-child(2) {
         padding-bottom: 0;
+        a{
+          font-size: 18px;
+        }
       }
       &:last-child {
         padding: 0;
-        font-size: 14px;
+        font-size: 18x;
       }
       a {
         display: inline-block;
         width: auto;
-        color: #666666;
-        font-size: 16px;
+        color: #666;
+        font-size: 20px;
       }
       span {
         color: #dcdcdc;

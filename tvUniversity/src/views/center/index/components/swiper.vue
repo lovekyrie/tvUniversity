@@ -11,8 +11,8 @@
 </template>
 
 <script>
-import swipper from "../img/bgsOne.jpg";
-import swipper2 from "../img/bgsTwo.jpg";
+import swipper from "../img/bgsOne.png";
+import swipper2 from "../img/bgsTwo.png";
 import swipper3 from "../img/bgThree.png";
 import swipper4 from "../img/bgFour.png";
 

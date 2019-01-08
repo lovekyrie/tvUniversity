@@ -4,7 +4,7 @@
     <div class="content">
       <div class="pos">
         <span>
-          <a href="./index.html">首页</a>
+          <a href="./index.html">返回首页</a>
         </span> >
         <span>学习星排名</span>
       </div>

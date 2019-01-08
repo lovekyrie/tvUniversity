@@ -95,7 +95,7 @@ export default {
     border: 1px solid #e1e1e1;
     thead {
       th {
-        font-size: 18px;
+        font-size: 20px;
         height: 50px;
         font-weight: normal;
         text-align: center;
@@ -124,7 +124,7 @@ export default {
       }
       td {
         text-align: center;
-        font-size: 18px;
+        font-size: 20px;
         height: 50px;
         &:nth-child(2) {
           text-align: left;
