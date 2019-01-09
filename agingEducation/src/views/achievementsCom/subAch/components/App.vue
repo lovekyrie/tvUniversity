@@ -3,14 +3,14 @@
     <!--顶部-->
     <ageHead></ageHead>
     <!--页面主体部分-->
-    <div id="main">
+   <div class="g-content g-content-footer" ref="size">
       <!--成果分类按钮-->
       <!--列表-->
-      <div class="achList">
+       <div class="g-search">
         <!--列表顶部-->
-        <div class="achTop">
-          <span @click="toIndex">首页</span>
-          <span class="topLine">></span>
+        <div class="crumb">
+          <span @click="toIndex">返回首页</span>
+          <span>></span>
           <span>成果交流</span>
         </div>
 
@@ -27,9 +27,7 @@
               :key="item.televGainPk"
               @click="toWriteDetail(item.televGainPk)"
             >
-              <li>
-                <a href="#">{{item.titleNm}}</a>
-              </li>
+              <li>{{item.titleNm}}</li>
               <p>班级：{{item.stuNm}}</p>
               <p>作者：{{item.author}}</p>
             </ul>
@@ -118,25 +116,16 @@ export default {
       window.location.href = "../home/index.html";
     },
     toMoreWrite() {
-      window.location.href = "./writing.html?type=" + this.showType;
+      window.location.href = "./writing.html";
     },
     toMorePaint() {
-      window.location.href = "./painting.html?type=" + this.showType;
+      window.location.href = "./painting.html";
     },
     toMoreVideo() {
-      window.location.href = "./actVideo.html?type=" + this.showType;
-    },
-    toWrite() {
-      window.location.href = "./writing.html?type=" + this.showType;
-    },
-    toPaint() {
-      window.location.href = "./painting.html?type=" + this.showType;
-    },
-    toVideo() {
-      window.location.href = "./actVideo.html?type=" + this.showType;
+      window.location.href = "./actVideo.html";
     },
     toRelease() {
-      window.location.href = "./achAdd.html?type=" + this.showType;
+      window.location.href = "./achAdd.html";
     },
     //当前页变动时
     handleCurrentChange(val) {

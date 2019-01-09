@@ -3,46 +3,38 @@
     <!--顶部-->
     <ageHead></ageHead>
     <!--页面主体部分-->
-    <div id="main">
+    <div class="g-content g-content-footer" ref="size">
       <!--视频列表-->
-      <div class="videoList">
+      <div class="g-search">
         <!--列表顶部-->
-        <div class="videoTop">
-          <span>
-            <a href="#">首页</a>
-          </span>
-          <span class="topLine">></span>
-          <template v-if="showType">
-            <span>
-              <a href="../phyEducation/phyeducationMain.html">实体办学</a>
-            </span>
-            <span class="topLine">></span>
-          </template>
-          <span>
-            <a :href="'./subAch.html?type='+showType">成果交流</a>
-          </span>
-          <span class="topLine">></span>
+        <div class="crumb">
+          <span @click="toIndex">返回首页</span>
+          <span>></span>
+          <span @click="toSubAch">成果交流</span>
+          <span>></span>
           <span>活力视频</span>
         </div>
 
-        <!--视频-->
-        <div
-          class="news"
-          v-for="video in videoList"
-          :key="video.televGainPk"
-          @click="toVideoDetail(video.televGainPk)"
-        >
-          <div class="newsDes">
-            <p class="newsTitle">
-              <a href="#">{{video.titleNm}}</a>
-            </p>
-            <div>
-              <span>{{video.stuNm}}</span>
-              <span>作者：{{video.author}}</span>
+        <div class="content">
+          <!--视频-->
+          <div
+            class="news"
+            v-for="video in videoList"
+            :key="video.televGainPk"
+            @click="toVideoDetail(video.televGainPk)"
+          >
+            <div class="newsDes">
+              <p class="newsTitle">
+                <a href="#">{{video.titleNm}}</a>
+              </p>
+              <div>
+                <span>{{video.stuNm}}</span>
+                <span>作者：{{video.author}}</span>
+              </div>
             </div>
           </div>
         </div>
-      <!--分页-->
+        <!--分页-->
         <el-pagination
           background
           @current-change="handleCurrentChange"
@@ -89,17 +81,11 @@ export default {
     this.getVideoList();
   },
   methods: {
-    toWrite() {
-      window.location.href = "./writing.html?type=" + this.showType;
+    toIndex() {
+      window.location.href = "../home/index.html";
     },
-    toPaint() {
-      window.location.href = "./painting.html?type=" + this.showType;
-    },
-    toVideo() {
-      window.location.href = "./actVideo.html?type=" + this.showType;
-    },
-    toRelease() {
-      window.location.href = "./achAdd.html?type=" + this.showType;
+    toSubAch() {
+      window.location.href = "./subAch.html";
     },
     //当前页变动时
     handleCurrentChange(val) {

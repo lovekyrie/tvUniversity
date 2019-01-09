@@ -291,7 +291,7 @@
     <div class="g-content g-content-footer">
       <!--链接栏-->
       <div class="r-link cm-container">
-        <a href="../home/index.html">首页</a>
+        <a href="../home/index.html">返回首页</a>
         <span>&nbsp;&nbsp;&gt;&nbsp;&nbsp;</span>
         <a href="./select.html">我的课程</a>
         <span>&nbsp;&nbsp;&gt;&nbsp;&nbsp;</span>

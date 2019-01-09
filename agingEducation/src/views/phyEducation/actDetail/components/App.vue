@@ -9,7 +9,7 @@
         <!--列表顶部-->
         <div class="mainTop">
           <span>
-            <a href="../home/index.html">首页</a>
+            <a href="../home/index.html">返回首页</a>
           </span>
           <template v-if="showType">
             <span class="topLine">></span>

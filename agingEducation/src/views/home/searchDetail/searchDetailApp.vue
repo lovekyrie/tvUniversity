@@ -4,7 +4,7 @@
 
     <div class="g-content  g-content-footer" ref="size">
 
-      <div class="crumb"><a href="./index.html">首页</a><span>&nbsp;&nbsp;&gt;&nbsp;&nbsp;</span><a href="./index.html">实体办学</a><span>&nbsp;&gt;&nbsp;</span><a href="./search.html">校园动态</a><span>&nbsp;&gt;&nbsp;</span><a href="javascript:void(0)">资讯详情</a></div>
+      <div class="crumb"><a href="./index.html">返回首页</a><span>&nbsp;&nbsp;&gt;&nbsp;&nbsp;</span><a href="./index.html">实体办学</a><span>&nbsp;&gt;&nbsp;</span><a href="./search.html">校园动态</a><span>&nbsp;&gt;&nbsp;</span><a href="javascript:void(0)">资讯详情</a></div>
 
       <div class="detail">
         <h2>消息名称</h2>

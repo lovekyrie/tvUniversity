@@ -3,29 +3,17 @@
     <!--顶部-->
     <ageHead></ageHead>
     <!--页面主体部分-->
-    <div id="main">
+    <div class="g-content g-content-footer" ref="size">
       <!--列表-->
-      <div class="paintingList">
+      <div class="g-search">
         <!--列表顶部-->
-        <div class="honorTop">
-          <span>
-            <a href="#">首页</a>
-          </span>
-          <span class="topLine">></span>
-          <template v-if="showType">
-            <span>
-              <a href="../phyEducation/phyeducationMain.html">实体办学</a>
-            </span>
-            <span class="topLine">></span>
-          </template>
-          <span>
-            <a :href="'./subAch.html?type='+showType">成果交流</a>
-          </span>
-          <span class="topLine">></span>
-          <span>
-            <a :href="'./painting.html?type='+showType">书画摄影</a>
-          </span>
-          <span class="topLine">></span>
+        <div class="crumb">
+          <span @click="toIndex">返回首页</span>
+          <span>></span>
+          <span @click="toSubAch">成果交流</span>
+          <span>></span>
+          <span @click="toPaint">书画摄影</span>
+          <span>></span>
           <span>书画摄影详情</span>
         </div>
 
@@ -77,6 +65,15 @@ export default {
     this.getPaintInfo()
   },
   methods: {
+    toIndex(){
+      this.until.href('../home/index.html')
+    },
+    toSubAch(){
+      this.until.href('./subAch.html')
+    },
+    toPaint(){
+      this.until.href('./painting.html')
+    },
     getPaintInfo(){
 
       this.until.get('/telev/gain/info/'+this.paintId).then(

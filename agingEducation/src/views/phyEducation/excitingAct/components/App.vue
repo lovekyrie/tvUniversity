@@ -3,46 +3,40 @@
     <!--顶部-->
     <age-head></age-head>
     <!--页面主体部分-->
-    <div id="main">
+    <div class="g-content g-content-footer" ref="size">
       <!--列表-->
-      <div class="writingList">
+      <div class="g-search">
         <!--列表顶部-->
-        <div class="writingTop">
-          <span @click="toIndex">首页</span>
-          <template v-if="showType">
-            <span class="topLine">></span>
-            <span>
-              <a href="../phyEducation/phyeducationMain.html">实体办学</a>
-            </span>
-          </template>
-          <span class="topLine">></span>
+        <div class="crumb">
+          <span @click="toIndex">返回首页</span>
+          <span>></span>
           <span>精彩活动</span>
         </div>
 
-        <!--精彩活动-->
-        <el-row :gutter="80">
-          <el-col :span="12" v-for="(act,index) in actList" :key="index">
-            <div class="content-wrap">
-              <div class="content-img">
-                <img :src="act.imgUrl || defaultImg">
-              </div>
-              <div class="contentMsg2">
-                <a href="#">
+        <div class="content">
+          <!--精彩活动-->
+          <el-row :gutter="80">
+            <el-col :span="12" v-for="(act,index) in actList" :key="index">
+              <div class="content-wrap">
+                <div class="content-img">
+                  <img :src="act.imgUrl || defaultImg">
+                </div>
+                <div class="contentMsg2">
                   <h4>{{act.titleNm}}</h4>
-                </a>
-                <span>时间：{{act.startTm}}&nbsp;~&nbsp;{{act.endTm}}</span>
-                <span>地点：{{act.address}}</span>
-                <span>主办方：{{act.sponsor}}</span>
-                <span style="margin-top: 34px;line-height: 16px">
-                  作品人数：
-                  <i>{{act.haveNum}}</i>
-                  <button class="actBtn" @click="toDetail(act.televDoingPk)">查看详情</button>
-                </span>
+                  <span>时间：{{act.startTm}}&nbsp;~&nbsp;{{act.endTm}}</span>
+                  <span>地点：{{act.address}}</span>
+                  <span>主办方：{{act.sponsor}}</span>
+                  <div>
+                    <span>作品人数：
+                     <i>{{act.haveNum}}</i>
+                    </span>
+                    <button class="actBtn" @click="toDetail(act.televDoingPk)">查看详情</button>
+                  </div>
+                </div>
               </div>
-            </div>
-          </el-col>
-        </el-row>
-
+            </el-col>
+          </el-row>
+        </div>
         <!--分页-->
         <el-pagination
           background
@@ -88,15 +82,11 @@ export default {
     }
   },
   mounted() {
-    this.showType = JSON.parse(this.until.getQueryString("type"));
-    this.$nextTick(() => {
-      this.$refs.indexUrl.removeAttribute("target");
-    });
     this.getActList();
   },
   methods: {
     toIndex() {
-      window.location.href = "../home/index.html";
+      this.until.href("../home/index.html");
     },
     //当前页变动时
     handleCurrentChange(val) {
@@ -115,8 +105,8 @@ export default {
             this.total = res.page.total;
 
             this.actList.forEach((item, index) => {
-              item.startTm = item.startTm.substr(0, 10);
-              item.endTm = item.endTm.substr(0, 10);
+              item.startTm = item.startTm && item.startTm.substr(0, 10);
+              item.endTm = item.endTm && item.endTm.substr(0, 10);
             });
           }
         },

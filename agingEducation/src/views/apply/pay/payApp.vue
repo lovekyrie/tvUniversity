@@ -194,8 +194,8 @@
     <div class="g-content g-content-footer">
       <!--链接栏-->
       <div class="r-link cm-container">
-        <a href="../home/index.html">首页</a>
-        <!-- <a href="http://ln.nbsqjy.com/">首页</a> -->
+        <a href="../home/index.html">返回首页</a>
+        <!-- <a href="http://ln.nbsqjy.com/">返回首页</a> -->
         <span>&nbsp;&nbsp;&gt;&nbsp;&nbsp;</span>
         <a>在线缴费</a>
       </div>

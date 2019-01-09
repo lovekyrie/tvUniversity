@@ -5,11 +5,11 @@
     <div class="g-content g-content-footer" ref="size">
       <div class="g-search">
         <div class="crumb">
-          <a href="../home/index.html">首页</a>
-          <span>&nbsp;&nbsp;&gt;&nbsp;&nbsp;</span>
+          <span @click="toIndex">返回首页</span>
+          <span>&gt;</span>
           <span @click="toEntitySchool">实体办学</span>
-          <span>&nbsp;&nbsp;&gt;&nbsp;&nbsp;</span>
-          <span>学员笔谈</span>
+          <span>&gt;</span>
+          <span>文字集锦</span>
         </div>
 
         <div class="content">
@@ -64,8 +64,11 @@ export default {
   },
   //相关操作事件
   methods: {
+    toIndex() {
+      this.until.hrefToIndex();
+    },
     toEntitySchool() {
-      window.location.href = "./phyeducationMain.html";
+      this.until.href("./phyeducationMain.html");
     },
     toWritingDetail(id) {
       window.location.href = "./classesDetail.html?id=" + id;

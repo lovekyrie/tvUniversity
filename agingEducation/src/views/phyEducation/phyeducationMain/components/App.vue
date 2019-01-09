@@ -3,86 +3,110 @@
     <!--顶部-->
     <ageHead></ageHead>
     <!--页面主体部分-->
-    <div id="main">
+    <div class="g-content g-content-footer" ref="size">
       <!--成果分类按钮-->
       <!--列表-->
-      <div class="achList">
+      <div class="g-search">
         <!--列表顶部-->
-        <div class="achTop">
-          <span @click="toIndex">首页</span>
-          <span class="topLine">></span>
+        <div class="crumb">
+          <span @click="toIndex">返回首页</span>
+          <span>&gt;</span>
           <span>实体办学</span>
         </div>
 
-        <!--内容底部-->
-        <div class="mainFoot">
-          <!--图文共赏-->
-          <div class="production">
-            <div>
-              <h4>图文共赏</h4>
-              <span @click="toMorePhoto">查看更多></span>
+        <div class="content">
+          <!--内容底部-->
+          <div class="mainFoot">
+            <!--图文共赏-->
+            <div class="production">
+              <div>
+                <h4>图文共赏</h4>
+                <span @click="toMorePhoto">查看更多></span>
+              </div>
+              <ul
+                v-for="item in photoList"
+                :key="item.televInfromPk"
+                @click="toPhotoDetail(item.televInfromPk)"
+              >
+                <li>{{item.titleNm}}</li>
+                <p>来源：{{item.source}}</p>
+              </ul>
             </div>
-            <ul
-              v-for="item in photoList"
-              :key="item.televInfromPk"
-              @click="toPhotoDetail(item.televInfromPk)"
-            >
-              <li>
-                <a href="#">{{item.titleNm}}</a>
-              </li>
-              <p>来源：{{item.source}}</p>
-            </ul>
-          </div>
-          <!--文字集锦-->
-          <div class="honor">
-            <div>
-              <h4>文字集锦</h4>
-              <span @click="toMoreWrite">查看更多></span>
+            <!--文字集锦-->
+            <div class="honor">
+              <div>
+                <h4>文字集锦</h4>
+                <span @click="toMoreWrite">查看更多></span>
+              </div>
+              <ul
+                v-for="item in writingList"
+                :key="item.televInfromPk"
+                @click="toPhotoDetail(item.televInfromPk)"
+              >
+                <li>{{item.titleNm}}</li>
+                <p>来源：{{item.source}}</p>
+              </ul>
             </div>
-            <ul
-              v-for="item in writingList"
-              :key="item.televInfromPk"
-              @click="toPhotoDetail(item.televInfromPk)"
-            >
-              <li>
-                <a href="#">{{item.titleNm}}</a>
-              </li>
-              <p>来源：{{item.source}}</p>
-            </ul>
-          </div>
-          <!--学员笔谈-->
-          <div class="classes">
-            <div>
-              <h4>学员笔谈</h4>
-              <span @click="toMoreComment">查看更多></span>
+            <!--学员笔谈-->
+            <div class="classes">
+              <div>
+                <h4>学员笔谈</h4>
+                <span @click="toMoreComment">查看更多></span>
+              </div>
+              <ul
+                v-for="item in commentList"
+                :key="item.televInfromPk"
+                @click="toPhotoDetail(item.televInfromPk)"
+              >
+                <li>{{item.titleNm}}</li>
+                <p>来源：{{item.source}}</p>
+              </ul>
             </div>
-            <ul
-              v-for="item in commentList"
-              :key="item.televInfromPk"
-              @click="toPhotoDetail(item.televInfromPk)"
-            >
-              <li>
-                <a href="#">{{item.titleNm}}</a>
-              </li>
-              <p>来源：{{item.source}}</p>
-            </ul>
-          </div>
-          <!--教师之窗-->
-          <div class="teacher">
-            <div>
-              <h4>教师之窗</h4>
-              <span @click="toMoreWindow">查看更多></span>
+            <!--教师之窗-->
+            <div class="teacher">
+              <div>
+                <h4>教师之窗</h4>
+                <span @click="toMoreWindow">查看更多></span>
+              </div>
+              <ul
+                v-for="item in windowList"
+                :key="item.televInfromPk"
+                @click="toPhotoDetail(item.televInfromPk)"
+              >
+                <li>{{item.titleNm}}</li>
+                <p>来源：{{item.source}}</p>
+              </ul>
             </div>
-            <ul
-              v-for="item in windowList"
-              :key="item.televInfromPk"
-              @click="toPhotoDetail(item.televInfromPk)"
-            >
-              <li>
-                <a href="#">{{item.titleNm}}</a>
-              </li>
-              <p>来源：{{item.source}}</p>
-            </ul>
+            <!--办学概况-->
+            <div class="school">
+              <div>
+                <h4>办学概况</h4>
+                <span @click="toMoreSchool">查看更多></span>
+              </div>
+              <ul
+                v-for="item in schoolList"
+                :key="item.televInfromPk"
+                @click="toPhotoDetail(item.televInfromPk)"
+              >
+                <li>{{item.titleNm}}</li>
+                <p>来源：{{item.source}}</p>
+              </ul>
+            </div>
+            <!--班级动态-->
+            <div class="class-dynamic">
+              <div>
+                <h4>班级动态</h4>
+                <span @click="toMoreDynamic">查看更多></span>
+              </div>
+              <ul
+                v-for="item in dynamicList"
+                :key="item.televInfromPk"
+                @click="toPhotoDetail(item.televInfromPk)"
+              >
+                <li>{{item.titleNm}}</li>
+                <p>来源：{{item.source}}</p>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -109,6 +133,8 @@ export default {
       writingList: [],
       commentList: [],
       windowList: [],
+      schoolList: [],
+      dynamicList: [],
       showType: false
     };
   },
@@ -118,11 +144,13 @@ export default {
     }
   },
   mounted() {
-    this.showType = JSON.parse(this.until.getQueryString("type"));
-    this.getPhotoList();
-    this.getWriteList();
-    this.getCommentList();
-    this.getWindowList();
+    // this.showType = JSON.parse(this.until.getQueryString("type"));
+    this.getPhotoList("40020.110");
+    this.getPhotoList("40020.120");
+    this.getPhotoList("40020.130");
+    this.getPhotoList("40020.140");
+    this.getPhotoList("40020.150");
+    this.getPhotoList("40020.160");
   },
   methods: {
     toIndex() {
@@ -140,73 +168,48 @@ export default {
     toMoreWindow() {
       window.location.href = "./window.html";
     },
-    getPhotoList() {
-      let query = new this.Query();
-      query.buildWhereClause("catCd", "40020.110", "LK");
-      query.buildPageClause(this.currentPage, this.pageSize);
-
-      let param = query.getParam();
-      this.until.get("/telev/infrom/page", param).then(
-        res => {
-          if (res.status === "200") {
-            this.photoList = res.data.items;
-            this.total = res.page.total;
-          }
-        },
-        err => {}
-      );
+    toMoreSchool(){
+      this.until.href('./school.html')
     },
-    getWriteList() {
-      let query = new this.Query();
-      query.buildWhereClause("catCd", "40020.120", "LK");
-      query.buildPageClause(this.currentPage, this.pageSize);
-
-      let param = query.getParam();
-      this.until.get("/telev/infrom/page", param).then(
-        res => {
-          if (res.status === "200") {
-            this.writingList = res.data.items;
-            this.total = res.page.total;
-          }
-        },
-        err => {}
-      );
+    toMoreDynamic(){
+      this.until.href('./dynamic.html')
     },
-    getCommentList() {
+    getPhotoList(photoCd) {
       let query = new this.Query();
-      query.buildWhereClause("catCd", "40020.130", "LK");
+      query.buildWhereClause("catCd", photoCd, "LK");
       query.buildPageClause(this.currentPage, this.pageSize);
 
       let param = query.getParam();
       this.until.get("/telev/infrom/page", param).then(
         res => {
           if (res.status === "200") {
-            this.commentList = res.data.items;
-            this.total = res.page.total;
-          }
-        },
-        err => {}
-      );
-    },
-    getWindowList() {
-      let query = new this.Query();
-      query.buildWhereClause("catCd", "40020.140", "LK");
-      query.buildPageClause(this.currentPage, this.pageSize);
-
-      let param = query.getParam();
-      this.until.get("/telev/infrom/page", param).then(
-        res => {
-          if (res.status === "200") {
-            this.windowList = res.data.items;
-            this.total = res.page.total;
+            switch (photoCd) {
+              case "40020.110":
+                this.photoList = res.data.items;
+                break;
+                 case "40020.120":
+                this.writingList = res.data.items;
+                break;
+                 case "40020.130":
+                this.commentList = res.data.items;
+                break;
+                 case "40020.140":
+                this.windowList = res.data.items;
+                break;
+                 case "40020.150":
+                this.schoolList = res.data.items;
+                break;
+                 case "40020.160":
+                this.dynamicList = res.data.items;
+                break;
+            }
           }
         },
         err => {}
       );
     },
     toPhotoDetail(pk) {
-      window.location.href =
-        "./classesDetail.html?id=" + pk ;
+      window.location.href = "./classesDetail.html?id=" + pk;
     }
   },
   components: {

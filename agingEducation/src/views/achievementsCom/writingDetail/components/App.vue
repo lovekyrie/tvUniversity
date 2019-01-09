@@ -3,32 +3,18 @@
     <!--顶部-->
     <ageHead></ageHead>
     <!--页面主体部分-->
-    <div id="main">
+    <div class="g-content g-content-footer" ref="size">
       <!--列表-->
-      <div class="writingList">
+      <div class="g-search">
         <!--列表顶部-->
-        <div class="writingTop">
-          <span>
-            <a href="../home/index.html">首页</a>
-          </span>
-          <span class="topLine">></span>
-          <template v-if="showType">
-            <span>
-              <a href="../phyEducation/phyeducationMain.html">实体办学</a>
-            </span>
-            <span class="topLine">></span>
-          </template>
-          <span>
-            <a :href="'../achievementsCom/subAch.html?type='+showType">成果交流</a>
-          </span>
-          <span class="topLine">></span>
-          <span>
-            <a :href="'./writing.html?type='+showType">文字集锦</a>
-          </span>
-          <span class="topLine">></span>
-          <span>
-            文字集锦详情
-          </span>
+        <div class="crumb">
+          <span @click="toIndex">返回首页</span>
+          <span>></span>
+          <span @click="toSubAch">成果交流</span>
+          <span>></span>
+          <span @click="toWriting">文字集锦</span>
+          <span>></span>
+          <span>文字集锦详情</span>
         </div>
 
         <div class="honorMain">
@@ -56,45 +42,53 @@
 </template>
 
 <script>
-    import ageHead from 'components/ageHead';
-    import ageFoot from 'components/ageFoot';
+import ageHead from "components/ageHead";
+import ageFoot from "components/ageFoot";
 
-    export default {
-        data() {
-            return {
-                showType:false,
-                writeId:'',
-                crtTime:"",
-                writeInfo:{}
-            }
-        },
-        components: {
-            ageHead,
-            ageFoot,
-        },
-        mounted(){
-          this.showType=JSON.parse(this.until.getQueryString('type'))   
-          this.writeId=this.until.getQueryString('id')
+export default {
+  data() {
+    return {
+      showType: false,
+      writeId: "",
+      crtTime: "",
+      writeInfo: {}
+    };
+  },
+  components: {
+    ageHead,
+    ageFoot
+  },
+  mounted() {
+    // this.showType = JSON.parse(this.until.getQueryString("type"));
+    this.writeId = this.until.getQueryString("id");
 
-          this.getWriteInfo()
-        },
-        methods: {
-
-          getWriteInfo(){
-
-            this.until.get('/telev/gain/info/'+this.writeId).then(
-              res=>{
-                if(res.status==='200'){
-                  this.writeInfo=res.data
-                  let time=this.until.formatDate(res.data.crtTm)
-                  this.crtTime=time.year+'年'+time.month+'月'+time.day+'日'
-                }
-              },
-              err=>{}
-            )
+    this.getWriteInfo();
+  },
+  methods: {
+    toIndex() {
+      this.until.href("../home/index.html");
+    },
+    toSubAch() {
+      this.until.href("./subAch.html");
+    },
+    toWriting() {
+      this.until.href("writing.html");
+    },
+    getWriteInfo() {
+      this.until.get("/telev/gain/info/" + this.writeId).then(
+        res => {
+          if (res.status === "200") {
+            this.writeInfo = res.data;
+            let time = this.until.formatDate(res.data.crtTm);
+            this.crtTime =
+              time.year + "年" + time.month + "月" + time.day + "日";
           }
         },
+        err => {}
+      );
     }
+  }
+};
 </script>
 
 <style scoped>

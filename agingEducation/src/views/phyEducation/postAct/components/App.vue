@@ -3,12 +3,12 @@
     <!--顶部-->
     <ageHead></ageHead>
     <!--页面主体部分-->
-    <div id="main">
+    <div class="g-content g-content-footer" ref="size">
       <!--列表-->
-      <div class="mainList">
+      <div class="g-search">
         <!--列表顶部-->
-        <div class="mainTop">
-          <span @click="toIndex">首页</span>
+        <div class="crumb">
+          <span @click="toIndex">返回首页</span>
           <span class="topLine">></span>
           <span @click="toAct">精彩活动</span>
           <span class="topLine">></span>
@@ -23,7 +23,7 @@
           <div class="contentDes">
             <h3>{{actInfo.titleNm}}</h3>
             <p>主办方：{{actInfo.sponsor}}</p>
-            <p style="margin-bottom: 100px">
+            <p>
               <span style="color:red;">{{actInfo.haveNum}}</span> 人参与
             </p>
             <p>时间：{{actInfo.startTm}}&nbsp;~&nbsp;{{actInfo.endTm}}</p>
@@ -36,7 +36,8 @@
         <div class="contentInput">
           <h4>上传作者</h4>
           <input class="inputTitle" type="text" v-model="inputAuthor" placeholder="请输入作者">
-
+          <h4>作品名称</h4>
+          <input class="inputTitle" type="text" v-model="fileName" placeholder="请输入作品名称">
           <h4>内容</h4>
           <el-upload
             class="avatar-uploader"
@@ -64,7 +65,6 @@
 <script>
 import ageHead from "components/ageHead";
 import ageFoot from "components/ageFoot";
-
 export default {
   data() {
     return {
@@ -72,7 +72,8 @@ export default {
       showType: false,
       actId: "",
       actInfo: {},
-      imageUrl: ""
+      imageUrl: "",
+      fileName: ""
     };
   },
   components: {
@@ -81,24 +82,25 @@ export default {
   },
   mounted() {
     //需要把字符串转成boolean
-    this.showType = JSON.parse(this.until.getQueryString("type"));
+    // this.showType = JSON.parse(this.until.getQueryString("type"));
     this.actId = this.until.getQueryString("id");
 
     this.getActInfo();
   },
   methods: {
     toIndex() {
-      window.location.href = "../home/index.html";
+      this.until.href("../home/index.html");
     },
     toAct() {
-      window.location.href = "./excitingAct.html";
+      this.until.href("./excitingAct.html");
     },
     sub() {
       //提交参赛作品
       let param = {
         televDoingPk: this.actId,
         imgUrl: this.imageUrl,
-        authorNm: this.inputAuthor
+        authorNm: this.inputAuthor,
+        televRunNm: this.fileName
       };
 
       this.until.postCard("/telev/run/add", JSON.stringify(param)).then(
@@ -107,6 +109,9 @@ export default {
             this.$message({
               message: "恭喜你，您已经成功发布了一条参赛作品",
               type: "success"
+            });
+            setTimeout(() => {
+              (window.location.href = "./actVote.html"), 1000;
             });
           }
         },
@@ -137,10 +142,10 @@ export default {
       const isLt2M = file.size / 1024 / 1024 < 2;
 
       if (!isJPG) {
-        this.$message.error("上传头像图片只能是 JPG 格式!");
+        this.$message.error("上传内容只能是 JPG 格式!");
       }
       if (!isLt2M) {
-        this.$message.error("上传头像图片大小不能超过 2MB!");
+        this.$message.error("上传内容大小不能超过 2MB!");
       }
       return isJPG && isLt2M;
     },

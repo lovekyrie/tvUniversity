@@ -38,13 +38,14 @@ export default {
 #ageFoot {
   display: flex;
   flex-direction: column;
-  min-width: 1060px;
-  height: 120px;
-  padding-top: 20px;
-  background-color: rgb(245, 245, 245);
   align-items: center;
   border-top: 1px solid rgb(225, 225, 225);
+  padding-top: 20px;
+  min-width: 1060px;
+  height: 130px;
+  font-size: 18px;
   color: rgb(135, 135, 135);
+  background-color: rgb(245, 245, 245);
 
   /*所有底部链接样式*/
   a {
@@ -55,6 +56,7 @@ export default {
   /*第一行*/
   .footRow1 {
     margin-bottom: 10px;
+    font-size: 20px;
     > span {
       display: inline-block;
       padding-right: 40px;

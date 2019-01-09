@@ -7,7 +7,7 @@
       <div class="learnList">
         <div class="learnTop">
           <span>
-            <a href="#">首页</a>
+            <a href="#">返回首页</a>
           </span>
           <span class="topLine">></span>
           <span>

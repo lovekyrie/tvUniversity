@@ -2,24 +2,28 @@
   <div id="container">
     <ageHead></ageHead>
     <div class="g-content g-content-footer" ref="size">
-      <div class="crumb">
-        <a href="../home/index.html">首页</a>
-        <span>&nbsp;&nbsp;&gt;&nbsp;&nbsp;</span>
-        <a href="./phyeducationMain.html">实体办学</a>
-        <span>&nbsp;&nbsp;&gt;&nbsp;&nbsp;</span>
-        <span>资讯详情</span>
-      </div>
-      <div class="detail">
-        <h3>{{infoMsg.titleNm}}</h3>
-        <p class="msg-bar">
-          <span>作者：{{infoMsg.crtBy}}</span>
-          <span>{{infoMsg.crtTm}}</span>
-          <span>来源：{{infoMsg.source}}</span>
-        </p>
-        <div class="c-img">
-          <img :src="infoMsg.imgUrl">
+      <div class="g-search">
+        <div class="crumb">
+          <span @click="toIndex">返回首页</span>
+          <span>&gt;</span>
+          <span @click="toEntitySchool">实体办学</span>
+          <span>&gt;</span>
+          <span>资讯详情</span>
         </div>
-        <div class="c-content" v-html="infoMsg.cont"></div>
+        <div class="content">
+          <div class="detail">
+            <h3>{{infoMsg.titleNm}}</h3>
+            <p class="msg-bar">
+              <span>作者：{{infoMsg.crtBy}}</span>
+              <span>{{infoMsg.crtTm}}</span>
+              <span>来源：{{infoMsg.source}}</span>
+            </p>
+            <div class="c-img">
+              <img :src="infoMsg.imgUrl">
+            </div>
+            <div class="c-content" v-html="infoMsg.cont"></div>
+          </div>
+        </div>
       </div>
     </div>
     <ageFoot></ageFoot>
@@ -42,6 +46,12 @@ export default {
     this.getMsg();
   },
   methods: {
+    toIndex() {
+      this.until.href("../home/index.html");
+    },
+    toEntitySchool() {
+      this.until.href("./phyeducationMain.html");
+    },
     getMsg() {
       this.until.get("/telev/infrom/info/" + this.pk, {}).then(res => {
         if (res.status == 200) {

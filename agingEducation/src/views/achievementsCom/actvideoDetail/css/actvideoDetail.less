@@ -1,85 +1,38 @@
-#main{
-  min-width: 1060px;
-  background-color: white;
-
+@import '../../../../assets/css/init.less';
+.g-content {
   //列表
-  .writingList{
-    display: flex;
-    width: 75%;
-    min-width: 1060px;
-    margin: 0 auto;
-    flex-direction: column;
-
-    //列表顶部
-    .writingTop{
-      border-bottom: 1px solid rgb(225,225,225);
-      display: flex;
-      align-items: center;
-      height: 80px;
-      padding-left: 30px;
-      font-size: 20px;
-      a{
-        color: #999;
-        font-size: 20px;
-        text-decoration: none;
-      }
-      .topLine{
-        padding: 0 5px;
-        font-size: 20px;
-        color: rgb(135,135,135);
-      }
-      >span{
-        &:nth-last-of-type(1){
-          color: #72b713;
-        }
-      }
-    }
-
+  .g-search {
     //主要内容
-    .honorMain{
-      padding: 40px 90px;
-
-      //标题
-      .honorTitle{
+    .honorMain {
+      padding: 40px 90px; //标题
+      .honorTitle {
         display: inline-block;
         width: 100%;
         font-size: 24px;
         text-align: center;
         margin-bottom: 20px;
-        color: #303030;
-      }
-
-    //  时间来源副标题
-      .honorTime{
+        color: #101010;
+      } //  时间来源副标题
+      .honorTime {
         display: flex;
         justify-content: center;
         margin-bottom: 30px;
         font-size: 20px;
-        color: #d1d1d1;
-        >span{
+        color: #303030;
+        >span {
           margin-right: 8%;
           margin-left: 4%;
         }
-
-      }
-
-    //  视频
-      .video{
+      } //  视频
+      .video {
         margin-bottom: 40px;
-      }
-
-
-    //  文章内容
-      .honorArticle{
+      } //  文章内容
+      .honorArticle {
         font-size: 18px;
         text-indent: 2em;
         line-height: 1.5em;
-        color: rgb(135,135,135);
-
+        color: #303030;
       }
-
     }
-
   }
-
 }

@@ -3,29 +3,17 @@
     <!--顶部-->
     <ageHead></ageHead>
     <!--页面主体部分-->
-    <div id="main">
+    <div class="g-content g-content-footer" ref="size">
       <!--列表-->
-      <div class="writingList">
+      <div class="g-search">
         <!--列表顶部-->
-        <div class="writingTop">
-          <span>
-            <a href="../home/index.html">首页</a>
-          </span>
-          <span class="topLine">></span>
-          <template v-if="showType">
-            <span>
-              <a href="../phyEducation/phyeducationMain.html">实体办学</a>
-            </span>
-            <span class="topLine">></span>
-          </template>
-          <span>
-            <a :href="'./subAch.html?type='+showType">成果交流</a>
-          </span>
-          <span class="topLine">></span>
-          <span>
-            <a :href="'./actVideo.html?type='+showType">活力视频</a>
-          </span>
-          <span class="topLine">></span>
+        <div class="crumb">
+          <span @click="toIndex">返回首页</span>
+          <span>></span>
+          <span @click="toSubAch">成果交流</span>
+          <span>></span>
+          <span @click="toVideo">活力视频</span>
+          <span>></span>
           <span>活力视频详情</span>
         </div>
 
@@ -135,12 +123,21 @@ export default {
     ageFoot
   },
   mounted() {
-    this.showType = JSON.parse(this.until.getQueryString("type"));
+    // this.showType = JSON.parse(this.until.getQueryString("type"));
     this.videoId = this.until.getQueryString("id");
 
     this.getVideoInfo();
   },
   methods: {
+    toIndex(){
+      this.until.href('../home/index.html')
+    },
+    toSubAch(){
+      this.until.href('./subAch.html')
+    },
+    toVideo(){
+      this.until.href('./actVideo.html')
+    },
     //轮播自动切换
     videoChange() {
       this.timer = setInterval(() => {

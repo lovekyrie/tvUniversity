@@ -7,11 +7,14 @@
         <div class="crumb">
           <span @click="toIndex">返回首页</span>
           <span>&gt;</span>
-          <span>校园动态</span>
+          <span @click="toEntitySchool">实体办学</span>
+          <span>&gt;</span>
+          <span>办学概况</span>
         </div>
 
         <div class="content">
-          <div @click="toNewDetail(item.televNewsPk)"
+          <div
+            @click="toSchoolDetail(item.televInfromPk)"
             v-for="(item,index) in items"
             :key="index"
             class="clearfix"
@@ -29,16 +32,15 @@
         </div>
       </div>
       <!--分页-->
-        <el-pagination
-          background
-          @current-change="handleCurrentChange"
-          :current-page.sync="currentPage"
-          :page-size="pageSize"
-          layout="total, prev, pager, next"
-          :total="total"
-        ></el-pagination>
-        <!-- <span>共{{Math.ceil(total/pageSize)}}页</span> -->
-      
+      <el-pagination
+        background
+        @current-change="handleCurrentChange"
+        :current-page.sync="currentPage"
+        :page-size="pageSize"
+        layout="total, prev, pager, next"
+        :total="total"
+      ></el-pagination>
+      <!-- <span>共{{Math.ceil(total/pageSize)}}页</span> -->
     </div>
     <ageFoot></ageFoot>
   </div>
@@ -47,7 +49,6 @@
 import Lib from "assets/js/Lib";
 import ageHead from "components/ageHead";
 import ageFoot from "components/ageFoot";
-import iconG from "./img/iconG.png";
 
 export default {
   data() {
@@ -55,8 +56,7 @@ export default {
       total: 0,
       currentPage: 1,
       pageSize: 10,
-      items: [],
-      iconG
+      items: []
     };
   },
   mounted() {
@@ -64,11 +64,14 @@ export default {
   },
   //相关操作事件
   methods: {
-    toIndex(){
-      window.location.href='../home/index.html'
+    toIndex() {
+      this.until.href("../home/index.html");
     },
-    toNewDetail(id){
-      window.location.href='./imglist.html?id='+id
+    toEntitySchool() {
+      window.location.href = "./phyeducationMain.html";
+    },
+    toSchoolDetail(id) {
+      window.location.href = "./classesDetail.html?id=" + id;
     },
     handleCurrentChange(val) {
       this.currentPage = val;
@@ -76,10 +79,10 @@ export default {
     },
     getMsg() {
       let query = new this.Query();
-      query.buildWhereClause("catCd", "30010.170");
+      query.buildWhereClause("catCd", "40020.150", "LK");
       query.buildPageClause(this.currentPage, this.pageSize);
       let param = query.getParam();
-      this.until.get("/telev/news/page", param).then(res => {
+      this.until.get("/telev/infrom/page", param).then(res => {
         if (res.status == 200) {
           this.items = res.data.items;
           this.total = res.page.total;

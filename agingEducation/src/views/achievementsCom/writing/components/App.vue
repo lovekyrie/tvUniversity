@@ -3,53 +3,37 @@
     <!--顶部-->
     <ageHead></ageHead>
     <!--页面主体部分-->
-    <div id="main">
-      <!--成果分类按钮-->
-      <!-- <div class="selectBtn">
-                <button @click="toWrite">文字集锦</button>
-                <button @click="toPaint">书画摄影</button>
-                <button @click="toVideo">活力视频</button>
-                <button @click="toRelease">成果发布</button>
-      </div>-->
+    <div class="g-content g-content-footer" ref="size">
       <!--书画列表-->
-      <div class="writingList">
+      <div class="g-search">
         <!--列表顶部-->
-        <div class="writingTop">
-          <span>
-            <a href="#">首页</a>
-          </span>
-          <span class="topLine">></span>
-          <template v-if="showType">
-            <span>
-              <a href="../phyEducation/phyeducationMain.html">实体办学</a>
-            </span>
-            <span class="topLine">></span>
-          </template>
-          <span>
-            <a :href="'./subAch.html?type='+showType">成果交流</a>
-          </span>
-          <span class="topLine">></span>
+        <div class="crumb">
+          <span @click="toIndex">返回首页</span>
+          <span>></span>
+          <span @click="toSubAch">成果交流</span>
+          <span>></span>
           <span>文字集锦</span>
         </div>
 
-        <!--书画-->
-        <div
-          class="news"
-          v-for="writing in writeList"
-          :key="writing.televGainPk"
-          @click="toWriteDetail(writing.televGainPk)"
-        >
-          <div class="newsDes">
-            <p class="newsTitle">
-              <a href="#">{{writing.titleNm}}</a>
-            </p>
-            <div>
-              <span>{{writing.stuNm}}</span>
-              <span>作者：{{writing.author}}</span>
+        <div class="content">
+          <!--书画-->
+          <div
+            class="news"
+            v-for="writing in writeList"
+            :key="writing.televGainPk"
+            @click="toWriteDetail(writing.televGainPk)"
+          >
+            <div class="newsDes">
+              <p class="newsTitle">
+                <a href="#">{{writing.titleNm}}</a>
+              </p>
+              <div>
+                <span>{{writing.stuNm}}</span>
+                <span>作者：{{writing.author}}</span>
+              </div>
             </div>
           </div>
         </div>
-
         <!--分页-->
         <el-pagination
           background
@@ -89,7 +73,6 @@ export default {
     }
   },
   mounted() {
-    this.showType = JSON.parse(this.until.getQueryString("type"));
     this.getWriteList();
   },
   components: {
@@ -97,17 +80,11 @@ export default {
     ageFoot
   },
   methods: {
-    toWrite() {
-      window.location.href = "./writing.html?type=" + this.showType;
+    toIndex() {
+      window.location.href = "../home/index.html";
     },
-    toPaint() {
-      window.location.href = "./painting.html?type=" + this.showType;
-    },
-    toVideo() {
-      window.location.href = "./actVideo.html?type=" + this.showType;
-    },
-    toRelease() {
-      window.location.href = "./achAdd.html?type=" + this.showType;
+    toSubAch() {
+      window.location.href = "./subAch.html";
     },
     //当前页变动时
     handleCurrentChange(val) {

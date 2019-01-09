@@ -8,7 +8,7 @@
             <div class="achList">
                 <!--列表顶部-->
                 <div class="achTop">
-                    <span @click="toIndex">首页</span>
+                    <span @click="toIndex">返回首页</span>
                     <span class="topLine"> > </span>
                     <span @click="toSubAch">成果交流</span>
                     <span class="topLine"> > </span>

@@ -1,119 +1,75 @@
-#main {
-  min-width: 1060px;
-  background-color: white;
-
-  a {
-    text-decoration: none;
-  }
-
+@import '../../../../assets/css/init.less';
+.g-content {
   //列表
-  .mainList {
-    display: flex;
-    width: 75%;
-    min-width: 1060px;
-    margin: 0 auto;
-    flex-direction: column;
-
-    //列表顶部
-    .mainTop {
-      display: flex;
-      align-items: center;
-      height: 80px;
-      border-bottom: 1px solid #f1f1f1;
-      font-size: 20px;
-      color: #999;
-      .topLine {
-        padding: 0 5px;
-        color: #999;
-      }
-      >span{
-        &:not(:nth-last-of-type(1)){
-          cursor: pointer;
-        }
-        &:nth-last-of-type(1){
-          color: #72b713;
-        }
-      }
-    }
-
+  .g-search {
     //  活动介绍
     .mainContent {
       display: flex;
       flex-direction: row;
       padding-top: 25px;
-      margin-bottom: 30px;
-      //活动图片
+      margin-bottom: 30px; //活动图片
       .contentImg {
         margin-right: 50px;
         width: 440px;
         display: flex;
         justify-content: center;
         align-items: center;
-        > img {
+        >img {
           width: auto;
           height: auto;
           max-width: 100%;
-          max-height:100%;
+          max-height: 100%;
           vertical-align: middle;
         }
-
-      }
-
-      //活动描述
+      } //活动描述
       .contentDes {
-        padding: 30px 0px;
+        padding: 30px 0 0 0;
         color: #303030;
-        > h3 {
+        >h3 {
           font-size: 24px;
           font-weight: 400;
           line-height: 2.5em;
         }
-        > p {
+        >p {
           font-size: 20px;
           line-height: 2.5em;
           &:nth-last-of-type(1),
-          &:nth-last-of-type(2){
-            color: #d1d1d1;
+          &:nth-last-of-type(2) {
+            color: #505050;
           }
         }
         /*发布作品*/
-       button{
-         border: 0;
-         border-radius: 4px;
-         width: 130px;
-         height: 40px;
-         font-size: 20px;
-         line-height: 40px;
-         text-align: center;
-         color: #fff;
-         background-color: #72b713;
+        button {
+          border: 0;
+          border-radius: 4px;
+          width: 130px;
+          height: 40px;
+          font-size: 20px;
+          line-height: 40px;
+          text-align: center;
+          color: #fff;
+          background-color: #72b713;
         }
       }
-    }
-
-    //  活动详情
+    } //  活动详情
     .actDetail {
       margin-bottom: 60px;
-      > h3 {
+      >h3 {
         padding-left: 20px;
         font-weight: 400;
         font-size: 20px;
         border-left: 5px solid #72b713;
         margin-bottom: 20px;
         color: #72b713;
-      }
-      //折叠面板
+      } //折叠面板
       .actTitle {
         color: #303030;
-        font-size: 16px;
+        font-size: 18px;
         margin-left: 4%;
       }
-
-    }
-
-    //  投票内容
+    } //  投票内容
     .voteContent {
-      > h3 {
+      >h3 {
         display: block;
         margin-bottom: 20px;
         border-left: 5px solid #72b713;
@@ -122,15 +78,12 @@
         font-size: 20px;
         color: #72b713;
       }
-
       .contents {
         padding: 20px;
         border-top: 1px solid #f1f1f1;
         .inContent {
           height: 560px;
-          border: 1px solid #f1f1f1;
-
-          //作品信息
+          border: 1px solid #f1f1f1; //作品信息
           .inner {
             display: flex;
             justify-content: center;
@@ -140,23 +93,21 @@
             font-size: 20px;
             background-color: rgb(249, 249, 249);
             border-bottom: 1px solid rgb(235, 235, 235);
-            img{
-              width:auto;
+            img {
+              width: auto;
               height: auto;
               max-width: 100%;
               max-height: 100%;
               vertical-align: middle;
             }
-          }
-
-          //作品底部信息
-          > p {
+          } //作品底部信息
+          >p {
             font-size: 20px;
             padding-left: 15px;
             line-height: 30px;
             color: #303030;
           }
-          > span {
+          >span {
             display: block;
             padding: 20px 15px;
             button {
@@ -167,16 +118,13 @@
               color: white;
               background-color: #72b713;
             }
-            img{
+            img {
               float: right;
               height: 44px;
             }
           }
         }
       }
-
     }
-
   }
-
 }

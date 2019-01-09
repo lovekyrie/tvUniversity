@@ -235,7 +235,7 @@
     <div class="g-content">
       <!--链接栏-->
       <div class="r-link cm-container">
-        <a href="../home/index.html">首页</a><span>&nbsp;&nbsp;&gt;&nbsp;&nbsp;</span><a>在线报名</a>
+        <a href="../home/index.html">返回首页</a><span>&nbsp;&nbsp;&gt;&nbsp;&nbsp;</span><a>在线报名</a>
       </div>
 
       <div class="f-form">

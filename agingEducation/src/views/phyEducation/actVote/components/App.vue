@@ -3,15 +3,15 @@
     <!--顶部-->
     <ageHead></ageHead>
     <!--页面主体部分-->
-    <div id="main">
+    <div class="g-content g-content-footer" ref="size">
       <!--列表-->
-      <div class="mainList">
+      <div class="g-search">
         <!--列表顶部-->
-        <div class="mainTop">
-          <span @click="toIndex">首页</span>
-          <span class="topLine">></span>
+        <div class="crumb">
+          <span @click="toIndex">返回首页</span>
+          <span>></span>
           <span @click="toAct">精彩活动</span>
-          <span class="topLine">></span>
+          <span>></span>
           <span>活动详情</span>
         </div>
 
@@ -24,7 +24,7 @@
             <h3>{{actInfo.titleNm}}</h3>
             <p>主办方：{{actInfo.sponsor}}</p>
             <p>地点：{{actInfo.address}}</p>
-            <p style="margin-bottom: 100px">
+            <p>
               作品数：
               <span style="color:red;">{{actInfo.haveNum || 0}}</span>
             </p>
@@ -129,10 +129,10 @@ export default {
   },
   methods: {
     toIndex() {
-      window.location.href = "../home/index.html";
+      this.until.href("../home/index.html");
     },
     toAct() {
-      window.location.href = "../phyEducation/excitingAct.html";
+      this.until.href("../phyEducation/excitingAct.html");
     },
     handleCurrentChange() {
       console.log(`${val}`);

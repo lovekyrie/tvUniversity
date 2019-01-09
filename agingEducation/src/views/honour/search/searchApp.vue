@@ -4,8 +4,8 @@
     <div class="g-content g-content-footer" ref="size">
       <div class="g-search">
         <div class="crumb">
-          <span @click="toIndex">首页</span>
-          <span>&nbsp;&nbsp;&gt;&nbsp;&nbsp;</span>
+          <span @click="toIndex">返回首页</span>
+          <span>&gt;</span>
           <span>荣誉展厅</span>
         </div>
 
@@ -18,11 +18,13 @@
           >
             <!-- <img :src="item.imgUrl" alt=""> -->
             <div class="info">
-              <h2>{{item.titleNm}}</h2>
-              <h3>
-                <span>{{item.crtTm}}</span>
-                <span>来源：{{item.source}}</span>
-              </h3>
+              <div>
+                <h2>{{item.titleNm}}</h2>
+                <h3>
+                  <span>{{item.crtTm}}</span>
+                  <span>来源：{{item.source}}</span>
+                </h3>
+              </div>
             </div>
           </div>
         </div>
