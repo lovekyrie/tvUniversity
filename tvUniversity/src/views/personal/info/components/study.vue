@@ -99,7 +99,7 @@ export default {
         height: 50px;
         font-weight: normal;
         text-align: center;
-        color: #303030;
+        color: #101010;
         background-color: #fbfbfb;
         &:first-child {
           width: 15%;
@@ -118,7 +118,7 @@ export default {
     }
     tr {
       border: 1px solid #f1f1f1;
-      color: #303030;
+      color: #101010;
       &:last-child {
         border-bottom: 0;
       }

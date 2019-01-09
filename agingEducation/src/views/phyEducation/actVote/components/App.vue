@@ -102,7 +102,7 @@ export default {
       actDetail: "这里是活动详情描述",
       total: 15,
       currentPage: 1,
-      pageSize: 5,
+      pageSize: 6,
       showType: false,
       actId: "",
       actInfo: {},
@@ -134,8 +134,9 @@ export default {
     toAct() {
       this.until.href("../phyEducation/excitingAct.html");
     },
-    handleCurrentChange() {
-      console.log(`${val}`);
+    handleCurrentChange(val) {
+      this.currentPage = val;
+      this.getEntriesList();
     },
     voteItem(item) {
       //得到投票用户

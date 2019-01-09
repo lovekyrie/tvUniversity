@@ -155,7 +155,7 @@ export default {
       margin: 20px auto;
       background-color: #fff;
       border: 1px solid #f1f1f1;
-      color: #303030;
+      color: #101010;
       thead {
         th {
           height: 50px;

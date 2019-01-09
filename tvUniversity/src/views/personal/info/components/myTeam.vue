@@ -93,7 +93,7 @@ export default {
 </script>
 <style lang="less">
 #myTeam {
-  color: #303030;
+  color: #101010;
   h3 {
     font-size: 24px;
     padding-left: 25px;
@@ -118,7 +118,7 @@ export default {
         font-size: 20px;
         font-weight: normal;
         text-align: center;
-        color: #303030;
+        color: #101010;
         background-color: #fbfbfb;
         &:first-child {
           width: 33%;
@@ -130,7 +130,7 @@ export default {
     }
     tr {
       border: 1px solid #e1e1e1;
-      color: #303030;
+      color: #101010;
       &:last-child {
         border-bottom: 0;
       }

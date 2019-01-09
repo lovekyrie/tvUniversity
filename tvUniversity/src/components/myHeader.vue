@@ -107,7 +107,7 @@ export default {
         margin-left: 5%;
         width: 80%;
         font-size: 28px;
-        color: #303030;
+        color: #101010;
         flex: 1;
         font-weight: bold;
       }
@@ -121,7 +121,7 @@ export default {
         height: 45px;
         line-height: 45px;
         text-align: center;
-        color: #303030;
+        color: #101010;
         flex: 1;
         font-size: 18px;
         /*font-weight: bold;*/

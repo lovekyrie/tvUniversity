@@ -130,7 +130,7 @@ export default {
         height: 50px;
         font-weight: normal;
         text-align: center;
-        color: #303030;
+        color: #101010;
         background-color: #fbfbfb;
         &:first-child {
           width: 15%;
