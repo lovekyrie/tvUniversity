@@ -15,25 +15,26 @@
             <i class="el-icon-arrow-down el-icon--right"></i>
           </span>
           <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item command="宁波">宁波</el-dropdown-item>
-            <el-dropdown-item command="海曙">海曙</el-dropdown-item>
-            <el-dropdown-item command="江北">江北</el-dropdown-item>
-            <el-dropdown-item command="鄞州">鄞州</el-dropdown-item>
+            <el-dropdown-item
+              v-for="item in regionList"
+              :key="item.prntPk"
+              :command="item.nm"
+            >{{item.nm}}</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
       </div>
       <div class="right">
         <p class="login-btn" v-if="!isLogin">
           <a href="../system/login.html" target="_self">登录</a>&nbsp;|&nbsp;
-           <a href="../system/register.html" target="_self">注册</a>
+          <a href="../system/register.html" target="_self">注册</a>
         </p>
         <p v-if="isLogin">
           <a href="../personalZone/personal.html">{{nickName}}</a>
           <span @click="quit">退出</span>
         </p>
-        <img v-if="!showBig" :src="samllCode" alt="" @click="showBig=true">
+        <img v-if="!showBig" :src="samllCode" alt @click="showBig=true">
       </div>
-      <img class="big-code" v-if="showBig" :src="bigCode" alt="" @click="showBig=false">
+      <img class="big-code" v-if="showBig" :src="bigCode" alt @click="showBig=false">
     </div>
   </div>
 </template>
@@ -51,20 +52,41 @@ export default {
       samllCode,
       bigCode,
       address: "宁波",
-      showBig:false,
-      isLogin:false,
-      nickName:'',
+      regionCd: "",
+      showBig: false,
+      isLogin: false,
+      nickName: "",
+      regionList: []
     };
   },
-  mounted(){
-    let loginCredit=this.until.seGet("DD_token");
-     this.isLogin = loginCredit?true:false;
-     if(loginCredit){
-       let userObj=JSON.parse(loginCredit)
-       this.nickName=userObj.userInfo.nickname
-     }
+  mounted() {
+    let loginCredit = this.until.seGet("DD_token");
+    this.isLogin = loginCredit ? true : false;
+    if (loginCredit) {
+      let userObj = JSON.parse(loginCredit);
+      this.nickName = userObj.userInfo.nickname;
+    }
+    this.getRegionList();
+  },
+  watch: {
+    regionCd(val) {
+      this.until.loSave("regionCd", val);
+    }
   },
   methods: {
+    getRegionList() {
+      this.until
+        .get("/general/cat/listByPrntCd", { prntCd: 42000 })
+        .then(res => {
+          if (res.status === "200") {
+            this.regionList = res.data.items;
+            if (res.data.items.length > 0) {
+              this.address = res.data.items[0].nm;
+              this.regionCd = res.data.items[0].cd;
+            }
+          }
+        });
+    },
     toHome() {
       let url = window.location.href;
       if (url.indexOf("home/index.html") < 0) {
@@ -73,13 +95,17 @@ export default {
     },
     handleCommand(command) {
       this.address = command;
+      let regionArr = this.regionList.filter(item => {
+        return item["nm"] === command;
+      });
+      this.regionCd = regionArr[0].cd;
     },
-    quit(){
-       this.until.get("/telev/usr/logout").then(
+    quit() {
+      this.until.get("/telev/usr/logout").then(
         res => {
           if (res.status === "200") {
             window.location.href = "../home/index.html";
-            this.until.seSave('DD_token','')
+            this.until.seSave("DD_token", "");
           }
         },
         err => {
@@ -99,7 +125,7 @@ export default {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  box-shadow: 0 2px 4px rgba(73,150,86,.16);
+  box-shadow: 0 2px 4px rgba(73, 150, 86, 0.16);
   .aHead {
     position: relative;
     display: flex;
@@ -133,7 +159,7 @@ export default {
       cursor: pointer;
     }
     /*登录注册*/
-    .right{
+    .right {
       width: 30%;
       display: -webkit-flex;
       display: flex;
@@ -161,25 +187,25 @@ export default {
           cursor: pointer;
         }
       }
-      .login-btn{
-         flex-wrap: nowrap;
-         color: #303030;
-        a{
+      .login-btn {
+        flex-wrap: nowrap;
+        color: #303030;
+        a {
           flex: 0 0 auto;
         }
       }
-      img{
+      img {
         flex: 0 0 auto;
       }
     }
     .drop-list {
       width: 15%;
-      .el-dropdown{
+      .el-dropdown {
         font-size: 20px;
         color: #303030;
       }
     }
-     .big-code{
+    .big-code {
       position: absolute;
       top: 0;
       right: 0;

@@ -73,7 +73,9 @@ export default {
     },
     getMsg() {
       let query = new this.Query();
-      query.buildWhereClause("catCd", "30010.150");
+      let regionCd = this.until.loGet("regionCd");
+      query.buildWhereClause("catCd", "30010.150", "LK");
+      query.buildWhereClause("siteCd", regionCd, "EQ");
       query.buildPageClause(this.currentPage, this.pageSize);
       let param = query.getParam();
       this.until.get("/telev/news/page", param).then(res => {

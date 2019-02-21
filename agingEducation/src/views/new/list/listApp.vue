@@ -11,7 +11,8 @@
         </div>
 
         <div class="content">
-          <div @click="toNewDetail(item.televNewsPk)"
+          <div
+            @click="toNewDetail(item.televNewsPk)"
             v-for="(item,index) in items"
             :key="index"
             class="clearfix"
@@ -29,16 +30,15 @@
         </div>
       </div>
       <!--分页-->
-        <el-pagination
-          background
-          @current-change="handleCurrentChange"
-          :current-page.sync="currentPage"
-          :page-size="pageSize"
-          layout="total, prev, pager, next"
-          :total="total"
-        ></el-pagination>
-        <!-- <span>共{{Math.ceil(total/pageSize)}}页</span> -->
-      
+      <el-pagination
+        background
+        @current-change="handleCurrentChange"
+        :current-page.sync="currentPage"
+        :page-size="pageSize"
+        layout="total, prev, pager, next"
+        :total="total"
+      ></el-pagination>
+      <!-- <span>共{{Math.ceil(total/pageSize)}}页</span> -->
     </div>
     <ageFoot></ageFoot>
   </div>
@@ -64,11 +64,11 @@ export default {
   },
   //相关操作事件
   methods: {
-    toIndex(){
-      window.location.href='../home/index.html'
+    toIndex() {
+      window.location.href = "../home/index.html";
     },
-    toNewDetail(id){
-      window.location.href='./imglist.html?id='+id
+    toNewDetail(id) {
+      window.location.href = "./imglist.html?id=" + id;
     },
     handleCurrentChange(val) {
       this.currentPage = val;
@@ -76,7 +76,9 @@ export default {
     },
     getMsg() {
       let query = new this.Query();
+      let regionCd = this.until.loGet("regionCd");
       query.buildWhereClause("catCd", "30010.170");
+      query.buildWhereClause("siteCd", regionCd, "EQ");
       query.buildPageClause(this.currentPage, this.pageSize);
       let param = query.getParam();
       this.until.get("/telev/news/page", param).then(res => {
