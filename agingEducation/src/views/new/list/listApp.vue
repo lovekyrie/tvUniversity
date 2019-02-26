@@ -1,6 +1,6 @@
 <template>
   <div id="container">
-    <ageHead></ageHead>
+    <ageHead @triggerSite="getMsg"></ageHead>
 
     <div class="g-content g-content-footer" ref="size">
       <div class="g-search">
@@ -74,9 +74,9 @@ export default {
       this.currentPage = val;
       this.getMsg();
     },
-    getMsg() {
+    getMsg(siteCd) {
       let query = new this.Query();
-      let regionCd = this.until.loGet("regionCd");
+      let regionCd = siteCd || this.until.loGet("regionCd");
       query.buildWhereClause("catCd", "30010.170");
       query.buildWhereClause("siteCd", regionCd, "EQ");
       query.buildPageClause(this.currentPage, this.pageSize);

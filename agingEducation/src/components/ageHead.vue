@@ -17,7 +17,7 @@
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item
               v-for="item in regionList"
-              :key="item.prntPk"
+              :key="item.sysCatPk"
               :command="item.nm"
             >{{item.nm}}</el-dropdown-item>
           </el-dropdown-menu>
@@ -51,7 +51,7 @@ export default {
       logo,
       samllCode,
       bigCode,
-      address: "宁波",
+      address: "",
       regionCd: "",
       showBig: false,
       isLogin: false,
@@ -66,11 +66,17 @@ export default {
       let userObj = JSON.parse(loginCredit);
       this.nickName = userObj.userInfo.nickname;
     }
+    // let address = this.until.loGet("region");
+
+    this.address = this.until.loGet("region");
     this.getRegionList();
   },
   watch: {
     regionCd(val) {
       this.until.loSave("regionCd", val);
+    },
+    address(val) {
+      this.until.loSave("region", val);
     }
   },
   methods: {
@@ -80,9 +86,10 @@ export default {
         .then(res => {
           if (res.status === "200") {
             this.regionList = res.data.items;
-            if (res.data.items.length > 0) {
+            if (res.data.items.length > 0 && !this.address) {
               this.address = res.data.items[0].nm;
               this.regionCd = res.data.items[0].cd;
+              this.$emit("triggerSite", this.regionCd);
             }
           }
         });
@@ -99,6 +106,7 @@ export default {
         return item["nm"] === command;
       });
       this.regionCd = regionArr[0].cd;
+      this.$emit("triggerSite", this.regionCd);
     },
     quit() {
       this.until.get("/telev/usr/logout").then(

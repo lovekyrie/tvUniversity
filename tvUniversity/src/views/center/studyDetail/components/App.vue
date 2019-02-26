@@ -3,8 +3,12 @@
     <myHeader :type="name"></myHeader>
     <div class="content">
       <div class="pos">
-        <span><a href="../center/index.html">返回首页</a></span>> 
-        <span><a href="./study.html">当前课程</a></span>>
+        <span>
+          <a href="../center/index.html">返回首页</a>
+        </span>>
+        <span>
+          <a href="./study.html">当前课程</a>
+        </span>>
         <span>课程内容</span>
       </div>
       <div id="studyDetail">
@@ -39,7 +43,7 @@
       </div>
       <!--集体签到弹出-->
       <el-dialog title="学员列表" :visible.sync="dialogVisible" width="60%" :before-close="handleClose">
-        <el-checkbox-group v-model="checkList">
+        <el-checkbox-group v-model="checkList" @change="handleCheckedChange">
           <el-checkbox
             :label="item.prodStuVo.prodStuPk"
             v-for="item in signList"
@@ -53,6 +57,12 @@
         </el-checkbox-group>
         <span slot="footer" class="dialog-footer">
           <!--<el-button @click="dialogVisible = false">取 消</el-button>-->
+          <el-row>
+            <el-checkbox :indeterminate="isIndeterminate" @change="setCheckAll" v-model="checkAll">
+              <span>全选</span>
+            </el-checkbox>
+            <span>学员总数：{{signList.length}}人</span>
+          </el-row>
           <el-button type="primary" @click="patchSign">今日签到</el-button>
         </span>
       </el-dialog>
@@ -81,7 +91,10 @@ export default {
       signList: [], //集体签到列表
       ifLogin: false,
       info: {},
-      showList: true
+      showList: true,
+      checkAll: false,
+      isIndeterminate: true,
+      optionList: []
     };
   },
   mounted() {
@@ -123,24 +136,24 @@ export default {
        */
       player.on("ended", () => {
         // if (player.playlist.nextIndex() == newArr.length - 1) {
-          let arr=newArr.filter((item)=>{
-            return item.videoUrl===player.currentSources()
-          });
-          console.log(arr)
-          let param = {
-            prodClassPk: this.classPk,
-            prodClassNm:this.classNm,
-            prodWarePk:arr[0].prodWarePk,
-            prodWareNm:arr[0].nm
-          };
-          this.until.post("/prod/supp/end", param).then(
-            res => {
-              if (res.status === "200") {
-                console.log("课程学习完成");
-              }
-            },
-            err => {}
-          );
+        let arr = newArr.filter(item => {
+          return item.videoUrl === player.currentSources();
+        });
+        console.log(arr);
+        let param = {
+          prodClassPk: this.classPk,
+          prodClassNm: this.classNm,
+          prodWarePk: arr[0].prodWarePk,
+          prodWareNm: arr[0].nm
+        };
+        this.until.post("/prod/supp/end", param).then(
+          res => {
+            if (res.status === "200") {
+              console.log("课程学习完成");
+            }
+          },
+          err => {}
+        );
         // }
       });
 
@@ -157,6 +170,9 @@ export default {
         });
       }
       this.signList = await this.groupSignList();
+      this.signList.forEach(item => {
+        this.optionList.push(item.prodStuVo.prodStuPk);
+      });
     },
     //更改当前页数
     handleCurrentChange(val) {},
@@ -260,6 +276,7 @@ export default {
         });
       });
     },
+    /* 得到签到列表 */
     groupSignList() {
       return new Promise(resolve => {
         this.until.get("/prod/supp/ement").then(
@@ -269,6 +286,16 @@ export default {
           err => {}
         );
       });
+    },
+    setCheckAll(val) {
+      this.checkList = val ? this.optionList : [];
+      this.isIndeterminate = false;
+    },
+    handleCheckedChange(value) {
+      let checkedCount = value.length;
+      this.checkAll = checkedCount === this.optionList.length;
+      this.isIndeterminate =
+        checkedCount > 0 && checkedCount < this.optionList.length;
     }
   },
   watch: {

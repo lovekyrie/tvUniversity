@@ -3,10 +3,10 @@
     <!--顶部-->
     <ageHead></ageHead>
     <!--页面主体部分-->
-   <div class="g-content g-content-footer" ref="size">
+    <div class="g-content g-content-footer" ref="size">
       <!--成果分类按钮-->
       <!--列表-->
-       <div class="g-search">
+      <div class="g-search">
         <!--列表顶部-->
         <div class="crumb">
           <span @click="toIndex">返回首页</span>
@@ -84,7 +84,6 @@
 <script>
 import ageHead from "components/ageHead";
 import ageFoot from "components/ageFoot";
-import Editor from "./Editor";
 
 export default {
   data() {
@@ -195,8 +194,7 @@ export default {
   },
   components: {
     ageHead,
-    ageFoot,
-    Editor
+    ageFoot
   }
 };
 </script>

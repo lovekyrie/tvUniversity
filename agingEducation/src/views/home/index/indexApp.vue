@@ -1,6 +1,6 @@
 <template>
   <div style="height: 100%" id="container">
-    <ageHead></ageHead>
+    <ageHead @triggerSite="getMsg"></ageHead>
     <div class="g-content g-content-footer" ref="size">
       <div class="home" style="margin-top: 20px;">
         <div class="new-list">
@@ -103,19 +103,23 @@ export default {
         confirmButtonText: "确定"
       });
     },
-    getMsg() {
+    getMsg(siteCd) {
       let query = new this.Query();
       query.buildWhereClause("catCd", "30010.160");
+      let regionCd = siteCd || this.until.loGet("regionCd");
+      query.buildWhereClause("siteCd", regionCd, "EQ");
       query.buildPageClause(this.currentPage, this.pageSize);
       let param = query.getParam();
       this.until.get("/telev/news/page", param).then(res => {
         if (res.status == 200) {
           this.items = res.data.items;
-          this.items.forEach(item => {
-            let time = this.until.formatDate(item.crtTm);
-            item.createTm =
-              time.year + "年" + time.month + "月" + time.day + "日";
-          });
+          if (this.items && this.items.length > 0) {
+            this.items.forEach(item => {
+              let time = this.until.formatDate(item.crtTm);
+              item.createTm =
+                time.year + "年" + time.month + "月" + time.day + "日";
+            });
+          }
         }
       });
     },
