@@ -1,19 +1,24 @@
 @import '../../../../assets/css/init.less';
+
 .g-content {
+
   //列表
   .g-search {
+
     //  活动介绍
     .mainContent {
       display: flex;
       flex-direction: row;
       padding-top: 25px;
       margin-bottom: 30px; //活动图片
+
       .contentImg {
         margin-right: 50px;
         display: flex;
         justify-content: center;
         align-items: center;
         width: 440px;
+
         >img {
           width: auto;
           height: auto;
@@ -21,39 +26,50 @@
           max-height: 100%;
           vertical-align: middle;
         }
-      } //活动描述
+      }
+
+      //活动描述
       .contentDes {
         padding: 30px 0px;
+
         >h3 {
           font-size: 24px;
           font-weight: 400;
           line-height: 2.5em;
         }
+
         >p {
           line-height: 2.5em;
           font-size: 20px;
           color: #303030;
+
           &:nth-last-of-type(1),
           &:nth-last-of-type(2) {
             color: #505050;
           }
         }
+
         >a {
           font-size: 18px;
           color: #72b713;
         }
       }
-    } //  输入内容
+    }
+
+    //  输入内容
     .contentInput {
       display: flex;
-      width: 50%;
+      width: 60%;
       margin-left: 20%;
       flex-direction: column;
       padding-bottom: 30px;
       color: #303030;
+
       >h4 {
         margin-bottom: 10px;
-      } //输入标题
+      }
+
+      //输入标题
       .inputTitle {
         border: 1px solid #f1f1f1;
         width: 100%;
@@ -63,7 +79,9 @@
         font-size: 16px;
         color: #000;
         outline: none;
-      } //输入域
+      }
+
+      //输入域
       .inputText {
         width: 100%;
         height: 210px;
@@ -71,10 +89,13 @@
         padding-left: 5px;
         margin-bottom: 30px;
         border: 2px solid rgb(225, 225, 225);
-      } //  按钮
+      }
+
+      //  按钮
       .subBtn {
         margin-top: 20px;
         text-align: right;
+
         >button {
           width: 28%;
           height: 45px;
@@ -84,28 +105,34 @@
           line-height: 45px;
           border-radius: 6px;
           background-color: #72b713;
+
           &:nth-of-type(1) {
             color: #fff;
           }
+
           &:nth-last-of-type(1) {
             color: #303030;
             background-color: #fff;
           }
         }
       }
+
       .avatar-uploader .el-upload {
         border: 1px dashed #d9d9d9;
         border-radius: 6px;
         cursor: pointer;
         position: relative;
         overflow: hidden;
+
         input {
           display: none;
         }
       }
+
       .avatar-uploader .el-upload:hover {
         border-color: #409EFF;
       }
+
       .avatar-uploader-icon {
         font-size: 28px;
         color: #8c939d;
@@ -114,10 +141,15 @@
         line-height: 178px;
         text-align: center;
       }
+
       .avatar {
         width: 178px;
         height: 178px;
         display: block;
+      }
+
+      .el-select {
+        margin-bottom: 30px;
       }
     }
   }

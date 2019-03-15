@@ -34,10 +34,18 @@
 
         <!--输入内容-->
         <div class="contentInput">
+          <h4>作品类型</h4>
+          <el-select v-model="catType" placeholder="请选择" @change="pickCatType">
+            <el-option v-for="item in options" :key="item.cd" :label="item.nm" :value="item.cd"></el-option>
+          </el-select>
           <h4>上传作者</h4>
           <input class="inputTitle" type="text" v-model="inputAuthor" placeholder="请输入作者">
           <h4>作品名称</h4>
           <input class="inputTitle" type="text" v-model="fileName" placeholder="请输入作品名称">
+          
+          <h4>图片、文字内容</h4>
+          <!-- editor富文本编辑器 -->
+          <editor @trigerSubmit="getEditorInfo"></editor>
           <h4>内容</h4>
           <el-upload
             class="avatar-uploader"
@@ -65,6 +73,7 @@
 <script>
 import ageHead from "components/ageHead";
 import ageFoot from "components/ageFoot";
+import Editor from "components/Editor";
 export default {
   data() {
     return {
@@ -73,12 +82,16 @@ export default {
       actId: "",
       actInfo: {},
       imageUrl: "",
-      fileName: ""
+      fileName: "",
+      catType: "",
+      options: [],
+      cont: "",
     };
   },
   components: {
     ageHead,
-    ageFoot
+    ageFoot,
+    Editor
   },
   mounted() {
     //需要把字符串转成boolean
@@ -86,6 +99,7 @@ export default {
     this.actId = this.until.getQueryString("id");
 
     this.getActInfo();
+    this.getCatCd();
   },
   methods: {
     toIndex() {
@@ -94,13 +108,18 @@ export default {
     toAct() {
       this.until.href("./excitingAct.html");
     },
+    getEditorInfo(content) {
+      this.cont = content;
+    },
     sub() {
       //提交参赛作品
       let param = {
         televDoingPk: this.actId,
         imgUrl: this.imageUrl,
         authorNm: this.inputAuthor,
-        televRunNm: this.fileName
+        televRunNm: this.fileName,
+        cont: this.cont,
+        catCd: this.catType
       };
 
       this.until.postCard("/telev/run/add", JSON.stringify(param)).then(
@@ -127,12 +146,26 @@ export default {
         res => {
           if (res.status === "200") {
             this.actInfo = res.data;
-            this.actInfo.startTm = res.data.startTm.substr(0, 10);
-            this.actInfo.endTm = res.data.endTm.substr(0, 10);
+            this.actInfo.startTm =
+              res.data.startTm && res.data.startTm.substr(0, 10);
+            this.actInfo.endTm = res.data.endTm && res.data.endTm.substr(0, 10);
           }
         },
         err => {}
       );
+    },
+    /**得到参赛作品分类 */
+    getCatCd() {
+      let query = new this.Query();
+      query.buildWhereClause("cd", "40030.", "RLK");
+      query.buildPageClause(1, 10000);
+
+      let param = query.getParam();
+      this.until.get("/sys/cat/listTree", param).then(res => {
+        if (res.status === "200") {
+          this.options = res.data.items;
+        }
+      });
     },
     handleAvatarSuccess(res, file) {
       this.imageUrl = res.data;

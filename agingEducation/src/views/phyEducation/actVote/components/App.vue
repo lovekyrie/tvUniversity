@@ -58,7 +58,7 @@
                 style="margin-bottom: 30px"
                 :key="index"
               >
-                <div class="inContent">
+                <div class="inContent" @click="toDetail(item.televRunPk)">
                   <div class="inner">
                     <img :src="item.imgUrl" alt>
                   </div>
@@ -128,6 +128,9 @@ export default {
     this.getEntriesList();
   },
   methods: {
+    toDetail(id) {
+      this.until.href("../phyEducation/postDetail.html?id=" + id);
+    },
     toIndex() {
       this.until.href("../home/index.html");
     },

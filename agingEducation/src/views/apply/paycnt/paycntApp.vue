@@ -376,7 +376,7 @@ export default {
         let course = new this.Query();
         course.buildWhereClause("idCard", this.idCard);
         course.buildWhereClause("statCd", "30100.160");
-        course.buildWhereClause("arg1", new Date().getFullYear());
+        
         let courseParam = course.getParam();
         this.until.get("/px/clazzApply/list", courseParam).then(res => {
           if (res.status == 200) {

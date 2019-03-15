@@ -65,12 +65,13 @@ export default {
     //更改当前页数
     handleCurrentChange(val) {
       this.pageNo = val;
-      this.getCourseList();
+      // this.getRankList();
       this.getInfo();
     },
     async getInfo() {
       let result = await this.getRankList();
       this.list = result.data.items;
+      this.total = result.page.total;
     },
     getRankList() {
       return new Promise((resolve, reject) => {
@@ -83,7 +84,6 @@ export default {
         this.until.get("/prod/stu/starsPage", param).then(
           res => {
             if (res.status === "200") {
-              console.log("调用成功");
               resolve(res);
             } else {
               console.log("状态码返回不是200");
@@ -113,8 +113,8 @@ export default {
     a {
       color: #999;
     }
-    span{
-      &:nth-last-of-type(1){
+    span {
+      &:nth-last-of-type(1) {
         color: #72b713;
       }
     }
