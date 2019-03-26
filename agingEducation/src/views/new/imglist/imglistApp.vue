@@ -6,7 +6,7 @@
         <div class="crumb">
           <span @click="toIndex">返回首页</span>
           <span>&gt;</span>
-          <span @click="toList">校园动态</span>
+          <span @click="toList">通知公告</span>
           <span>&gt;</span>
           <span>资讯详情</span>
         </div>

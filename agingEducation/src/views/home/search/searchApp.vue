@@ -9,7 +9,7 @@
           <span>&nbsp;&gt;&nbsp;</span>
           <a href="./index.html">实体办学</a>
           <span>&nbsp;&gt;&nbsp;</span>
-          <a href="javascript:void(0)">校园动态</a>
+          <a href="javascript:void(0)">通知公告</a>
         </div>
 
         <div class="content">

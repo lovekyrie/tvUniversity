@@ -1,4 +1,5 @@
 @import '../../../../assets/css/init.less';
+
 .g-content {
   .g-search {
     .mainFoot {
@@ -7,11 +8,13 @@
       justify-content: space-between;
       margin-top: 40px;
       margin-bottom: 40px;
-      >div{
-        &:nth-of-type(n+4){
+
+      >div {
+        &:nth-of-type(n+4) {
           margin-top: 40px;
         }
       }
+
       .production,
       .honor,
       .classes,
@@ -25,6 +28,7 @@
         font-size: 18px;
         border-top-left-radius: 8px;
         border-top-right-radius: 8px;
+
         >div {
           display: flex;
           flex-flow: row nowrap;
@@ -32,6 +36,7 @@
           background-color: #72b713;
           border-top-left-radius: 8px;
           border-top-right-radius: 8px;
+
           h4 {
             flex: 1;
             margin: 0;
@@ -39,6 +44,7 @@
             font-size: 22px;
             color: #fff;
           }
+
           span {
             flex: 0 0 auto;
             margin-right: 20px;
@@ -47,44 +53,57 @@
             cursor: pointer;
           }
         }
+
         >ul {
           margin: 0 10px 0 15px;
           padding: 25px 0 12px;
           border-bottom: 1px solid #f1f1f1;
           cursor: pointer;
+
           &:nth-last-of-type(1) {
             border-bottom-width: 0;
           }
+
           li {
             list-style: none;
             font-size: 20px;
             line-height: 2em;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+
             a {
               color: #101010;
             }
           }
+
           >p {
             margin: 0;
             font-size: 18px;
             line-height: 2em;
             color: #303030;
           }
-        } //底部查看更多链接
+        }
+
+        //底部查看更多链接
         >p {
           position: absolute;
           bottom: 20px;
           left: 42%;
+
           a {
             color: #999;
           }
         }
       }
     }
+
     .operate-btn {
       height: 100px;
       display: flex;
       flex-flow: row nowrap;
       justify-content: flex-end;
+
       button {
         width: 11%;
         display: inline-block;
@@ -99,6 +118,7 @@
         border: 0;
       }
     }
+
     .nextButton {
       height: 170px;
       padding-top: 40px;

@@ -9,7 +9,7 @@
           <span>&gt;</span>
           <span @click="toEntitySchool">实体办学</span>
           <span>&gt;</span>
-          <span>班级动态</span>
+          <span>校园动态</span>
         </div>
 
         <div class="content">

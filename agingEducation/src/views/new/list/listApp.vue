@@ -7,7 +7,7 @@
         <div class="crumb">
           <span @click="toIndex">返回首页</span>
           <span>&gt;</span>
-          <span>校园动态</span>
+          <span>通知公告</span>
         </div>
 
         <div class="content">
@@ -22,7 +22,7 @@
                 <h2>{{item.titleNm}}</h2>
                 <h3>
                   <span>{{item.crtTm}}</span>
-                  <span>来源：{{item.source}}</span>
+                  <!-- <span>来源：{{item.source}}</span> -->
                 </h3>
               </div>
             </div>

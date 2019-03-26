@@ -92,10 +92,10 @@
                 <p>来源：{{item.source}}</p>
               </ul>
             </div>
-            <!--班级动态-->
+            <!--校园动态-->
             <div class="class-dynamic">
               <div>
-                <h4>班级动态</h4>
+                <h4>校园动态</h4>
                 <span @click="toMoreDynamic">查看更多></span>
               </div>
               <ul
@@ -168,11 +168,11 @@ export default {
     toMoreWindow() {
       window.location.href = "./window.html";
     },
-    toMoreSchool(){
-      this.until.href('./school.html')
+    toMoreSchool() {
+      this.until.href("./school.html");
     },
-    toMoreDynamic(){
-      this.until.href('./dynamic.html')
+    toMoreDynamic() {
+      this.until.href("./dynamic.html");
     },
     getPhotoList(photoCd) {
       let query = new this.Query();
@@ -187,19 +187,19 @@ export default {
               case "40020.110":
                 this.photoList = res.data.items;
                 break;
-                 case "40020.120":
+              case "40020.120":
                 this.writingList = res.data.items;
                 break;
-                 case "40020.130":
+              case "40020.130":
                 this.commentList = res.data.items;
                 break;
-                 case "40020.140":
+              case "40020.140":
                 this.windowList = res.data.items;
                 break;
-                 case "40020.150":
+              case "40020.150":
                 this.schoolList = res.data.items;
                 break;
-                 case "40020.160":
+              case "40020.160":
                 this.dynamicList = res.data.items;
                 break;
             }
