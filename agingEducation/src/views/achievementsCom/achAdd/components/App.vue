@@ -93,7 +93,7 @@ export default {
       window.location.href = "./subAch.html?type=" + showType;
     },
     toWrite() {
-      window.location.href = "./writing.html?type=" + this.showType;
+      window.location.href = `./writing.html?type=${this.showType}`;
     },
     toPaint() {
       window.location.href = "./painting.html?type=" + this.showType;
