@@ -29,7 +29,7 @@
                 @click="toPhotoDetail(item.televInfromPk)"
               >
                 <li>{{item.titleNm}}</li>
-                <p>来源：{{item.source}}</p>
+                <p>作者：{{item.crtBy}}</p>
               </ul>
             </div>
             <!--文字集锦-->
@@ -44,7 +44,7 @@
                 @click="toPhotoDetail(item.televInfromPk)"
               >
                 <li>{{item.titleNm}}</li>
-                <p>来源：{{item.source}}</p>
+                <p>作者：{{item.crtBy}}</p>
               </ul>
             </div>
             <!--学员笔谈-->
@@ -59,7 +59,7 @@
                 @click="toPhotoDetail(item.televInfromPk)"
               >
                 <li>{{item.titleNm}}</li>
-                <p>来源：{{item.source}}</p>
+                <p>作者：{{item.crtBy}}</p>
               </ul>
             </div>
             <!--教师之窗-->
@@ -74,7 +74,7 @@
                 @click="toPhotoDetail(item.televInfromPk)"
               >
                 <li>{{item.titleNm}}</li>
-                <p>来源：{{item.source}}</p>
+                <p>作者：{{item.crtBy}}</p>
               </ul>
             </div>
             <!--办学概况-->
@@ -89,7 +89,7 @@
                 @click="toPhotoDetail(item.televInfromPk)"
               >
                 <li>{{item.titleNm}}</li>
-                <p>来源：{{item.source}}</p>
+                <p>作者：{{item.crtBy}}</p>
               </ul>
             </div>
             <!--校园动态-->
@@ -104,7 +104,7 @@
                 @click="toPhotoDetail(item.televInfromPk)"
               >
                 <li>{{item.titleNm}}</li>
-                <p>来源：{{item.source}}</p>
+                <p>作者：{{item.crtBy}}</p>
               </ul>
             </div>
           </div>
