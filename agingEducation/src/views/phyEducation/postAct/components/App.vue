@@ -42,7 +42,7 @@
           <input class="inputTitle" type="text" v-model="inputAuthor" placeholder="请输入作者">
           <h4>作品名称</h4>
           <input class="inputTitle" type="text" v-model="fileName" placeholder="请输入作品名称">
-          
+
           <h4>图片、文字内容</h4>
           <!-- editor富文本编辑器 -->
           <editor @trigerSubmit="getEditorInfo"></editor>
@@ -85,7 +85,7 @@ export default {
       fileName: "",
       catType: "",
       options: [],
-      cont: "",
+      cont: ""
     };
   },
   components: {
@@ -132,6 +132,8 @@ export default {
             setTimeout(() => {
               (window.location.href = "./actVote.html"), 1000;
             });
+          } else {
+            this.$message.error(res.message);
           }
         },
         err => {}
