@@ -1,4 +1,4 @@
-<template>
+ <template>
   <div id="container">
     <!--顶部-->
     <ageHead></ageHead>
@@ -18,7 +18,7 @@
         <!--活动介绍-->
         <div class="mainContent">
           <div class="contentImg">
-            <img :src="actInfo.imgUrl" alt="图片">
+            <img :src="actInfo.imgUrl || defaultImg" alt="图片">
           </div>
           <div class="contentDes">
             <h3>{{actInfo.titleNm}}</h3>
@@ -94,7 +94,7 @@
 <script>
 import ageHead from "components/ageHead";
 import ageFoot from "components/ageFoot";
-import flower from "../img/活动详情-投票献花.png";
+import defaultImg from "../img/default.png";
 export default {
   data() {
     return {
@@ -107,8 +107,8 @@ export default {
       actId: "",
       actInfo: {},
       entriesList: [],
-      flower,
-      showRelease: true
+      showRelease: true,
+      defaultImg
     };
   },
   computed: {

@@ -18,7 +18,7 @@
         <!--活动介绍-->
         <div class="mainContent">
           <div class="contentImg">
-            <img :src="actInfo.imgUrl" alt="图片">
+            <img :src="actInfo.imgUrl || defaultImg" alt="图片">
           </div>
           <div class="contentDes">
             <h3>{{actInfo.titleNm}}</h3>
@@ -74,6 +74,7 @@
 import ageHead from "components/ageHead";
 import ageFoot from "components/ageFoot";
 import Editor from "components/Editor";
+import defaultImg from "../img/default.png";
 export default {
   data() {
     return {
@@ -85,7 +86,8 @@ export default {
       fileName: "",
       catType: "",
       options: [],
-      cont: ""
+      cont: "",
+      defaultImg
     };
   },
   components: {
@@ -130,7 +132,7 @@ export default {
               type: "success"
             });
             setTimeout(() => {
-              (window.location.href = "./actVote.html"), 1000;
+              window.history.go(-1), 1000;
             });
           } else {
             this.$message.error(res.message);

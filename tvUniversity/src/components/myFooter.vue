@@ -4,11 +4,11 @@
       <p>
         <a href="http://www.nbtvu.net.cn/">宁波广播电视大学</a>
         <span>|</span>
-        <a href="http://lnt.nbsqjy.com">宁波电大老年教育网</a>
+        <a href="http://www.nbsqjy.com/">宁波社区教育网</a>
         <span>|</span>
-        <a href="#">宁波老年实体办学网</a>
+        <a href="http://www.nblll.cn/">宁波终身学习网</a>
         <span>|</span>
-        <a href="#">宁波电视大学网</a>
+        <a href="http://lnt.nbsqjy.com">宁波社区大学老年教育中心</a>
       </p>
       <p>联系方式：0574-87201535
         <span></span>地址：宁波市江北区文教路1号

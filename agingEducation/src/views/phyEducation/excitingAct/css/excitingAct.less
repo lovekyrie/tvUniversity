@@ -1,19 +1,24 @@
 @import '../../../../assets/css/init.less';
+
 .g-content {
   .g-search {
+
     //精彩活动
     .content-wrap {
       display: flex;
       flex-direction: row;
       height: 280px;
       padding-top: 20px; //图片
+
       .content-img {
         display: flex;
         justify-content: center;
         align-items: center;
         border: 1px solid #72b713;
+        padding: 0 5px;
         width: 30%;
         height: 260px;
+
         img {
           width: auto;
           height: auto;
@@ -22,11 +27,13 @@
           vertical-align: middle;
         }
       }
+
       .contentMsg2 {
         border: 1px solid #72b713;
         border-left-width: 0;
         padding: 0 20px 0 30px;
         width: 70%; //活动标题
+
         h4 {
           margin: 30px 0 13px 0;
           height: 40px;
@@ -37,13 +44,16 @@
           overflow: hidden;
           white-space: nowrap;
           text-overflow: ellipsis;
-        } //活动信息
+        }
+
+        //活动信息
         >span {
           display: block;
           font-size: 18px;
           line-height: 26px;
           color: #303030;
         }
+
         div {
           display: flex;
           flex-flow: row wrap;
@@ -51,13 +61,16 @@
           align-items: baseline;
           margin-top: 35px;
           color: #505050;
+
           span {
             font-size: 16px;
+
             i {
               font-style: normal;
               color: #f00;
             }
           }
+
           button {
             flex: 0 0 auto;
             border: 0;

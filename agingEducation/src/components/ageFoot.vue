@@ -5,13 +5,13 @@
         <a href="http://www.nbtvu.net.cn/">宁波广播电视大学</a>
       </span>
       <span>
-        <a href="#">宁波电大老年教育网</a>
+        <a href="http://www.nbsqjy.com/">宁波社区教育网</a>
       </span>
       <span>
-        <a href="#">宁波老年实体办学网</a>
+        <a href="http://www.nblll.cn/">宁波终身学习网</a>
       </span>
       <span style="border: none;">
-        <a href="http://lndd.nbsqjy.com:44185/dist/views/center/index.html">宁波电视大学网</a>
+        <a href="http://lndd.nbsqjy.com:44185/dist/views/center/index.html">宁波市乐龄老年电视大学</a>
       </span>
     </div>
 
