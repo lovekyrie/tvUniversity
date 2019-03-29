@@ -4,7 +4,13 @@
       <span>通知公告</span>
     </div>
     <div ref="scroll">
-      <div class="content" v-show="!flag" v-for="(item,index) in newList" :key="index">
+      <div
+        class="content"
+        v-show="!flag"
+        v-for="(item,index) in newList"
+        :key="index"
+        @click="toDetail(item.televNewsPk)"
+      >
         <div>
           <span>{{item.titleNm}}</span>
         </div>
@@ -46,7 +52,9 @@ export default {
         }
       }, 500);
     },
-
+    toDetail(ipPk) {
+      window.location.href = `./appdetail.html?id=${ipPk}`;
+    },
     getNewList() {
       if (this.hasMore) {
         let query = new this.Query();
@@ -94,19 +102,24 @@ body {
       text-align: center;
     }
     .content {
-      margin-top: 0.2rem;
+      margin-top: 1.2rem;
       background-color: #fff;
       display: -webkit-flex;
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
-      padding: 0.4rem 0.5rem;
+      padding: 0.4rem 1.5rem;
       > div {
         padding: 0.2rem 0;
         width: 100%;
         line-height: 1.5;
         font-size: 16px;
-
+        &:nth-last-of-type(1) {
+          font-size: 14px;
+          span {
+            color: #c1c1c1;
+          }
+        }
         > span {
           display: inline-block;
           width: 100%;
