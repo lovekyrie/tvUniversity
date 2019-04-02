@@ -10,7 +10,7 @@
         <span>|</span>
         <a href="http://lnt.nbsqjy.com">宁波社区大学老年教育中心</a>
       </p>
-      <p>联系方式：0574-87201535
+      <p>
         <span></span>地址：宁波市江北区文教路1号
         <span>
           <a href="http://lndd.nbsqjy.com:44185" target="_blank">后台管理系统</a>
