@@ -16,7 +16,7 @@
           >
             <!-- <img :src="icon" alt=""> -->
             <p>{{item.titleNm}}</p>
-            <span>{{item.createTm}}</span>
+            <span>{{item.crtTm}}</span>
           </div>
         </div>
         <img src="./img/home.png" usemap="#Map" border="0">
@@ -105,9 +105,10 @@ export default {
     },
     getMsg(siteCd) {
       let query = new this.Query();
-      query.buildWhereClause("catCd", "30010.160");
+      query.buildWhereClause("catCd", "30010.170");
       let regionCd = siteCd || this.until.loGet("regionCd");
       query.buildWhereClause("siteCd", regionCd, "EQ");
+      query.buildOrderClause("crtTm", "DESC");
       query.buildPageClause(this.currentPage, this.pageSize);
       let param = query.getParam();
       this.until.get("/telev/news/page", param).then(res => {
@@ -115,9 +116,7 @@ export default {
           this.items = res.data.items;
           if (this.items && this.items.length > 0) {
             this.items.forEach(item => {
-              let time = this.until.formatDate(item.crtTm);
-              item.createTm =
-                time.year + "年" + time.month + "月" + time.day + "日";
+              item.crtTm = this.until.formatDay("yyyy年MM月dd日", item.crtTm);
             });
           }
         }
