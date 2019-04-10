@@ -117,6 +117,8 @@ export default {
             setTimeout(() => {
               window.location.href = "./subAch.html";
             }, 1000);
+          } else {
+            this.$message.error(res.message);
           }
         },
         err => {}

@@ -52,10 +52,6 @@
               @mousedown="videoStop()"
             >{{item.videoName}}</span>
           </menu>
-          <!--文章内容-->
-          <div class="honorArticle">
-            <p v-html="videoInfo.cont"></p>
-          </div>
         </div>
       </div>
     </div>
@@ -72,16 +68,10 @@ import ageFoot from "components/ageFoot";
 export default {
   data() {
     return {
-      honorTitle: "宁波电大获得2015年度全国优秀校外学习中心",
-      classes: "舞蹈班",
-      author: "风雨飘扬",
-      honorTime: "2017年9月30日",
-      honorSource: "宁波电大",
-      honorArticle: "校园并不是年轻人的专利",
       videoInfo: {},
       showType: false,
       videoId: "",
-      crtTime:"",
+      crtTime: "",
       //    video
       videoCurrent: 0, //轮播视频当前视频
       timer: null, //定时
@@ -129,14 +119,14 @@ export default {
     this.getVideoInfo();
   },
   methods: {
-    toIndex(){
-      this.until.href('../home/index.html')
+    toIndex() {
+      this.until.href("../home/index.html");
     },
-    toSubAch(){
-      this.until.href('./subAch.html')
+    toSubAch() {
+      this.until.href("./subAch.html");
     },
-    toVideo(){
-      this.until.href('./actVideo.html')
+    toVideo() {
+      this.until.href("./actVideo.html");
     },
     //轮播自动切换
     videoChange() {
@@ -158,18 +148,19 @@ export default {
     videoStop() {
       clearInterval(this.timer);
     },
-    getVideoInfo(){
-
-      this.until.get('/telev/gain/info/'+this.videoId).then(
-        res=>{
-          if(res.status==='200'){
-            this.videoInfo=res.data
-            let time=this.until.formatDate(res.data.crtTm)
-             this.crtTime=time.year+'年'+time.month+'月'+time.day+'日'
+    getVideoInfo() {
+      this.until.get("/telev/gain/info/" + this.videoId).then(
+        res => {
+          if (res.status === "200") {
+            this.videoInfo = res.data;
+            //解析视频URL
+            let videoUrl = this.videoInfo.cont.match(/http\S+.mp4/);
+            this.videoList[0].playerOptions.sources[0]["src"] = videoUrl[0];
+            this.crtTime = this.until.formatDay("yyyy年MM月dd日", this.crtTime);
           }
         },
-        err=>{}
-      )
+        err => {}
+      );
     }
   }
 };

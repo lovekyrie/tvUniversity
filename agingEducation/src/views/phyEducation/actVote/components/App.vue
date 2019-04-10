@@ -53,13 +53,13 @@
           <div class="contents">
             <el-row :gutter="25">
               <el-col
-                :span="8"
+                :span="6"
                 v-for="(item,index) in entriesList"
                 style="margin-bottom: 30px"
                 :key="index"
               >
-                <div class="inContent" @click="toDetail(item.televRunPk)">
-                  <div class="inner">
+                <div class="inContent">
+                  <div class="inner" @click="toDetail(item.televRunPk)">
                     <img :src="item.imgUrl" alt>
                   </div>
                   <p>上传作者:{{item.authorNm}}</p>
@@ -102,7 +102,7 @@ export default {
       actDetail: "这里是活动详情描述",
       total: 15,
       currentPage: 1,
-      pageSize: 6,
+      pageSize: 8,
       showType: false,
       actId: "",
       actInfo: {},
@@ -181,15 +181,10 @@ export default {
             this.actInfo.startTm = res.data.startTm.substr(0, 10);
             this.actInfo.endTm = res.data.endTm.substr(0, 10);
 
-            let time = this.until.formatDate();
-            let today = new Date(time.year + "-" + time.month + "-" + time.day);
-            let startDt = new Date(this.actInfo.startTm);
-            let endDt = new Date(this.actInfo.endTm);
-            if (endDt < today || today < startDt) {
-              this.showRelease = false;
-            } else {
-              this.showRelease = true;
-            }
+            let today = new Date().getTime();
+            let startDt = new Date(this.actInfo.startTm).getTime();
+            let endDt = new Date(this.actInfo.endTm).getTime();
+            this.showRelease = endDt < today || today < startDt ? false : true;
           }
         },
         err => {}

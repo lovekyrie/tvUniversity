@@ -122,7 +122,7 @@ export default {
         res => {
           if (res.status == 200) {
             sessionStorage.setItem("DD_token", JSON.stringify(res.data));
-            location.href = "../home/index.html";
+            window.history.go(-1);
           } else {
             this.$alert(res.message, "提示", {
               confirmButtonText: "确定",
