@@ -17,6 +17,21 @@
         <div class="content">
           <!--内容底部-->
           <div class="mainFoot">
+            <!--办学概况-->
+            <div class="school">
+              <div>
+                <h4>办学概况</h4>
+                <span @click="toMoreSchool">查看更多></span>
+              </div>
+              <ul
+                v-for="item in schoolList"
+                :key="item.televInfromPk"
+                @click="toPhotoDetail(item.televInfromPk)"
+              >
+                <li>{{item.titleNm}}</li>
+                <p>作者：{{item.crtBy}}</p>
+              </ul>
+            </div>
             <!--图文共赏-->
             <div class="production">
               <div>
@@ -70,21 +85,6 @@
               </div>
               <ul
                 v-for="item in windowList"
-                :key="item.televInfromPk"
-                @click="toPhotoDetail(item.televInfromPk)"
-              >
-                <li>{{item.titleNm}}</li>
-                <p>作者：{{item.crtBy}}</p>
-              </ul>
-            </div>
-            <!--办学概况-->
-            <div class="school">
-              <div>
-                <h4>办学概况</h4>
-                <span @click="toMoreSchool">查看更多></span>
-              </div>
-              <ul
-                v-for="item in schoolList"
                 :key="item.televInfromPk"
                 @click="toPhotoDetail(item.televInfromPk)"
               >

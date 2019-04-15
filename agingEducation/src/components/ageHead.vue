@@ -8,7 +8,7 @@
         <span>宁波社区大学老年教育中心</span>
         <span>宁波广播电视大学老年教育学院</span>
       </div>
-      <div class="drop-list">
+      <!--    <div class="drop-list">
         <el-dropdown @command="handleCommand">
           <span class="el-dropdown-link">
             {{address}}
@@ -22,7 +22,7 @@
             >{{item.nm}}</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
-      </div>
+      </div>-->
       <div class="right">
         <p class="login-btn" v-if="!isLogin">
           <a href="../system/login.html" target="_self">登录</a>&nbsp;|&nbsp;

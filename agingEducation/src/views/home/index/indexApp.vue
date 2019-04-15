@@ -68,7 +68,7 @@
         </map>
         <!--<p><a href="../apply/rule.html">在线报名</a><a href="../study/course.html">在线学习</a><a href="../center/center.html">个人空间</a><a href="./naire.html">问卷调查</a></p>-->
       </div>
-      <p class="bottom">
+      <p class="bottom" v-show="showButton">
         <a href="../apply/rule.html">在线报名</a>
         <a href="../apply/pay.html">在线缴费</a>
       </p>
@@ -91,11 +91,13 @@ export default {
       items: [],
       video,
       iconG,
-      icon
+      icon,
+      showButton: false
     };
   },
   mounted() {
     this.getMsg();
+    this.getShowButton();
   },
   methods: {
     building() {
@@ -121,6 +123,15 @@ export default {
           }
         }
       });
+    },
+    getShowButton() {
+      this.until
+        .get("/general/cat/listByPrntCd", { prntCd: "30130" })
+        .then(res => {
+          if (res.status === "200") {
+            this.showButton = res.data.items[0].arg1 === "true" ? true : false;
+          }
+        });
     },
     toDetail(pk) {
       window.location.href = "../new/imglist.html?id=" + pk;
