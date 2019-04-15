@@ -1,106 +1,91 @@
-class until{
+class until {
   //ajax请求
-  overdue(vm){
-    let that = this;
-    vm.$hero.confirm.show({
-      msg:'登陆超时，请重新登陆',
-      onConfirm(){
-        that.loRemove('DD_token');
-        that.href('../entry/login.html');
-      },
-      onCancel(){
-        that.loRemove('DD_token');
-        that.href('../entry/login.html');
-      }
-    });
-    throw new Error('登陆超时')
-  }
-  postData(url,data){
-    let promise = new Promise((resolve,reject)=> {
+  postData(url, data) {
+    let promise = new Promise((resolve, reject) => {
       $.ajax({
-        type:'POST',
+        type: 'POST',
         url,
         data,
-        async:true,
-        cache:false,
-        contentType:'application/json;charset=UTF-8',
-        dataType:'json',
-        success(data){
+        async: true,
+        cache: false,
+        contentType: 'application/json;charset=UTF-8',
+        dataType: 'json',
+        success(data) {
           resolve(data);
         },
-        error(data){
+        error(data) {
           reject(data);
         }
       })
     });
     return promise;
   }
-  postImg(url,data){
-    let promise = new Promise((resolve,reject)=> {
+  postImg(url, data) {
+    let promise = new Promise((resolve, reject) => {
       $.ajax({
-        type:'POST',
+        type: 'POST',
         contentType: false,
         processData: false,
         url,
         data,
-        cache:false,
-        dataType:'json',
-        success(data){
+        cache: false,
+        dataType: 'json',
+        success(data) {
           resolve(data);
         },
-        error(data){
+        error(data) {
           reject(data);
         },
       })
     });
     return promise;
   }
-  post(url,data){
-    let promise = new Promise((resolve,reject)=> {
+  post(url, data) {
+    let promise = new Promise((resolve, reject) => {
       $.ajax({
-        type:'POST',
+        type: 'POST',
         url,
         data,
-        async:true,
-        cache:false,
-        dataType:'json',
-        success(data){
+        async: true,
+        cache: false,
+        dataType: 'json',
+        success(data) {
           resolve(data);
         },
-        error(data){
+        error(data) {
           reject(data);
         }
       })
     });
     return promise;
   }
-  get(url,data,cache = false){
-    let promise = new Promise((resolve,reject)=>{
+  get(url, data, cache = false) {
+    let promise = new Promise((resolve, reject) => {
       $.ajax({
-        type:'GET',
+        type: 'GET',
         url,
         data,
         cache,
-        dataType:'json',
-        success(data){
+        dataType: 'json',
+        success(data) {
           resolve(data);
         },
-        error(data){
+        error(data) {
           reject(data);
         }
       })
     });
     return promise;
   }
-  IsWx(){
+  IsWx() {
     let u = navigator.userAgent.toLowerCase();
-    let isWx = u.match(/MicroMessenger/i)=="micromessenger";
+    let isWx = u.match(/MicroMessenger/i) == "micromessenger";
     return isWx;
   }
   //fetch请求
-  async fetch(url,data){
-    if(window.fetch){
-      let body=this.param(data);
+  async fetch(url, data) {
+    if (window.fetch) {
+      let body = this.param(data);
       let requestConfig = {
         credentials: 'include',
         method: 'POST',
@@ -119,111 +104,111 @@ class until{
       } catch (error) {
         throw new Error(error)
       }
-    }else {
-      this.post(url,data);
+    } else {
+      this.post(url, data);
     }
   }
   //fetch参数格式化
-  param(data){
-    let str="";
-    Object.keys(data).forEach((index)=>{
-      str=str+index+"="+data[index]+"&"
+  param(data) {
+    let str = "";
+    Object.keys(data).forEach((index) => {
+      str = str + index + "=" + data[index] + "&"
     })
-    str=str.substring(0,str.length-1);
+    str = str.substring(0, str.length - 1);
     return str;
   }
   //是否登录
-  isLogged(){
+  isLogged() {
     let state = this.loGet('DD_token') ? true : false;
     return state;
   }
   //,分割数组
-  cutArray(str){
+  cutArray(str) {
     let result = [];
-    if(str.indexOf(",")>-1){
+    if (str.indexOf(",") > -1) {
       result = str.split(',');
-    }else {
+    } else {
       result.push(str);
     }
     return result;
   }
-  upImg(e){
-    let $q = new Promise((resolve,reject)=>{
+  upImg(e) {
+    let $q = new Promise((resolve, reject) => {
       let blob = e.target.files[0];
-      if (!/^image/.test(blob.type)){
+      if (!/^image/.test(blob.type)) {
         return reject('请选择图片文件');
       }
       let param = new FormData();
-      param.append('file',blob);
-      this.postImg('/general/file/upload',param)
-        .then(res=>{
+      param.append('file', blob);
+      this.postImg('/general/file/upload', param)
+        .then(res => {
           e.target.value = '';
-          if(res.status == 500){
+          if (res.status == 500) {
             reject(res.message)
-          }else {
+          } else {
             resolve(res.data);
           }
-        },err=>{
+        }, err => {
           e.target.value = '';
           reject('上传失败');
         })
     });
     return $q;
   }
-  upMoreImg(e){
-    let $q = new Promise((resolve,reject)=>{
+  upMoreImg(e) {
+    let $q = new Promise((resolve, reject) => {
       let blob = e.target.files;
-      Object.keys(blob).forEach((o)=>{
-        if (!/^image/.test(blob[o].type)){
+      Object.keys(blob).forEach((o) => {
+        if (!/^image/.test(blob[o].type)) {
           delete blob[o];
         }
       });
-      if(blob.length<1){
+      if (blob.length < 1) {
         return reject('请选择图片文件');
       }
       let param = new FormData();
-      Object.keys(blob).forEach((o)=>{
+      Object.keys(blob).forEach((o) => {
         let obj = blob[o];
-        param.append('files',obj);
+        param.append('files', obj);
       })
-      this.postImg('/general/file/upload',param)
-        .then(res=>{
+      this.postImg('/general/file/upload', param)
+        .then(res => {
           e.target.value = '';
-          if(res.status == 500){
+          if (res.status == 500) {
             reject(res.message)
-          }else {
+          } else {
             resolve(res.data);
           }
-        },err=>{
+        }, err => {
           e.target.value = '';
           reject('上传失败');
         })
     });
     return $q;
   }
-  postImg(url,data){
-    let promise = new Promise((resolve,reject)=> {
+  postImg(url, data) {
+    let promise = new Promise((resolve, reject) => {
       $.ajax({
-        type:'POST',
+        type: 'POST',
         contentType: false,
         processData: false,
         url,
         data,
-        cache:false,
-        dataType:'json',
-        success(data){
+        cache: false,
+        dataType: 'json',
+        success(data) {
           resolve(data);
         },
-        error(data){
+        error(data) {
           reject(data);
         },
       })
     });
     return promise;
   }
-  isLogin(){
+  isLogin() {
     let token = this.loGet('DD_token');
-    if(!token){
+    if (!token) {
       this.href('../entry/login.html');
       return false;
     }
@@ -231,156 +216,172 @@ class until{
     return JSON.parse(token);
   }
   //是否登录
-  isLogged(){
+  isLogged() {
     let token = this.loGet('DD_token');
-    if(!token){
+    if (!token) {
       return false;
     }
     return JSON.parse(token);
   }
   //获取TS_token
-  getToken(obj){
+  getToken(obj) {
     return obj.token;
   }
-  getStuPk(obj){
+  getStuPk(obj) {
     return obj.userInfo.sysUserPk;
   }
   //跳转页面
-  href(url){
-      window.location.href = url;
+  href(url) {
+    window.location.href = url;
   }
   //后退
-  back(){
+  back() {
     window.history.back();
   }
   //session存取
-  seSave(name,obj){
-    sessionStorage.setItem(name,obj);
+  seSave(name, obj) {
+    sessionStorage.setItem(name, obj);
   }
-  seGet(name){
+  seGet(name) {
     return sessionStorage.getItem(name);
   }
-  seRemove(name){
+  seRemove(name) {
     sessionStorage.removeItem(name);
   }
   //local存取
-  loSave(name,obj){
-    localStorage.setItem(name,obj);
+  loSave(name, obj) {
+    localStorage.setItem(name, obj);
   }
-  loGet(name){
+  loGet(name) {
     return localStorage.getItem(name);
   }
-  loRemove(name){
+  loRemove(name) {
     localStorage.removeItem(name);
   }
   //截取URL参数
   getQueryString(name) {
     let reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
     let r = window.location.search.substr(1).match(reg);
-    if ( r != null ){
+    if (r != null) {
       return decodeURI(r[2]);
-    }else{
+    } else {
       return null;
     }
   }
   //判断是否空对象
   isEmptyObject(obj) {
-    for (var name in obj){
-      return false;//返回false，不为空对象
+    for (var name in obj) {
+      return false; //返回false，不为空对象
     }
-    return true;//返回true，为空对象
+    return true; //返回true，为空对象
   }
   //格式化日期,返回 年 月 日 星期
-  formatDate(str=""){
-    str = str==""?new Date():new Date(str.replace(/(-)/g, '/'));
-    let week = ["星期天","星期一","星期二","星期三","星期四","星期五","星期六"];
-    let year =str.getFullYear();
-    let month = str.getMonth()+1<10?"0"+(str.getMonth()+1):str.getMonth()+1;
-    let day = str.getDate()<10?"0"+str.getDate():str.getDate();
-    let hour = str.getHours()<10?"0"+str.getHours():str.getHours();
-    let minite = str.getMinutes()<10?"0"+str.getMinutes():str.getMinutes();
-    let second = str.getSeconds()<10?"0"+str.getSeconds():str.getSeconds();
+  formatDate(str = "") {
+    str = str == "" ? new Date() : new Date(str.replace(/(-)/g, '/'));
+    let week = ["星期天", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+    let year = str.getFullYear();
+    let month = str.getMonth() + 1 < 10 ? "0" + (str.getMonth() + 1) : str.getMonth() + 1;
+    let day = str.getDate() < 10 ? "0" + str.getDate() : str.getDate();
+    let hour = str.getHours() < 10 ? "0" + str.getHours() : str.getHours();
+    let minite = str.getMinutes() < 10 ? "0" + str.getMinutes() : str.getMinutes();
+    let second = str.getSeconds() < 10 ? "0" + str.getSeconds() : str.getSeconds();
     week = week[str.getDay()];
-    return {year,month,day,hour,minite,second,week};
+    return {
+      year,
+      month,
+      day,
+      hour,
+      minite,
+      second,
+      week
+    };
   }
   //指定时间倒计时(结束秒数)
-  TimeSlot(count){
+  TimeSlot(count) {
     let end = new Date();
     //Date类型的valueOf(),返回当前日期毫秒数,可以直接比较
-    if(count<end){
-      return {h:'00',m:'00',s:'00'}
+    if (count < end) {
+      return {
+        h: '00',
+        m: '00',
+        s: '00'
+      }
     }
 
-    let total = (count - end.getTime())/1000;
-    let h = parseInt(total/(60*60));
-    let m = parseInt(total/60%60);
-    let s = parseInt(total%60);
-    h = h<10?"0"+h:h;
-    m = m<10?"0"+m:m;
-    s = s<10?"0"+s:s;
+    let total = (count - end.getTime()) / 1000;
+    let h = parseInt(total / (60 * 60));
+    let m = parseInt(total / 60 % 60);
+    let s = parseInt(total % 60);
+    h = h < 10 ? "0" + h : h;
+    m = m < 10 ? "0" + m : m;
+    s = s < 10 ? "0" + s : s;
 
-    return {h,m,s};
+    return {
+      h,
+      m,
+      s
+    };
   }
-  TimeStep(times){
+  TimeStep(times) {
     let start = new Date(times);
     let end = new Date();
-    let count = (end.getTime() - start.getTime())/1000;
-    let d = parseInt(count/(60*60)/24);
+    let count = (end.getTime() - start.getTime()) / 1000;
+    let d = parseInt(count / (60 * 60) / 24);
     return d;
   }
   //设置只能输入数字
-  formatNumber(val,max){
+  formatNumber(val, max) {
     max = parseInt(max);
     let reg = /^\d+$/g;
     val = val.toString();
-    if(val.match(reg)){
+    if (val.match(reg)) {
       return val > max ? max : Number(val);
-    }else {
-      if(val==""){
+    } else {
+      if (val == "") {
         return "";
       }
-      if(!val[0].match(reg)){
+      if (!val[0].match(reg)) {
         return "";
       }
       let str = "";
-      for(let i=0;i<val.length;i++){
+      for (let i = 0; i < val.length; i++) {
         str += val[i].match(reg) ? val[i] : "";
       }
       return parseInt(str);
     }
   }
-  count(flag,val,max){//加减按钮点击
+  count(flag, val, max) { //加减按钮点击
     max = parseInt(max);
-    if(max == 0){
+    if (max == 0) {
       return 0;
     }
-    if(flag=="-"){
+    if (flag == "-") {
       return val == 1 ? 1 : --val;
-    }else {
+    } else {
       return val == max ? max : ++val;
     }
   }
   //数组排序(某属性数值)
-  Sort(array,flag,state = 'up'){
-    let box = array.sort((v1,v2)=>{
-      if(state == 'up'){
+  Sort(array, flag, state = 'up') {
+    let box = array.sort((v1, v2) => {
+      if (state == 'up') {
         return v1[flag] - v2[flag];
-      }else {
+      } else {
         return v2[flag] - v1[flag];
       }
     })
     return box;
   }
   //随机生成 n~m 之间的数
-  Random(min,max){
+  Random(min, max) {
     let choices = max - min + 1;
     return Math.floor(Math.random() * choices + min);
   }
 }
 //touch判断方向
-class judge{
+class judge {
   // 1上2下3左4右
-  getDirection(startx, starty, endx, endy){
+  getDirection(startx, starty, endx, endy) {
     let angx = endx - startx;
     let angy = endy - starty;
     let result = 0;
@@ -391,19 +392,19 @@ class judge{
       result = 2;
     } else if ((angle >= 135 && angle <= 180) || (angle >= -180 && angle < -135)) {
       result = 3;
-    } else if (angle >= -45 && angle <= 45 ) {
+    } else if (angle >= -45 && angle <= 45) {
       result = 4;
     }
     return result;
   }
-  getAngle(angx, angy){
+  getAngle(angx, angy) {
     return Math.atan2(angy, angx) * 180 / Math.PI;
   }
 }
-class reg{
+class reg {
   //验证身份证号码
-  checkCard(str){
-    if(!str){
+  checkCard(str) {
+    if (!str) {
       return '请输入身份证号码';
     }
     //15位数身份证正则表达式
@@ -416,77 +417,77 @@ class reg{
     return 'ok';
   }
   //验证手机号
-  checkPhone(str){
+  checkPhone(str) {
     let regPhone = /^(((13[0-9]{1})|(14[0-9]{1})||(15[0-9]{1})|17[0-9]{1}|(18[0-9]{1}))+\d{8})$/;
-    if(!str){
+    if (!str) {
       return "请输入手机号";
     }
-    if(!regPhone.test(str)){
+    if (!regPhone.test(str)) {
       return "请填写正确的手机号";
     }
     return 'ok';
   }
   //验证用户名
-  checkUserName(str){
+  checkUserName(str) {
     let reg = /[\u4e00-\u9fa5]/g;
-    if(!str){
+    if (!str) {
       return "请输入用户名";
     }
-    if(reg.test(str)){
+    if (reg.test(str)) {
       return "用户名不能包含中文";
     }
     return 'ok';
   }
   //验证真实姓名
-  checkName(str){
-   let reg = /^[\u4E00-\u9FA5]+$/;
-   if(!str){
-     return "请输入真实姓名";
-   }
-   if(str.length<2){
-     return "请输入正确名字";
-   }
-   if(!reg.test(str)){
+  checkName(str) {
+    let reg = /^[\u4E00-\u9FA5]+$/;
+    if (!str) {
+      return "请输入真实姓名";
+    }
+    if (str.length < 2) {
+      return "请输入正确名字";
+    }
+    if (!reg.test(str)) {
       return "请输入中文名";
-   }
-   return 'ok';
+    }
+    return 'ok';
   }
-  checkLoginPwd(str){
-    if(!str){
+  checkLoginPwd(str) {
+    if (!str) {
       return "请输入密码";
     }
     return 'ok';
   }
   //验证密码
-  checkPwd(str){
-    if(!str){
+  checkPwd(str) {
+    if (!str) {
       return "请输入密码";
     }
-    if(str.length<8 || str.length>16){
+    if (str.length < 8 || str.length > 16) {
       return "请输入8-16位任意字符密码";
     }
     return 'ok';
   }
   //验证邮箱
-  checkMail(str){
+  checkMail(str) {
     let reg = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$");
-    if(!str){
+    if (!str) {
       return "请输入邮箱";
     }
-    if(!reg.test(str)){
+    if (!reg.test(str)) {
       return "请输入正确的邮箱";
     }
     return 'ok';
   }
 
 }
-class App{
+class App {
   //调用本地java方法
-  NativeInterface(name,data){
-    let $q = new Promise((resolve,reject)=>{
+  NativeInterface(name, data) {
+    let $q = new Promise((resolve, reject) => {
       window.WebViewJavascriptBridge.callHandler(
-        name,data,(res=undefined)=>{
-          res = res ?res:JSON.parse(res);
+        name, data, (res = undefined) => {
+          res = res ? res : JSON.parse(res);
           resolve(res);
         }
       )
@@ -494,24 +495,24 @@ class App{
     return $q;
   }
   //判断JS环境
-  IsAndroid(){
+  IsAndroid() {
     let u = navigator.userAgent;
     let isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1;
     return isAndroid;
   }
-  IsIos(){
+  IsIos() {
     let u = navigator.userAgent;
     let isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
     return isiOS;
   }
-  IsWx(){
+  IsWx() {
     let u = navigator.userAgent.toLowerCase();
-    let isWx = u.match(/MicroMessenger/i)=="micromessenger";
+    let isWx = u.match(/MicroMessenger/i) == "micromessenger";
     return isWx;
   }
 }
 //模糊搜索
-class crawler{
+class crawler {
   /**
    * @premise 引入pinyin.js
    * @method  fuzzy
@@ -522,60 +523,60 @@ class crawler{
    */
   time = null;
   //本地数据模糊搜索
-  async fuzzy(val,array,attr = ""){
-    if(val == ""){
-      if(this.time){
+  async fuzzy(val, array, attr = "") {
+    if (val == "") {
+      if (this.time) {
         clearTimeout(this.time);
       }
       return array;
-    }else {
-      if(this.time){
+    } else {
+      if (this.time) {
         clearTimeout(this.time);
       }
-      let out = await this.buildTime(val,array,attr);
+      let out = await this.buildTime(val, array, attr);
       return out;
     }
   }
-  buildTime(val,array,attr){
-    let $q = new Promise((resolve,reject)=>{
-      this.time = setTimeout(()=>{
-        resolve(this.buildArray(val,array,attr));
-      },1000);
+  buildTime(val, array, attr) {
+    let $q = new Promise((resolve, reject) => {
+      this.time = setTimeout(() => {
+        resolve(this.buildArray(val, array, attr));
+      }, 1000);
     })
     return $q;
   }
-  buildArray(val,array,attr){
+  buildArray(val, array, attr) {
     let result = [],
-        reg = /[\u4e00-\u9fa5]/g,
-        lang = reg.test(val) ? "ch" : "en",//检测是否含有中文
-        box = [...array];
+      reg = /[\u4e00-\u9fa5]/g,
+      lang = reg.test(val) ? "ch" : "en", //检测是否含有中文
+      box = [...array];
     //模糊搜索筛选
-    for(let k = box.length-1;k>-1;k--){
-      let target = attr == "" ? box[k] : box[k][attr];//检测传入的数组项是否为对象
+    for (let k = box.length - 1; k > -1; k--) {
+      let target = attr == "" ? box[k] : box[k][attr]; //检测传入的数组项是否为对象
       let title = pinyin.getFullChars(target),
-          titleLower = lang == "ch" ? target : title.toLowerCase();
-      for(let j = 0; j < val.length; j++){
+        titleLower = lang == "ch" ? target : title.toLowerCase();
+      for (let j = 0; j < val.length; j++) {
         let index = titleLower.indexOf(val[j]);
-        if(index != -1){
-          titleLower = titleLower.substring(index+1,titleLower.length);//检测剩余字符串
-          if(j == val.length-1){
+        if (index != -1) {
+          titleLower = titleLower.substring(index + 1, titleLower.length); //检测剩余字符串
+          if (j == val.length - 1) {
             result.push(box[k]);
           }
-        }else {
-          box.splice(k,1);
+        } else {
+          box.splice(k, 1);
           break;
         }
       }
     }
     //搜索排序
-    result.forEach((val,i)=>{
+    result.forEach((val, i) => {
       let target = attr == "" ? result[i] : result[i][attr];
       let title = pinyin.getFullChars(target),
-          titleLower = title.toLowerCase(),
-          obj=null;
-      if(titleLower.match(eval('/'+val+'/gi'))!=null){
+        titleLower = title.toLowerCase(),
+        obj = null;
+      if (titleLower.match(eval('/' + val + '/gi')) != null) {
         obj = result[i];
-        result.splice(i,1);
+        result.splice(i, 1);
         result.unshift(obj);
       }
     });
@@ -585,26 +586,33 @@ class crawler{
 //闭包缓存处理结果,若某操作处理费时,则用闭包进行缓存
 // high.attach(str);
 const high = (function () {
-    let cache = {},
-        array = [];
-    return {
-      attach(str){
-          if(str in cache){
-              return change[str];
-          }
-          let fsb = new uikit.webctrl.SearchBox(str);
-          cache[str] = fsb;
-          return fsb
+  let cache = {},
+    array = [];
+  return {
+    attach(str) {
+      if (str in cache) {
+        return change[str];
       }
+      let fsb = new uikit.webctrl.SearchBox(str);
+      cache[str] = fsb;
+      return fsb
     }
+  }
 })();
-class studay{
-  a(){
+class studay {
+  a() {
     this.b();
   }
-  b(){
-    alert(arguments.callee.caller);//显示调用此函数源代码
+  b() {
+    alert(arguments.callee.caller); //显示调用此函数源代码
   }
 
 }
-export { until,reg,App,crawler,high,judge };
+export {
+  until,
+  reg,
+  App,
+  crawler,
+  high,
+  judge
+};
