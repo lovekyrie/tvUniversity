@@ -1,28 +1,40 @@
  @import '../../../../assets/css/init.less';
  @base: 18rem;
+
  #container {
    .list {
      border-bottom: 1px solid #e1e1e1;
      cursor: pointer;
+
      .listContent {
        height: 90px;
        display: flex;
        display: -webkit-flex;
        flex-direction: column;
+
        >div {
          padding-top: 25px;
          flex: 1;
-         strong {
+
+         a {
            font-size: 20px;
            font-weight: 400;
-           color: #101010;
+           color: #337ab7;
+           text-decoration: none;
+
+           &:hover {
+             color: #23527c;
+             text-decoration: underline;
+           }
          }
+
          p {
            padding-top: 5px;
            color: #303030;
            font-size: 20px;
          }
        }
+
        p {
          padding-bottom: 20px;
          display: flex;
@@ -30,8 +42,10 @@
          color: #303030;
          line-height: 35px;
          font-size: 18px;
+
          span {
            flex: 1 0 50%;
+
            &:nth-last-of-type(1) {
              flex: 0 0 15%;
            }
@@ -39,15 +53,19 @@
        }
      }
    }
+
    .el-pagination {
      padding: 40px 0;
+
      .el-pagination__total {
        font-size: 16px !important;
        line-height: 40px;
      }
+
      .active {
        background-color: #72b713;
      }
+
      .btn-prev .el-icon,
      .el-pager li,
      .btn-next .el-icon,

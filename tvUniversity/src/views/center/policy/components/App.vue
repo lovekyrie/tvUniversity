@@ -12,7 +12,9 @@
       <ul>
         <li v-for="(item,index) in list" @click="toDetail(item.sysNewsPk)" :key="index">
           <img :src="iconG" alt>
-          <p>{{item.nm}}</p>
+          <p>
+            <a href="#">{{item.nm}}</a>
+          </p>
           <span>{{item.year}}年{{item.month}}月{{item.day}}日</span>
         </li>
       </ul>

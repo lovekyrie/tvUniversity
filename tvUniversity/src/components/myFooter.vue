@@ -8,7 +8,7 @@
         <span>|</span>
         <a href="http://www.nblll.cn/">宁波终身学习网</a>
         <span>|</span>
-        <a href="http://lnt.nbsqjy.com">宁波社区大学老年教育中心</a>
+        <a href="http://ln.nbsqjy.com">宁波社区大学老年教育中心</a>
       </p>
       <p>
         <span></span>地址：宁波市江北区文教路1号
@@ -62,7 +62,7 @@ export default {
 
       &:nth-child(2) {
         padding-bottom: 0;
-        a{
+        a {
           font-size: 18px;
         }
       }

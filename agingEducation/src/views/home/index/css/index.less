@@ -1,4 +1,5 @@
 @import "../../../../assets/css/init.less";
+
 html,
 body {
   height: 100%;
@@ -16,55 +17,66 @@ map area {
   flex-flow: row nowrap;
   justify-content: space-between;
   min-width: 1200px;
+
   img {
     flex: 0 0 55%;
   }
+
   .new-list {
     flex: 0 0 42%;
     background-image: url("../img/bgBorder.png");
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
+
     >div {
       &:nth-last-of-type(1) {
         border-bottom: 0;
       }
     }
-    .title{
+
+    .title {
       margin-top: 30px;
       padding: 40px 0px 0px 50px;
       display: flex;
       flex-flow: row nowrap;
       align-items: center;
-      img{
+
+      img {
         height: 18px;
       }
-      h3{
+
+      h3 {
         margin-left: 10px;
         flex: 1;
       }
     }
+
     .new-item {
       position: relative;
       margin: 0 60px;
       padding: 20px 0;
       border-bottom: 1px solid #e1e1e1;
       cursor: pointer;
+
       p {
         font-size: 20px;
         color: #101010;
       }
+
       span {
         color: #303030;
         font-size: 18px;
       }
-      img{
+
+      img {
         position: absolute;
         top: 30px;
         left: 0px;
       }
     }
   }
+
   img {
     flex: 0 0 auto;
   }
@@ -84,26 +96,31 @@ map area {
     background-color: #389744;
     border-radius: 8px;
     color: #fff;
-    &:nth-of-type(2){
+
+    &:nth-of-type(2) {
       background-image: url("../img/pay.png");
     }
   }
- 
+
 }
 
 .size {
   h3 {
     font-size: 34px !important;
   }
+
   span {
     font-size: 24px !important;
   }
+
   input {
     font-size: 24px !important;
   }
+
   button {
     font-size: 33px !important;
   }
+
   a {
     font-size: 30px !important;
   }

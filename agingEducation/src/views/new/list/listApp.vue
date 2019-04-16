@@ -19,7 +19,9 @@
           >
             <div class="info">
               <div>
-                <h2>{{item.titleNm}}</h2>
+                <h2>
+                  <a href="#">{{item.titleNm}}</a>
+                </h2>
                 <h3>
                   <span>{{item.crtTm}}</span>
                   <!-- <span>来源：{{item.source}}</span> -->

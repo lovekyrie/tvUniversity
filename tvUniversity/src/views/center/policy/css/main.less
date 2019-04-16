@@ -1,10 +1,12 @@
 @import '../../../../assets/css/init.less';
 @base: 18rem;
+
 #container {
   .content {
     >ul {
       border-bottom: 1px solid #f1f1f1;
       cursor: pointer;
+
       li {
         display: flex;
         flex-flow: row nowrap;
@@ -15,9 +17,11 @@
         line-height: 60px;
         color: #101010;
         cursor: pointer;
+
         &:last-child {
           border-bottom: 0;
         }
+
         p {
           width: 82%;
           margin-left: 1%;
@@ -26,7 +30,19 @@
           overflow: hidden;
           white-space: nowrap;
           text-overflow: ellipsis;
+
+          a {
+
+            color: #337ab7;
+            text-decoration: none;
+
+            &:hover {
+              color: #23527c;
+              text-decoration: underline;
+            }
+          }
         }
+
         span {
           flex: 0 0 auto;
           font-size: 18px;
@@ -37,15 +53,19 @@
         }
       }
     }
+
     .el-pagination {
       padding: 40px 0;
+
       .el-pagination__total {
         font-size: 16px !important;
         line-height: 40px;
       }
+
       .active {
         background-color: #72b713;
       }
+
       .btn-prev .el-icon,
       .el-pager li,
       .btn-next .el-icon,

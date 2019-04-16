@@ -28,7 +28,9 @@
                 :key="item.televInfromPk"
                 @click="toPhotoDetail(item.televInfromPk)"
               >
-                <li>{{item.titleNm}}</li>
+                <li>
+                  <a href="#">{{item.titleNm}}</a>
+                </li>
                 <p>作者：{{item.crtBy}}</p>
               </ul>
             </div>
@@ -43,7 +45,9 @@
                 :key="item.televInfromPk"
                 @click="toPhotoDetail(item.televInfromPk)"
               >
-                <li>{{item.titleNm}}</li>
+                <li>
+                  <a href="#">{{item.titleNm}}</a>
+                </li>
                 <p>作者：{{item.crtBy}}</p>
               </ul>
             </div>
@@ -58,7 +62,9 @@
                 :key="item.televInfromPk"
                 @click="toPhotoDetail(item.televInfromPk)"
               >
-                <li>{{item.titleNm}}</li>
+                <li>
+                  <a href="#">{{item.titleNm}}</a>
+                </li>
                 <p>作者：{{item.crtBy}}</p>
               </ul>
             </div>
@@ -73,7 +79,9 @@
                 :key="item.televInfromPk"
                 @click="toPhotoDetail(item.televInfromPk)"
               >
-                <li>{{item.titleNm}}</li>
+                <li>
+                  <a href="#">{{item.titleNm}}</a>
+                </li>
                 <p>作者：{{item.crtBy}}</p>
               </ul>
             </div>
@@ -88,7 +96,9 @@
                 :key="item.televInfromPk"
                 @click="toPhotoDetail(item.televInfromPk)"
               >
-                <li>{{item.titleNm}}</li>
+                <li>
+                  <a href="#">{{item.titleNm}}</a>
+                </li>
                 <p>作者：{{item.crtBy}}</p>
               </ul>
             </div>
@@ -103,7 +113,9 @@
                 :key="item.televInfromPk"
                 @click="toPhotoDetail(item.televInfromPk)"
               >
-                <li>{{item.titleNm}}</li>
+                <li>
+                  <a href="#">{{item.titleNm}}</a>
+                </li>
                 <p>作者：{{item.crtBy}}</p>
               </ul>
             </div>

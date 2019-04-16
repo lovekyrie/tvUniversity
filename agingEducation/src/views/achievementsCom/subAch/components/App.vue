@@ -27,7 +27,9 @@
               :key="item.televGainPk"
               @click="toWriteDetail(item.televGainPk)"
             >
-              <li>{{item.titleNm}}</li>
+              <li>
+                <a href="#">{{item.titleNm}}</a>
+              </li>
               <p>班级：{{item.stuNm}}</p>
               <p>作者：{{item.author}}</p>
             </ul>

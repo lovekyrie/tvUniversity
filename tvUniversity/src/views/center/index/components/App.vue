@@ -49,7 +49,7 @@
           @click="goNoticeDetail(item.sysNewsPk)"
         >
           <div class="listContent">
-            <strong>{{item.nm}}</strong>
+            <a href="#">{{item.nm}}</a>
             <p>{{item.year}}年{{item.month}}月{{item.day}}日 {{item.time}}</p>
           </div>
         </div>
@@ -355,7 +355,8 @@ export default {
               this.until
                 .get("/prod/class/info/" + item.prodClassPk)
                 .then(res => {
-                  this.videoList[index].playerOptions.poster = res.data && res.data.imgUrl || '';
+                  this.videoList[index].playerOptions.poster =
+                    (res.data && res.data.imgUrl) || "";
                 });
             }
           },

@@ -15,7 +15,9 @@
             :key="index"
           >
             <!-- <img :src="icon" alt=""> -->
-            <p>{{item.titleNm}}</p>
+            <p>
+              <a href="#">{{item.titleNm}}</a>
+            </p>
             <span>{{item.crtTm}}</span>
           </div>
         </div>
@@ -69,7 +71,7 @@
         <!--<p><a href="../apply/rule.html">在线报名</a><a href="../study/course.html">在线学习</a><a href="../center/center.html">个人空间</a><a href="./naire.html">问卷调查</a></p>-->
       </div>
       <p class="bottom" v-show="showButton">
-        <a href="../apply/rule.html">在线报名</a>
+        <a href="../apply/select.html">在线报名</a>
         <a href="../apply/pay.html">在线缴费</a>
       </p>
     </div>
