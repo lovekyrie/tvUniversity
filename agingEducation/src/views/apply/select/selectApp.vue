@@ -510,7 +510,12 @@ export default {
         return "no";
       }
       /*报名是否已满 当前报名人数 总人数 false:未报满*/
-      let applyState = opt.currBatPersQty >= opt.batPersQty ? true : false;
+      let applyState =
+        opt.currBatPersQty >= opt.batPersQty ||
+        opt.currOpenPersQty >= opt.openPersQty ||
+        opt.currTotPersQty >= opt.totPersQty
+          ? true
+          : false;
       /*基础班提高班判断*/
       let cousrseLvl = opt.recrPlanVo.statCd == "10000.150" ? true : false;
       /*可以报名的条件：在规定时间内，是基础课程，人数未满(对外报名人数<对外人数)*/
@@ -574,6 +579,10 @@ export default {
             this.optionAll = res.data.items;
             this.total = res.page.total;
             this.sumpage = res.page.pageNum;
+          } else {
+            this.$alert(res.message, "提示", {
+              confirmButtonText: "确定"
+            });
           }
         });
     },

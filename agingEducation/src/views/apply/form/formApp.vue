@@ -288,13 +288,15 @@
         </p>
       </div>
       <div class="f-mn">
-        <p>报名费用&nbsp;
+        <p>
+          报名费用&nbsp;
           <span>{{price}}</span>&nbsp;元
         </p>
       </div>
       <div class="f-paybtn">
         <p>
-          <el-checkbox v-model="checkbox">我已阅读并同意
+          <el-checkbox v-model="checkbox">
+            我已阅读并同意
             <a>《宁波广播电视大学老年教育管理系统协议》</a>
           </el-checkbox>
         </p>

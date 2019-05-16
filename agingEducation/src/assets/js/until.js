@@ -117,7 +117,6 @@ class until {
     });
     return promise;
   }
-  postCard
   postCard(url, data) {
     let promise = new Promise((resolve, reject) => {
       $.ajax({
@@ -140,7 +139,7 @@ class until {
     });
     return promise;
   }
-  postData(url, data) {
+  postJson(url, data) {
     let promise = new Promise((resolve, reject) => {
       $.ajax({
         type: 'POST',
