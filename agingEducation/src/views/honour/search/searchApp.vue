@@ -1,6 +1,6 @@
 <template>
   <div id="container">
-    <ageHead @triggerSite="getMsg"></ageHead>
+    <ageHead></ageHead>
     <div class="g-content g-content-footer" ref="size">
       <div class="g-search">
         <div class="crumb">
@@ -73,11 +73,12 @@ export default {
       this.currentPage = val;
       this.getMsg();
     },
-    getMsg(siteCd) {
+    getMsg() {
       let query = new this.Query();
-      let regionCd = siteCd || this.until.loGet("regionCd");
+      //不区分校区，所以默认是电大 19/06/11
+      // let regionCd = siteCd || this.until.loGet("regionCd");
       query.buildWhereClause("catCd", "30010.150");
-      query.buildWhereClause("siteCd", regionCd, "EQ");
+      query.buildWhereClause("siteCd", "42000.110", "EQ");
       query.buildPageClause(this.currentPage, this.pageSize);
       let param = query.getParam();
       this.until.get("/telev/news/page", param).then(res => {

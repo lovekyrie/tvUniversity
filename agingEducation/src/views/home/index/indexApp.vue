@@ -1,6 +1,6 @@
 <template>
   <div style="height: 100%" id="container">
-    <ageHead @triggerSite="getMsg"></ageHead>
+    <ageHead></ageHead>
     <div class="g-content g-content-footer" ref="size">
       <div class="home" style="margin-top: 20px;">
         <div class="new-list">
@@ -107,11 +107,10 @@ export default {
         confirmButtonText: "确定"
       });
     },
-    getMsg(siteCd) {
+    getMsg() {
       let query = new this.Query();
       query.buildWhereClause("catCd", "30010.170");
-      let regionCd = siteCd || this.until.loGet("regionCd");
-      query.buildWhereClause("siteCd", regionCd, "EQ");
+      query.buildWhereClause("siteCd", "42000.110", "EQ");
       query.buildOrderClause("crtTm", "DESC");
       query.buildPageClause(this.currentPage, this.pageSize);
       let param = query.getParam();

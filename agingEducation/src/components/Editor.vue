@@ -55,5 +55,8 @@ export default {
 };
 </script>
 
-<style scoped>
+<style >
+.w-e-text p {
+  text-indent: 2em;
+}
 </style>

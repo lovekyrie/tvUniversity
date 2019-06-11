@@ -89,7 +89,6 @@ export default {
             if (res.data.items.length > 0 && !this.address) {
               this.address = res.data.items[0].nm;
               this.regionCd = res.data.items[0].cd;
-              this.$emit("triggerSite", this.regionCd);
             }
           }
         });

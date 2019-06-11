@@ -31,7 +31,7 @@
                 <li>
                   <a href="#">{{item.titleNm}}</a>
                 </li>
-                <p>作者：{{item.crtBy}}</p>
+                <p>作者：{{item.author}}</p>
               </ul>
             </div>
             <!--图文共赏-->
@@ -48,7 +48,7 @@
                 <li>
                   <a href="#">{{item.titleNm}}</a>
                 </li>
-                <p>作者：{{item.crtBy}}</p>
+                <p>作者：{{item.author}}</p>
               </ul>
             </div>
             <!--文字集锦-->
@@ -65,7 +65,7 @@
                 <li>
                   <a href="#">{{item.titleNm}}</a>
                 </li>
-                <p>作者：{{item.crtBy}}</p>
+                <p>作者：{{item.author}}</p>
               </ul>
             </div>
             <!--学员笔谈-->
@@ -82,7 +82,7 @@
                 <li>
                   <a href="#">{{item.titleNm}}</a>
                 </li>
-                <p>作者：{{item.crtBy}}</p>
+                <p>作者：{{item.author}}</p>
               </ul>
             </div>
             <!--教师之窗-->
@@ -99,7 +99,7 @@
                 <li>
                   <a href="#">{{item.titleNm}}</a>
                 </li>
-                <p>作者：{{item.crtBy}}</p>
+                <p>作者：{{item.author}}</p>
               </ul>
             </div>
             <!--校园动态-->
@@ -116,7 +116,7 @@
                 <li>
                   <a href="#">{{item.titleNm}}</a>
                 </li>
-                <p>作者：{{item.crtBy}}</p>
+                <p>作者：{{item.author}}</p>
               </ul>
             </div>
           </div>

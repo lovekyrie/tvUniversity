@@ -14,7 +14,7 @@
           <div class="detail">
             <h3>{{infoMsg.titleNm}}</h3>
             <p class="msg-bar">
-              <span>作者：{{infoMsg.crtBy}}</span>
+              <span>作者：{{infoMsg.author}}</span>
               <span>{{infoMsg.crtTm}}</span>
               <span>来源：{{infoMsg.source}}</span>
             </p>
