@@ -55,8 +55,11 @@ export default {
 };
 </script>
 
-<style >
-.w-e-text p {
-  text-indent: 2em;
+<style  lang="less">
+.w-e-text {
+  p,
+  div {
+    text-indent: 2em;
+  }
 }
 </style>

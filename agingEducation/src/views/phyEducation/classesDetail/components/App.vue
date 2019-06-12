@@ -87,4 +87,11 @@ export default {
     font-size: 26px !important;
   }
 }
+
+.c-content {
+  div,
+  p {
+    text-indent: 2em;
+  }
+}
 </style>

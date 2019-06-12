@@ -214,6 +214,10 @@ body {
     div {
       font-size: 24px;
       line-height: 1.5;
+      text-indent: 2em;
+    }
+    p {
+      text-indent: 2em;
     }
   }
 }
