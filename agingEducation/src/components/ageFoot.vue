@@ -11,7 +11,7 @@
         <a href="http://www.nblll.cn/">宁波终身学习网</a>
       </span>
       <span style="border: none;">
-        <a href="http://lndd.nbsqjy.com:44185/dist/views/center/index.html">宁波市乐龄老年电视大学</a>
+        <a href="http://lndd.nbsqjy.com/dist/views/center/index.html">宁波市乐龄老年电视大学</a>
       </span>
     </div>
 

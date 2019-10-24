@@ -65,7 +65,7 @@
           <area
             shape="poly"
             coords="402, 256.5, 529.5, 166.5, 544.5, 109.5, 531, 55.5, 492, 19.5, 444, 7.5, 384, 24, 351, 64.5, 333, 216, 370.5, 226.5"
-            href="http://lndd.nbsqjy.com:44185/dist/views/center/index.html"
+            href="http://lndd.nbsqjy.com/dist/views/center/index.html"
           >
         </map>
         <!--<p><a href="../apply/rule.html">在线报名</a><a href="../study/course.html">在线学习</a><a href="../center/center.html">个人空间</a><a href="./naire.html">问卷调查</a></p>-->

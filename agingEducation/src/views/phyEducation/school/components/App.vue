@@ -9,7 +9,7 @@
           <span>&gt;</span>
           <span @click="toEntitySchool">实体办学</span>
           <span>&gt;</span>
-          <span>办学概况</span>
+          <span>{{pageNm}}</span>
         </div>
 
         <div class="content">
@@ -56,10 +56,14 @@ export default {
       total: 0,
       currentPage: 1,
       pageSize: 10,
-      items: []
+      items: [],
+      pageNm: "",
+      cd: ""
     };
   },
   mounted() {
+    this.pageNm = this.until.getQueryString("nm");
+    this.cd = this.until.getQueryString("cd");
     this.getMsg();
   },
   //相关操作事件
@@ -79,7 +83,7 @@ export default {
     },
     getMsg() {
       let query = new this.Query();
-      query.buildWhereClause("catCd", "40020.150", "LK");
+      query.buildWhereClause("catCd", this.cd, "LK");
       query.buildPageClause(this.currentPage, this.pageSize);
       let param = query.getParam();
       this.until.get("/telev/infrom/page", param).then(res => {

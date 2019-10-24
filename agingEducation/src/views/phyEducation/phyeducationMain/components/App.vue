@@ -18,105 +18,20 @@
           <!--内容底部-->
           <div class="mainFoot">
             <!--办学概况-->
-            <div class="school">
+            <div class="school" v-for="(item, index) in categoryList" :key="index">
               <div>
-                <h4>办学概况</h4>
-                <span @click="toMoreSchool">查看更多></span>
+                <h4>{{item.nm}}</h4>
+                <span @click="toMoreSchool(item.cd,item.nm)">查看更多></span>
               </div>
               <ul
-                v-for="item in schoolList"
-                :key="item.televInfromPk"
-                @click="toPhotoDetail(item.televInfromPk)"
+                v-for="itemChild in item.list"
+                :key="itemChild.televInfromPk"
+                @click="toPhotoDetail(itemChild.televInfromPk)"
               >
                 <li>
-                  <a href="#">{{item.titleNm}}</a>
+                  <a href="#">{{itemChild.titleNm}}</a>
                 </li>
-                <p>作者：{{item.author}}</p>
-              </ul>
-            </div>
-            <!--图文共赏-->
-            <div class="production">
-              <div>
-                <h4>图文共赏</h4>
-                <span @click="toMorePhoto">查看更多></span>
-              </div>
-              <ul
-                v-for="item in photoList"
-                :key="item.televInfromPk"
-                @click="toPhotoDetail(item.televInfromPk)"
-              >
-                <li>
-                  <a href="#">{{item.titleNm}}</a>
-                </li>
-                <p>作者：{{item.author}}</p>
-              </ul>
-            </div>
-            <!--文字集锦-->
-            <div class="honor">
-              <div>
-                <h4>文字集锦</h4>
-                <span @click="toMoreWrite">查看更多></span>
-              </div>
-              <ul
-                v-for="item in writingList"
-                :key="item.televInfromPk"
-                @click="toPhotoDetail(item.televInfromPk)"
-              >
-                <li>
-                  <a href="#">{{item.titleNm}}</a>
-                </li>
-                <p>作者：{{item.author}}</p>
-              </ul>
-            </div>
-            <!--学员笔谈-->
-            <div class="classes">
-              <div>
-                <h4>学员笔谈</h4>
-                <span @click="toMoreComment">查看更多></span>
-              </div>
-              <ul
-                v-for="item in commentList"
-                :key="item.televInfromPk"
-                @click="toPhotoDetail(item.televInfromPk)"
-              >
-                <li>
-                  <a href="#">{{item.titleNm}}</a>
-                </li>
-                <p>作者：{{item.author}}</p>
-              </ul>
-            </div>
-            <!--教师之窗-->
-            <div class="teacher">
-              <div>
-                <h4>教师之窗</h4>
-                <span @click="toMoreWindow">查看更多></span>
-              </div>
-              <ul
-                v-for="item in windowList"
-                :key="item.televInfromPk"
-                @click="toPhotoDetail(item.televInfromPk)"
-              >
-                <li>
-                  <a href="#">{{item.titleNm}}</a>
-                </li>
-                <p>作者：{{item.author}}</p>
-              </ul>
-            </div>
-            <!--校园动态-->
-            <div class="class-dynamic">
-              <div>
-                <h4>校园动态</h4>
-                <span @click="toMoreDynamic">查看更多></span>
-              </div>
-              <ul
-                v-for="item in dynamicList"
-                :key="item.televInfromPk"
-                @click="toPhotoDetail(item.televInfromPk)"
-              >
-                <li>
-                  <a href="#">{{item.titleNm}}</a>
-                </li>
-                <p>作者：{{item.author}}</p>
+                <p>作者：{{itemChild.author}}</p>
               </ul>
             </div>
           </div>
@@ -147,6 +62,7 @@ export default {
       windowList: [],
       schoolList: [],
       dynamicList: [],
+      categoryList: [],
       showType: false
     };
   },
@@ -155,71 +71,44 @@ export default {
       return Math.ceil(this.total / this.pageSize);
     }
   },
-  mounted() {
+  async mounted() {
     // this.showType = JSON.parse(this.until.getQueryString("type"));
-    this.getPhotoList("40020.110");
-    this.getPhotoList("40020.120");
-    this.getPhotoList("40020.130");
-    this.getPhotoList("40020.140");
-    this.getPhotoList("40020.150");
-    this.getPhotoList("40020.160");
+    //得到所有分类
+    await this.getCategoryList();
   },
   methods: {
     toIndex() {
       window.location.href = "../home/index.html";
     },
-    toMorePhoto() {
-      window.location.href = "./photo.html";
-    },
-    toMoreWrite() {
-      window.location.href = "./writing.html";
-    },
-    toMoreComment() {
-      window.location.href = "./classes.html";
-    },
-    toMoreWindow() {
-      window.location.href = "./window.html";
-    },
-    toMoreSchool() {
-      this.until.href("./school.html");
+
+    toMoreSchool(cd,nm) {
+      this.until.href(`./school.html?cd=${cd}&nm=${nm}`);
     },
     toMoreDynamic() {
       this.until.href("./dynamic.html");
     },
-    getPhotoList(photoCd) {
-      let query = new this.Query();
-      query.buildWhereClause("catCd", photoCd, "LK");
-      query.buildPageClause(this.currentPage, this.pageSize);
-
-      let param = query.getParam();
-      this.until.get("/telev/infrom/page", param).then(
-        res => {
+    getCategoryList() {
+      this.until
+        .get("/general/cat/listByPrntCd", { prntCd: "40020" })
+        .then(res => {
           if (res.status === "200") {
-            switch (photoCd) {
-              case "40020.110":
-                this.photoList = res.data.items;
-                break;
-              case "40020.120":
-                this.writingList = res.data.items;
-                break;
-              case "40020.130":
-                this.commentList = res.data.items;
-                break;
-              case "40020.140":
-                this.windowList = res.data.items;
-                break;
-              case "40020.150":
-                this.schoolList = res.data.items;
-                break;
-              case "40020.160":
-                this.dynamicList = res.data.items;
-                break;
-            }
+            this.categoryList = res.data.items;
+            //给每个item取列表数据
+            this.categoryList.forEach((item, index) => {
+              const query = new this.Query();
+              query.buildWhereClause("catCd", item.cd, "LK");
+              query.buildPageClause(this.currentPage, this.pageSize);
+
+              const param = query.getParam();
+              this.until.get("/telev/infrom/page", param).then(res => {
+                item.list = res.data.items;
+                this.$set(this.categoryList, index, item);
+              });
+            });
           }
-        },
-        err => {}
-      );
+        });
     },
+
     toPhotoDetail(pk) {
       window.location.href = "./classesDetail.html?id=" + pk;
     }
