@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "accounting": "^0.4.1",
-    "axios": "^0.16.0",
+    "axios": "^0.21.1",
     "clipboard": "^2.0.0",
     "element-ui": "^2.4.8",
     "exif-js": "^2.3.0",
